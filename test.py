@@ -6,3 +6,5 @@ def sqr(n=int):
         acc += 1
 
 print(sqr(5))
+
+print("Hello World!")
