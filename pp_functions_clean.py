@@ -2,7 +2,7 @@
 # author: Niklas Munkes
 import string
 
-from nltk.tokenize import RegexpTokenizer
+from nltk.tokenize import RegexpTokenizer, word_tokenize
 from typing import List
 
 dir_containers = "./PP_Containers/"
@@ -39,33 +39,18 @@ def createTAWContainer(filename):
     taw_container.close()
 
 
-def __get_raw_text(filename) -> str:
-    raw_text = ""
-    with open(dir_containers + filename, 'r') as container:
-        for line in container.readlines():
-            if line.startswith(".T") \
-                    or line.startswith(".A") \
-                    or line.startswith(".W"):
-                line = line[2:]
-            line = line.strip()
-            raw_text += line
-    return raw_text
-
-
-def tokenize(filename) -> List[str]:
-    raw_text = __get_raw_text(filename)
-    tokenizer = RegexpTokenizer(r'((?<=[^\w\s])\w(?=[^\w\s])|(\W))+', gaps=True)
-    return tokenizer.tokenize(raw_text)
+def tokenize(raw_text) -> List[str]:
+    return word_tokenize(raw_text)
 
 
 def normalize(tokens=List[str]) -> List[str]:
     normalized = []
-    tokens_filtered = filter(lambda x: True if (len(x) > 1 or x.isalpha() or x.isdigit()) else False,
+    tokens_filtered = filter(lambda x: len(x) > 1 or x.isalpha() or x.isdigit(),
                              tokens)
     normalized += tokens_filtered
-    normalized = [word.lower().translate(string.punctuation) for word in normalized]
-    return normalized
+    normalized = ["".join(word.lower().split(".")) for word in normalized]
+    return set(normalized)
 
 
-# print(normalize(tokenize("pp_container_T-A-W_CISI.ALL.txt")))
+print(normalize(tokenize("John's Mother lives in the U.S.A. for 9 years, until they didn't as a state-of-the-art-solution")))
 
