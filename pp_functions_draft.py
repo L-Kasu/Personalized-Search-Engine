@@ -110,7 +110,9 @@ def masterProcessor(filename):
                 # tokenizing
                 # print("tokenizing...")
                 # nltk.download('punkt')
-                processing_list = tokenize(line)
+                reduced_line = line[3:]
+                line_reduction = line[:3]
+                processing_list = tokenize(reduced_line)
                 # print("DONE")
 
                 # normalization
@@ -150,7 +152,10 @@ def masterProcessor(filename):
                 #     tb = sys.exc_info()[2]
                 #     raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
 
-                pp_container.write(str(processing_set))
+                pp_container.write(line_reduction+str(processing_set))
+                pp_container.write("\n")
+            else:
+                pp_container.write(line)
                 pp_container.write("\n")
         container.close()
     pp_container.close()
