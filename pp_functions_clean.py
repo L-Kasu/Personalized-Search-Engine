@@ -37,6 +37,7 @@ def createTAWContainer(filename):
         container.close()
     taw_container.close()
 
+
 def tokenize(filename) -> List[str]:
     tokenized = []
     with open(dir_containers + filename, 'r') as container:
