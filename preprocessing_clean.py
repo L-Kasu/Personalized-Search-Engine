@@ -10,3 +10,8 @@ for dirname, _, filenames in os.walk('./CISI_archive'):
         print("saving data as pp_container_"+filename+".txt...")
         ppf.saveTextAsTxt(filename)
         print("DONE")
+
+filename = "CISI.ALL"
+print("creating TAW container of " + filename)
+ppf.createTAWContainer(filename)
+print("DONE")

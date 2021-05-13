@@ -4,8 +4,11 @@
 import sys
 
 
+dir_containers = "./PP_Containers/"
+dir_archive = "./CISI_archive/"
+
 def printLines(n):
-    with open('./CISI_archive/CISI.ALL') as file:
+    with open(dir_archive+'CISI.ALL') as file:
         lines = ""
         for line in file.readlines():
             lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
@@ -26,7 +29,7 @@ def printLines(n):
 # ".W" := writing (text body)
 # ".X" := ??? (some numbers)
 def extractLinesByType(selector):
-    with open('./CISI_archive/CISI.ALL') as file:
+    with open(dir_archive+'CISI.ALL') as file:
         lines = ""
         for line in file.readlines():
             lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
@@ -41,8 +44,8 @@ def extractLinesByType(selector):
 
 
 def saveTextAsTxt(filename):
-    container = open("pp_container_"+filename+".txt", 'w')
-    with open('./CISI_archive/'+filename) as file:
+    container = open(dir_containers+"pp_container_"+filename+".txt", 'w')
+    with open(dir_archive+filename) as file:
         lines = ""
         for line in file.readlines():
             lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
@@ -52,3 +55,19 @@ def saveTextAsTxt(filename):
             container.write("\n")
         container.close()
 
+
+def createTAWContainer(filename):
+    taw_container = open(dir_containers+"pp_container_T-A-W_" + filename + ".txt", 'w')
+    with open(dir_containers+"pp_container_" + filename + ".txt", 'r') as container:
+        lines = ""
+        for line in container.readlines():
+            lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
+        lines = lines.lstrip("\n").split("\n")
+        for line in lines:
+            if line.startswith(".T")\
+                or line.startswith(".A")\
+                or line.startswith(".W"):
+                taw_container.write(line)
+                taw_container.write("\n")
+        container.close()
+    taw_container.close()

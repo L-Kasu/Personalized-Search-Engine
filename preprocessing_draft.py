@@ -12,20 +12,20 @@ import pp_functions_draft as ppf
 
 for dirname, _, filenames in os.walk('./CISI_archive'):
     for filename in filenames:
-        print(os.path.join(dirname, filename))
-
-        with open(os.path.join(dirname, filename)) as f:
-            line_count = 0
-            id_set = set()
-
-            for l in f.readlines():
-                line_count += 1
-                if filename == "CISI.REL":
-                    id_set.add(l.lstrip(" ").split(" ")[0])
-                elif l.startswith(".I "):
-                    id_set.add(l.split(" ")[1].strip())
-
-            print(f"{filename} : {len(id_set)} items, over {line_count} lines.")
+        # print(os.path.join(dirname, filename))
+        #
+        # with open(os.path.join(dirname, filename)) as f:
+        #     line_count = 0
+        #     id_set = set()
+        #
+        #     for l in f.readlines():
+        #         line_count += 1
+        #         if filename == "CISI.REL":
+        #             id_set.add(l.lstrip(" ").split(" ")[0])
+        #         elif l.startswith(".I "):
+        #             id_set.add(l.split(" ")[1].strip())
+        #
+        #     print(f"{filename} : {len(id_set)} items, over {line_count} lines.")
 
             # print("trying to load a raw document...")
             # file = open('document.txt')
@@ -35,6 +35,14 @@ for dirname, _, filenames in os.walk('./CISI_archive'):
             # ppf.printLines("all")
             # ppf.extractLinesByType(".A")
             # ppf.extractLinesByType("italy")
-            print("saving data as pp_container_"+filename+".txt...")
-            ppf.saveTextAsTxt(filename)
-            print("DONE")
+        print("saving data as pp_container_"+filename+".txt...")
+        ppf.saveTextAsTxt(filename)
+        print("DONE")
+
+filename = "CISI.ALL"
+print("creating TAW container of " + filename)
+ppf.createTAWContainer(filename)
+print("DONE")
+
+# tokenization goes here
+
