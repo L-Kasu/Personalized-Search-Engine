@@ -48,13 +48,12 @@ def tokenize(filename) -> List[str]:
             line = line.strip()
             toker = RegexpTokenizer(r'((?<=[^\w\s])\w(?=[^\w\s])|(\W))+', gaps=True)
             tokenized_line = toker.tokenize(line)
-            while ' ' in tokenized_line:
-                tokenized_line.remove(' ')
+            tokenized_line = filter(lambda x: x.isalpha(), tokenized_line)
             tokenized += tokenized_line
-
     return tokenized
 
-# print(tokenize("pp_container_T-A-W_CISI.ALL.txt"))
+
+print(tokenize("pp_container_T-A-W_CISI.ALL.txt"))
 
 
 
