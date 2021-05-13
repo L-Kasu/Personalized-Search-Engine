@@ -61,10 +61,3 @@ def tokenize(filename) -> List[str]:
     return tokenized
 
 
-# print(tokenize("pp_container_T-A-W_CISI.ALL.txt"))
-
-
-
-
-
-
