@@ -5,7 +5,7 @@ import os
 import pp_functions_clean as ppf
 
 
-for dirname, _, filenames in os.walk('./CISI_archive'):
+for dirname, _, filenames in os.walk(ppf.dir_archive):
     for filename in filenames:
         print("saving data as pp_container_"+filename+".txt...")
         ppf.saveTextAsTxt(filename)

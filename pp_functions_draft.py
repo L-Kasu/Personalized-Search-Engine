@@ -1,11 +1,16 @@
 # draft function container for preprocessing_draft.py
 # author: Niklas Munkes
-
+import os
 import sys
+from nltk.tokenize import RegexpTokenizer
+from nltk.stem import PorterStemmer
+from nltk.stem import LancasterStemmer
+from typing import List
 
 
 dir_containers = "./PP_Containers/"
 dir_archive = "./CISI_archive/"
+dir_output = "./PP_output/"
 
 def printLines(n):
     with open(dir_archive+'CISI.ALL') as file:
@@ -71,3 +76,31 @@ def createTAWContainer(filename):
                 taw_container.write("\n")
         container.close()
     taw_container.close()
+
+
+# tokenizer
+
+
+# normalizer
+
+
+
+def removeStopWords(pp_set, stopwords):
+    new_pp_set = set()
+    for item in pp_set:
+        if item not in stopwords:
+            new_pp_set.add(item)
+    return new_pp_set
+
+def stemming(pp_set, stemmer):
+    new_pp_set = set()
+    for item in pp_set:
+        if stemmer == "porter":
+            new_pp_set.add(PorterStemmer().stem(item))
+        elif stemmer == "lancaster":
+            new_pp_set.add(LancasterStemmer().stem(item))
+        else:
+            tb = sys.exc_info()[2]
+            raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
+    return new_pp_set
+

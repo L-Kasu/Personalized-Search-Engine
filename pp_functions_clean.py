@@ -5,6 +5,7 @@ import string
 from nltk.tokenize import RegexpTokenizer
 from typing import List
 
+
 dir_containers = "./PP_Containers/"
 dir_archive = "./CISI_archive/"
 
@@ -67,5 +68,5 @@ def normalize(tokens=List[str]) -> List[str]:
     return normalized
 
 
-# print(normalize(tokenize("pp_container_T-A-W_CISI.ALL.txt")))
+print(normalize(tokenize("pp_container_T-A-W_CISI.ALL.txt")))
 
