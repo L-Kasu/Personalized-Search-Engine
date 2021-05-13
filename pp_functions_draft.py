@@ -61,21 +61,21 @@ def saveTextAsTxt(filename):
         container.close()
 
 
-def createTAWContainer(filename):
-    taw_container = open(dir_containers+"pp_container_T-A-W_" + filename + ".txt", 'w')
-    with open(dir_containers+"pp_container_" + filename + ".txt", 'r') as container:
-        lines = ""
-        for line in container.readlines():
-            lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
-        lines = lines.lstrip("\n").split("\n")
-        for line in lines:
-            if line.startswith(".T")\
-                or line.startswith(".A")\
-                or line.startswith(".W"):
-                taw_container.write(line)
-                taw_container.write("\n")
-        container.close()
-    taw_container.close()
+# def createTAWContainer(filename):
+#     taw_container = open(dir_containers+"pp_container_T-A-W_" + filename + ".txt", 'w')
+#     with open(dir_containers+"pp_container_" + filename + ".txt", 'r') as container:
+#         lines = ""
+#         for line in container.readlines():
+#             lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
+#         lines = lines.lstrip("\n").split("\n")
+#         for line in lines:
+#             if line.startswith(".T")\
+#                 or line.startswith(".A")\
+#                 or line.startswith(".W"):
+#                 taw_container.write(line)
+#                 taw_container.write("\n")
+#         container.close()
+#     taw_container.close()
 
 
 # tokenizer
@@ -104,3 +104,18 @@ def stemming(pp_set, stemmer):
             raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
     return new_pp_set
 
+def masterProcesser(filename):
+    pp_container = open(dir_output+"pp_container_preprocessed_" + filename + ".txt", 'w')
+    with open(dir_containers+"pp_container_" + filename + ".txt", 'r') as container:
+        # lines = ""
+        for line in container.readlines():
+        #     lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
+        # lines = lines.lstrip("\n").split("\n")
+        # for line in lines:
+            if line.startswith(".T")\
+                or line.startswith(".A")\
+                or line.startswith(".W"):
+                pp_container.write(line)
+                # pp_container.write("\n")
+        container.close()
+    pp_container.close()

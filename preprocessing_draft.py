@@ -66,49 +66,49 @@ for dirname, _, filenames in os.walk(ppf.dir_archive):
         print("DONE")
 
 filename = "CISI.ALL"
-print("creating TAW container of " + filename)
-ppf.createTAWContainer(filename)
+print("masterfully preprocessing " + filename)
+ppf.masterProcesser(filename)
 print("DONE")
 
 
-# tokenizing
-print("tokenizing...")
-processing_set = ppf.tokenize("pp_container_T-A-W_CISI.ALL.txt")
-print("DONE")
-
-# normalization
-print("normalizing...pending")
-processing_set = processing_set
+# # tokenizing
+# print("tokenizing...")
+# processing_set = ppf.tokenize("pp_container_T-A-W_CISI.ALL.txt")
 # print("DONE")
-
-# stop word removal
-print("removing stop words...")
-nltk.download('stopwords')
-stopwords = set(stopwords.words("english"))
-ppf.removeStopWords(processing_set, stopwords)
-print("DONE")
-
-# stemming
-print("stemming with "+stemmer+" stemmer...")
-ppf.stemming(processing_set, stemmer)
-print("DONE")
-
-# export preprocessed file
-print("exporting processed set as 'preprocessed_set.txt' to '"+ppf.dir_output+"'...")
-with open(ppf.dir_output+"preprocessed_set.txt", "w") as outputfile:
-    outputfile.write(" ".join(processing_set))
-    outputfile.close()
-print("DONE")
-print(":)\n")
-
-print("1. Credits")
-print("2. Exit")
-i = input()
-if i == "1":
-    print("TODO: Credits")
-    exit()
-elif i == "2":
-    exit()
-else:
-    tb = sys.exc_info()[2]
-    raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
+#
+# # normalization
+# print("normalizing...pending")
+# processing_set = processing_set
+# # print("DONE")
+#
+# # stop word removal
+# print("removing stop words...")
+# nltk.download('stopwords')
+# stopwords = set(stopwords.words("english"))
+# ppf.removeStopWords(processing_set, stopwords)
+# print("DONE")
+#
+# # stemming
+# print("stemming with "+stemmer+" stemmer...")
+# ppf.stemming(processing_set, stemmer)
+# print("DONE")
+#
+# # export preprocessed file
+# print("exporting processed set as 'preprocessed_set.txt' to '"+ppf.dir_output+"'...")
+# with open(ppf.dir_output+"preprocessed_set.txt", "w") as outputfile:
+#     outputfile.write(" ".join(processing_set))
+#     outputfile.close()
+# print("DONE")
+# print(":)\n")
+#
+# print("1. Credits")
+# print("2. Exit")
+# i = input()
+# if i == "1":
+#     print("TODO: Credits")
+#     exit()
+# elif i == "2":
+#     exit()
+# else:
+#     tb = sys.exc_info()[2]
+#     raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
