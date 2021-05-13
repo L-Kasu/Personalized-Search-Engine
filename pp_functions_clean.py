@@ -39,11 +39,11 @@ def createTAWContainer(filename):
     taw_container.close()
 
 
-def tokenize(raw_text) -> List[str]:
+def tokenize(raw_text):
     return word_tokenize(raw_text)
 
 
-def normalize(tokens=List[str]) -> List[str]:
+def normalize(tokens):
     normalized = []
     tokens_filtered = filter(lambda x: len(x) > 1 or x.isalpha() or x.isdigit(),
                              tokens)

@@ -22,18 +22,18 @@ print("----------------------\n")
 print("place the files you wish to search here:")
 print(ppf.dir_archive+"\n")
 
-print("please chose a stemming algorithm:")
-print("1. PorterStemmer")
-print("2. LancasterStemmer")
-i = input()
-if i == "1":
-    stemmer = "porter"
-elif i == "2":
-    stemmer = "lancaster"
-else:
-    tb = sys.exc_info()[2]
-    raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
-print("\n")
+# print("please chose a stemming algorithm:")
+# print("1. PorterStemmer")
+# print("2. LancasterStemmer")
+# i = input()
+# if i == "1":
+#     stemmer = "porter"
+# elif i == "2":
+#     stemmer = "lancaster"
+# else:
+#     tb = sys.exc_info()[2]
+#     raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
+# print("\n")
 
 
 for dirname, _, filenames in os.walk(ppf.dir_archive):
@@ -67,5 +67,5 @@ for dirname, _, filenames in os.walk(ppf.dir_archive):
 
 filename = "CISI.ALL"
 print("masterfully preprocessing " + filename)
-ppf.masterProcesser(filename)
+ppf.masterProcessor(filename)
 print("DONE")

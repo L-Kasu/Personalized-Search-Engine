@@ -2,12 +2,16 @@
 # author: Niklas Munkes
 import os
 import sys
-from nltk.tokenize import RegexpTokenizer
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
+# from nltk.tokenize import RegexpTokenizer
+from nltk.tokenize import RegexpTokenizer, word_tokenize
 import nltk
-# from nltk.corpus import stopwords
+from nltk.corpus import stopwords
 from typing import List
+
+nltk.download('punkt')
+nltk.download('stopwords')
 
 
 dir_containers = "./PP_Containers/"
@@ -80,10 +84,88 @@ def saveTextAsTxt(filename):
 #     taw_container.close()
 
 
-# tokenizer
+def masterProcessor(filename):
+    pp_container = open(dir_output+"pp_container_preprocessed_" + filename + ".txt", 'w')
+    with open(dir_containers+"pp_container_" + filename + ".txt", 'r') as container:
+        print("please chose a stemming algorithm:")
+        print("1. PorterStemmer")
+        print("2. LancasterStemmer")
+        i = input()
+        if i == "1":
+            stemmer = "porter"
+        elif i == "2":
+            stemmer = "lancaster"
+        else:
+            tb = sys.exc_info()[2]
+            raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
+        print("\n")
+        # lines = ""
+        for line in container.readlines():
+        #     lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
+        # lines = lines.lstrip("\n").split("\n")
+        # for line in lines:
+            if line.startswith(".T")\
+                or line.startswith(".A")\
+                or line.startswith(".W"):
+                # tokenizing
+                # print("tokenizing...")
+                # nltk.download('punkt')
+                processing_list = tokenize(line)
+                # print("DONE")
+
+                # normalization
+                # print("normalizing...")
+                processing_set = normalize(processing_list)
+                # print("DONE")
+
+                # stop word removal
+                # print("removing stop words...")
+                # nltk.download('stopwords')
+                stopword = set(stopwords.words("english"))
+                removeStopWords(processing_set, stopword)
+                # print("DONE")
+
+                # stemming
+                # print("stemming with " + stemmer + " stemmer...")
+                stemming(processing_set, stemmer)
+                # print("DONE")
+
+                # export preprocessed file
+                # print("exporting processed set as 'preprocessed_set.txt' to '" + dir_output + "'...")
+                with open(dir_output + "preprocessed_set.txt", "w") as outputfile:
+                    outputfile.write(" ".join(processing_set))
+                    outputfile.close()
+                # print("DONE")
+                # print(":)\n")
+
+                # print("1. Credits")
+                # print("2. Exit")
+                # i = input()
+                # if i == "1":
+                #     print("TODO: Credits")
+                #     exit()
+                # elif i == "2":
+                #     exit()
+                # else:
+                #     tb = sys.exc_info()[2]
+                #     raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
+
+                pp_container.write(line)
+                # pp_container.write("\n")
+        container.close()
+    pp_container.close()
+
+def tokenize(raw_text):
+    return word_tokenize(raw_text)
 
 
-# normalizer
+def normalize(tokens):
+    normalized = []
+    tokens_filtered = filter(lambda x: len(x) > 1 or x.isalpha() or x.isdigit(),
+                             tokens)
+    normalized += tokens_filtered
+    normalized = ["".join(word.lower().split(".")) for word in normalized]
+    return set(normalized)
 
 
 
@@ -105,61 +187,3 @@ def stemming(pp_set, stemmer):
             tb = sys.exc_info()[2]
             raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
     return new_pp_set
-
-def masterProcesser(filename):
-    pp_container = open(dir_output+"pp_container_preprocessed_" + filename + ".txt", 'w')
-    with open(dir_containers+"pp_container_" + filename + ".txt", 'r') as container:
-        # lines = ""
-        for line in container.readlines():
-        #     lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
-        # lines = lines.lstrip("\n").split("\n")
-        # for line in lines:
-            if line.startswith(".T")\
-                or line.startswith(".A")\
-                or line.startswith(".W"):
-                # tokenizing
-                print("tokenizing...")
-                processing_set = tokenize("pp_container_T-A-W_CISI.ALL.txt")
-                print("DONE")
-
-                # normalization
-                print("normalizing...pending")
-                processing_set = processing_set
-                # print("DONE")
-
-                # stop word removal
-                print("removing stop words...")
-                nltk.download('stopwords')
-                stopwords = set(stopwords.words("english"))
-                removeStopWords(processing_set, stopwords)
-                print("DONE")
-
-                # stemming
-                print("stemming with " + stemmer + " stemmer...")
-                stemming(processing_set, stemmer)
-                print("DONE")
-
-                # export preprocessed file
-                print("exporting processed set as 'preprocessed_set.txt' to '" + dir_output + "'...")
-                with open(dir_output + "preprocessed_set.txt", "w") as outputfile:
-                    outputfile.write(" ".join(processing_set))
-                    outputfile.close()
-                print("DONE")
-                print(":)\n")
-
-                print("1. Credits")
-                print("2. Exit")
-                i = input()
-                if i == "1":
-                    print("TODO: Credits")
-                    exit()
-                elif i == "2":
-                    exit()
-                else:
-                    tb = sys.exc_info()[2]
-                    raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
-
-                pp_container.write(line)
-                # pp_container.write("\n")
-        container.close()
-    pp_container.close()
