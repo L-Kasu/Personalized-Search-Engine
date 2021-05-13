@@ -5,7 +5,7 @@ import nltk
 import numpy as np
 import pandas as pd
 import os
-import pp_functions as ppf
+import pp_functions_draft as ppf
 # from mpl_toolkits.mplot3d import Axes3D
 # from sklearn.preprocessing import StandardScaler
 # import matplotlib.pyplot as plt # plotting
@@ -33,5 +33,8 @@ for dirname, _, filenames in os.walk('./CISI_archive'):
 
             # ppf.printLines(5)
             # ppf.printLines("all")
-            ppf.extractLinesByType(".A")
+            # ppf.extractLinesByType(".A")
             # ppf.extractLinesByType("italy")
+            print("saving data as pp_container_"+filename+".txt...")
+            ppf.saveTextAsTxt(filename)
+            print("DONE")
