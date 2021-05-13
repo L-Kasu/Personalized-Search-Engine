@@ -156,7 +156,7 @@ def masterProcessor(filename):
                 pp_container.write("\n")
             else:
                 pp_container.write(line)
-                pp_container.write("\n")
+                # pp_container.write("\n")
         container.close()
     pp_container.close()
 
