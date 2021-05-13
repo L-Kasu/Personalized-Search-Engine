@@ -3,6 +3,7 @@
 import string
 
 from nltk.tokenize import RegexpTokenizer
+from typing import List
 dir_containers = "./PP_Containers/"
 dir_archive = "./CISI_archive/"
 
@@ -36,7 +37,7 @@ def createTAWContainer(filename):
         container.close()
     taw_container.close()
 
-def tokenize(filename):
+def tokenize(filename) -> List[str]:
     tokenized = []
     with open(dir_containers + filename, 'r') as container:
         for line in container.readlines():
@@ -53,7 +54,7 @@ def tokenize(filename):
 
     return tokenized
 
-print(tokenize("pp_container_T-A-W_CISI.ALL.txt"))
+# print(tokenize("pp_container_T-A-W_CISI.ALL.txt"))
 
 
 
