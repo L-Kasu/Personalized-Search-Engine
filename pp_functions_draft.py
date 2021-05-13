@@ -5,6 +5,8 @@ import sys
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
+import nltk
+# from nltk.corpus import stopwords
 from typing import List
 
 
@@ -115,6 +117,48 @@ def masterProcesser(filename):
             if line.startswith(".T")\
                 or line.startswith(".A")\
                 or line.startswith(".W"):
+                # tokenizing
+                print("tokenizing...")
+                processing_set = tokenize("pp_container_T-A-W_CISI.ALL.txt")
+                print("DONE")
+
+                # normalization
+                print("normalizing...pending")
+                processing_set = processing_set
+                # print("DONE")
+
+                # stop word removal
+                print("removing stop words...")
+                nltk.download('stopwords')
+                stopwords = set(stopwords.words("english"))
+                removeStopWords(processing_set, stopwords)
+                print("DONE")
+
+                # stemming
+                print("stemming with " + stemmer + " stemmer...")
+                stemming(processing_set, stemmer)
+                print("DONE")
+
+                # export preprocessed file
+                print("exporting processed set as 'preprocessed_set.txt' to '" + dir_output + "'...")
+                with open(dir_output + "preprocessed_set.txt", "w") as outputfile:
+                    outputfile.write(" ".join(processing_set))
+                    outputfile.close()
+                print("DONE")
+                print(":)\n")
+
+                print("1. Credits")
+                print("2. Exit")
+                i = input()
+                if i == "1":
+                    print("TODO: Credits")
+                    exit()
+                elif i == "2":
+                    exit()
+                else:
+                    tb = sys.exc_info()[2]
+                    raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
+
                 pp_container.write(line)
                 # pp_container.write("\n")
         container.close()
