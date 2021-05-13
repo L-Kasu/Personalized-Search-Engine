@@ -32,19 +32,7 @@ def extractLinesByType(selector):
             lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
         lines = lines.lstrip("\n").split("\n")
         for line in lines:
-            if selector == ".T":
-                if line.startswith(selector):
-                    print(line)
-            elif selector == ".A":
-                if line.startswith(selector):
-                    print(line)
-            elif selector == ".I":
-                if line.startswith(selector):
-                    print(line)
-            elif selector == ".W":
-                if line.startswith(selector):
-                    print(line)
-            elif selector == ".X":
+            if selector == ".T" or ".A" or ".I" or ".W" or ".X":
                 if line.startswith(selector):
                     print(line)
             else:
