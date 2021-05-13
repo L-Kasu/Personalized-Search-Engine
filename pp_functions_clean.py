@@ -54,12 +54,18 @@ def __get_raw_text(filename) -> str:
 
 def tokenize(filename) -> List[str]:
     raw_text = __get_raw_text(filename)
-    tokenized = []
     tokenizer = RegexpTokenizer(r'((?<=[^\w\s])\w(?=[^\w\s])|(\W))+', gaps=True)
-    tokenized_filtered = filter(lambda x: True if (len(x) > 1 or x.isalpha() or x.isdigit()) else False,
-                                tokenizer.tokenize(raw_text))
-    tokenized += tokenized_filtered
-    return tokenized
+    return tokenizer.tokenize(raw_text)
 
 
-print(tokenize("pp_container_T-A-W_CISI.ALL.txt"))
+def normalize(tokens=List[str]) -> List[str]:
+    normalized = []
+    tokens_filtered = filter(lambda x: True if (len(x) > 1 or x.isalpha() or x.isdigit()) else False,
+                             tokens)
+    normalized += tokens_filtered
+    normalized = [word.lower().translate(string.punctuation) for word in normalized]
+    return normalized
+
+
+# print(normalize(tokenize("pp_container_T-A-W_CISI.ALL.txt")))
+
