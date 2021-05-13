@@ -52,5 +52,3 @@ def normalize(tokens=List[str]) -> List[str]:
     return set(normalized)
 
 
-print(normalize(tokenize("John's Mother lives in the U.S.A. for 9 years, until they didn't as a state-of-the-art-solution")))
-
