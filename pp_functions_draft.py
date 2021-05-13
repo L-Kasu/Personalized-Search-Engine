@@ -122,19 +122,19 @@ def masterProcessor(filename):
                 # print("removing stop words...")
                 # nltk.download('stopwords')
                 stopword = set(stopwords.words("english"))
-                removeStopWords(processing_set, stopword)
+                processing_set = removeStopWords(processing_set, stopword)
                 # print("DONE")
 
                 # stemming
                 # print("stemming with " + stemmer + " stemmer...")
-                stemming(processing_set, stemmer)
+                processing_set = stemming(processing_set, stemmer)
                 # print("DONE")
 
                 # export preprocessed file
                 # print("exporting processed set as 'preprocessed_set.txt' to '" + dir_output + "'...")
-                with open(dir_output + "preprocessed_set.txt", "w") as outputfile:
-                    outputfile.write(" ".join(processing_set))
-                    outputfile.close()
+                # with open(dir_output + "preprocessed_set.txt", "w") as outputfile:
+                #     outputfile.write(" ".join(processing_set))
+                #     outputfile.close()
                 # print("DONE")
                 # print(":)\n")
 
@@ -150,8 +150,8 @@ def masterProcessor(filename):
                 #     tb = sys.exc_info()[2]
                 #     raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
 
-                pp_container.write(line)
-                # pp_container.write("\n")
+                pp_container.write(str(processing_set))
+                pp_container.write("\n")
         container.close()
     pp_container.close()
 
