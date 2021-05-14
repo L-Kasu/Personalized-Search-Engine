@@ -12,10 +12,10 @@ from nltk.corpus import stopwords
 from regex import search
 
 
-def preprocessingUIwrapper():
+def preprocessing_UI_wrapper():
 
     # init globals
-    req_nltk_packages = set('punkt' 'stopwords')
+    req_nltk_packages = ['punkt', 'stopwords']
     dir_containers = "./PP_Containers/"
     dir_archive = "./CISI_archive/"
     dir_output = "./PP_output/"
@@ -29,7 +29,7 @@ def preprocessingUIwrapper():
     for dirname, _, filenames in os.walk(dir_archive):
         for filename in filenames:
             print("saving data as pp_container_" + filename + ".txt...", end='')
-            saveTextAsTxt(filename, dir_containers, dir_archive)
+            save_text_as_txt(filename, dir_containers, dir_archive)
             print("DONE")
 
     print("\nplease specify the file you wish to preprocess:")
@@ -50,7 +50,7 @@ def preprocessingUIwrapper():
             raise Exception("Invalid input.").with_traceback(tb)
 
     print("downloading the necessary packages for preprocessing...", end='')
-    downloadNLTKPackages(req_nltk_packages)
+    download_NLTK_packages(req_nltk_packages)
     print("DONE")
 
     print("please chose a stemming algorithm:")
@@ -88,11 +88,11 @@ def preprocessingUIwrapper():
         tb = sys.exc_info()[2]
         raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
 
-    preProcessor(taskstring_1, filename, dir_containers, dir_output)
-    preProcessor(taskstring_2, filename, dir_containers, dir_output)
+    pre_processor(taskstring_1, filename, dir_containers, dir_output)
+    pre_processor(taskstring_2, filename, dir_containers, dir_output)
 
 
-def preProcessor(taskstring, filename, dir_containers, dir_output):
+def pre_processor(taskstring, filename, dir_containers, dir_output):
     if search("p", taskstring):
         stemmer = "porter"
     elif search("l", taskstring):
@@ -120,12 +120,12 @@ def preProcessor(taskstring, filename, dir_containers, dir_output):
                     elif task == "w":
                         print("removing stop words from paragraph " + index + "...")
                         stopword = set(stopwords.words("english"))
-                        processing_set = removeStopWords(processing_set, stopword)
+                        processing_set = remove_stop_words(processing_set, stopword)
                     elif task == "s" and (search("p", taskstring) or search("l", taskstring)):
                         print("stemming paragraph " + index + " with " + stemmer + " stemmer" + "...")
                         processing_set = stemming(processing_set, stemmer)
                     elif task not in "xpl":
-                        throwExeptionInvalidTaskstring(taskstring)
+                        throw_exception_invalid_taskstring(taskstring)
 
                 print("adding preprocessed paragraph " + index + " to output file...", end='')
                 pp_container.write(line_reduction + str(processing_set))
@@ -137,12 +137,12 @@ def preProcessor(taskstring, filename, dir_containers, dir_output):
     pp_container.close()
 
 
-def throwExeptionInvalidTaskstring(taskstring):
+def throw_exception_invalid_taskstring(taskstring):
     tb = sys.exc_info()[2]
     raise Exception("'" + taskstring + "' is not a valid taskstring").with_traceback(tb)
 
 
-def saveTextAsTxt(filename, dir_containers, dir_archive):
+def save_text_as_txt(filename, dir_containers, dir_archive):
     container = open(dir_containers+"pp_container_"+filename+".txt", 'w')
     with open(dir_archive+filename) as file:
         lines = ""
@@ -168,7 +168,7 @@ def normalize(tokens):
     return set(normalized)
 
 
-def removeStopWords(pp_set, stopwords):
+def remove_stop_words(pp_set, stopwords):
     new_pp_set = set()
     for item in pp_set:
         if item not in stopwords:
@@ -189,7 +189,7 @@ def stemming(pp_set, stemmer):
     return new_pp_set
 
 
-def downloadNLTKPackages(packages):
+def download_NLTK_packages(packages):
     for package in packages:
         nltk.download(package)
 
