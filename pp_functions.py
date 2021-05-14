@@ -1,5 +1,5 @@
 # preprocessing function container
-# version: alpha1.22
+# version: alpha1.23
 # author: Niklas Munkes
 
 import sys
@@ -23,7 +23,8 @@ def pre_processor(taskstring, filename, dir_containers, dir_output):
         for line in container.readlines():
             if line.startswith(".I"):
                 index = line[3:].rstrip("\n")
-                pp_container.write(line)
+                pp_container.write(".I " + str(int(line.lstrip(".I ").rstrip("\n")) - 1))
+                pp_container.write("\n")
             elif line.startswith(".W"):
                 reduced_line = line[3:]
                 line_reduction = line[:3]
