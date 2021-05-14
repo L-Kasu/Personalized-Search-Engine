@@ -1,6 +1,6 @@
 # preprocessing function caller
-# version: alpha1.23
-# author: Niklas Munkes
+# version: alpha1.24
+# authors: Niklas Munkes, Lars Kasüschke
 
 import sys
 import os

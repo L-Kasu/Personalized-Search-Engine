@@ -1,9 +1,12 @@
-# reader for the text-files
+# preprocessing text file reader
+# version: alpha1.24
+# author: Lars Kasüschke
+
 
 # format: list of dictionaries, accessed via the index of a text
 # regarding indexes: see in the output files, decrement the index from the input files by 1,
 # if you want to access the right part of the list.
-#
+
 # Each dictionary contains:
 # 'I' : index
 # 'T' : Title
