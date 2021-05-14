@@ -1,0 +1,277 @@
+.W {'problem', 'usual', 'relev', 'titl', 'make', 'approxim', 'descript', 'concern', 'articl', 'involv', 'difficulti', 'automat', 'retriev', 'content'}
+.W {'refer', 'entir', 'respons', 'articl', 'inform', 'automat', 'request', 'data', 'retriev', 'pertin', 'oppos', 'actual'}
+.W {'give', 'scienc', 'inform', 'definit', 'possibl'}
+.W {'imag', 'recognit', 'method', 'print', 'transform', 'form', 'text', 'automat', 'computer-readi'}
+.W {'problem', 'special', 'need', 'train', 'manag', 'encount', 'like', 'proper', 'inform', 'ordinari', 'use', 'retriev', 'unobstruct', 'businessmen', 'research', 'system'}
+.W {'spoken', 'word', 'commun', 'human', 'verbal', 'comput', 'via', 'possibl'}
+.W {'data-process', 'describ', 'present', 'paper', 'work', 'form', 'retriev', 'plan', 'code', 'articl', 'comput', 'save', 'use', 'publish', 'byproduct', 'origin', 'print', 'system'}
+.W {'languag', 'bear', 'describ', 'gener', 'scienc', 'inform', 'index', 'retriev'}
+.W {'inclus', 'analysi', 'contextu', 'articl', 'inform', 'automat', 'grammat', 'retriev', 'possibl', 'system'}
+.W {'mathemat', 'eg', 'abstract', 'group', 'inform', 'use', 'retriev', 'theori'}
+.W {'need', 'scientif', 'consolid', 'evalu', 'inform', 'retriev', 'research'}
+.W {'give', 'public', 'high', 'method', 'scientif', 'distribut', 'speed', 'print', 'journal'}
+.W {'object', 'develop', 'evalu', 'inform', 'retriev', 'dissemin', 'criteria', 'system'}
+.W {'diagnosi', 'medic', 'automat', 'futur'}
+.W {'worth', 'well', 'autom', 'librari', 'much', 'cost', 'inform', 'industri', 'retriev', 'dissemin', 'research', 'system'}
+.W {'remot', 'station', 'extent', 'retriev', 'inform', 'incorpor', 'use', 'futur', 'multiprogram', 'system'}
+.W {'custom', 'high', 'larg', 'output', 'obtain', 'speed', 'inform', 'mean', 'usabl', 'retriev', 'volum'}
+.W {'encod', 'extend', 'draw', 'compound', 'method', 'chemic', 'structur', 'like', 'formula', 'match', 'automat', 'two', 'dimens'}
+.W {'search', 'machin', 'method', 'code', 'match', 'techniqu', 'system'}
+.W {'autom', 'inform', 'test', 'system'}
+.W {'need', 'field', 'personnel', 'inform', 'provid'}
+.W {'autom', 'medic', 'inform', 'field'}
+.W {'book', 'autom', 'need', 'librari', 'relat', 'inform', 'use', 'amount', 'system'}
+.W {'program', 'train', 'need', 'field', 'personnel', 'inform', 'requir', 'educ', 'provid', 'possibl'}
+.W {'exchang', 'inform', 'intern', 'dissemin', 'system'}
+.W {'autom', 'cost', 'inform', 'determin', 'associ', 'system'}
+.W {'computer', 'inform', 'index', 'retriev', 'system'}
+.W {'computer', 'field', 'relat', 'inform', 'system', 'chemistri'}
+.W {'computer', 'specif', 'index', 'system', 'advantag'}
+.W {'dissemin', 'inform', 'journal', 'period'}
+.W {'physic', 'inform', 'scienc', 'system'}
+.W {'problem', 'autom', 'computer', 'titl', 'librari', 'method', 'gener', 'index', 'attempt', 'author', 'system', 'mechan'}
+.W {'autom', 'transmiss', 'user', 'distanc', 'inform', 'retriev', 'provid', 'system'}
+.W {'computer', 'method', 'code', 'index', 'use', 'system'}
+.W {'deal', 'agenc', 'inform', 'govern', 'project', 'dissemin', 'support'}
+.W {'languag', 'machin', 'one', 'method', 'structur', 'differ', 'practic', 'comprehend', 'anoth', 'nuanc', 'comput', 'tradit', 'mean', 'text', 'translat', 'theori', 'compet', 'nation'}
+.W {'use', 'found', 'term', 'classifi', 'particular', 'materi', 'want', 'index', 'organ', 'schedul', 'word', 'test', 'relat', 'vocabulari', 'retriev', 'least', 'avail', 'field', 'list', 'extent', 'scheme', 'descript', 'meaning'}
+.W {'problem', 'must', 'flexibl', 'inform', 'use', 'definit', 'made', 'date', 'toward', 'subject', 'system', 'current', 'head', 'necessari', 'solut', 'dynam', 'usag', 'mean', 'index', 'word', 'store', 'chang', 'kept', 'retriev', 'symbol', 'often', 'get', 'list', 'access', 'progress', 'data', 'provid'}
+.W {'problem', 'need', 'inform', 'use', 'worker', 'level', 'system', 'train', 'librarian', 'skill', 'help', 'purpos', 'learn', 'valu', 'program', 'import', 'chang', 'retrain', 'attitud', 'techniqu', 'tradit', 'retriev', 'educ', 'hardwar', 'technician', 'research', 'peopl', 'new', 'develop', 'even', 'present', 'assist', 'newer', 'execut', 'student', 'progress', 'maladjust', 'personnel', 'equip', 'disloc'}
+.W {'scale', 'problem', 'autom', 'machin', 'transfer', 'use', 'made', 'intern', 'found', 'block', 'statu', 'anoth', 'translat', 'insurmount', 'document', 'stumbl', 'languag', 'limit', 'one', 'field', 'challeng', 'progress', 'consid', 'comput', 'degre'}
+.W {'achiev', 'gener', 'compar', 'studi', 'done', 'inform', 'use', 'way', 'materi', 'arrang', 'organ', 'effort', 'order', 'easi', 'effect', 'retriev', 'amount', 'go', 'alphabet', 'tool', 'form', 'scheme', 'consid', 'without', 'great', 'accept'}
+.W {'inform', 'fulli', 'storag', 'understood', 'basic', 'appear', 'understand', 'import', 'would', 'articl', 'vocabulari', 'difficulti', 'retriev', 'research', 'new', 'field', 'aspect', 'comprehend', 'student', 'provid', 'averag', 'accept', 'variou'}
+.W {'problem', 'encount', 'machin', 'write', 'adequ', 'maxim', 'inform', 'use', 'failur', 'way', 'less', 'system', 'analysi', 'posit', 'plan', 'index', 'take', 'understand', 'programm', 'program', 'describ', 'relat', 'articl', 'document', 'effect', 'difficulti', 'written', 'retriev', 'research', 'often', 'code', 'equip'}
+.W {'cope', 'mani', 'fifti', 'day', 'technic', 'scientif', 'control', 'publish', 'hundr', 'two', 'made', 'attempt', 'term', 'analysi', 'storag', 'appear', 'journal', 'everi', 'articl', 'million', 'retriev', 'year', 'amount', 'new', 'present', 'public', 'one', 'averag'}
+.W {'idea', 'problem', 'autom', 'librari', 'cope', 'gener', 'affect', 'inform', 'react', 'help', 'prolifer', 'import', 'includ', 'increas', 'today', 'look', 'view', 'impact', 'signific'}
+.W {'oper', 'autom', 'area', 'librari', 'like', 'gener', 'inform', 'use', 'could', 'serial', 'circul', 'convent', 'procedur', 'univers', 'record', 'process', 'applic', 'project', 'also', 'mechan', 'give', 'special', 'record-keep', 'practic', 'would', 'specif', 'acquisit', 'catalog', 'appli', 'routin', 'seek', 'public', 'present', 'descript', 'data', 'equip', 'base', 'exampl'}
+.W {'problem', 'inform', 'distribut', 'made', 'intern', 'way', 'establish', 'materi', 'method', 'boundari', 'block', 'mean', 'take', 'result', 'effort', 'regularli', 'exchang', 'center', 'better', 'retriev', 'seem', 'cross', 'nation', 'research', 'present', 'agenc', 'form', 'solv'}
+.W {'still', 'mathemat', 'librari', 'countri', 'difficult', 'tell', 'inform', 'locat', 'line', 'draw', 'amalgam', 'skill', 'scienc', 'univers', 'govern', 'imposs', 'said', 'support', 'actual', 'special', 'distinguish', 'word', 'practic', 'center', 'disciplin', 'retriev', 'emerg', 'research', 'new', 'often', 'busi', 'even', 'field', 'engin', 'experiment', 'howev'}
+.W {'problem', 'medic', 'area', 'encount', 'machin', 'spent', 'resourc', 'control', 'inform', 'use', 'subject', 'scienc', 'characterist', 'futur', 'physic', 'human', 'prospct', 'necessit', 'techniqu', 'retriev', 'appli', 'new', 'develop', 'natur', 'social', 'solv'}
+.W {'lc', 'machin', 'inform', 'use', 'subject', 'system', 'devis', 'etc', 'appear', 'udc', 'suit', 'tradit', 'retriev', 'research', 'appli', 'new', 'unnecessari', 'shown', 'scheme', 'irrelev', 'classif', 'knowledg', 'complet', 'ddc'}
+.W {'search', 'languag', 'descriptor', 'coordin', 'control', 'inform', 'use', 'index', 'retriev', 'util', 'construct', 'system'}
+.W {'medicin', 'oper', 'medic', 'librari', 'medlar', 'system', 'current', 'analysi', 'index', 'characterist', 'project', 'detail', 'journal', 'literatur', 'relat', 'undertaken', 'retriev', 'nation', 'medicu', 'compon', 'major'}
+.W {'medicin', 'problem', 'autom', 'medic', 'encount', 'hospit', 'use', 'possibl', 'system', 'diagnost', 'scienc', 'record', 'purpos', 'result', 'program', 'clinic', 'keep', 'tri', 'comput'}
+.W {'initi', 'new', 'autom', 'contempl', 'librari', 'note', 'posit', 'librarian', 'chang', 'effect', 'statu', 'use', 'introduc', 'educ', 'type', 'technolog', 'function'}
+.W {'object', 'oper', 'analysi', 'medic', 'medlar', 'literatur', 'retriev', 'inform', 'futur', 'applic', 'aim', 'possibl', 'system'}
+.W {'autom', 'librari', 'lc', 'inform', 'use', 'classifi', 'standard', 'system', 'arrang', 'method', 'retriev', 'catalog', 'alphabet', 'find', 'dc', 'modifi', 'today', 'classif', 'card', 'base'}
+.W {'individu', 'autom', 'lc', 'case', 'inform', 'use', 'definit', 'subject', 'mind', 'system', 'head', 'entri', 'titl', 'arrang', 'either', 'probabl', 'english', 'number', 'import', 'manner', 'ultim', 'catalog', 'phrase', 'print', 'alphabet', 'languag', 'classif', 'readabl', 'look', 'author'}
+.T Directions in Library Networking
+.A Avram, H.D. McCallum, S.H.
+.W {'bibliograph', 'problem', 'environ', 'autom', 'librari', 'independ', 'brought', 'network', 'control', 'distribut', 'toward', 'standard', 'system', 'unit', 'led', 'larg', 'central', 'process', 'requir', 'point', 'basic', 'key', 'mediat', 'state', 'structur', 'center', 'among', 'avoid', 'servic', 'capabl', 'util', 'interdepend', 'develop', 'fragment', 'new', 'onlin', 'marc', 'decentr', 'data', 'push', 'coordin', 'author', 'technolog', 'review', 'major'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 438-444) 
+.T Performance Testing of a Book and Its Index as a Information Retrieval System
+.A Bennion, B.C.
+.W {'still', 'best', 'search', 'need', 'perform', 'indic', 'known', 'measur', 'compar', 'discrimin', 'direct', 'precis', 'searcher', 'evalu', 'locat', 'circumv', 'two', 'term', 'establish', 'subject', 'yield', 'system', 'book', 'materi', 'method', 'correspond', 'absolut', 'larg', 'abil', 'judgement', 'ratio', 'requir', 'index', 'applic', 'preliminari', 'actual', 'yet', 'human', 'relev', 'contriv', 'test', 'approxim', 'strategi', 'document', 'user', 'suit', 'encyclopedia', 'retriev', 'appar', 'find', 'whose', 'rather', 'show', 'natur', 'ident', 'present', 'one', 'reproduc', 'passag', 'queri', 'superior', 'select', 'text', 'base', 'recal', 'sinc', 'major'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 264-270) 
+.T The Combined Use of Bibliographic Coupling and Cocitation for Document Retrieval
+.A Bichteler, J. Eaton, E.A. III
+.W {'bibliograph', 'perform', 'measur', 'compar', 'evalu', 'use', 'partial', 'judg', 'two', 'improv', 'produc', 'non-relev', '1712', 'account', 'take', 'repres', 'result', 'order', 'relev', 'cocit', 'everi', 'chang', 'test', 'effect', 'better', 'document', 'user', 'collect', 'base', 'linkag', 'sort', 'retriev', 'specif', 'overal', 'calcul', 'whose', 'consist', 'predict', 'similar', 'list', 'paper', 'cite', 'queri', 'data', 'introduct', 'coupl'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 278-282) 
+.T Searching Biases in Large Interactive Document Retrieval Systems
+.A Blair, D.C.
+.W {'search', 'individu', 'bias', 'uncertainti', 'way', 'subject', 'caus', 'system', 'suggest', 'larg', 'help', 'judgement', 'share', 'naiv', 'sophist', 'ineffici', 'algorithm', 'effect', 'demonstr', 'document', 'avoid', 'retriev', 'construct', 'inquir', 'interact', 'similar', 'experi', 'modifi', 'queri', 'systemat'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 271-277) 
+.T Fuzzy Requests:  An Approach to Weighted Boolean Searches
+.A Bookstein, A.
+.W {'problem', 'retain', 'fuzzi', 'properti', 'weight', 'concern', 'discuss', 'request', 'classic', 'basi', 'term', 'ther', 'system', 'boolean', 'set', 'patron', 'index', 'repres', 'manipul', 'rel', 'notion', 'import', 'desir', 'relat', 'articl', 'tradit', 'charact', 'assign', 'shown', 'form', 'concept', 'permit', 'review', 'variou'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 240-247) 
+.T Feature Comparison of an In-House Information Retrieval System With a Commercial Search Service
+.A Boyle, S.O. Miller, A.P.
+.W {'search', 'oper', 'environ', 'must', 'need', 'format', 'user-specifi', 'compar', 'kind', 'dictionari', 'evalu', 'impract', 'inform', 'use', 'truncat', 'attempt', 'commerci', 'in-hous', 'basi', 'eas', 'system', 'instruct', 'real', 'standard', 'automat', 'index', 'applic', 'implement', 'common', 'design', 'consider', 'given', 'seen', 'display', 'user', 'specif', 'base', 'influenc', 'featur', 'print', 'detald', 'avail', 'therefor', 'onlin', 'one', 'serv', 'unnecessari', 'differ', 'care', 'blindli', 'duplic', 'identifi', 'type', 'variou'}
+.B (JASIS, Vol. 31, No. 5, September 1980, pp. 309-317) 
+.T Measurement in Information Science:  Objective and Subjective Metrical Space
+.A Brookes, B.C.
+.W {'problem', 'omit', 'like', 'space', 'inform', 'two', 'made', 'subject', 'argu', 'solut', 'transform', 'scienc', 'easili', 'physic', 'distinguish', 'landscap', 'document', 'perspect', 'map', 'object', 'get', 'howev', 'distort', 'unhelp', 'systemat'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 248-255) 
+.T A Model of Cluster Searching Based on Classification
+.A Croft, W.B.
+.W {'search', 'indic', 'effici', 'compar', 'inform', 'discuss', 'use', 'improv', 'possibl', 'system', 'non-relev', 'model', 'suggest', 'abil', 'may', 'organ', 'implement', 'also', 'distinguish', 'relev', 'describ', 'everi', 'relationship', 'test', 'effect', 'document', 'retriev', 'full', 'aspect', 'paper', 'probabilist', 'experi', 'ie', 'queri', 'classif', 'cluster', 'file', 'base', 'heurist'}
+.B (Inform. Systems, Vol. 5, No. 3, 1980, pp. 189-195) 
+.T The Technology of Library and Information Networks
+.A Epstein, H.
+.W {'search', 'bibliograph', 'three', 'librari', 'evolv', 'network', 'outsid', 'nelinet', 'inc', 'current', 'oclc', 'function', 'physic', 'distinguish', 'eg', 'describ', 'includ', 'incolsa', 'rlin', 'center', 'directli', 'user', 'servic', 'offic', 'lockhe', 'technolog', 'custom', 'onlin', 'predict', 'aspect', 'sdc', 'home', 'file', 'type', 'provid'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 425-437) 
+.T The Use of Titles for Automatic Document Classification
+.A Hamill, K.A. Zamora, A.
+.W {'refer', 'deriv', 'perform', 'nomenclatur', 'chemic', 'occurr', 'per', 'abstract', 'weight', 'compar', 'dictionari', 'evalu', 'plural', 'past', 'lookup', 'use', 'publish', 'group', 'phase', 'term', 'classifi', 'conduct', 'analysi', 'train', 'titl', 'section', 'pre-classifi', 'accord', '67', 'match', 'probabl', 'major', 'pattern', 'result', 'five', 'program', 'number', 'second', 'word', 'human', 'store', 'cross-refer', 'recognit', 'correct', 'approxim', 'tens', '80', 'document', 'techniqu', 'influenc', '78', 'supplement', 'ca', 'rate', 'consist', 'develop', 'assign', 'experienc', 'peopl', 'variant', 'experi', 'experiment', 'classif', 'gerund', '100', 'compon', 'comput', 'select', 'root', 'normal', 'heurist'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 396-402) 
+.T Brief Communications
+.A Harding, A.G. Willett, P.
+.W {'deriv', 'time', 'commun', 'mani', 'invert', 'gener', 'compar', 'involv', 'inform', 'use', 'term', 'recent', 'convent', 'greater', 'suggest', 'pair', 'approach', 'procedur', 'exhaust', 'intermedi', 'mean', 'may', 'index', 'automat', 'matrix', 'common', 'number', 'sever', 'uys', 'effect', 'comparison', 'document', 'collect', 'avoid', 'specif', 'retriev', 'show', 'limit', 'similar', 'other', 'classif', 'reduct', 'interdocu', 'comput', 'cluster', 'file'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 298-299) 
+.T The Application of a Minicomputer to Thesaurus Construction
+.A Kazlauskas, E.J. Holt, T.D.
+.W {'reflect', 'time', 'format', 'indic', 'gener', 'chart', 'decis', 'inform', 'use', 'group', 'hierarch', 'phase', 'term', 'eas', 'reduc', 'entri', 'materi', 'restructur', 'minicomput', 'facilit', 'product', 'easili', 'process', 'requir', 'identif', 'cleric', 'candid', 'effort', 'simpl', 'design', 'program', 'number', 'special', 'prepar', 'machine-', 'describ', 'correct', 'structur', 'display', 'center', 'nicsem', 'relat', 'alter', 'staff', 'vocabulari', 'edit', 'collect', 'educ', 'alreadi', 'overal', 'print', 'nation', 'alphabet', 'initi', 'develop', 'assign', 'syndet', 'creat', 'similar', 'thesauru', 'form', 'editori', 'databas', 'concept', 'code', 'readabl', 'file', 'provid', 'permut', 'review', 'variou'}
+.B (JASIS, Vol. 31, No. 5, September 1980, pp. 363-368) 
+.T Adaptive Design for Decision Support Systems
+.A Keen, P.G.W.
+.W {'ralli', 'dss', 'mi', 'concern', 'cri', 'improv', 'final', 'system', 'extens', 'role', 'mean', 'focu', 'learn', 'unnecessarili', 'give', 'latter', 'manageri', 'becom', 'research', 'field', 'other', 'start', 'mani', 'argument', 'inform', 'represent', 'term', 'approach', 'support', 'narrow', 'issu', 'behavior', 'manag', 'make', 'center', 'practition', 'develop', 'architectur', 'paper', 'comput', 'finish', 'technolog', 'provid', 'must', 'simpli', 'process', 'understand', 'well', 'relev', 'includ', 'writer', 'within', 'user', 'evolut', 'interact', 'get', 'data', 'regard', 'task', 'decis', 'use', 'former', 'defin', 'model', 'analyt', 'scienc', 'key', 'repres', 'design', 'adapt', 'suitabl', 'strategi', 'techniqu', 'avail', 'rather', 'access', 'differ', 'situat', 'subfield', 'concept', 'view', 'around'}
+.B (Database, Vol. 12, No. 1-2, Fall 1980) 
+.T An Automatic Method for Extracting Significant Phrases in Scienfific or Technical Documents
+.A Maeda, T. Momouchi, J. Sawamura, H.
+.W {'time', 'abstreact', 'satisfactori', 'technic', 'scientif', 'abstract', 'case', 'dictionari', 'fairli', 'lexic', 'carrier', 'upon', 'represent', 'use', 'substanti', 'inform', 'discuss', 'content', 'item', 'system', 'analysi', 'titl', 'method', 'set', 'approach', 'scienc', 'partli', 'mean', 'may', 'process', 'result', 'semant', 'five', 'rel', 'number', 'extract', 'describ', 'everi', 'structur', 'small', 'relat', 'among', 'document', 'analysiu', 'effect', 'retriev', 'phrase', 'construct', 'appli', 'technolog', 'new', 'field', 'differ', 'shown', 'experi', 'concept', 'compon', 'knowledg', 'select', 'text', 'base', 'signific'}
+.B (Info. Proc. & Management, Vol. 16, No. 3, 1980, pp.119-127) 
+.T Answer-Passage Retrieval by Text Searching
+.A O'Connor, J.
+.W {'search', 'selector', 'refer', 'oper', '10', 'independ', 'econom', 'combin', 'difficult', 'per', 'fals', 'output', 'lawyer', 'opver', 'involv', 'previou', 'use', 'two', 'respect', 'varieti', 'produc', 'scientist', 'advantag', 'greater', '67', 'procedur', 'good', 'ratio', 'answer-pap', 'sentenc', 'word', 'question', 'except', 'better', 'demonstr', 'servic', 'retriev', 'alreadi', '13', 'rate', 'peopl', 'addit', 'predict', '72', 'present', 'one', 'differ', 'passag', 'form', 'experi', 'select', 'comput', 'feasibl', 'recal', 'averag'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 227-239) 
+.T Partial-Match Retrieval Using Indexed Descriptor Files
+.A Pfaltz, J.L. Berman, W.J. Cagley, E.M.
+.W {'deriv', 'whole', 'effici', 'descriptor', 'use', 'two', 'way', 'analyz', 'term', 'particular', 'sketch', 'method', 'suggest', 'storag', 'larg', 'procedur', 'record', 'block', 'creation', 'index', 'organ', 'applic', 'associ', 'detail', 'simpl', 'name', 'number', 'word', 'behavior', 'describ', 'partial-match', 'sever', 'expect', 'structur', 'practic', 'henc', 'algorithm', 'retriev', 'tune', 'binari', 'call', 'first', 'present', 'serv', 'access', 'differ', 'paper', 'form', 'code', 'data', 'file'}
+.B (Commun. ACM, Vol. 23, No. 9, September 1980, pp. 522-528) 
+.T Cooperation and Competition Among Library Networks
+.A Robinson, B.M.
+.W {'autom', 'three', 'factor', 'librari', 'econom', 'network', 'cooper', 'theme', 'affect', 'group', 'recenti', 'inform', 'discuss', 'inc', 'system', 'role', 'success', 'led', 'nonprofit', 'univers', 'oclc', 'toronto', 'also', 'relationship', 'state', 'utla', 'rlin', 'advanc', 'servic', 'evolut', 'competit', 'region', 'emerg', 'washington', 'research', 'wln', 'addit', 'natur', 'paper', 'examin', 'broker', 'multist', 'explor', 'technolog', 'major'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 413-424) 
+.T An Integrated Understander
+.A Schank, R.C. Lebowitz, M. Birnbarim, L.
+.W {'idea', 'entir', 'infer', 'rest', 'parser', 'input', 'represent', 'use', 'attempt', 'interest', 'system', 'integr', 'plan', 'mean', 'see', 'understand', 'concentr', 'sentenc', 'distinct', 'aid', 'ignor', 'behind', 'appropri', 'map', 'languag', 'new', 'rather', 'script', 'natur', 'present', 'form', 'concept', 'everyth', 'knowledg', 'determin', 'type', 'furthermor', 'deepest', 'pars'}
+.B (Am. J. of Computational Linguistics, Vol. 6, No. 1, January-March 1980, pp. 13-30) 
+.T Library Networks and Resource Sharing in the United States: An Historical and Philosophical Overview
+.A Stevens, N.D.
+.W {'attent', 'librari', 'trace', 'resourc', 'network', 'cooper', 'discuss', 'loan', 'two', 'integr', 'unit', 'particular', 'materi', 'storag', '1960', 'share', 'close', 'major', 'program', 'question', 'relationship', 'might', 'state', 'tend', 'given', 'origin', 'becom', 'acquisit', 'inter-', 'develop', 'present', 'paper', 'concept', 'examin', 'compon', 'late', 'separ'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 405-412) 
+.T Normalization of Titles and Their Retrieval
+.A Takamatsu, S. Fujita, UY. Nishida, F.
+.W {'stage', 'high', 'invert', 'claus', 'therefrom', 'control', 'precis', 'pars', 'hierarch', 'item', 'key-term', 'standard', 'convert', 'titl', 'method', 'reason', 'transform', 'record', 'match', 'english', 'valu', 'order', 'implement', 'well', 'sever', 'extract', 'function-', 'express', 'specif', 'predicate-governor', 'retriev', 'phrase', 'function-express', 'case-label', 'noun', 'rate', 'present', 'keep', 'paper', 'form', 'tree-lik', 'file', 'base', 'recal', 'normal', 'variou'}
+.B (Info. Proc. & Management, Vol. 16, No. 3, 1980, pp. 155-167) 
+.T Cascaded ATN Grammars
+.A Woods, W.A.
+.W {'need', 'catn', 'factor', 'stage', 'grammar', 'gener', 'output', 'cooper', 'input', 'discjuss', 'previou', 'reduc', 'extens', 'decomposit', 'fact', 'principl', 'take', 'repres', 'understand', 'transduc', 'distinct', 'number', 'notion', 'behavior', 'includ', 'given', 'complex', 'domain', 'factoring-conceptu', 'sequenc', 'cascad', 'languag', 'call', 'atn', 'paper', 'respons', 'hypothesi', 'place', 'consid', 'hypothes', 'prescrib', 'permit', 'pars', 'separ'}
+.B (Am. of Computational Linguistics, Vol. 6, No. 1, January-March 1980) 
+.T Algorithms for Processing Partial Match Queries Using Word Fragments
+.A Alagar, V.S.
+.W {'whole', 'element', 'maximum', 'compress', 'compar', 'specifi', 'evalu', 'handl', 'use', 'partial', 'term', 'system', 'method', 'propos', 'either', 'record', 'critic', 'process', 'design', 'well', 'word', 'relev', 'exploit', 'given', 'algorithm', 'effect', 'analys', 'retriev', 'least', 'interdepend', 'fragment', 'languag', 'show', 'cost', 'databas', 'queri', 'file'}
+.B (Inform. Systems, Vol. 5, No. 4, April 1980, pp. 323-332) 
+.T A General Formulation of Bradford's Distribution:  The Graph-Oriented Approach
+.A Asai, I.
+.W {'best', 'three', 'root-weight', 'mathemat', 'cumul', 'paramet', 'shift', '11', 'case', 'compar', 'gener', 'observ', 'eight', 'use', 'distribut', 'publish', 'previous', 'rank', 'line', 'respect', 'less', 'accur', 'analysi', 'droop', 'model', 'suggest', 'propos', 'method', 'follow', 'fit', 'delet', 'deduc', 'ratio', 'x', 'estim', 'valu', 'straight', 'journal', 'order', 'five', 'number', 'special', 'statist', 'c', 'detail', 'articl', 'unknown', 'log', 'fifth', 'b', 'show', 'slope', 'one', 'experi', 'databas', 'bradford', 'total', 'intercept', 'squar', 'data', 'type', 'error', 'formul', 'lead', 'frequenc'}
+.B (JASIS, Vol. 32, No. 2, March 1981, pp. 113-121) 
+.T Lexical Problems in Large Distributed Information Systems
+.A Berkovich, S.Y. Shneiderman, B.
+.W {'oper', 'problem', 'environ', 'network', 'linguist', 'effici', 'concern', 'lexic', 'control', 'broad', 'handl', 'inform', 'subsystem', 'local', 'distribut', 'dictionari', 'system', 'integr', 'role', 'hope', 'necess', 'larg', 'facilit', 'product', 'creation', 'introduc', 'packag', 'organ', 'play', 'design', 'suybsystem', 'number', 'special', 'program', 'function', 'name', 'filter', 'incorrect', 'cover', 'promot', 'becom', 'retriev', 'mostli', 'rather', 'interrel', 'creat', 'architectur', 'sens', 'deal', 'paper', 'databas', 'queri', 'scheme', 'especi', 'concept', 'execut', 'compon', 'complet', 'data', 'great', 'view', 'separ'}
+.B (Information Processing & Management, Vol. 16, February 1980, pp. 259-267) 
+.T The Relational Model in Information Retrieval
+.A Crawford, R.G.
+.W {'bibliograph', 'attent', 'receiv', 'fourth', 'algebra', 'past', 'pertin', 'third', 'inform', 'discuss', 'basi', 'theoret', 'advantag', 'sequel', 'model', 'approach', 'decad', 'introduc', 'calculu', 'organ', 'simplic', 'second', 'notion', 'includ', 'note', 'increas', 'sound', 'relat', 'articl', 'demonstr', 'retriev', 'numer', 'languag', 'consist', 'first', 'natur', 'present', 'shown', 'form', 'databas', 'view', 'normal', 'exampl'}
+.B (JASIS, Vol. 32, No. 1, January 1981, pp. 51-64) 
+.T Electronic Information Interchange in an Office Environment
+.A DeSousa, M.R.
+.W {'autom', 'commun', 'technic', 'gener', 'protocol', 'control', 'broad', 'exist', 'inform', 'distribut', 'basi', 'system', 'administr', 'current', 'across', 'spectrum', 'approach', 'product', 'transmiss', 'process', 'interfac', 'applic', 'associ', 'sna', 'detail', 'implement', 'displaywrit', 'support', 'system/370', 'offer', 'describ', '5520', 'exchang', 'ibm', 'document', 'user', 'specif', 'offic', 'capabl', 'util', 'oppos', 'interchang', 'herein', 'address', 'architectur', 'paper', 'overview', 'other', 'provid', 'descript', 'data', 'disoss', 'stream', 'facil'}
+.B (IBM Systems Journal, Vol. 20, No. 1, 1981, pp. 4-22) 
+.T The Use of Automatic Relevance Feedback in Boolean Retrieval Systems
+.A Dillon, M. Desper, J.
+.W {'reflect', 'environ', 'guid', 'deriv', 'compar', 'measur', 'use', 'distribut', 'illustr', 'term', 'system', 'extens', 'non-relev', 'boolean', 'set', 'suggest', 'preval', 'judgement', 'reformul', 'valid', 'automat', 'patron', 'appear', 'applic', 'result', 'favour', 'relev', 'describ', 'small', 'test', 'among', 'feedback', 'document', 'subsequ', 'techniqu', 'retriev', 'construct', 'initi', 'seri', 'employ', 'queri', 'experiment', 'data', 'base', 'smart-typ'}
+.B (Journal of Documentation, Vol. 36, No. 3, September 1980, pp. 197-208) 
+.T Interacting in Natural Language With Artificial Systems:  The Donau Project
+.A Guida, G. Somalvico, M.
+.W {'mode', 'gener', 'direct', 'level', 'illustr', 'system', 'lack', 'propos', 'segment', 'mean', 'syntact', 'futur', 'implement', 'redefin', 'domain', 'allow', 'analys', 'polytechn', 'research', 'inquiri', 'promis', 'present', 'user-ori', 'legal', 'extractor', 'vertic', 'horizont', 'oper', 'perform', 'mani', 'linguist', 'parallel', 'inform', 'represent', 'evalu', 'ensur', 'way', 'approach', 'overcom', 'actual', 'support', 'special', 'describ', 'methodolog', 'languag', 'develop', 'new', 'architectur', 'paper', 'experi', 'select', 'intend', 'run', 'exampl', 'artifici', 'control', 'donau', 'flexibl', 'discuss', 'definit', 'two', 'conclus', 'possibl', 'particular', 'singl', 'facilit', 'orient', 'intellig', 'applic', 'understand', 'result', 'chang', 'exchang', 'often', 'report', 'experiment', 'data', 'base', 'pars', 'independ', 'milan', 'exist', 'increment', 'contribut', 'modular', 'version', 'model', 'purpos', 'project', 'detail', 'semant', 'simpl', 'design', 'algorithm', 'natur', 'enlarg', 'differ', 'concept', 'knowledg', 'point'}
+.B (Inform. Systems, Vol. 5, NO. 4, February 1980, pp. 333-344) 
+.T Approximate String Matching
+.A Hall, P.A.V. Dowling, G.R.
+.W {'still', 'problem', 'idea', 'search', 'likelihood', 'measur', 'survey', 'use', 'found', 'item', 'classifi', 'though', 'mistak', 'canon', 'method', 'suggest', 'dynam', 'solv', 'approach', 'either', 'briefli', 'readili', 'larg', 'match', 'probabl', 'may', 'spell', 'function', 'program', 'sever', 'string', 'correct', 'seen', 'approxim', 'relat', 'suitabl', 'error', 'techniqu', 'well-establish', 'keyword', 'full', 'find', 'promis', 'similar', 'differ', 'equival', 'form', 'databas', 'descript', 'set', 'open', 'aim', 'review', 'pars'}
+.B (Computing Surveys, Vol. 12, No. 4, December 1980, pp. 381-402) 
+.T Using an Online Microfiche Catalog for Technical Service and Retrieval of Bibliographic Data
+.A Hayes, R.M. Borko, H.
+.W {'bibliograph', 'oper', 'time', 'deriv', 'librari', 'econom', 'technic', 'compar', 'control', 'evalu', 'use', 'analyz', 'system', 'integr', 'variou', 'microfich', 'set', 'necessari', 'storag', 'procedur', 'softwar', 'record', 'creation', 'project', 'result', 'primari', 'second', 'includ', 'test', 'would', 'effect', 'prototyp', 'demonstr', 'collect', 'servic', 'retriev', 'catalog', 'disk', 'onlin', 'creat', 'cost', 'experiment', 'comput', 'feasibl', 'complet', 'permit', 'equip', 'base', 'magnet', 'data', 'facil'}
+.B (Information Processing and Management, Vol. 16, No. 6, February 1980, pp. 277-289) 
+.T Natural Language Access to Information Systems.  An Evaluation Study of Its Acceptance by End Users
+.A Krause, J.
+.W {'usl', 'gener', 'evalu', 'inform', 'discuss', 'use', 'system', 'suggest', 'method', 'applic', 'result', 'actual', 'question', 'structur', 'whether', 'user', 'languag', 'natur', 'architectur', 'form', 'german', 'queri', 'subset', 'answer', 'ask', 'feasibl', 'data', 'base', 'error', 'specialti'}
+.B (Inform. Systems, Vol. 5, No. 4, May 1980, pp. 297-318) 
+.T Some Considerations Relating to the Cost-Effectiveness of Online Services in Libraries
+.A Lancaster, F.W.
+.W {'search', 'pictur', 'librari', 'mode', 'econom', 'unfair', 'combin', 'hypothet', 'compar', 'inform', 'use', 'two', 'way', 'analysi', 'view', '2', 'subscript', 'misleadingli', 'give', 'grossli', 'contain', 'correct', '1', '1978', 'would', 'effect', 'servic', 'seem', 'print', 'pessimist', 'onlin', 'present', 'aspect', 'access', 'differ', 'cost', 'ie', 'work', 'complet', 'data', 'look', 'regard', 'collier', 'cost-effect'}
+.B (Aslib Proceedings, 33(1), January 1981, pp. 10-14, printed in Great Britain) 
+.T Co-Citation Context Analysis and the Structure of Paradigms
+.A Small, H.
+.W {'refer', 'time', 'commun', 'mode', 'predomin', 'measur', 'concern', 'group', 'suppos', 'system', 'may', 'share', 'appear', 'might', 'sampl', 'citat', 'field', 'passag', 'identifi', 'frequent', 'member', 'matter', 'oper', 'someth', 'admiss', 'mani', 'specifi', 'involv', 'inform', 'highli', 'occur', 'line', 'way', 'sometim', 'intellectu', 'approach', 'know', 'connect', 'invis', 'togeth', 'special', 'notion', 'given', 'obtain', 'retriev', 'read', 'alreadi', 'pertain', 'find', 'call', 'show', 'paper', 'graph', 'total', 'text', 'clearli', 'topic', 'author', 'frequenc', 'exampl', 'artifici', 'network', 'sub-set', 'consensu', 'weight', 'discuss', 'definit', 'operation', 'two', 'possibl', 'scientist', 'analysi', 'particular', 'set', "'consensu", 'node', 'intellig', 'certain', 'except', 'display', 'arc', 'corpu', 'relat', 'within', 'specif', 'often', 'serv', 'regard', 'degre', 'variou', 'combin', 'colleg', 'use', 'subject', 'though', 'anoth', 'purpos', 'repres', 'design', 'semant', 'mark', 'manner', 'structur', 'perspect', 'document', 'techniqu', 'emerg', 'b', 'natur', 'paradigm', 'similar', 'one', 'concept', 'n', 'taken', 'consid'}
+.B (Journal of Documentation, Vol. 36, No. 3, September 1980, pp. 183-196) 
+.T Cocited Author Retrieval Online: An Experiment with the Social Indicators Literature
+.A White, H.D.
+.W {'mode', 'duncan', 'gener', 'group', '177', 'expectatt', 'jointli', 'found', 'believ', 'name', 'literatur', 'citat', 'subsequ', 'seem', 'addit', 'onlin', 'land', 'identifi', 'frequent', 'harder', 'four', 'si', 'indic', 'specifi', 'involv', 'although', 'occur', 'content', 'formal', 'confirm', 'enter', 'also', 'rel', 'cocit', 'tend', 'would', 'retriev', 'least', 'languag', 'paper', 'author', 'like', 'path-analyt', 'input', 'two', 'titl', 'promin', 'causal', 'indicator-typ', 'certain', 'result', '121', 'sheldon', 'writer', 'first', 'form', 'scisearch', 'six', 'data', 'thought', 'three', 'movement', '298', 'integr', 'link', 'model', 'pair', 'akin', 'expect', 'bauer', 'sign', 'document', 'natur', 'one', 'overview', 'cite', 'social'}
+.B (JASIS, Vol. 32, No. 1, January 1981, pp. 16-21) 
+.T Database and Online Statistics for 1979
+.A Williams M.E.
+.W {'bibliograph', 'search', '528', 'past', 'use', 'bring', 'system', 'bioliographic-rel', 'conduct', 'record', 'dramat', 'via', '4', 'number', 'sever', 'contain', 'increas', '148', 'us', 'million', 'year', 'languag', 'onlin', 'natur', 'databas', 'total', 'canadian', '1979', 'major'}
+.B (Bulletin of ASIS, Vol. 7, No. 2, December 1980, pp. 27-29) 
+.T Experiments in Local Metrical Feedback in Full-Text Retrieval Systems
+.A Attar, R. Fraenkel, A.S.
+.W {'search', 'perform', 'text-word', 'proxim', 'indic', 'simultan', 'weight', 'metric', 'precis', 'hebrew', 'contrast', 'use', 'local', 'made', 'iter', 'produc', '1,3000,000', 'term', 'improv', 'larger', 'doubt', 'method', 'singl', 'larg', 'test-queri', 'context', 'process', 'arbitrarili', 'automat', 'matric', 'arama', 'english', 'searchonym', 'appear', 'via', 'result', 'augument', 'earlier', 'next', 'replac', 'well', 'applic', 'small', 'feedback', 'document', 'evid', 'suit', 'manual', 'keyword', 'collect', '2400', 'synonym', 'appli', 'consist', 'even', 'limit', 'small-scal', 'return', 'one', 'global', 'experi', 'databas', 'queri', 'cluster', 'run', 'size', 'full-text', 'recal', 'formul', 'lead', 'frequenc'}
+.B (Information Processing & Management, Vol. 17, No. 3, 1981, pp. 115-126) 
+.T A Microcomputer Alternative for Information Handling:  Refles
+.A Bivins, K.T. Palmer, R.C.
+.W {'refer', 'problem', 'environ', 'librari', 'conclud', 'inform', 'discuss', 'use', 'term', 'theoret', 'version', 'system', 'current', 'analysi', 'specul', 'follow', 'softwar', 'process', 'futur', 'microcomputer-bas', 'function', 'contain', 'consider', 'test', 'prototyp', 'retriev', 'gather', 'hardwar', 'present', 'paper', 'refl', 'descript', 'therebi', 'data', 'point', 'view', 'lead', 'exampl'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 93-101) 
+.T A Comparison of Two Systems of Weighted Boolean Retrieval
+.A Bookstein, A.
+.W {'met', 'zero/on', 'isol', 'gener', 'compar', 'weight', 'algebra', 'properti', 'two', 'converg', 'subject', 'system', 'condit', 'rule', 'boolean', 'set', 'approach', 'may', 'proven', 'altern', 'introduc', 'repres', 'satisfi', 'associ', 'criteria', 'well', 'number', 'vari', 'fuzzy-', 'articl', 'document', 'tradit', 'written', 'capabl', 'retriev', 'theori', 'limit', 'one', 'inabl', 'probabilist', 'defici', 'scheme', 'consid', 'degre', 'major'}
+.B (JASIS, Vol. 32, No. 4, July 1981) 
+.T Threshold Values and Boolean Retrieval Systems
+.A Buell, D.A. Kraft, D.H.
+.W {'problem', 'threshold', 'weight', 'evalu', 'analyz', 'possibl', 'system', 'moreov', 'analysi', 'recent', 'boolean', 'resolv', 'process', 'purpos', 'continu', 'appear', 'valu', 'mechan', 'sever', 'relev', 'shall', 'consider', 'express', 'document', 'retriev', 'fuzzy-set-theoret', 'develop', 'show', 'paper', 'queri', 'inher', 'concept', 'explor', 'base'}
+.B (Information Processing & Management, Vol. 17, No. 3, 1981, pp. 127-136) 
+.T A Model for a Weighted Retrieval System
+.A Buell, D.A. Kraft, D.H.
+.W {'discret', 'entir', 'gener', 'threshold', 'weight', 'evalu', 'previou', 'involv', 'inform', 'partial', 'improv', 'analyz', 'term', 'larger', 'system', 'and/or', 'analysi', 'recent', 'boolean', 'suggest', 'approach', 'either', 'record', 'good', 'index', 'satisfi', 'continu', 'criteria', 'mechan', 'also', 'fulfil', 'type', 'offer', 'describ', 'desir', 'structur', 'attach', 'articl', 'user', 'allow', 'retriev', 'seem', 'ought', 'new', 'assign', 'deal', 'work', 'differ', 'databas', 'queri', 'care', 'subset', 'look', 'base'}
+.B (JASIS, Vol. 32, No. 3, May 1981, pp. 211-216) 
+.T A Translating Computer Interface for End-User Operation of Heterogeneous Retrieval Systems.  I. Design
+.A Marcus, R.S. Reintjes, J.F.
+.W {'search', 'oper', 'bibliograph', 'difficult', 'network', 'like', 'virtual', 'concern', 'heterogen', 'use', 'request', 'made', 'system', 'instruct', 'singl', 'transform', 'end', 'mean', 'may', 'interfac', 'translat', 'design', 'also', 'common', 'thu', 'command', 'name', 'implement', 'describ', 'philosophi', 'make', 'given', 'aid', 'complex', 'user', 'simplifi', 'appropri', 'allow', 'retriev', 'languag', 'conit', 'onlin', 'access', 'differ', 'investig', 'form', 'respons', 'experiment', 'especi', 'concept', 'databas', 'comput', 'look', 'interrog', 'whatev', 'provid'}
+.B (JASIS, Vol. 32, No. 4, July 1981, pp. 287-303) 
+.T A Translating Computer Interface for End-User Operation of Heterogeneous Retrieval Systems.  II. Evaluations
+.A Marcus, R.S. Reintjes, J.F.
+.W {'search', 'refer', 'bibliograph', 'oper', 'autom', 'adequ', 'conclud', 'compuyt', 'studi', 'abl', 'control', 'exist', 'searcher', 'master', 'usabl', 'evalu', 'heterogen', 'improv', 'could', 'system', 'instruct', 'analysi', 'condit', 'enhanc', 'success', 'inexperienc', 'class', 'approach', 'end', 'keyword/stem', 'usag', 'wide', 'interfac', 'translat', 'detail', 'simpl', 'command', 'type', 'well', 'name', 'natural-languag', 'relev', 'manner', 'attribut', 'increas', 'test', 'effect', 'strategi', 'undertaken', 'user', 'simplifi', 'advanc', 'base', 'document', 'retriev', 'techniqu', 'multipl', 'find', 'languag', 'conit', 'show', 'onlin', 'cost', 'experiment', 'especi', 'built', 'concept', 'part', 'suffici', 'provid', 'furthermor'}
+.B (JASIS, Vol. 32, No. 4, July 1981, pp. 304-317) 
+.T The Interface Between Computerized Retrieval Systems and Micrographic Retrieval Systems
+.A McMurdo, G.
+.W {'autom', 'computer', 'commun', 'librari', 'combin', 'devic', 'gener', 'input', 'inform', 'conclus', 'scientist', 'system', 'current', 'may', 'index', 'futur', 'sophist', 'note', 'state', 'on-lin', 'document', 'advanc', 'retriev', 'constitut', 'new', 'micrograph', 'interact', 'paper', 'accru', 'benefit', 'technolog', 'review'}
+.B (Journal of Information Science I, 1980, pp. 345-349) 
+.T Parallel Computations in Information Retrieval
+.A Salton, G. Bergmark, D.
+.W {'search', 'environ', 'movement', 'greatest', 'studi', 'parallel', 'substanti', 'inform', 'use', 'interest', 'refin', 'system', 'variou', 'enhanc', 'convent', 'method', 'larg', 'processor', 'process', 'may', 'integ', 'also', 'manipul', 'number', 'power', 'describ', 'array', 'benefici', 'given', 'fast', 'algorithm', 'demonstr', 'advanc', 'servic', 'retriev', 'pointer', 'addit', 'present', 'serv', 'list', 'arithmet', 'examin', 'prove', 'comput', 'data', 'evid', 'base', 'benefit', 'facil'}
+.B (In Lecture Notes in Computer Science, No. III, W. Handler, Ed., Springer Verlag, Berlin-New York, 1981, pp. 328-342) 
+.T The Measurement of Term Importance in Automatic Indexing
+.A Salton, G. Wu, H. Yu, C.T.
+.W {'occurr', 'indic', 'compar', 'weight', 'properti', 'frequent', 'precis', 'evalu', 'use', 'content', 'believ', 'term', 'normal', 'less', 'system', 'final', 'nonrelev', 'analysi', 'recent', 'particular', 'frequency-bas', 'devis', 'suggest', 'method', 'briefli', 'convent', 'purpos', 'automat', 'review', 'characterist', 'introduc', 'index', 'result', 'estim', 'also', 'relev', 'import', 'methodolog', 'effect', 'document', 'collect', 'theori', 'oppos', 'overal', 'util', 'first', 'shown', 'term-weight', 'experiment', 'medium-frequ', 'base', 'rare', 'frequenc', 'major'}
+.B (JASIS, Vol. 32, No. 3, May 1981, pp. 175-186) 
+.T NDX-100:  An Electronic Filing Machine for the Office of the Future
+.A Slonim, J. MacRae, L.J. Mennie, W.E. Diamond, N.
+.W {'machin', 'electron', 'distribut', 'way', 'system', 'particular', 'larg', 'unstructur', 'softwar', 'easili', 'may', 'design', 'function', 'implement', 'number', 'store', 'describ', 'quickli', 'document', 'retriev', 'capabl', 'mixtur', 'hardwar', 'architectur', 'paper', 'file', 'permit'}
+.B (Computer, Vol. 14, No. 5, May 1981, pp. 24-36) 
+.T The Selection of Good Search Terms
+.A van Rijsbergen, C.J. Harper, D.J. Porter, M.F.
+.W {'search', 'problem', 'three', 'maximum', 'gener', 'measur', 'done', 'precis', 'use', 'varieti', 'term', 'tree', 'span', 'index', 'connect', 'associ', 'number', 'extract', 'relev', 'might', 'given', 'test', 'approxim', 'effect', 'feedback', 'vocabulari', 'collect', 'retriev', 'one', 'tackl', 'paper', 'differ', 'shown', 'queri', 'select', 'recal'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 77-91) 
+.T Indexing Consistency, Quality and Efficiency
+.A Rolling, L.
+.W {'time', 'environ', 'measur', 'qualiti', 'prefer', 'inform', 'content', 'produc', 'accur', 'valid', 'costli', 'index', 'substitut', 'repres', 'criteria', 'relev', 'everi', 'whether', 'effect', 'articl', 'document', 'correctli', 'retriev', 'assess', 'cumbersom', 'therefor', 'consist', 'present', 'inter-index', 'queri', 'data', 'determin', 'base', 'variou'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 69-76) 
+.T Text Passage Retrieval Based on Colon Classification:  Retrieval Performance
+.A Shepherd, M.A.
+.W {'search', 'autom', 'along', 'perform', 'area', 'factor', 'four', 'occurr', 'abstract', 'compar', 'measur', 'gener', 'precis', 'represent', 'inform', 'use', 'secondari', 'two', 'content', 'found', 'subject', 'system', 'conduct', 'analysi', 'set', 'foundat', 'mean', 'index', 'embodi', 'result', 'order', 'simpl', 'primari', 'common', 'word', 'expect', 'colon', 'classification-bas', 'specialist', 'test', 'suitabl', 'better', 'document', 'significantli', 'tabl', 'retriev', 'full', 'overal', 'oppos', 'featur', 'solicit', 'boolean-bas', 'creat', 'one', 'passag', 'form', 'experi', 'queri', 'databas', 'classif', 'reduct', 'text', 'determin', 'type', 'recal', 'length', 'variou'}
+.B (Journal of Documentation, Vol. 37, No. I, March 1981, pp. 25-35) 
+.T User-Responsive Subject Control in Bibliographic Retrieval Systems
+.A Tague, J.M.
+.W {'oper', 'librari', 'indic', 'studi', 'dictionari', 'previou', 'inform', 'use', 'impract', 'two', 'system', 'analysi', 'thesauri', 'titl', 'set', 'school', 'ontario', 'scienc', 'univers', 'record', 'procedur', 'co-occurr', 'via', 'result', 'valu', 'title-us', 'implement', 'statist', 'relationship', 'relev', 'sampl', 'test', 'effect', 'document', 'vocabulari', 'user', 'incorpor', 'keyword', 'analys', 'retriev', 'develop', 'show', 'western', 'carri', 'databas', 'queri', 'descript', 'examin', 'prove', 'data', 'cluster', 'ad', 'mainten'}
+.B (Information Processing & Management, Vol. 17, No. 3, 1981, pp. 149-159) 
+.T A Program for Machine-Mediated Searching
+.A Toliver, D.
+.W {'search', 'bibliograph', 'individu', 'perform', 'much', 'concern', 'searcher', 'inform', 'draw', 'system', 'instruct', 'extens', 'analysi', 'larg', 'scienc', 'univers', 'help', 'iida', 'process', 'drexel', 'project', 'institut', 'behavior', 'describ', 'feedback', 'user', 'servic', 'techniqu', 'franklin', 'real-tim', 'avail', 'address', 'call', 'onlin', 'elsewher', 'develop', 'assist', 'access', 'work', 'paper', 'subcontract', 'experiment', 'comput', 'data', 'base', 'provid', 'facil'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 61-68) 
+.T Author Cocitation:  A Literature Measure of Intellectual Structure
+.A White, H.D. Griffith, B.C.
+.W {'axe', 'area', 'proxim', 'done', 'group', 'across', '2', 'span', 'index', 'might', 'count', 'citat', 'raw', 'interpret', 'seem', 'research', 'onlin', 'shown', 'period', 'distanc', 'identifi', 'diverg', 'specialti', 'indic', 'inform', 'analyz', 'intellectu', 'posit', 'reli', 'boundari', 'school', 'connect', 'togeth', '5', 'cocit', 'new', 'show', 'public', 'author', 'assum', 'locat', 'two', 'serial', 'establish', 'possibl', 'analysi', 'particular', 'set', 'border', 'understand', 'result', 'order', 'well', 'relationship', '1', 'within', 'drawn', 'map', 'scisearch', 'data', 'variabl', 'gthe', 'degre', 'variou', 'case', 'contribut', 'use', 'respect', 'subject', 'unit', '3', 'central', 'pair', 'scienc', 'arbitrarili', 'akin', '4', '1972-1979', 'offer', 'structur', 'aid', 'effect', 'document', 'techniqu', 'extent', 'peripher', 'cite', 'closer', 'social'}
+.B (JASIS, Vol. 32, No. 3, May 1981, pp. 163-171) 
+.T Progress in Documentation.  Word Processing: An Introduction and Appraisal
+.A Whitehead, J.
+.W {'oper', 'time', 'environ', 'autom', 'commun', 'area', 'equal', 'high', 'mani', 'much', 'per', 'compar', 'invest', 'electron', 'use', 'level', 'plant', 'inform', 'hard', 'improv', 'present-day', 'term', 'converg', 'current', 'greater', 'larg', 'extrem', 'quot', 'product', 'factori', 'compani', 'rapidli', 'mail', 'process', 'futur', 'take', 'dull', 'bite', 'organ', 'fight', 'word', 'ten', 'manag', 'includ', 'describ', 'employe', 'chang', 'forc', 'offic', 'low', 'alreadi', 'ever-increas', 'manhi', 'routin', 'usual', 'activ', 'job', 'buzz', 'list', 'howev', 'inflat', 'place', 'closer', 'look', 'scale', 'tediou', 'technolog'}
+.B (Journal of Documentation, Vol. 36, No. 4, December 1980, pp. 313-341) 
+.T Document Clustering Using an Inverted File Approach
+.A Willett, P.
+.W {'search', 'deriv', 'autom', 'independ', 'compar', 'single-linkag', 'use', 'inter-docu', 'serial', 'term', 'set', 'method', 'procedur', 'requir', 'process', 'index', 'certain', 'order', 'matrix', 'describ', 'characteris', 'make', 'obtain', 'effect', 'document', 'vocabulari', 'retriev', 'initi', 'similar', 'cluster', 'file'}
+.B (Journal of Information Science, 2, 1980, pp. 222-231) 
+.T A Fast Procedure for the Calculation of Similarity Coefficients in in Automatic Classification
+.A Willett, P.
+.W {'time', 'coefficic', 'invert', 'compar', 'use', 'previous', 'term', 'procedur', 'fact', 'automat', 'speed', 'repres', 'togeth', 'describ', 'aris', 'fast', 'given', 'complex', 'algorithm', 'document', 'collect', 'list', 'experi', 'classif', 'non-zero-valu', 'run', 'identifi', 'file'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 53-60)
