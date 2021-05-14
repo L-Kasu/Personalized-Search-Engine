@@ -1,5 +1,5 @@
 # preprocessing function container
-# version: alpha1.1
+# version: alpha1.11
 # author: Niklas Munkes
 
 import sys
@@ -80,10 +80,8 @@ def preprocessing_UI_wrapper():
     taskstring_2 = "tnxx"
     if stemmer == "porter":
         taskstring_1 = taskstring_1 + "p"
-        taskstring_2 = taskstring_2 + "p"
     elif stemmer == "lancaster":
         taskstring_1 = taskstring_1 + "l"
-        taskstring_2 = taskstring_2 + "l"
     else:
         tb = sys.exc_info()[2]
         raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
@@ -97,9 +95,6 @@ def pre_processor(taskstring, filename, dir_containers, dir_output):
         stemmer = "porter"
     elif search("l", taskstring):
         stemmer = "lancaster"
-    else:
-        tb = sys.exc_info()[2]
-        raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
 
     pp_container = open(dir_output + "pp_output_" + taskstring + "_" + filename + ".txt", 'w')
     with open(dir_containers + "pp_container_" + filename + ".txt", 'r') as container:
