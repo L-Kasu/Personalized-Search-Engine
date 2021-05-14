@@ -1,5 +1,5 @@
 # preprocessing function caller
-# version: alpha1.2
+# version: alpha1.21
 # author: Niklas Munkes
 
 import sys
@@ -38,7 +38,7 @@ for dirname, _, filenames in os.walk(dir_archive):
     for j in range(0, file_counter):
         if i == j:
             filename = filenames[i - 1]
-    if filename == "default 2, should also not appear":
+    if i not in range(0, file_counter):
         tb = sys.exc_info()[2]
         raise Exception("Invalid input.").with_traceback(tb)
 
