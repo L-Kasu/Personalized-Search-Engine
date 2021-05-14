@@ -1,0 +1,17 @@
+def file_reader(filename):
+    text_list = []
+    file = open(filename, "r")
+    for line in file:
+        if line.startswith(".I"):
+            dic = {"I": line}
+            text_list.append(dic)
+        else:
+            try:
+               text_list[-1][line[1]] = line[3:].strip()
+            except:
+                text_list[-1][line[1]] = line[3:].strip()
+
+    return text_list
+    file.close()
+
+print(file_reader("./PP_output/pp_output_tnwsl_CISI.ALL.txt"))
