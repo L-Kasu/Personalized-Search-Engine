@@ -1,5 +1,5 @@
 # preprocessing function caller
-# version: alpha1.21
+# version: alpha1.22
 # author: Niklas Munkes
 
 import sys
