@@ -1,9 +1,10 @@
 # preprocessing function caller
-# version: alpha1.251
+# version: alpha1.252
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
 import os
+
 import pp_functions as ppf
 
 
@@ -42,9 +43,9 @@ for dirname, _, filenames in os.walk(dir_archive):
         tb = sys.exc_info()[2]
         raise Exception("Invalid input.").with_traceback(tb)
 
-print("downloading the necessary packages for preprocessing...", end='')
+print("downloading the necessary packages for preprocessing...")
 ppf.download_NLTK_packages(req_nltk_packages)
-print("DONE")
+print("DONE\n")
 
 print("please chose a stemming algorithm:")
 print("1. PorterStemmer")

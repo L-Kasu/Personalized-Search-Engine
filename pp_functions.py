@@ -1,8 +1,9 @@
 # preprocessing function container
-# version: alpha1.251
+# version: alpha1.252
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
+import time
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
 from pp_sulyvahn import SulyvahnStemmer
@@ -115,4 +116,4 @@ def stemming(pp_set, stemmer):
 def download_NLTK_packages(packages):
     for package in packages:
         nltk.download(package)
-
+        time.sleep(2)
