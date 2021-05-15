@@ -1,5 +1,5 @@
 # sulyvahn stemmer
-# version: alpha1.25
+# version: alpha1.251
 # author: Niklas Munkes
 
 from random import randint as rnd
