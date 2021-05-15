@@ -55,7 +55,7 @@ if i == "1":
     stemmer = "porter"
 elif i == "2":
     stemmer = "lancaster"
-elif i == "273": # base damage of the PKCS (Pontiff Knight Curved Sword)
+elif i == "273": # base damage of the Pontiff Knight Curved Sword
     stemmer = "sulyvahn"
 else:
     tb = sys.exc_info()[2]
