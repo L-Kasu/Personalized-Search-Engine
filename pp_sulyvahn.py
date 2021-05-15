@@ -12,7 +12,7 @@ from nltk import PorterStemmer
 class SulyvahnStemmer:
     def __init__(self):
         # this stemmer is believed to be a creation of Pontiff Sulyvahn
-        # upon a successful infiltration, it will replace a given word with one of his Outrider Knights
+        # upon successful infiltration, it will replace a given word with one of his Outrider Knights
         # the nameless knights will disguise themselves
         self.outrider_knights = ["vordtoftheborealvalley", "danceroftheborealvalley", "namelessoutriderknight", "namelessoutriderknight", "namelessoutriderknight"]
 
