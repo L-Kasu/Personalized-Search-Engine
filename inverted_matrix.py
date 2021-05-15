@@ -7,7 +7,6 @@ def build_matrix_with_stemming():
 # builds the matrix without stemming and stopword removal
 def build_matrix_without_stemming():
     matrix = inverted_matrix('PP_output/pp_output_tnxx_CISI.ALL.txt')
-    print(matrix)
     return matrix
 
 
@@ -87,6 +86,3 @@ def clean_matrix(matrix):
         else:
             i += 1
     return matrix
-
-
-build_matrix_without_stemming()
