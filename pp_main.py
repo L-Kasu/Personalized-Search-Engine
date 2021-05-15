@@ -1,5 +1,5 @@
 # preprocessing function caller
-# version: alpha1.24
+# version: alpha1.25
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
@@ -55,6 +55,8 @@ if i == "1":
     stemmer = "porter"
 elif i == "2":
     stemmer = "lancaster"
+elif i == "273":
+    stemmer = "sulyvahn"
 else:
     tb = sys.exc_info()[2]
     raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
@@ -66,7 +68,7 @@ print("preprocessing...")
 # n: normalizing (required)
 # w: stop word removal
 # s: stemming
-# p or l: stemmer (required if s is set)
+# p, l or v: stemmer (required if s is set)
 # x: task not active
 
 taskstring_1 = "tnws"
@@ -75,6 +77,8 @@ if stemmer == "porter":
     taskstring_1 = taskstring_1 + "p"
 elif stemmer == "lancaster":
     taskstring_1 = taskstring_1 + "l"
+elif stemmer == "sulyvahn":
+    taskstring_1 = taskstring_1 + "v"
 else:
     tb = sys.exc_info()[2]
     raise Exception(

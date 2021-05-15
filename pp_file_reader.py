@@ -1,5 +1,5 @@
 # preprocessing text file reader
-# version: alpha1.24
+# version: alpha1.25
 # author: Lars Kasüschke
 
 

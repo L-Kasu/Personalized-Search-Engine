@@ -1,13 +1,14 @@
 # preprocessing function container
-# version: alpha1.24
+# version: alpha1.25
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
+from pp_sulyvahn import SulyvahnStemmer
 from nltk.tokenize import word_tokenize
 import nltk
-from nltk.corpus import stopwords
+from nltk.corpus import stopwords as sw
 from regex import search
 
 
@@ -16,6 +17,8 @@ def pre_processor(taskstring, filename, dir_containers, dir_output):
         stemmer = "porter"
     elif search("l", taskstring):
         stemmer = "lancaster"
+    elif search("v", taskstring):
+        stemmer = "sulyvahn"
 
     pp_container = open(dir_output + "pp_output_" + taskstring + "_" + filename + ".txt", 'w')
     with open(dir_containers + "pp_container_" + filename + ".txt", 'r') as container:
@@ -37,12 +40,12 @@ def pre_processor(taskstring, filename, dir_containers, dir_output):
                         processing_set = normalize(processing_list)
                     elif task == "w":
                         print("removing stop words from paragraph " + index + "...")
-                        stopword = set(stopwords.words("english"))
-                        processing_set = remove_stop_words(processing_set, stopword)
-                    elif task == "s" and (search("p", taskstring) or search("l", taskstring)):
+                        stopwords = set(sw.words("english"))
+                        processing_set = remove_stop_words(processing_set, stopwords)
+                    elif task == "s" and (search("p", taskstring) or search("l", taskstring) or search("v", taskstring)):
                         print("stemming paragraph " + index + " with " + stemmer + " stemmer" + "...")
                         processing_set = stemming(processing_set, stemmer)
-                    elif task not in "xpl":
+                    elif task not in "xplv":
                         throw_exception_invalid_taskstring(taskstring)
 
                 print("adding preprocessed paragraph " + index + " to output file...", end='')
@@ -101,6 +104,8 @@ def stemming(pp_set, stemmer):
             new_pp_set.add(PorterStemmer().stem(item))
         elif stemmer == "lancaster":
             new_pp_set.add(LancasterStemmer().stem(item))
+        elif stemmer == "sulyvahn":
+            new_pp_set.add(SulyvahnStemmer().stem(item))
         else:
             tb = sys.exc_info()[2]
             raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
