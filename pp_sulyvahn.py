@@ -1,7 +1,10 @@
 # sulyvahn stemmer
-# version: alpha1.252
+# version: alpha1.253
 # author: Niklas Munkes
 
+
+import datetime
+import getpass
 from random import randint as rnd
 from nltk import PorterStemmer
 
@@ -22,3 +25,13 @@ class SulyvahnStemmer:
                 return word + "the" + chosen_knight.removeprefix("nameless")
             return chosen_knight
         return PorterStemmer().stem(word)
+
+
+def save_sulyvahn_review(usr_review, dir_output):
+    with open(dir_output + "pp_sulyvahn_reviews.txt", "a") as file:
+        time = str(datetime.datetime.now())
+        user = getpass.getuser()
+        header = "On " + time + ", '" + user + "' wrote:\n"
+        file.write(header + usr_review + "\n\n")
+        file.close()
+

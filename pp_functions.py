@@ -1,5 +1,5 @@
 # preprocessing function container
-# version: alpha1.252
+# version: alpha1.253
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
@@ -116,4 +116,4 @@ def stemming(pp_set, stemmer):
 def download_NLTK_packages(packages):
     for package in packages:
         nltk.download(package)
-        time.sleep(2)
+        time.sleep(1)

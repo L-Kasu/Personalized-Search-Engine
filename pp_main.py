@@ -1,10 +1,10 @@
 # preprocessing function caller
-# version: alpha1.252
+# version: alpha1.253
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
 import os
-
+import pp_sulyvahn as pps
 import pp_functions as ppf
 
 
@@ -65,6 +65,7 @@ elif i == "273": # base damage of the Pontiff Knight Curved Sword
     if j == "y":
         print('Your review:\n> ', end='')
         usr_review = input()
+        pps.save_sulyvahn_review(usr_review, dir_output)
         print("Thank you!\n")
     elif j == "n":
         print(":(\n")
