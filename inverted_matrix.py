@@ -1,3 +1,21 @@
+# builds the matrix with stemming and stopword removal
+def build_matrix_with_stemming():
+    matrix = inverted_matrix('PP_output/pp_output_tnwsl_CISI.ALL.txt')
+    return matrix
+
+
+# builds the matrix without stemming and stopword removal
+def build_matrix_without_stemming():
+    matrix = inverted_matrix('PP_output/pp_output_tnxx_CISI.ALL.txt')
+    print(matrix)
+    return matrix
+
+
+def frequenzy_mapping(matrix):
+    # TODO implement function
+    None
+
+
 # gernerates an inverted matrix
 # input is a collection as a txt file
 # output is the matrix as a list
@@ -8,9 +26,8 @@ def inverted_matrix(file):
 
     collection = extract_words(file)
     matrix = []
-    for list in collection:
-        add_to_matrix(list[0], list[1], matrix)
-    print(matrix)
+    for lists in collection:
+        add_to_matrix(lists[0], lists[1], matrix)
     return matrix
 
 
@@ -22,24 +39,24 @@ def extract_words(file):
         lines = tf.read().split('\n')
 
     collection = []
-    wordList = []
+    wordlist = []
     document = []
-    for l in lines:
-        if l.startswith(".I"):
-            doc_id = l.split(" ")[1].strip()
+    for line in lines:
+        if line.startswith(".I"):
+            doc_id = line.split(" ")[1].strip()
             document = [doc_id]
-        elif l.startswith(".X"):
-            document.append(wordList)
+        elif line.startswith(".X"):
+            document.append(wordlist)
             collection.append(document)
-            wordList = []
+            wordlist = []
         else:
-            text = l.strip()[3:] + " "   # The first 3 characters of a line can be ignored.
+            text = line.strip()[3:] + " "   # The first 3 characters of a line can be ignored.
             text = text.strip()[1:-1]   # {,} removed
             words = text.split(",")
             for word in words:
                 word = word.strip()[1:-1]
-                if word not in wordList:
-                    wordList.append(word)
+                if word not in wordlist:
+                    wordlist.append(word)
     return collection
 
 
@@ -47,9 +64,9 @@ def extract_words(file):
 # adds the words to the matrix
 # returns the matrix
 def add_to_matrix(doc_id, words, matrix):
-    id = [doc_id]
+    document_id = [doc_id]
     for word in words:
-        entry = [word, id]
+        entry = [word, document_id]
         matrix.append(entry)
     matrix = clean_matrix(matrix)
     return matrix
@@ -70,3 +87,6 @@ def clean_matrix(matrix):
         else:
             i += 1
     return matrix
+
+
+build_matrix_without_stemming()
