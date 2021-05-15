@@ -1,3 +1,9 @@
+# gernerates an inverted matrix
+# input is a collection as a txt file
+# output is the matrix as a list
+# in the form: [[word1, [doc_id1, doc_id1, ...], [word1, [doc_id1, do_id2, ...], ...]
+# matrix[i][0] is the word
+# matrix[i][1] is the list of documents containing the word
 def inverted_matrix(file):
 
     collection = extract_words(file)
