@@ -1,5 +1,5 @@
 # sulyvahn stemmer
-# version: alpha1.3
+# version: alpha1.4
 # author: Niklas Munkes
 
 
