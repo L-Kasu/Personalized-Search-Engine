@@ -1,11 +1,11 @@
 # preprocessing function caller
-# version: alpha1.253
+# version: alpha1.3
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
 import os
 import pp_sulyvahn as pps
-import pp_functions as ppf
+import pp_execution_functions as execution_function
 
 
 # init globals
@@ -13,6 +13,7 @@ req_nltk_packages = ['punkt', 'stopwords']
 dir_containers = "./PP_Containers/"
 dir_archive = "./CISI_archive/"
 dir_output = "./PP_output/"
+
 
 print("----------------------")
 print("Simple IR System Setup")
@@ -23,7 +24,7 @@ print(dir_archive + "\n")
 for dirname, _, filenames in os.walk(dir_archive):
     for filename in filenames:
         print("saving data as pp_container_" + filename + ".txt...", end='')
-        ppf.save_text_as_txt(filename, dir_containers, dir_archive)
+        execution_function.save_text_as_txt(filename, dir_containers, dir_archive)
         print("DONE")
 
 print("\nplease specify the file you wish to preprocess:")
@@ -44,7 +45,7 @@ for dirname, _, filenames in os.walk(dir_archive):
         raise Exception("Invalid input.").with_traceback(tb)
 
 print("downloading the necessary packages for preprocessing...")
-ppf.download_NLTK_packages(req_nltk_packages)
+execution_function.download_NLTK_packages(req_nltk_packages)
 print("DONE\n")
 
 print("please chose a stemming algorithm:")
@@ -88,13 +89,7 @@ else:
 
 print("preprocessing...")
 
-# taskstring structure
-# t: tokenizing (required)
-# n: normalizing (required)
-# w: stop word removal
-# s: stemming
-# p, l or v: stemmer (required if s is set)
-# x: task not active
+# see pp_execution_functions.py for taskstring structure
 
 taskstring_1 = "tnws"
 taskstring_2 = "tnxx"
@@ -109,5 +104,5 @@ else:
     raise Exception(
         "Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
 
-ppf.pre_processor(taskstring_1, filename, dir_containers, dir_output)
-ppf.pre_processor(taskstring_2, filename, dir_containers, dir_output)
+execution_function.pre_processor(taskstring_1, filename, dir_containers, dir_output)
+execution_function.pre_processor(taskstring_2, filename, dir_containers, dir_output)
