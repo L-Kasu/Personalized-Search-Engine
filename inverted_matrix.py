@@ -12,7 +12,7 @@ def build_matrix_without_stemming():
     matrix = inverted_matrix('PP_output/pp_output_tnxx_CISI.ALL.txt')
     return matrix
 
-
+# creates a list of the mappings of each word(term) and its frequency (in how many documents it appears)
 def frequency_mapping(matrix):
     word = []
     freq = []
