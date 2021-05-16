@@ -52,7 +52,7 @@ def pre_processor(taskstring, filename, dir_containers, dir_output):
                 lineindex = line[3:].rstrip("\n")
                 pp_container.write(".I " + str(int(line.lstrip(".I ").rstrip("\n")) - 1))
                 pp_container.write("\n")
-            elif line.startswith(".W"):
+            elif line.startswith(".W") or line.startswith(".T"):
                 reduced_line = line[3:]
                 line_reduction = line[:3]
                 processing_item = reduced_line
