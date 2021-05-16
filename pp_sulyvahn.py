@@ -17,7 +17,7 @@ class SulyvahnStemmer:
         self.outrider_knights = ["vordtoftheborealvalley", "danceroftheborealvalley", "namelessoutriderknight", "namelessoutriderknight", "namelessoutriderknight"]
 
     def stem(self, word):
-        successful_infiltration = len(word) % 9 == 0
+        successful_infiltration = len(word) % 9 == 0 and rnd(0, 3) == 3
         if successful_infiltration:
             sulyvahns_will = rnd(0, len(self.outrider_knights)-1)
             chosen_knight = self.outrider_knights[sulyvahns_will]
