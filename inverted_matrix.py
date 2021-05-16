@@ -13,9 +13,19 @@ def build_matrix_without_stemming():
     return matrix
 
 
-def frequenzy_mapping(matrix):
-    # TODO implement function
-    None
+def frequency_mapping(matrix):
+    word = []
+    freq = []
+    mappings = []
+    for line in matrix:
+        word.append(line[0])
+        freq.append(len(line[1]))
+    i = 0
+    while i < len(matrix):
+        mapping = [word[i], freq[i]]
+        mappings.append(mapping)
+        i += 1
+    return mappings
 
 
 # gernerates an inverted matrix
