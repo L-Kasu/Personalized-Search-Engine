@@ -1,5 +1,4 @@
 import inverted_matrix
-import pp_file_reader as pp
 
 # gets two postings
 # returns a posting
