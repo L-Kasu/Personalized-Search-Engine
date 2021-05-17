@@ -9,7 +9,7 @@ import pp_preprocessing_functions as ppf
 
 
 def void(input):
-    pass
+    return input
 
 
 def tprint(index):
