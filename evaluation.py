@@ -79,7 +79,7 @@ def save_eval():
         file.write("Querry " + str(i) + ":")
         file.write("\t\tprecission: "+ str(evaluation_with_stemming[i][0]))
         file.write("\t\trecall: " + str(evaluation_with_stemming[i][1]) + "\n")
-    file.close()
+    file.close()th
 
 
 save_eval()
