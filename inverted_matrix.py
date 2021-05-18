@@ -3,7 +3,7 @@ import pp_file_reader as pp
 
 # builds the matrix with stemming and stopword removal
 def build_matrix_with_stemming():
-    matrix = inverted_matrix('PP_output/pp_output_tnwsp_CISI.ALL.txt')
+    matrix = inverted_matrix('PP_output/pp_output_tnwsl_CISI.ALL.txt')
     return matrix
 
 
@@ -45,6 +45,8 @@ def add_to_matrix(doc_id, words, matrix):
             matrix[word] = [doc_id]
     return matrix
 
+
+# prints matrix to a txt file
 def print_matrix(matrix, filename):
     file = open(filename, "w")
     for word in matrix:

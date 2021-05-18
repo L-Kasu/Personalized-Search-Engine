@@ -16,6 +16,21 @@ def evaluate_with_stemming():
         evaluation[i] = [precision, recall]
     return evaluation
 
+def evaluate_without_stemming():
+    qry = read_qry_list('PP_output/pp_output_tnxx_CISI.QRY.txt')
+    rel = read_related_documents('PP_output/pp_output_tnxx_CISI.REL.txt')
+    evaluation = {}
+    for i in rel:
+        searched = search.and_search_without_stemming(qry[i])
+        found_wanted_documents = len(search.intersect(searched, rel[i])) # number of the documents that were wanted and foud
+        found_documents = len(searched)   # number of documents that were found
+        wanted_documents =  len(rel[i])  # number of wanted documents
+        precision = get_precision(found_wanted_documents, found_documents)
+        recall = get_recall(found_wanted_documents, wanted_documents)
+        evaluation[i] = [precision, recall]
+    return evaluation
+
+
 def get_precision(found_wanted_documents, found_documents):
     if found_documents == 0 :
         return 0
@@ -75,11 +90,18 @@ def read_related_documents(filename):
 def save_eval():
     evaluation_with_stemming = evaluate_with_stemming()
     file = open('eval_output/evaluation.txt', "w")
+    file.write("with stemminng: \n")
     for i in evaluation_with_stemming:
         file.write("Querry " + str(i) + ":")
         file.write("\t\tprecission: "+ str(evaluation_with_stemming[i][0]))
         file.write("\t\trecall: " + str(evaluation_with_stemming[i][1]) + "\n")
-    file.close()th
+    file.write("\n\n\nwithout stemming: \n")
+    evaluation_without_stemming = evaluate_without_stemming()
+    for i in evaluation_without_stemming:
+        file.write("Querry " + str(i) + ":")
+        file.write("\t\tprecission: "+ str(evaluation_without_stemming[i][0]))
+        file.write("\t\trecall: " + str(evaluation_without_stemming[i][1]) + "\n")
+    file.close()
 
 
 save_eval()
