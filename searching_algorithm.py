@@ -48,7 +48,8 @@ def and_search(words):
     # gather all postings
     postings = []
     for i in range(0, len(words)):
-        postings.append(dict[words[i]])
+        if words[i] in dict:
+            postings.append(dict[words[i]])
 
     # intersect all postings (and all searched words)
 
