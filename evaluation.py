@@ -69,3 +69,17 @@ def read_related_documents(filename):
                 i = 1
     file.close()
     return relation
+
+
+# saves the evaluation in txt file
+def save_eval():
+    evaluation_with_stemming = evaluate_with_stemming()
+    file = open('eval_output/evaluation.txt', "w")
+    for i in evaluation_with_stemming:
+        file.write("Querry " + str(i) + ":")
+        file.write("\t\tprecission: "+ str(evaluation_with_stemming[i][0]))
+        file.write("\t\trecall: " + str(evaluation_with_stemming[i][1]) + "\n")
+    file.close()
+
+
+save_eval()
