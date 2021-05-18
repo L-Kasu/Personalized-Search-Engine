@@ -1,5 +1,4 @@
 import inverted_matrix
-import pp_file_reader as pp
 
 # gets two postings
 # returns a posting
@@ -35,35 +34,27 @@ assert intersect(p1,p3) == []
 assert intersect(p2,p3) == [(77)]
 
 
-#print("intersect(", p1, ",", p2, ") =",intersect(p1,p2))
-#print("intersect(", p1, ",", p3, ") =",intersect(p1,p3))
+# print("intersect(", p1, ",", p2, ") =",intersect(p1,p2))
+# print("intersect(", p1, ",", p3, ") =",intersect(p1,p3))
 
 
 # gets list of words
-# returns list of documentID's
+# returns list of document ID's
 # searches for all documents containing all words in the given list
 
 def and_search(words):
-    matrix = inverted_matrix.build_matrix_with_stemming()
-
-    # convert matrix to dictionary
-    dict = {}
-    for i in range(0, len(matrix)):
-        key = matrix[i][0]
-        value = matrix[i][1]
-        dict[key] = value
-
+    inv_matrix = inverted_matrix.build_matrix_with_stemming()
 
     # gather all postings
     postings = []
     for i in range(0, len(words)):
-        postings.append(dict[words[i]])
+        postings.append(inv_matrix[words[i]])
 
     # intersect all postings (and all searched words)
-
+    postings.sort(key=len)
     documents = postings[0]
 
     for i in range(1, len(postings)):
-        documents = intersect(documents,postings[i])
+        documents = intersect(documents, postings[i])
 
     return documents
