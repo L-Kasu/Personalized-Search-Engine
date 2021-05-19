@@ -40,14 +40,34 @@ assert intersect(p2,p3) == [(77)]
 # gets list of words and inverted matrix
 # returns list of documentID's
 # searches for all documents containing all words in the given list
+def and_search(words, inv_matrix_obj: inverted_matrix.InvertedMatrix):
+    inv_matrix = inv_matrix_obj.get_matrix()
+    # gather all postings
+    postings = []
+    for word in words:
+        if word in inv_matrix:
+            postings.append(inv_matrix[word])
 
-def and_search(words, inv_matrix = inverted_matrix.build_matrix_with_stemming()):
+    # intersect all postings (and all searched words)
+    postings.sort(key=len)
+    documents = postings[0]
+
+    for i in range(1, len(postings)):
+        documents = intersect(documents, postings[i])
+
+    return documents
+
+
+"""
+def and_search_without_stemming(words):
+    dict = inverted_matrix.build_matrix_without_stemming()
+
 
     # gather all postings
     postings = []
     for i in range(0, len(words)):
         if words[i] in dict:
-            postings.append(inv_matrix[words[i]])
+            postings.append(dict[words[i]])
 
     # intersect all postings (and all searched words)
     postings.sort(key=len)
@@ -75,3 +95,4 @@ def and_search_without_stemming(words):
     for i in range(1, len(postings)):
         documents = intersect(documents,postings[i])
     return documents
+"""
