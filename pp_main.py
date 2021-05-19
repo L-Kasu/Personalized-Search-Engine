@@ -14,7 +14,6 @@ dir_containers = "./PP_Containers/"
 dir_archive = "./CISI_archive/"
 dir_output = "./PP_output/"
 
-
 print("----------------------")
 print("Simple IR System Setup")
 print("----------------------\n")

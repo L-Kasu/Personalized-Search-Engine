@@ -12,7 +12,7 @@
 # 'T' : Title
 # 'A' : Author
 # 'W' : either the text for the input files or the set of words for the ouput files
-# 'X' : ???
+# 'X' : cross-reference to other files
 
 def file_reader(filename):
 
