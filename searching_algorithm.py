@@ -18,7 +18,6 @@ def intersect(p1,p2):
             pos1 += 1
         else:
             pos2 += 1
-
     return answer
 
 
@@ -56,7 +55,8 @@ def and_search(words):
     # gather all postings
     postings = []
     for i in range(0, len(words)):
-        postings.append(dict[words[i]])
+        if words[i] in dict:
+            postings.append(dict[words[i]])
 
     # intersect all postings (and all searched words)
     postings.sort(key=len) # 9.046 seconds
@@ -66,4 +66,21 @@ def and_search(words):
     for i in range(1, len(postings)):
         documents = intersect(documents,postings[i])
 
+    return documents
+
+
+def and_search_without_stemming(words):
+    dict = inverted_matrix.build_matrix_without_stemming()
+
+    # gather all postings
+    postings = []
+    for i in range(0, len(words)):
+        if words[i] in dict:
+            postings.append(dict[words[i]])
+    # intersect all postings (and all searched words)
+
+    documents = postings[0]
+
+    for i in range(1, len(postings)):
+        documents = intersect(documents,postings[i])
     return documents
