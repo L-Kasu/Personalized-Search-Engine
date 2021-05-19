@@ -12,19 +12,11 @@ def build_matrix_without_stemming():
     matrix = inverted_matrix('PP_output/pp_output_tnxx_CISI.ALL.txt')
     return matrix
 
-# creates a list of the mappings of each word(term) and its frequency (in how many documents it appears)
+# creates a dictionary of the mappings of each word(term) and its frequency (in how many documents it appears)
 def frequency_mapping(matrix):
-    word = []
-    freq = []
-    mappings = []
-    for line in matrix:
-        word.append(line[0])
-        freq.append(len(line[1]))
-    i = 0
-    while i < len(matrix):
-        mapping = [word[i], freq[i]]
-        mappings.append(mapping)
-        i += 1
+    mappings = {}
+    for word in matrix:
+        mappings[word]=len(matrix[word])
     return mappings
 
 
@@ -35,7 +27,7 @@ def frequency_mapping(matrix):
 # matrix[i][0] is the word
 # matrix[i][1] is the list of documents containing the word
 def inverted_matrix(file):
-    matrix = []
+    matrix = {}
     collection = pp.file_reader(file)
     for x in collection:
         add_to_matrix(x['I'], x['W'], matrix)
@@ -46,26 +38,9 @@ def inverted_matrix(file):
 # adds the words to the matrix
 # returns the matrix
 def add_to_matrix(doc_id, words, matrix):
-    document_id = [doc_id]
     for word in words:
-        entry = [word, document_id]
-        matrix.append(entry)
-    matrix = clean_matrix(matrix)
-    return matrix
-
-
-# sorts the words in the matrix and then checks if there are words double
-def clean_matrix(matrix):
-    matrix.sort()
-    i = 0
-    while i < len(matrix)-1:
-        """merges the doc_id lists if a word is double, without any duplicates"""
-        if matrix[i][0] == matrix[i+1][0]:
-            for x in matrix[i+1][1]:
-                if x not in matrix[i][1]:
-                    matrix[i][1].append(x)
-            matrix.pop(i+1)
-            matrix[i][1].sort()
+        if(word in matrix):
+            matrix[word].append(doc_id)
         else:
-            i += 1
+            matrix[word] = [doc_id]
     return matrix
