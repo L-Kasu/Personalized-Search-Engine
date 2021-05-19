@@ -8,14 +8,14 @@ def main():
     # preprocessing
     pp_main
 
-    print("Enter the words you are looking for: ")
+    print("Enter the words that should be contained in the document(s):")
     query = input()
 
     # preprocess query and execute searching algorithm
     # TODO: make pipeline more flexible. e. g. flexible stemming and usable for any file, work on cross module compatibility
     documents = searching_algorithm.and_search(list(pp_preprocessing_functions.preprocessing_pipeline(query, "lancaster")))
 
-    print("These are the documents you were looking for:")
+    print("These are the IDs of the documents you were looking for:")
     print(documents)
 
 if __name__=="__main__":
