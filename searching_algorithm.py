@@ -50,6 +50,10 @@ def and_search(words, inv_matrix_obj: inverted_matrix.InvertedMatrix):
 
     # intersect all postings (and all searched words)
     postings.sort(key=len)
+
+    if len(postings) == 0:
+        return []
+
     documents = postings[0]
 
     for i in range(1, len(postings)):

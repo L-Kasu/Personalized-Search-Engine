@@ -33,8 +33,11 @@ def main():
     as_list = list(preprocessed_query)
     documents = searching_algorithm.and_search(as_list, matrix)
 
-    print("These are the documents you were looking for:")
-    print(documents)
+    if documents == []:
+        print("There are no documents that contain any of the words you are looking for.")
+    else:
+        print("These are the documents you were looking for:")
+        print(documents)
 
 if __name__=="__main__":
     main()
