@@ -59,7 +59,8 @@ def and_search(words):
         postings.append(dict[words[i]])
 
     # intersect all postings (and all searched words)
-
+    postings.sort(key=len) # 9.046 seconds
+    # without: 9.980 seconds
     documents = postings[0]
 
     for i in range(1, len(postings)):
