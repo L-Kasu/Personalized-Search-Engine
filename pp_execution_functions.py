@@ -60,7 +60,7 @@ def pre_processor(taskstring, filename, dir_containers, dir_output):
                 for i in range(0, len(taskstring)-1):
                     processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict, taskstring_print_dict, lineindex)
 
-                print("adding preprocessed paragraph " + index + " to output file...", end='')
+                print("adding preprocessed paragraph " + lineindex + " to output file...", end='')
                 pp_container.write(line_reduction + str(processing_item))
                 pp_container.write("\n")
                 print("DONE\n")
