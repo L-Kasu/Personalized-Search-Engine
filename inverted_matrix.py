@@ -64,3 +64,15 @@ def add_to_matrix(doc_id, words, matrix):
         else:
             matrix[word] = [doc_id]
     return matrix
+
+
+# prints matrix to a txt file
+def print_matrix(matrix, filename):
+    file = open(filename, "w")
+    for word in matrix:
+        file.write(word + ": " + str(matrix[word]) + "\n")
+    file.close()
+
+
+print_matrix(build_matrix_with_stemming(), "matrix_output/matrix_with_stemming.txt")
+print_matrix(build_matrix_without_stemming(), "matrix_output/matrix_without_stemming.txt")
