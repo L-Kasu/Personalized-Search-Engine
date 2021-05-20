@@ -6,41 +6,22 @@ import sys
 import time
 import nltk
 import pp_preprocessing_functions as ppf
-
-
-def void(input: str) -> str:
-    return input
-
-
-def tprint(index: int) -> None:
-    print("tokenizing paragraph " + str(index) + "...")
-
-
-def nprint(index: int) -> None:
-    print("normalizing paragraph " + str(index) + "...")
-
-
-def wprint(index: int) -> None:
-    print("removing stop words from paragraph " + str(index) + "...")
-
-
-def sprint(index: int, stemmer: str) -> None:
-    print("stemming paragraph " + str(index) + " with " + stemmer + " stemmer" + "...")
-
+import pp_taskstring_functions as tsf
+from typing import Union
 
 taskstring_dict = { "t" : ppf.tokenize,             # one input
                     "n" : ppf.normalize,            # one input
                     "w" : ppf.remove_stop_words,    # one input
                     "s" : ppf.stemming,             # two inputs !!!
-                    "p" : "porter",
-                    "l" : "lancaster",
-                    "v" : "sulyvahn",
-                    "x" : void }
+                    "p" : tsf.ts_porter,
+                    "l" : tsf.ts_lancaster,
+                    "v" : tsf.ts_sulyvahn,
+                    "x" : tsf.void }
 
-taskstring_print_dict = {"tprint" : tprint,
-                         "nprint" : nprint,
-                         "wprint" : wprint,
-                         "sprint" : sprint}
+taskstring_print_dict = {"tprint" : tsf.tprint,
+                         "nprint" : tsf.nprint,
+                         "wprint" : tsf.wprint,
+                         "sprint" : tsf.sprint}
 
 
 def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_output: str) -> None:
@@ -58,7 +39,8 @@ def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_outpu
                 processing_item = {reduced_line}
 
                 for i in range(0, len(taskstring)-1):
-                    processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict, taskstring_print_dict, lineindex)
+                    processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict,
+                                                               taskstring_print_dict, lineindex)
 
                 print("adding preprocessed paragraph " + lineindex + " to output file...", end='')
                 pp_container.write(line_reduction + str(processing_item))
@@ -94,11 +76,11 @@ def download_NLTK_packages(packages: list) -> None:
         time.sleep(1)
 
 
-def read_taskstring_at_index(taskstring: str, index: int,
-                             processing_item: set, taskdict: dict, taskprintdict: dict, lineindex) -> any:
+def read_taskstring_at_index(taskstring: str, index: int, processing_item: set, taskdict: dict, taskprintdict: dict,
+                             lineindex: int) -> Union[set, str, None]:
     key = taskstring[index]
-    if key in taskdict and isinstance(taskdict[key], str):
-        return taskdict[key]
+    if key in taskdict and key in ["p", "l", "v"]:
+        return taskdict[key]()
     elif key in taskdict and index == 3:
         # stemming needs stemmer as additional argument!
         stemmer = read_taskstring_at_index(taskstring, 4, processing_item, taskdict, taskprintdict, lineindex)
