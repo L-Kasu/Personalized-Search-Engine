@@ -39,7 +39,8 @@ def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_outpu
                 processing_item = {reduced_line}
 
                 for i in range(0, len(taskstring)-1):
-                    processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict,
+                    if i != 4:
+                        processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict,
                                                                taskstring_print_dict, lineindex)
 
                 print("adding preprocessed paragraph " + lineindex + " to output file...", end='')
