@@ -14,7 +14,7 @@
 # 'W' : either the text for the input files or the set of words for the ouput files
 # 'X' : cross-reference to other files
 
-def file_reader(filename):
+def file_reader(filename: str) -> list:
 
     text_list = []
     file = open(filename, "r")

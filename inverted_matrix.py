@@ -16,27 +16,27 @@ class InvertedMatrix:
     def get_taskstring(self):
         return self.taskstring
 
-    def get_matrix(self):
+    def get_matrix(self) -> dict:
         return self.matrix
     # builds the matrix with stemming and stopword removal (stemmer = lancaster)
 
 
-def build_matrix_with_stemming():
+def build_matrix_with_stemming() -> dict:
     matrix = inverted_matrix('PP_output/pp_output_tnwsl_CISI.ALL.txt')
     return matrix
 
 
 # builds the matrix without stemming and stopword removal
-def build_matrix_without_stemming():
+def build_matrix_without_stemming() -> dict:
     matrix = inverted_matrix('PP_output/pp_output_tnxx_CISI.ALL.txt')
     return matrix
 
 
 # creates a dictionary of the mappings of each word(term) and its frequency (in how many documents it appears)
-def frequency_mapping(matrix):
+def frequency_mapping(matrix: dict) -> dict:
     mappings = {}
     for word in matrix:
-        mappings[word]=len(matrix[word])
+        mappings[word] = len(matrix[word])
     return mappings
 
 
@@ -46,7 +46,7 @@ def frequency_mapping(matrix):
 # in the form: [[word1, [doc_id1, doc_id1, ...], [word1, [doc_id1, do_id2, ...], ...]
 # matrix[i][0] is the word
 # matrix[i][1] is the list of documents containing the word
-def inverted_matrix(filename):
+def inverted_matrix(filename) -> dict:
     matrix = {}
     collection = pp.file_reader(filename)
     for x in collection:
@@ -54,10 +54,10 @@ def inverted_matrix(filename):
     return matrix
 
 
-# gets an dictionary of words and the doc_id of the document containing the words and a inverted Matrix
+# gets a list of words and the doc_id of the document containing the words and a inverted Matrix
 # adds the words to the matrix
-#returns the matrix
-def add_to_matrix(doc_id, words, matrix):
+# returns the matrix
+def add_to_matrix(doc_id: int, words: list, matrix: dict):
     for word in words:
         if word in matrix:
             matrix[word].append(doc_id)
@@ -67,7 +67,7 @@ def add_to_matrix(doc_id, words, matrix):
 
 
 # prints matrix to a txt file
-def print_matrix(matrix, filename):
+def print_matrix(matrix: dict, filename):
     file = open(filename, "w")
     for word in matrix:
         file.write(word + ": " + str(matrix[word]) + "\n")

@@ -8,24 +8,24 @@ import nltk
 import pp_preprocessing_functions as ppf
 
 
-def void(input):
+def void(input: str) -> str:
     return input
 
 
-def tprint(index):
-    print("tokenizing paragraph " + index + "...")
+def tprint(index: int) -> None:
+    print("tokenizing paragraph " + str(index) + "...")
 
 
-def nprint(index):
-    print("normalizing paragraph " + index + "...")
+def nprint(index: int) -> None:
+    print("normalizing paragraph " + str(index) + "...")
 
 
-def wprint(index):
-    print("removing stop words from paragraph " + index + "...")
+def wprint(index: int) -> None:
+    print("removing stop words from paragraph " + str(index) + "...")
 
 
-def sprint(index, stemmer):
-    print("stemming paragraph " + index + " with " + stemmer + " stemmer" + "...")
+def sprint(index: int, stemmer: str) -> None:
+    print("stemming paragraph " + str(index) + " with " + stemmer + " stemmer" + "...")
 
 
 taskstring_dict = { "t" : ppf.tokenize,             # one input
@@ -43,7 +43,7 @@ taskstring_print_dict = {"tprint" : tprint,
                          "sprint" : sprint}
 
 
-def pre_processor(taskstring, filename, dir_containers, dir_output):
+def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_output: str) -> None:
     pp_container = open(dir_output + "pp_output_" + taskstring + "_" + filename + ".txt", 'w')
     with open(dir_containers + "pp_container_" + filename + ".txt", 'r') as container:
         index = "default, should not appear"
@@ -55,7 +55,7 @@ def pre_processor(taskstring, filename, dir_containers, dir_output):
             elif line.startswith(".W") or line.startswith(".T"):
                 reduced_line = line[3:]
                 line_reduction = line[:3]
-                processing_item = reduced_line
+                processing_item = {reduced_line}
 
                 for i in range(0, len(taskstring)-1):
                     processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict, taskstring_print_dict, lineindex)
@@ -70,12 +70,12 @@ def pre_processor(taskstring, filename, dir_containers, dir_output):
     pp_container.close()
 
 
-def throw_exception_invalid_taskstring(taskstring, index, key):
+def throw_exception_invalid_taskstring(taskstring: str, index: int, key: str) -> Exception:
     tb = sys.exc_info()[2]
     raise Exception("'" + taskstring + "' is not a valid taskstring. Failed to read index " + str(index) + ", key " + key).with_traceback(tb)
 
 
-def save_text_as_txt(filename, dir_containers, dir_archive):
+def save_text_as_txt(filename: str, dir_containers: str, dir_archive: str) -> None:
     container = open(dir_containers+"pp_container_"+filename+".txt", 'w')
     with open(dir_archive+filename) as file:
         lines = ""
@@ -88,13 +88,14 @@ def save_text_as_txt(filename, dir_containers, dir_archive):
         container.close()
 
 
-def download_NLTK_packages(packages):
+def download_NLTK_packages(packages: list) -> None:
     for package in packages:
         nltk.download(package)
         time.sleep(1)
 
 
-def read_taskstring_at_index(taskstring, index, processing_item, taskdict, taskprintdict, lineindex):
+def read_taskstring_at_index(taskstring: str, index: int,
+                             processing_item: set, taskdict: dict, taskprintdict: dict, lineindex) -> any:
     key = taskstring[index]
     if key in taskdict and isinstance(taskdict[key], str):
         return taskdict[key]

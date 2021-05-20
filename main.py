@@ -11,20 +11,19 @@ def main():
     # preprocessing
     pp_main
 
-    print("Enter the words you are looking for: ")
-    query = input()
+    print("Enter the words you are looking for:")
+    query = {input()}
 
     # create the inverted matrix
-    print("with stemming? (type y)")
+    print("with stemming? (type yes or no)")
     stemming = input()
-    if stemming == "y":
+    if stemming == "yes":
         taskstring = pp_main.taskstring_1
     else:
         taskstring = pp_main.taskstring_2
 
     file = pp_main.dir_output + "pp_output_" + taskstring + "_" + pp_main.filename + ".txt"
     matrix = inverted_matrix.InvertedMatrix(file)
-
 
     stemmer = pp_execution_functions.taskstring_dict[matrix.get_taskstring()[-1]]
 
@@ -34,7 +33,7 @@ def main():
     documents = searching_algorithm.and_search(as_list, matrix)
 
     if documents == []:
-        print("There are no documents that contain any of the words you are looking for.")
+        print("There are no documents that contain all of the words you are looking for.")
     else:
         print("These are the documents you were looking for:")
         print(documents)

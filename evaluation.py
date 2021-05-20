@@ -2,7 +2,7 @@ import searching_algorithm as search
 
 # evaluates the search, that uses the preprocessing with stemming
 # returns a dictionary that associates the querry index with the precision and recall
-def evaluate_with_stemming():
+def evaluate_with_stemming() -> dict:
     qry = read_qry_list('PP_output/pp_output_tnwsl_CISI.QRY.txt')
     rel = read_related_documents('PP_output/pp_output_tnwsp_CISI.REL.txt')
     evaluation = {}
@@ -16,7 +16,7 @@ def evaluate_with_stemming():
         evaluation[i] = [precision, recall]
     return evaluation
 
-def evaluate_without_stemming():
+def evaluate_without_stemming() -> dict:
     qry = read_qry_list('PP_output/pp_output_tnxx_CISI.QRY.txt')
     rel = read_related_documents('PP_output/pp_output_tnxx_CISI.REL.txt')
     evaluation = {}
@@ -31,20 +31,19 @@ def evaluate_without_stemming():
     return evaluation
 
 
-def get_precision(found_wanted_documents, found_documents):
+def get_precision(found_wanted_documents: int, found_documents: int) -> float:
     if found_documents == 0 :
         return 0
     return found_wanted_documents/found_documents
 
-def get_recall(found_wanted_documents, wanted_documents):
+def get_recall(found_wanted_documents: int, wanted_documents: int) -> float:
     if wanted_documents == 0:
         return 0
     return found_wanted_documents/wanted_documents
 
 
 # maps the querrys to an index
-# returns a dictionary
-def read_qry_list(filename):
+def read_qry_list(filename: str) -> dict:
     qry_list = {}
     file = open(filename, "r")
     i = 1
@@ -61,8 +60,7 @@ def read_qry_list(filename):
 
 
 # maps the related documents to a querry index
-# return a dictionary
-def read_related_documents(filename):
+def read_related_documents(filename: str) -> dict:
     relation = {}
     file = open(filename, "r")
     for line in file:
@@ -87,7 +85,7 @@ def read_related_documents(filename):
 
 
 # saves the evaluation in txt file
-def save_eval():
+def save_eval() -> None:
     evaluation_with_stemming = evaluate_with_stemming()
     file = open('eval_output/evaluation.txt', "w")
     file.write("with stemminng: \n")

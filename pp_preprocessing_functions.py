@@ -11,11 +11,16 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords as sw
 
 
-def tokenize(raw_text):
-    return word_tokenize(raw_text)
+def tokenize(raw_text: set) -> set:
+    r = raw_text.pop()
+    if type(r) == str:
+        return set(word_tokenize(r))
+    else:
+        return set()
 
 
-def normalize(tokens):
+def normalize(tokens: set) -> set:
+    tokens = list(tokens)
     normalized = []
     tokens_filtered = filter(lambda x: len(x) > 2 or x.isalpha() or x.isdigit(),
                              tokens)
@@ -24,7 +29,7 @@ def normalize(tokens):
     return set(normalized)
 
 
-def remove_stop_words(pp_set):
+def remove_stop_words(pp_set: set) -> set:
     new_pp_set = set()
     stopwords = set(sw.words("english"))
     for item in pp_set:
@@ -33,7 +38,7 @@ def remove_stop_words(pp_set):
     return new_pp_set
 
 
-def stemming(pp_set, stemmer):
+def stemming(pp_set: set, stemmer: str) -> set:
     new_pp_set = set()
     for item in pp_set:
         if stemmer == "porter":
@@ -48,5 +53,9 @@ def stemming(pp_set, stemmer):
     return new_pp_set
 
 # lightweight preprocessing for the query0
-def preprocessing_pipeline(raw_text, stemmer):
-    return stemming(remove_stop_words(normalize(tokenize(raw_text))), stemmer)
+def preprocessing_pipeline(raw_text: set, stemmer: str) -> set:
+    preprocessed_text = remove_stop_words(normalize(tokenize(raw_text)))
+    try:
+        preprocecessed_text = stemming(preprocessed_text, stemmer)
+    finally:
+        return preprocessed_text
