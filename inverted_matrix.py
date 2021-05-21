@@ -1,4 +1,5 @@
 import pp_file_reader as pp
+import pp_main
 
 
 class InvertedMatrix:
@@ -22,13 +23,13 @@ class InvertedMatrix:
 
 
 def build_matrix_with_stemming() -> dict:
-    matrix = inverted_matrix('PP_output/pp_output_tnwsl_CISI.ALL.txt')
+    matrix = inverted_matrix(pp_main.dir_output + "pp_output_" + pp_main.taskstring_1 + "_" + pp_main.filename + ".txt")
     return matrix
 
 
 # builds the matrix without stemming and stopword removal
 def build_matrix_without_stemming() -> dict:
-    matrix = inverted_matrix('PP_output/pp_output_tnxx_CISI.ALL.txt')
+    matrix = inverted_matrix(pp_main.dir_output + "pp_output_" + pp_main.taskstring_2 + "_" + pp_main.filename + ".txt")
     return matrix
 
 
@@ -74,5 +75,5 @@ def print_matrix(matrix: dict, filename):
     file.close()
 
 
-print_matrix(build_matrix_with_stemming(), "matrix_output/matrix_with_stemming.txt")
-print_matrix(build_matrix_without_stemming(), "matrix_output/matrix_without_stemming.txt")
+print_matrix(build_matrix_with_stemming(), "matrix_output/matrix_" + pp_main.taskstring_1 + ".txt")
+print_matrix(build_matrix_without_stemming(), "matrix_output/matrix_" + pp_main.taskstring_2 + ".txt")
