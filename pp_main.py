@@ -14,6 +14,7 @@ dir_containers = "./PP_Containers/"
 dir_archive = "./CISI_archive/"
 dir_output = "./PP_output/"
 
+
 print("----------------------")
 print("Simple IR System Setup")
 print("----------------------\n")
@@ -25,6 +26,7 @@ for dirname, _, filenames in os.walk(dir_archive):
         print("saving data as pp_container_" + filename + ".txt...", end='')
         execution_function.save_text_as_txt(filename, dir_containers, dir_archive)
         print("DONE")
+
 
 print("\nplease specify the file you wish to preprocess:")
 filename = "default, should not appear"
@@ -106,4 +108,15 @@ execution_function.pre_processor(taskstring_1, filename, dir_containers, dir_out
 print("DONE")
 print("preprocessing without stop word removal and stemming...", end='')
 execution_function.pre_processor(taskstring_2, filename, dir_containers, dir_output)
+print("DONE")
+
+print("creating files for evaluation...", end='')
+execution_function.pre_processor(taskstring_1, "CISI.QRY", dir_containers, dir_output)
+QRY_file_taskstring_1 = dir_output + "pp_output_" + taskstring_1 + "_CISI.QRY.txt"
+execution_function.pre_processor(taskstring_1, "CISI.REL", dir_containers, dir_output)
+REL_file_taskstring_1 = dir_output + "pp_output_" + taskstring_1 + "_CISI.REL.txt"
+execution_function.pre_processor(taskstring_2, "CISI.QRY", dir_containers, dir_output)
+QRY_file_taskstring_2 = dir_output + "pp_output_" + taskstring_2 + "_CISI.QRY.txt"
+execution_function.pre_processor(taskstring_2, "CISI.REL", dir_containers, dir_output)
+REL_file_taskstring_2 = dir_output + "pp_output_" + taskstring_2 + "_CISI.REL.txt"
 print("DONE")

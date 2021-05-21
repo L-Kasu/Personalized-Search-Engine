@@ -1,6 +1,6 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
-import evaluation
+import evaluation_alt
 import pp_main
 import pp_preprocessing_functions
 import searching_algorithm
@@ -40,14 +40,15 @@ def main():
         print("These are the documents you were looking for:")
         print(documents)
 
-    # print("\nDo you want to evaluate your search (y/n)?")
-    # print('> ', end='')
-    # if input() == "y":
-    #     evaluation
-    #     print("The evaluation results con be found at ./eval_output/evaluation.txt")
-    #     exit()
-    # else:
-    #     exit()
+    print("\nDo you want to evaluate your search (y/n)?")
+    print('> ', end='')
+    if input() == "y":
+
+        evaluation_alt
+        print("The evaluation results can be found at ./eval_output/evaluation.txt")
+        exit()
+    else:
+        exit()
 
 
 if __name__=="__main__":

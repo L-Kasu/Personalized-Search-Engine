@@ -2,16 +2,16 @@ import pp_main
 import searching_algorithm as search
 import inverted_matrix
 
-file1 = pp_main.dir_output + "pp_output_tnwp_" + pp_main.filename + ".txt"
-inv_matrix_obj1 = inverted_matrix.InvertedMatrix(file1)
-file2 = pp_main.dir_output + "pp_output_tnxx_" + pp_main.filename + ".txt"
-inv_matrix_obj2 = inverted_matrix.InvertedMatrix(file2)
+
+inv_matrix_obj1 = inverted_matrix.InvertedMatrix(pp_main.dir_output + "pp_output_" + pp_main.taskstring_1 + "_" + pp_main.filename + ".txt")
+inv_matrix_obj2 = inverted_matrix.InvertedMatrix(pp_main.dir_output + "pp_output_" + pp_main.taskstring_2 + "_" + pp_main.filename + ".txt")
+
 
 # evaluates the search, that uses the preprocessing with stemming
 # returns a dictionary that associates the querry index with the precision and recall
 def evaluate_with_stemming() -> dict:
-    qry = read_qry_list('PP_output/pp_output_tnwp_CISI.QRY.txt')
-    rel = read_related_documents('PP_output/pp_output_tnwp_CISI.REL.txt')
+    qry = read_qry_list(pp_main.QRY_file_taskstring_1)
+    rel = read_related_documents(pp_main.REL_file_taskstring_1)
     evaluation = {}
     for i in rel:
         searched = search.and_search(qry[i], inv_matrix_obj1)
@@ -24,11 +24,11 @@ def evaluate_with_stemming() -> dict:
     return evaluation
 
 def evaluate_without_stemming() -> dict:
-    qry = read_qry_list('PP_output/pp_output_tnxx_CISI.QRY.txt')
-    rel = read_related_documents('PP_output/pp_output_tnxx_CISI.REL.txt')
+    qry = read_qry_list(pp_main.QRY_file_taskstring_2)
+    rel = read_related_documents(pp_main.REL_file_taskstring_2)
     evaluation = {}
     for i in rel:
-        searched = search.and_search_without_stemming(qry[i], inv_matrix_obj2)
+        searched = search.and_search(qry[i], inv_matrix_obj2)
         found_wanted_documents = len(search.intersect(searched, rel[i])) # number of the documents that were wanted and foud
         found_documents = len(searched)   # number of documents that were found
         wanted_documents =  len(rel[i])  # number of wanted documents
