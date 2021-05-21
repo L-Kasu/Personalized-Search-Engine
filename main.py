@@ -11,7 +11,7 @@ def main():
     # preprocessing
     pp_main
 
-    print("Enter the words you are looking for:")
+    print("\nEnter the words you are looking for:")
     query = {input()}
 
     # create the inverted matrix
