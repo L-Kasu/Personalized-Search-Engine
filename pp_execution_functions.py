@@ -6,31 +6,26 @@ import sys
 import time
 import nltk
 import pp_preprocessing_functions as ppf
-import pp_taskstring_functions as tsf
-from typing import Union
 
-taskstring_dict = { "t" : ppf.tokenize,             # one input
-                    "n" : ppf.normalize,            # one input
-                    "w" : ppf.remove_stop_words,    # one input
-                    "s" : ppf.stemming,             # two inputs !!!
-                    "p" : tsf.ts_porter,
-                    "l" : tsf.ts_lancaster,
-                    "v" : tsf.ts_sulyvahn,
-                    "x" : tsf.void }
 
-taskstring_print_dict = {"tprint" : tsf.tprint,
-                         "nprint" : tsf.nprint,
-                         "wprint" : tsf.wprint,
-                         "sprint" : tsf.sprint}
+def void(input: set) -> set:
+    return input
+
+# taskstring is now index sensitive!!!
+taskstring_dict = { "t" : ppf.tokenize,
+                    "n" : ppf.normalize,
+                    "w" : ppf.remove_stop_words,
+                    "p" : lambda s: ppf.stemming(s, "porter"),
+                    "l" : lambda s: ppf.stemming(s, "lancaster"),
+                    "v" : lambda s: ppf.stemming(s, "sulyvahn"),
+                    "x" : void }
 
 
 def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_output: str) -> None:
     pp_container = open(dir_output + "pp_output_" + taskstring + "_" + filename + ".txt", 'w')
     with open(dir_containers + "pp_container_" + filename + ".txt", 'r') as container:
-        index = "default, should not appear"
         for line in container.readlines():
             if line.startswith(".I"):
-                lineindex = line[3:].rstrip("\n")
                 pp_container.write(".I " + str(int(line.lstrip(".I ").rstrip("\n")) - 1))
                 pp_container.write("\n")
             elif line.startswith(".W") or line.startswith(".T"):
@@ -39,14 +34,10 @@ def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_outpu
                 processing_item = {reduced_line}
 
                 for i in range(0, len(taskstring)-1):
-                    if i != 4:
-                        processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict,
-                                                               taskstring_print_dict, lineindex)
+                    processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict)
 
-                print("adding preprocessed paragraph " + lineindex + " to output file...", end='')
                 pp_container.write(line_reduction + str(processing_item))
                 pp_container.write("\n")
-                print("DONE\n")
             else:
                 pp_container.write(line)
         container.close()
@@ -77,19 +68,9 @@ def download_NLTK_packages(packages: list) -> None:
         time.sleep(1)
 
 
-def read_taskstring_at_index(taskstring: str, index: int, processing_item: set, taskdict: dict, taskprintdict: dict,
-                             lineindex: int) -> Union[set, str, None]:
+def read_taskstring_at_index(taskstring: str, index: int, processing_item: set, taskdict: dict) -> set:
     key = taskstring[index]
-    if key in taskdict and key in ["p", "l", "v"]:
-        return taskdict[key]()
-    elif key in taskdict and index == 3:
-        # stemming needs stemmer as additional argument!
-        stemmer = read_taskstring_at_index(taskstring, 4, processing_item, taskdict, taskprintdict, lineindex)
-        taskprintdict[key + "print"](lineindex, stemmer)
-        return taskdict[key](processing_item, stemmer)
-    elif key in taskdict:
-        if key != "x":
-            taskprintdict[key + "print"](lineindex)
+    if key in taskdict:
         return taskdict[key](processing_item)
     else:
         throw_exception_invalid_taskstring(taskstring, index, key)

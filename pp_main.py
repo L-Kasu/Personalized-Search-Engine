@@ -86,11 +86,9 @@ else:
     tb = sys.exc_info()[2]
     raise Exception("Invalid input. Type either '1' or '2'").with_traceback(tb)
 
-print("preprocessing...")
-
 # see pp_execution_functions.py for taskstring structure
 
-taskstring_1 = "tnws"
+taskstring_1 = "tnw"
 taskstring_2 = "tnxx"
 if stemmer == "porter":
     taskstring_1 = taskstring_1 + "p"
@@ -103,5 +101,9 @@ else:
     raise Exception(
         "Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
 
+print("preprocessing with stop word removal and stemming...", end='')
 execution_function.pre_processor(taskstring_1, filename, dir_containers, dir_output)
+print("DONE")
+print("preprocessing without stop word removal and stemming...", end='')
 execution_function.pre_processor(taskstring_2, filename, dir_containers, dir_output)
+print("DONE")
