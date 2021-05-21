@@ -11,7 +11,7 @@ import pp_preprocessing_functions as ppf
 def void(input: set) -> set:
     return input
 
-# taskstring is now index sensitive!!!
+
 taskstring_dict = { "t" : ppf.tokenize,
                     "n" : ppf.normalize,
                     "w" : ppf.remove_stop_words,
