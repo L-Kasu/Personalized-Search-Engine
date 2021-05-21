@@ -1,5 +1,4 @@
 # preprocessing function container
-# version: alpha1.4
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
@@ -8,17 +7,12 @@ import nltk
 import pp_preprocessing_functions as ppf
 
 
-def void(input: set) -> set:
-    return input
-
-
 taskstring_dict = { "t" : ppf.tokenize,
                     "n" : ppf.normalize,
                     "w" : ppf.remove_stop_words,
                     "p" : lambda s: ppf.stemming(s, "porter"),
                     "l" : lambda s: ppf.stemming(s, "lancaster"),
-                    "v" : lambda s: ppf.stemming(s, "sulyvahn"),
-                    "x" : void }
+                    "v" : lambda s: ppf.stemming(s, "sulyvahn")}
 
 
 def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_output: str) -> None:

@@ -1,5 +1,4 @@
 # preprocessing function container
-# version: alpha1.4
 # authors: Niklas Munkes, Lars Kasüschke
 
 

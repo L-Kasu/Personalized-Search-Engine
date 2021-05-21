@@ -1,5 +1,4 @@
 # preprocessing function caller
-# version: alpha1.4
 # authors: Niklas Munkes, Lars Kasüschke
 
 import sys
@@ -91,7 +90,7 @@ else:
 # see pp_execution_functions.py for taskstring structure
 
 taskstring_1 = "tnw"
-taskstring_2 = "tnxx"
+taskstring_2 = "tn"
 if stemmer == "porter":
     taskstring_1 = taskstring_1 + "p"
 elif stemmer == "lancaster":
