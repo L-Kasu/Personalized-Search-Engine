@@ -94,7 +94,7 @@ def read_related_documents(filename: str) -> dict:
 # saves the evaluation in txt file
 def save_eval() -> None:
     evaluation_with_stemming = evaluate_with_stemming()
-    file = open('eval_output/evaluation.txt', "w")
+    file = open('eval_output/evaluation_' + pp_main.taskstring_1 + '_' + pp_main.taskstring_2 + '.txt', 'w')
     file.write("with stemminng: \n")
     for i in evaluation_with_stemming:
         file.write("Querry " + str(i) + ":")

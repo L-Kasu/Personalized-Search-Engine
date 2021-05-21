@@ -45,7 +45,7 @@ def main():
     if input() == "y":
 
         evaluation_alt
-        print("The evaluation results can be found at ./eval_output/evaluation.txt")
+        print('The evaluation results can be found at ./eval_output/evaluation_' + pp_main.taskstring_1 + '_' + pp_main.taskstring_2 + '.txt')
         exit()
     else:
         exit()
