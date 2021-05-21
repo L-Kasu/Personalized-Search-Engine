@@ -1,5 +1,6 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
+import evaluation
 import pp_main
 import pp_preprocessing_functions
 import searching_algorithm
@@ -12,12 +13,13 @@ def main():
     pp_main
 
     print("\nEnter the words you are looking for:")
+    print('> ', end='')
     query = {input()}
 
     # create the inverted matrix
-    print("with stemming? (type yes or no)")
+    print("with stemming (y/n)?")
     stemming = input()
-    if stemming == "yes":
+    if stemming == "y":
         taskstring = pp_main.taskstring_1
     else:
         taskstring = pp_main.taskstring_2
@@ -37,6 +39,16 @@ def main():
     else:
         print("These are the documents you were looking for:")
         print(documents)
+
+    # print("\nDo you want to evaluate your search (y/n)?")
+    # print('> ', end='')
+    # if input() == "y":
+    #     evaluation
+    #     print("The evaluation results con be found at ./eval_output/evaluation.txt")
+    #     exit()
+    # else:
+    #     exit()
+
 
 if __name__=="__main__":
     main()
