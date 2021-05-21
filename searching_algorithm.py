@@ -41,7 +41,12 @@ assert intersect(p2,p3) == [(77)]
 # returns list of documentID's
 # searches for all documents containing all words in the given list
 def and_search(words: list, inv_matrix_obj: inverted_matrix.InvertedMatrix) -> list:
+
+    if len(words) == 0:
+        return []
+
     inv_matrix = inv_matrix_obj.get_matrix()
+
     # gather all postings
     postings = []
     for word in words:
