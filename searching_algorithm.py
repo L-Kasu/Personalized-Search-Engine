@@ -4,6 +4,7 @@ import inverted_matrix
 # returns a posting
 # intersects two postings (only returns numbers contained in both postings)
 
+
 def intersect(p1: list, p2: list) -> list:
     answer = []
 
@@ -33,8 +34,8 @@ assert intersect(p1,p3) == []
 assert intersect(p2,p3) == [(77)]
 
 
-#print("intersect(", p1, ",", p2, ") =",intersect(p1,p2))
-#print("intersect(", p1, ",", p3, ") =",intersect(p1,p3))
+# print("intersect(", p1, ",", p2, ") =",intersect(p1,p2))
+# print("intersect(", p1, ",", p3, ") =",intersect(p1,p3))
 
 
 # gets list of words and inverted matrix

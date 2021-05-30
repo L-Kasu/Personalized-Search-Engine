@@ -51,6 +51,7 @@ def stemming(pp_set: set, stemmer: str) -> set:
             raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
     return new_pp_set
 
+
 # lightweight preprocessing for the query0
 def preprocessing_pipeline(raw_text: set, stemmer: str) -> set:
     preprocessed_text = remove_stop_words(normalize(tokenize(raw_text)))

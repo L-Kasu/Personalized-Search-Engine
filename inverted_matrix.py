@@ -5,7 +5,7 @@ import pp_main
 class InvertedMatrix:
 
     # builds the instance of an matrix from an preprocessed file with following attributes:
-    # - the matrix itself containg a pair of matrix as a dictionary { word: list_of_documents}
+    # - the matrix itself containing a pair of matrix as a dictionary {word: list_of_documents}
     # - taskstring defining how the file got preprocessed
 
     def __init__(self, filename):
@@ -41,12 +41,12 @@ def frequency_mapping(matrix: dict) -> dict:
     return mappings
 
 
-# gernerates an inverted matrix
+# generates an inverted matrix
 # input is a collection as a txt file
-# output is the matrix as a dictonary
-# in the form: [[word1, [doc_id1, doc_id1, ...], [word1, [doc_id1, do_id2, ...], ...]
-# matrix[i][0] is the word
-# matrix[i][1] is the list of documents containing the word
+# output is the matrix as a dictionary
+# in the form: {word1: [doc_id1, doc_id1, ...], word1: [doc_id1, do_id2, ...], ...}
+# matrix key is the word
+# matrix value is the list of documents containing the word
 def inverted_matrix(filename) -> dict:
     matrix = {}
     collection = pp.file_reader(filename)
