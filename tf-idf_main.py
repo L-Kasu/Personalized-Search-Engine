@@ -15,7 +15,7 @@ filename = "CISI.ALL"
 document_dict_ts1 = file_reader(dir_output + "pp_output_" + taskstring_1 + "_" + filename + ".txt")
 document_dict_ts2 = file_reader(dir_output + "pp_output_" + taskstring_2 + "_" + filename + ".txt")
 # print(document_dict_ts1, flush='left')
-print(document_dict_ts2, flush='left')
+# print(document_dict_ts2, flush='left')
 # searchterm = "literature"
 # searchterm = "cat"
 sample_qry = ["certificates", "literature", "the", "for"]
@@ -116,4 +116,6 @@ def weight_matrix_tf_idf(doc_dicts: list, query: list) -> list:
     return matrix
 
 # print(weight_matrix_tf_idf(document_dict_ts1, sample_qry))
-print(weight_matrix_tf_idf(document_dict_ts2, sample_qry))
+# print(weight_matrix_tf_idf(document_dict_ts2, sample_qry))
+
+# TODO: measure vector distance (cos sim)
