@@ -1,5 +1,5 @@
 # implementation of the tf-idf algorithm (ranked retrieval)
-# version: alpha0.8
+# version: alpha0.81
 # author: Niklas Munkes
 import sys
 
