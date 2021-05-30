@@ -1,0 +1,389 @@
+.I 0
+.W {'relevance', 'their', 'articles', 'problems', 'retrieving', 'making', 'usual', 'to', 'descriptive', 'in', 'from', 'titles', 'content', 'What', 'concerns', 'of', 'there', '?', 'automatically', 'is', 'and', 'are', 'approximate', 'the', 'up', 'involved', 'difficulties'}
+.I 1
+.W {'be', 'How', 'articles', 'can', 'to', 'retrieved', ',', 'pertinent', 'opposed', 'in', 'information', 'or', 'themselves', 'entire', 'data', 'as', 'automatically', '?', 'requests', 'response', 'actually', 'references'}
+.I 2
+.W {'.', 'science', 'definitions', 'possible', '?', 'where', 'information', 'What', 'is', 'Give'}
+.I 3
+.W {'methods', 'Image', 'of', 'computer-ready', '.', 'form', 'into', 'automatically', 'any', 'text', 'printed', 'and', 'transforming', 'recognition', 'other'}
+.I 4
+.W {'training', 'management', 'problems', 'systems', 'researchers', 'encounter', 'to', 'they', 'use', 'proper', 'ordinary', 'special', 'information', 'What', 'unobstructed', 'for', 'retrieval', 'of', 'likely', '?', 'and', 'are', 'will', 'need', 'businessmen'}
+.I 5
+.W {'computers', 'between', 'spoken', ',', 'communication', 'verbal', 'word', 'What', 'for', 'there', '?', 'via', 'is', 'and', 'are', 'humans', 'the', 'possibilities', 'that'}
+.I 6
+.W {'publishing', 'saving', 'data-processing', 'then', 'articles', 'systems', '.', 'further', ',', 'planned', 'use', 'working', 'in', 'by', 'for', 'retrieval', 'coded', 'presently', 'byproduct', 'and', 'printing', 'papers', 'original', 'Describe', 'form', 'the', 'computer'}
+.I 7
+.W {'it', '.', 'bearing', 'in', 'information', 'languages', 'What', 'general', 'retrieval', 'science', '?', 'on', 'have', 'and', 'indexing', 'Describe', 'the', 'does', 'other'}
+.I 8
+.W {'articles', 'inclusion', 'grammatical', 'in', 'contextual', 'information', 'What', 'for', 'retrieval', 'analysis', 'of', 'there', '?', 'and', 'are', 'system', 'possibilities', 'automatic', 'an'}
+.I 9
+.W {'.', 'of', 'use', ',', 'mathematics', 'in', 'retrieval', 'group', 'theory', 'information', 'e.g', 'The', 'abstract'}
+.I 10
+.W {'scientific', ',', 'need', 'evaluation', 'research', 'the', 'consolidation', '?', 'in', 'information', 'and', 'What', 'is', 'for', 'retrieval'}
+.I 11
+.W {'journals', 'methods', 'of', 'scientific', '.', ',', 'publication', 'speed', 'and', 'Give', 'distribution', 'for', 'printing', 'high'}
+.I 12
+.W {'developed', 'of', 'evaluation', 'the', '?', 'objective', 'have', 'information', 'What', 'and', 'systems', 'been', 'for', 'criteria', 'retrieval', 'dissemination'}
+.I 13
+.W {'there', 'future', 'automatic', 'diagnosis', '?', 'medical', 'What', 'is', 'for'}
+.I 14
+.W {'it', 'Are', 'How', 'systems', 'well', 'to', 'much', 'they', 'automated', ',', 'cost', 'information', 'dissemination', 'retrieval', 'researcher', 'as', '?', 'industry', 'do', 'and', 'libraries', 'the', 'worth'}
+.I 15
+.W {'be', 'their', 'systems', 'use', 'future', 'in', 'information', 'What', 'or', 'retrieval', 'of', '?', 'incorporate', 'remote', 'extent', 'will', 'stations', 'the', 'multiprogramming'}
+.I 16
+.W {'obtaining', 'of', '.', ',', 'output', 'large', 'usable', 'speed', 'information', 'Means', 'volume', 'retrieval', 'high', 'customer'}
+.I 17
+.W {'methods', 'encoding', 'dimensions', 'like', 'structures', 'two', ',', 'in', 'compounds', 'What', 'matching', 'for', 'chemical', 'drawing', 'formulas', 'there', 'automatically', '?', 'and', 'extended', 'are', 'the', 'structural'}
+.I 18
+.W {'.', 'of', 'Techniques', 'searching', 'methods', 'Coding', 'and', 'systems', 'machine', 'matching'}
+.I 19
+.W {'.', 'automated', 'Testing', 'information', 'systems'}
+.I 20
+.W {'.', 'personnel', 'field', 'need', 'the', 'provide', 'information', 'The', 'for', 'to'}
+.I 21
+.W {'.', 'field', 'the', 'in', 'medical', 'information', 'Automated'}
+.I 22
+.W {'libraries', '.', 'of', 'books', 'use', 'need', 'automated', 'in', 'information', 'systems', 'Relation', 'for', 'Amount', 'to'}
+.I 23
+.W {'training', '.', 'personnel', 'Educational', 'field', 'for', 'programs', 'this', 'the', 'in', 'providing', 'information', 'Possibilities', 'Needs', 'and', 'requirements'}
+.I 24
+.W {'exchange', '.', 'of', 'International', 'information', 'and', 'systems', 'dissemination', 'for'}
+.I 25
+.W {'.', 'of', 'automated', 'Cost', 'determination', 'cost', 'associated', 'information', 'systems', 'with', 'and'}
+.I 26
+.W {'.', 'indexing', 'Computerized', 'information', 'systems', 'retrieval'}
+.I 27
+.W {'.', 'chemistry', 'Computerized', 'in', 'fields', 'information', 'systems', 'related', 'to'}
+.I 28
+.W {'Specific', 'of', '.', 'systems', 'computerized', 'advantages', 'index'}
+.I 29
+.W {'journals', '.', 'periodicals', 'Information', 'by', 'dissemination', 'and'}
+.I 30
+.W {'.', 'the', 'in', 'physical', 'Information', 'systems', 'sciences'}
+.I 31
+.W {'libraries', '.', 'Problems', 'methods', 'of', 'automated', 'for', 'author', 'Attempts', 'mechanized', 'indexing', 'systems', 'computerized', 'and', 'general', 'at', 'title'}
+.I 32
+.W {'.', 'of', 'which', 'automated', 'the', 'from', 'Retrieval', 'user', 'provide', 'distance', 'information', 'systems', 'for', 'transmission', 'a', 'to'}
+.I 33
+.W {'coding', 'of', '.', 'used', 'Methods', 'in', 'systems', 'computerized', 'index'}
+.I 34
+.W {'.', 'dealing', 'supported', 'information', 'and', 'Government', 'with', 'agencies', 'projects', 'dissemination'}
+.I 35
+.W {'methods', 'theories', 'some', 'translating', 'How', 'texts', 'structures', 'can', 'meaning', 'to', 'language', 'in', 'from', 'practices', 'comprehending', 'What', 'languages', 'with', 'compete', 'of', '?', 'nuances', 'another', 'and', 'traditional', 'are', 'different', 'the', 'one', 'machine', 'computer', 'national'}
+.I 36
+.W {'it', 'some', 'words', 'Wanted', 'retrieving', 'lists', 'particular', 'terms', 'to', '.', 'schemes', 'descriptive', ',', 'found', 'available', 'schedules', 'in', 'meaningful', 'vocabularies', 'What', 'or', 'organizing', 'for', 'at', 'material', 'each', 'of', '?', 'fields', 'have', 'been', 'and', 'classifying', 'related', 'extent', 'indexing', 'are', 'tested', 'that', 'useful', 'least', 'other'}
+.I 37
+.W {'be', 'toward', 'How', 'words', 'access', 'solutions', 'necessary', 'systems', 'lists', 'can', 'to', '.', 'definitions', ',', 'date', 'made', 'used', 'in', 'information', 'What', 'headings', 'or', 'for', 'at', 'retrieval', 'of', 'problem', 'symbols', 'dynamic', 'data', 'must', '?', 'change', 'flexibility', 'providing', 'have', 'subject', 'getting', 'been', 'and', 'stored', 'meanings', 'system', 'the', 'up', 'usage', 'current', 'often', 'an', 'progress', 'Word', 'kept', 'index', 'other'}
+.I 38
+.W {'workers', 'personnel', 'retraining', 'new', 'learn', 'students', 'important', 'Training', 'help', 'dislocation', 'values', 'problems', 'systems', 'researchers', 'purpose', 'presents', 'levels', 'executives', 'to', '.', 'technicians', 'use', ',', 'education', 'attitudes', 'even', 'them', 'information', 'What', 'assistants', 'Librarians', 'at', 'retrieval', 'uses', 'of', 'skills', '?', 'change', 'people', 'all', 'have', 'techniques', 'The', 'is', 'been', 'and', 'traditional', 'equipment', 'programs', 'developed', 'will', 'maladjustment', 'hardware', 'need', 'the', 'newer', 'progress'}
+.I 39
+.W {'be', 'computers', 'some', 'translation', 'problems', 'international', 'to', 'automation', 'language', 'they', 'transfer', 'use', 'found', 'made', 'documentation', 'in', 'from', 'limitations', 'challenging', 'What', 'or', 'with', 'stumbling', 'insurmountable', 'of', 'field', 'considered', '?', 'blocks', 'on', 'have', 'is', 'been', 'another', 'and', 'status', 'are', 'the', 'degree', 'scale', 'one', 'only', 'progress', 'has', 'an', 'machine'}
+.I 40
+.W {'be', 'compare', 'amount', 'without', 'accepted', 'order', 'to', 'schemes', ',', 'arranging', 'achieving', 'in', 'going', 'information', 'What', 'with', 'tool', 'retrieval', 'a', 'material', 'studies', 'of', 'Is', 'considered', 'this', '?', 'there', 'great', 'alphabetical', 'have', 'generally', 'is', 'been', 'and', 'ordering', 'effort', 'easy', 'form', 'the', 'useful', 'done', 'an', 'effectiveness', 'way', 'organization', 'other'}
+.I 41
+.W {'new', 'be', 'it', 'important', 'articles', 'aspects', 'storage', 'accepted', 'to', 'difficulty', '.', 'student', 'in', 'comprehending', 'information', 'or', 'What', 'before', 'understanding', 'retrieval', 'basic', 'various', 'of', 'researcher', 'field', 'this', '?', 'vocabulary', 'provide', 'The', 'is', 'and', 'average', 'appears', 'the', 'It', 'that', 'understood', 'has', 'an', 'fully', 'would'}
+.I 42
+.W {'coding', 'it', 'research', 'maximizing', 'way', 'understand', 'articles', 'programmer', 'systems', 'failure', 'to', '.', 'take', ',', 'used', 'in', 'written', 'describing', 'information', 'programming', 'What', 'position', 'adequately', 'for', 'retrieval', 'less', 'a', 'analysis', 'of', 'problem', '?', 'have', 'The', 'is', 'been', 'and', 'related', 'equipment', 'indexing', 'are', 'will', 'which', 'than', 'the', 'write', 'often', 'effectiveness', 'machine', 'encountered', 'difficulties', 'plan', 'document'}
+.I 43
+.W {'million', 'technical', 'new', 'On', 'every', 'amount', 'In', 'articles', 'storage', 'two', 'terms', 'to', '.', ',', 'made', 'day', 'in', 'attempts', 'What', 'There', 'with', 'year', 'retrieval', 'journals', 'scientific', 'of', 'analysis', 'presently', 'being', 'fifty', 'this', '?', 'have', 'been', 'and', 'average', 'control', 'are', 'published', 'the', 'many', 'publication', 'appear', 'one', 'hundred', 'cope'}
+.I 44
+.W {'its', 'This', 'How', 'help', 'should', 'affect', 'includes', 'can', 'to', 'automation', '.', 'they', ',', 'in', 'information', 'increasing', 'view', 'looking', 'for', 'general', 'with', 'importance', 'impact', 'idea', 'about', 'of', 'significance', 'proliferation', 'problem', 'this', '?', 'on', 'how', 'today', 'and', 'am', 'libraries', 'will', 'the', 'I', 'react', 'cope'}
+.I 45
+.W {'cataloging', 'could', 'descriptions', 'be', 'university', 'like', 'public', 'should', 'projected', 'automation', '.', 'use', ',', 'both', 'Examples', 'seeking', 'in', 'practices', 'conventional', 'information', 'special', 'or', 'procedures', 'circulation', 'Give', 'library', 'general', 'processes', 'a', 'of', 'data', 'applications', 'acquisitions', 'processing', 'as', 'operation', 'based', 'on', 'routine', 'and', 'present', 'am', 'records', 'also', 'equipment', 'libraries', 'which', 'applied', 'the', 'I', 'record-keeping', 'mechanization', 'such', 'operations', 'serial', 'areas', 'would', 'specific', 'other'}
+.I 46
+.W {'exchange', 'methods', 'it', 'research', 'some', 'any', 'problems', 'solve', 'center', 'international', 'to', 'take', ',', 'made', 'established', 'in', 'information', 'or', 'What', 'for', 'at', 'retrieval', 'boundaries', 'material', 'a', 'blocking', 'of', 'Is', 'about', 'crossed', 'being', 'this', 'there', '?', 'If', 'those', 'have', 'regularly', 'better', 'is', 'been', 'and', 'present', 'agency', 'what', 'means', 'distributes', 'which', 'effort', 'not', 'form', 'the', 'seem', 'has', 'an', 'results', 'does', 'ways', 'national'}
+.I 47
+.W {'actual', 'distinguishing', 'new', 'government', 'be', 'research', 'however', 'countries', 'Are', 'it', 'In', 'words', 'supports', 'so', 'business', 'Who', 'to', '.', 'they', 'discipline', ',', '-', 'located', 'in', 'from', 'even', 'them', 'information', 'specialized', 'difficult', 'or', 'Can', 'still', 'library', 'universities', 'draw', 'retrieval', 'a', 'engineering', 'of', 'field', 'said', 'science', 'skills', 'about', 'as', 'there', '?', 'If', 'emerging', 'mathematics', 'Information', 'me', 'on', 'fields', 'centers', 'is', 'and', 'practice', 'libraries', 'are', 'tell', 'experimental', 'line', 'which', 'impossible', 'that', 'such', 'often', 'an', 'amalgam', 'other'}
+.I 48
+.W {'Have', 'new', 'natural', 'some', 'so', 'problems', 'if', 'development', 'to', 'necessitated', '.', 'they', 'applying', 'these', ',', 'used', 'future', 'in', 'information', 'What', 'with', 'for', 'at', 'retrieval', 'characteristics', 'of', 'But', 'prospcts', '?', 'If', 'spent', 'medical', 'on', 'have', 'techniques', 'all', 'subject', 'how', 'been', 'sciences', 'and', 'social', 'solved', 'control', 'what', 'are', 'which', 'Most', 'humanities', 'the', 'physical', 'has', 'machine', 'encountered', 'areas', 'resources'}
+.I 49
+.W {'most', 'new', 'be', 'suited', 'it', 'irrelevant', 'research', 'any', 'completely', 'DDC', 'systems', 'etc', 'to', '.', 'these', 'schemes', 'use', ',', 'LC', '-', 'knowledge', 'more', 'in', 'unnecessary', 'where', 'information', 'devised', 'for', 'scheme', 'retrieval', 'a', 'Has', 'Or', 'of', 'Is', 'there', '?', 'If', 'shown', 'have', 'why', 'is', 'subject', 'been', 'and', 'UDC', 'traditional', 'appears', 'are', 'which', 'not', 'applied', 'that', 'appear', 'has', 'machine', 'classification'}
+.I 50
+.W {'descriptors', 'be', 'How', 'controlled', 'can', '.', 'language', 'use', 'used', 'in', 'information', 'for', 'retrieval', 'utilizes', 'of', 'searching', '?', 'Of', 'construction', 'what', 'indexing', 'are', 'system', 'Coordinate', 'the', 'an', 'index'}
+.I 51
+.W {'its', 'it', 'How', 'Medicine', 'Retrieval', 'MEDLARS', 'Medicus', 'Medical', 'to', 'relation', 'project', 'operating', 'Analysis', 'by', 'What', 'Library', 'Literature', 'journals', 'characteristics', 'of', 'System', ')', 'details', 'this', '?', 'medical', 'is', '(', 'been', 'and', 'National', 'what', 'Index', 'undertaken', 'are', 'indexing', 'which', 'system', 'the', 'current', 'has', 'major', 'does', 'index', 'components'}
+.I 52
+.W {'purposes', 'Have', 'be', 'diagnostic', 'How', 'any', 'so', 'problems', 'can', 'automation', 'medicine', ',', 'use', 'automated', 'used', 'in', 'What', 'for', 'uses', 'hospitals', 'of', 'science', '?', 'If', 'record', 'medical', 'clinical', 'have', 'been', 'and', 'records', 'what', 'encountered', 'programs', 'are', 'possible', 'system', 'the', 'For', 'keeping', 'tried', 'results', 'an', 'computer', 'other'}
+.I 53
+.W {'new', 'be', 'types', 'effect', 'changes', 'initiated', 'technology', 'function', 'to', 'automation', 'Note', '.', ',', 'education', 'used', 'in', 'What', 'position', 'or', 'library', 'of', 'being', 'into', '?', 'on', 'have', 'is', 'been', 'and', 'status', 'are', 'will', 'which', 'contemplated', 'introduce', 'the', 'librarians', 'an'}
+.I 54
+.W {'How', 'MEDLARS', 'systems', 'aims', 'literature', 'to', 'future', 'information', 'What', 'retrieval', 'analysis', 'of', ')', 'applications', 'objectives', '?', 'medical', '(', 'and', 'operate', 'are', 'possible', 'system', 'the', 'does'}
+.I 55
+.W {'be', 'DC', 'arranged', 'alphabetically', 'systems', "'s", '.', 'these', 'LC', 'use', 'automated', 'in', 'information', 'or', 'classified', 'Can', 'with', 'for', 'retrieval', 'standard', 'a', 'of', 'modified', 'as', '?', 'finding', 'based', 'on', 'through', 'The', 'method', 'today', 'is', 'card', 'libraries', 'system', 'the', 'catalog', 'such', 'classification'}
+.I 56
+.W {'be', 'arranged', 'important', 'In', 'alphabetically', 'systems', 'case', '.', 'language', 'LC', ',', 'automated', 'used', 'in', 'by', 'phrase', 'information', 'or', 'entries', 'printed', 'individual', 'looking', 'ultimately', 'for', 'headings', 'either', 'definite', 'a', 'catalogs', 'Will', ')', 'because', 'manner', 'readable', '?', 'number', 'English', 'is', 'subject', '(', 'and', 'same', 'our', 'his', 'title', 'mind', 'are', 'author', 'which', 'the', 'probably', 'has', 'entry', 'classification'}
+.I 57
+.T {'Networking', 'in', 'Library', 'Directions'}
+.A Avram, H.D. McCallum, S.H.
+.W {'new', 'while', 'toward', 'led', 'technology', 'between', 'problems', 'structure', 'systems', 'environment', 'development', 'avoid', 'capability', 'authors', 'to', '.', 'standardization', 'utilities', 'automated', ',', 'service', 'States', 'requirement', 'now', 'in', 'United', 'process', 'them', 'mediate', 'online', 'before', 'library', 'basic', 'brought', 'a', 'interdependence', 'of', 'keying', 'data', 'centralization', 'MARC', 'among', 'into', 'this', 'developments', 'centers', 'The', 'is', 'From', 'major', 'and', 'pushing', 'control', 'after', 'fragmentation', 'libraries', 'Bibliographic', 'developed', 'point', 'network', 'are', 'independent', 'the', 'large', 'that', 'decentralization', 'services', 'has', 'an', 'networks', 'distribute', 'reviewed', 'coordination', 'Coordination', 'out'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 438-444) 
+.I 58
+.T {'Index', 'Performance', 'of', 'System', 'Book', 'as', 'Information', 'Testing', 'Retrieval', 'Its', 'and', 'a'}
+.A Bennion, B.C.
+.W {'its', 'ratios', 'evaluation', 'recall', 'to', '.', ',', 'in', 'application', 'performance', 'retrieval', 'of', 'precision', 'abilities', 'circumvents', 'is', 'method', 'need', 'large', 'that', 'testing', 'test', 'text', 'major', 'indicators', 'measured', 'suited', 'A', 'identity', 'apparently', 'preliminary', 'rather', 'discrimination', 'reproducible', 'requires', 'measures', 'still', 'base', 'material', 'known', 'passages', 'presently', 'location', 'ability', 'subject', 'correspond', 'not', 'system', 'It', 'selectively', 'human', 'one', 'judgement', 'actual', 'be', 'relevance', 'natural', 'but', 'two', 'can', 'queries', 'comparative', 'from', 'whose', 'approximately', 'or', 'finding', 'contrived', 'strategies', 'on', 'and', 'best', 'searchers', 'than', 'the', 'yield', 'yields', 'book', 'their', 'indexes', 'since', 'terms', 'both', 'established', 'direct', 'for', 'a', 'searching', 'as', 'showed', 'user', 'The', 'yet', 'encyclopedias', 'indexing', 'encyclopedia', 'absolute', 'superior', 'document'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 264-270) 
+.I 59
+.T {'Bibliographic', 'of', 'for', 'Document', 'Retrieval', 'Use', 'Combined', 'The', 'Cocitation', 'and', 'Coupling'}
+.A Bichteler, J. Eaton, E.A. III
+.W {"'s", 'lists', 'to', '.', ',', 'similarity', 'predictions', 'in', 'measure', 'performance', 'calculated', 'citing', 'retrieval', 'of', 'documents', 'takes', 'into', 'change', 'were', '(', 'been', 'using', 'which', 'account', 'only', 'test', 'judged', 'cocitations', 'representing', 'A', 'every', 'between', 'evaluate', 'sorted', 'retrieved', 'compared', 'consisted', 'paper', 'measures', 'To', 'improved', 'better', 'users', 'specific', 'other', 'Overall', 'over', '1712', 'relevance', 'We', 'then', 'two', 'queries', 'ordered', 'introduction', 'from', 'whose', 'by', 'we', 'coupling', 'producing', 'data', 'non-relevance', 'on', 'and', 'papers', 'had', 'the', 'effect', 'collection', 'their', 'cocitation', 'relevant', 'both', 'partial', 'for', 'resulting', 'cited', 'query', 'a', 'each', ')', 'Papers', 'resulted', 'based', 'user', 'The', 'same', 'evaluations', 'bibliographic', 'linkage', 'document', 'produced'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 278-282) 
+.I 60
+.T {'Large', 'Systems', 'Biases', 'in', 'Document', 'Retrieval', 'Interactive', 'Searching'}
+.A Blair, D.C.
+.W {'individuals', 'These', 'effect', 'A', 'algorithm', 'sophisticated', 'subjects', 'avoid', 'to', '.', 'cause', 'these', 'queries', 'both', 'inquirer', 'in', 'shared', 'by', 'under', 'for', 'retrieval', 'a', 'demonstrated', 'judgements', 'of', 'searching', 'inefficiently', 'uncertainty', 'documents', 'those', 'naive', 'helps', 'construct', 'on', 'have', 'The', 'is', 'subject', 'biases', 'and', 'similar', 'been', 'interactive', 'modify', 'are', 'system', 'experiments', 'the', 'large', 'that', 'search', 'systematic', 'way', 'suggested', 'document'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 271-277) 
+.I 61
+.T {'Weighted', 'Searches', 'to', 'Requests', 'Boolean', ':', 'An', 'Approach', 'Fuzzy'}
+.A Bookstein, A.
+.W {'This', 'while', 'notion', 'it', 'then', 'systems', 'sets', 'terms', 'patron', 'manipulability', 'to', '.', 'article', ',', 'retaining', 'desirable', 'basis', 'in', 'classical', 'weights', 'represent', 'concerns', 'importance', 'a', 'various', 'of', 'problem', 'properties', 'retain', 'Ther', 'shown', 'how', 'relative', 'The', 'is', 'requests', 'and', 'forms', 'related', 'traditional', 'assigned', 'character', 'are', 'concept', 'which', 'system', 'fuzzy', 'the', 'set', 'request', 'that', 'such', 'discussed', 'permit', 'Boolean', 'reviewed', 'index'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 240-247) 
+.I 62
+.T {'Feature', 'of', 'System', 'a', 'Comparison', 'With', 'Information', 'Retrieval', 'Search', 'an', 'Commercial', 'Service', 'In-House'}
+.A Boyle, S.O. Miller, A.P.
+.W {'evaluation', 'type', 'Some', 'to', '.', 'blindly', ',', 'basis', 'in', 'consideration', 'information', 'commercial', 'various', 'of', 'duplicate', 'were', 'impractical', 'While', 'identified', 'A', 'evaluated', 'available', 'serve', 'operating', 'designing', 'how', 'implementation', 'given', 'not', 'system', 'one', 'dictionary', 'ease', 'differences', 'specific', 'formats', 'display', 'be', 'attempt', 'real', 'can', 'detald', 'user-specified', 'they', 'comparative', 'by', 'or', 'standard', 'applications', 'System', 'truncation', 'on', 'features', 'kinds', 'and', 'therefore', 'print', 'the', 'such', 'search', 'it', 'needs', 'their', 'seen', 'was', 'In', 'commercially', 'used', 'unnecessary', 'online', 'in-house', 'for', 'a', 'environment', 'searching', 'influenced', 'as', 'must', 'based', 'user', 'careful', 'instruction', 'indexing', 'are', 'automatic', 'usefulness', 'useful', 'common', 'an'}
+.B (JASIS, Vol. 31, No. 5, September 1980, pp. 309-317) 
+.I 63
+.T {'Space', 'Metrical', 'Science', 'Measurement', 'in', 'Information', 'Objective', 'Subjective', ':', 'and'}
+.A Brookes, B.C.
+.W {'be', 'These', 'get', 'like', 'solutions', 'problems', 'subjective', ':', 'two', 'can', 'to', '.', 'argued', ',', 'However', 'made', 'transformations', 'in', 'from', 'we', 'information', 'or', 'distinguish', 'distinguished', 'a', 'each', 'of', 'science', 'spaces', 'maps', 'space', 'If', 'have', 'other', 'landscapes', 'is', 'perspective', 'easily', 'and', 'once', 'unhelpful', 'are', 'transformation', 'the', 'that', 'It', 'physical', 'objective', 'only', 'systematic', 'omitted', 'document', 'distortion'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 248-255) 
+.I 64
+.T {'Based', 'of', 'A', 'Model', 'Classification', 'Cluster', 'on', 'Searching'}
+.A Croft, W.B.
+.W {'its', 'described', 'efficient', 'cluster', 'to', '.', ',', 'in', 'information', 'retrieval', 'of', 'file', 'documents', 'is', '(', 'been', 'using', 'which', 'that', 'relationships', 'classification', 'full', 'every', 'searches', 'between', 'compared', 'paper', 'with', 'about', 'ability', 'improved', 'indicate', 'implementation', 'also', 'possible', 'system', 'tested', 'It', 'model', 'efficiency', 'other', 'This', 'be', 'can', 'clusters', 'may', 'more', 'from', 'by', 'heuristic', 'non-relevant', 'on', 'and', 'i.e.', 'experiments', 'than', 'the', 'has', 'search', 'effectiveness', 'aspects', 'organization', 'probabilistic', 'it', 'In', 'relevant', 'use', 'distinguish', 'for', 'query', 'a', ')', 'searching', 'as', 'this', 'based', 'effective', 'The', 'models', 'are', 'discussed', 'an', 'suggested', 'document'}
+.B (Inform. Systems, Vol. 5, No. 3, 1980, pp. 189-195) 
+.I 65
+.T {'of', 'Information', 'Technology', 'The', 'Library', 'and', 'Networks'}
+.A Epstein, H.
+.W {'be', 'types', 'Current', 'office', 'technology', 'RLIN', 'described', 'center', ':', 'Inc.', 'to', '.', ',', 'service', 'more', 'home', 'online', 'or', 'SDC', 'library', 'Lockheed', 'distinguished', 'functional', 'of', 'including', ')', 'directly', 'as', 'e.g.', 'INCOLSA', 'user', 'customized', 'provide', 'evolves', 'OCLC', 'outside', 'through', 'is', '(', 'and', 'his', 'predicted', 'Three', 'are', 'network', 'will', 'the', 'bibliographic', 'that', 'physical', 'It', 'NELINET', 'services', 'search', 'networks', 'files', 'aspects', 'provided'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 425-437) 
+.I 66
+.T {'of', 'Automatic', 'Classification', 'Document', 'Use', 'The', 'for', 'Titles'}
+.A Hamill, K.A. Zamora, A.
+.W {'training', '%', 'groupings', 'heuristics', 'An', '67', 'to', 'reference', '.', "''", ',', 'normalize', 'in', 'weights', 'word', 'performance', 'chemical', 'consistency', 'of', 'documents', 'into', 'During', 'against', 'is', '(', 'been', 'using', '80', 'rate', '100', 'title', 'assigned', 'stored', 'experienced', 'which', 'probabilities', 'pattern', 'tenses', 'major', 'conducting', 'classification', 'sections', 'occurrence', 'nomenclature', 'technique', 'variants', 'lookup', 'experiment', 'evaluated', 'past', '``', 'selected', 'with', 'uses', 'number', 'Abstracts', 'techniques', 'component', 'program', 'developed', 'experimental', 'published', 'according', 'human', 'phase', 'dictionary', 'computer', 'plurals', 'influence', 'correct', 'classify', 'assigns', 'Chemical', 'from', 'by', 'supplemented', 'approximately', 'or', 'at', 'assignment', 'per', 'roots', 'and', '78', 'recognition', 'the', 'derived', 'probability', 'Heuristic', 'cross-references', 'such', 'second', 'has', 'CA', 'their', 'words', 'matches', 'terms', 'five', 'computed', 'both', 'used', 'comparing', 'section', 'a', 'each', ')', 'analysis', 'as', 'gerunds', 'people', 'have', 'The', 'pre-classified', 'are', 'Program', 'results', 'an', 'document'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 396-402) 
+.I 67
+.T {'Communications', 'Brief'}
+.A Harding, A.G. Willett, P.
+.W {'Some', 'to', '.', ',', 'similarity', 'in', 'information', 'procedures', 'retrieval', 'of', 'file', 'documents', 'is', 'been', 'which', 'computation', 'that', 'only', 'classification', 'between', 'greater', 'matrix', 'if', 'approaches', 'derive', 'compared', 'avoided', 'specifically', 'communication', 'exhaustive', 'with', 'those', 'number', 'several', 'all', 'will', 'It', 'when', 'intermediate', 'reductions', 'over', 'This', 'be', 'generate', 'shows', 'limited', 'clusters', 'these', 'may', 'from', 'by', 'comparisons', 'and', 'no', 'than', 'the', 'times', 'having', 'has', ';', 'inverted', 'effect', 'collection', 'recently', 'indexed', 'terms', 'used', 'uyse', 'approach', 'conventional', 'comparing', 'pairs', 'a', 'each', 'others', 'means', 'interdocument', 'are', 'indexing', 'many', 'automatic', 'common', 'an', 'involves', 'suggested', 'document'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 298-299) 
+.I 68
+.T {'of', 'Thesaurus', 'Construction', 'to', 'Minicomputer', 'The', 'a', 'Application'}
+.A Kazlauskas, E.J. Holt, T.D.
+.W {'phases', 'machine-', 'concepts', 'altered', 'described', 'development', 'editorial', 'to', 'requirements', '.', ',', 'decisions', 'in', 'various', 'of', 'relations', 'readable', 'into', 'already', 'is', '(', 'displays', 'form', 'numbers', 'design', 'reducing', 'candidate', 'structuring', 'alphabetic', 'process', 'Special', 'prepare', 'restructuring', 'generation', 'products', 'vocabulary', 'easily', 'review', 'collect', 'indicated', 'database', 'phase', 'entry', 'overall', 'eases', 'thesaurus', 'Overall', 'NICSEM', 'creating', 'reflect', 'simple', 'correct', 'identification', 'assigning', 'by', 'hierarchical', 'staff', 'Information', 'Materials', 'minicomputer', 'provide', 'chart', 'and', 'National', 'Syndetic', 'programs', 'print', 'edit', 'the', 'times', 'permuted', 'grouping', 'facilitates', 'it', 'terms', 'use', 'Education', 'Center', 'used', 'Use', 'for', 'clerical', 'coded', 'a', ')', 'processing', 'The', 'similar', 'Because', 'initial', 'are', 'effort', 'formatted', 'useful', 'files', 'term'}
+.B (JASIS, Vol. 31, No. 5, September 1980, pp. 363-368) 
+.I 69
+.T {'Adaptive', 'Support', 'Systems', 'Decision', 'Design', 'for'}
+.A Keen, P.G.W.
+.W {'They', 'Management', 'practitioners', 'around', 'researchers', 'evolution', 'Some', 'to', '.', ',', "''", 'extension', 'in', 'latter', 'concerned', 'behavior', 'include', 'of', 'issued', 'is', '(', 'using', 'DSS', 'Data', 'define', 'that', 'only', 'mean', 'design', 'research', 'managers', 'any', 'suitable', 'giving', 'systems', 'center', 'approaches', 'finished', 'rather', 'available', 'tasks', 'process', 'narrow', 'key', 'paper', 'view', 'argument', '``', 'with', 'improving', 'To', 'providing', 'fields', 'techniques', 'developed', 'not', 'system', 'unnecessarily', 'cry', 'be', 'while', 'technology', 'then', 'simply', 'access', 'well', 'can', 'become', 'support', 'they', 'rallying', 'Support', 'Decision', 'from', 'by', 'focus', 'them', 'adaptive', 'cries', 'final', 'data', 'architecture', 'representation', 'Information', 'strategies', 'on', 'decision', 'and', 'very', 'different', 'writers', 'the', 'than', 'For', 'former', 'has', ';', 'As', 'analytic', 'Systems', 'it', 'issue', 'computers', 'some', 'making', 'designed', 'adaption', 'relevant', 'use', 'Science', 'where', 'represent', 'situations', 'understanding', 'for', 'defined', 'a', ')', 'managerial', 'learning', 'as', 'MIS', 'this', 'must', 'started', 'others', 'user', 'have', 'subfield', 'The', 'through', 'getting', 'regard', 'interactive', 'models', 'role', 'concept', 'many', 'within', 'an', 'term', 'Processing', 'strategy'}
+.B (Database, Vol. 12, No. 1-2, Fall 1980) 
+.I 70
+.T {'Extracting', 'Documents', 'Significant', 'Automatic', 'in', 'Scienfific', 'Method', 'or', 'Phrases', 'for', 'An', 'Technical'}
+.A Maeda, T. Momouchi, J. Sawamura, H.
+.W {'concepts', 'described', 'time', 'to', '.', 'relation', ',', 'in', 'information', 'small', 'retrieval', 'of', 'documents', 'partly', 'shown', 'effectively', 'method', 'is', 'been', 'using', 'title', 'that', 'text', 'technical', 'A', 'every', 'abstract', 'relatively', 'experiment', 'fairly', 'with', 'phrases', 'uses', 'upon', 'about', 'field', 'number', 'all', 'component', 'fields', 'contents', 'construction', 'system', 'dictionary', 'abstreact', 'cases', 'lexical', 'be', 'semantic', 'carriers', 'significant', 'technology', 'sets', 'select', 'satisfactory', 'knowledge', 'may', 'them', 'or', 'scientific', 'among', 'constructed', 'representation', 'on', 'and', 'meanings', 'different', 'applied', 'the', 'For', 'has', 'new', 'some', 'their', 'five', 'used', 'extracted', 'approach', 'extract', 'for', 'substantial', 'a', 'items', 'analysis', 'science', 'analysius', 'as', 'processing', 'based', 'have', 'The', 'are', 'discussed', 'results', 'structure', 'document'}
+.B (Info. Proc. & Management, Vol. 16, No. 3, 1980, pp.119-127) 
+.I 71
+.T {'Text', 'Retrieval', 'by', 'Answer-Passage', 'Searching'}
+.A O'Connor, J.
+.W {'%', 'ratios', '13', 'feasible', '67', 'recall', 'reference', '.', ',', 'in', 'operational', 'procedures', 'retrieval', 'of', 'already', 'were', 'is', '(', 'addition', 'false', 'form', 'economically', 'rates', 'scientists', 'good', 'greater', 'experiment', 'retrieved', 'selected', 'with', 'answer-paper', 'falsely', 'demonstrated', 'those', 'lawyers', 'better', 'average', 'sentences', 'one', 'involved', 'computer', 'output', 'opver', 'two', 'independently', 'except', 'predictably', 'by', 'or', 'per', 'question', 'and', 'different', 'experiments', 'than', 'the', 'Previous', 'services', 'has', 'search', 'references', 'forms', 'passage', 'In', 'words', 'variety', 'advantages', 'combination', '10', 'selectors', 'used', 'respectively', '72', 'difficult', 'for', 'a', 'each', ')', 'as', 'people', 'have', 'The', 'present', 'Passage', 'produced'}
+.B (JASIS, Vol. 31, No. 4, July 1980, pp. 227-239) 
+.I 72
+.T {'Descriptor', 'Using', 'Indexed', 'Retrieval', 'Files', 'Partial-Match'}
+.A Pfaltz, J.L. Berman, W.J. Cagley, E.M.
+.W {'descriptors', 'its', 'accesses', 'These', 'described', 'efficient', 'hence', 'particular', 'to', 'describe', '.', ',', "''", 'in', 'application', 'associated', 'word', 'procedures', 'tuned', 'behavior', 'retrieval', 'of', 'file', 'method', 'is', 'name', 'which', 'form', 'large', 'block', 'descriptor', 'called', 'Then', 'ways', 'A', 'storage', 'creation', 'serve', '``', 'paper', 'with', 'practical', 'number', 'record', 'several', 'will', 'be', 'simple', 'algorithm', 'then', 'detail', 'can', 'these', 'code', 'we', 'data', 'and', 'Two', 'records', 'very', 'different', 'the', 'sketched', 'derived', 'binary', ';', 'presented', 'index', 'organization', 'expected', 'partial-match', 'In', 'indexed', 'terms', 'analyzed', 'files', 'used', 'for', 'a', 'each', 'whole', 'this', 'as', 'are', 'First', 'an', 'suggested', 'structure'}
+.B (Commun. ACM, Vol. 23, No. 9, September 1980, pp. 522-528) 
+.I 73
+.T {'Cooperation', 'Among', 'Library', 'and', 'Networks', 'Competition'}
+.A Robinson, B.M.
+.W {'This', 'additional', 'led', 'RLIN', 'evolution', ':', 'broker', 'regional', 'multistate', 'to', 'Inc.', '.', 'technological', 'Automation', 'these', ',', 'three', 'nature', 'discussion', 'cooperative', 'advances', 'paper', 'theme', 'emergence', 'Group', 'Library', 'economic', 'library', 'a', ')', 'of', 'System', 'affecting', 'Washington', 'factors', 'state', 'competitive', 'UTLAS', 'explores', 'those', 'Information', 'OCLC', 'Network', 'WLN', 'Toronto', '(', 'examines', 'and', 'The', 'also', 'is', 'major', 'success', 'role', 'nonprofit', 'Recenty', 'network', 'the', 'Research', 'that', 'Libraries', 'services', 'has', 'University', 'networks', 'relationships'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 413-424) 
+.I 74
+.T {'Understander', 'An', 'Integrated'}
+.A Schank, R.C. Lebowitz, M. Birnbarim, L.
+.W {'most', 'scripts', 'sees', 'new', 'it', 'A', 'natural', 'ignoring', 'everything', 'their', 'parse', 'parser', 'aid', 'attempt', 'appropriate', 'type', 'deepest', 'meaning', 'to', 'plans', '.', 'language', 'rest', ',', 'knowledge', 'in', 'inferences', 'from', 'conception', 'concentrates', 'understanding', 'idea', 'uses', 'entire', 'of', 'integrated', 'Rather', 'this', 'into', 'as', 'map', 'representation', 'on', 'The', 'is', 'and', 'sentences', 'input', 'what', 'behind', 'determines', 'not', 'form', 'system', 'the', 'It', 'Furthermore', 'distinct', 'that', 'interesting', 'an', 'does', 'presented', 'other'}
+.B (Am. J. of Computational Linguistics, Vol. 6, No. 1, January-March 1980, pp. 13-30) 
+.I 75
+.T {'States', 'Resource', 'the', 'Sharing', 'An', 'in', 'United', 'Historical', 'Philosophical', 'Library', ':', 'and', 'Overview', 'Networks'}
+.A Stevens, N.D.
+.W {'This', 'be', 'their', 'In', 'closely', 'storage', 'development', 'two', 'particular', 'relationship', 'to', 'late', '.', 'attention', 'these', ',', 'States', 'become', 'origins', 'materials', 'cooperative', 'in', 'more', 'United', 'paper', 'traces', '1960s', 'with', 'library', 'for', 'examined', 'of', 'integrated', 'discusses', 'question', 'have', 'through', 'The', 'is', 'inter-', 'how', 'and', 'present', 'tended', 'separate', 'sharing', 'programs', 'concept', 'given', 'which', 'the', 'resource', 'acquisition', 'might', 'cooperation', 'networks', 'major', 'loan', 'components'}
+.B (JASIS, Vol. 31, No. 6, November 1980, pp. 405-412) 
+.I 76
+.T {'of', 'Their', 'Retrieval', 'Normalization', 'and', 'Titles'}
+.A Takamatsu, S. Fujita, UY. Nishida, F.
+.W {'reasonable', 'keep', 'This', 'converted', 'their', 'then', 'In', 'stages', 'case-label', 'preciseness', 'expression', 'implemented', 'presents', 'controlled', 'well', 'key-term', 'noun', 'recall', 'order', 'to', '.', ',', 'Therefrom', 'extracted', 'value', 'in', 'titles', 'by', 'phrase', 'paper', 'predicate-governor', 'normalizations', 'or', 'hierarchical', 'with', 'matching', 'for', 'retrieval', 'normalized', 'a', 'standard', 'expressed', 'various', 'of', 'transformed', 'items', 'file', 'case-labels', 'clause', 'as', 'precision', 'parsing', 'function-', 'based', 'several', 'English', 'on', 'The', 'method', 'is', 'specification', 'and', 'rate', 'tree-like', 'title', 'high', 'recorded', 'are', 'form', 'the', 'For', 'function-expression', 'each', 'inverted'}
+.B (Info. Proc. & Management, Vol. 16, No. 3, 1980, pp. 155-167) 
+.I 77
+.T {'Grammars', 'Cascaded', 'ATN'}
+.A Woods, W.A.
+.W {'its', 'previous', 'be', 'notion', 'A', 'cooperating', 'output', 'represented', 'needs', 'hypothesis', 'grammar', 'reduces', 'ATN', "'s", 'principles', 'cascaded', 'includes', 'extensive', 'to', '.', 'language', 'discjussion', ',', 'in', 'from', 'generalization', 'complex', 'where', 'paper', 'understanding', 'with', 'behavior', 'domain', 'responsibility', 'a', 'each', ')', 'of', 'considered', 'takes', 'into', 'number', 'parsing', 'have', 'separate', 'The', 'is', '(', 'and', 'stage', 'input', 'factoring-conceptual', 'transducer', 'hypotheses', 'given', 'the', 'that', 'places', 'distinct', 'sequence', 'permit', 'CATN', 'prescribed', 'an', 'called', 'fact', 'during', 'decomposition', 'factoring'}
+.B (Am. of Computational Linguistics, Vol. 6, No. 1, January-March 1980) 
+.I 78
+.T {'Match', 'Using', 'Partial', 'Queries', 'Algorithms', 'Fragments', 'Word', 'for', 'Processing'}
+.A Alagar, V.S.
+.W {'methods', 'relevance', 'words', 'handle', 'well', 'analyses', 'terms', 'to', '.', 'language', 'costs', 'queries', 'use', 'compared', 'exploits', 'evaluated', 'cost', 'in', 'critically', 'Algorithms', 'process', 'compressed', 'show', 'word', 'or', 'either', 'retrieval', 'a', 'specified', 'whole', 'of', 'interdependence', 'file', 'as', 'elements', 'partially', 'effectively', 'The', 'method', 'and', 'proposed', 'records', 'maximum', 'are', 'given', 'which', 'system', 'database', 'fragments', 'the', 'that', 'has', 'least', 'design'}
+.B (Inform. Systems, Vol. 5, No. 4, April 1980, pp. 323-332) 
+.I 79
+.T {'of', 'Formulation', 'General', 'A', 'Distribution', 'Graph-Oriented', "'s", ':', 'The', 'Bradford', 'Approach'}
+.A Asai, I.
+.W {'deduced', 'deletion', 'articles', 'straight', "'s", ':', 'case', 'type', 'to', '.', ',', 'fit', 'in', 'square', 'general', 'less', 'journals', 'of', 'is', '(', 'method', 'using', 'that', 'log', 'b', 'unknown', 'types', 'A', 'rank', 'Each', 'Bradford', 'shift', 'experiment', 'further', 'three', '+', 'special', 'with', 'c', 'detailed', 'number', '11', 'parameters', 'line', 'published', 'previously', 'root-weighted', 'one', 'slope', 'be', 'shows', 'total', 'formulation', 'statistical', 'accurate', 'order', 'can', 'comparative', 'more', 'value', 'databases', '=', 'cumulative', 'leads', 'data', 'estimate', 'eight', 'frequency', 'distribution', 'fifth', 'and', 'proposed', 'best', 'the', 'error', 'y', 'droop', 'In', 'x', 'five', 'observed', 'ratio', 'respectively', 'where', 'suggests', 'a', 'analysis', ')', 'as', 'follows', 'From', 'The', 'mathematical', 'models', 'are', 'intercept'}
+.B (JASIS, Vol. 32, No. 2, March 1981, pp. 113-121) 
+.I 80
+.T {'Large', 'Problems', 'Systems', 'in', 'Information', 'Distributed', 'Lexical'}
+.A Berkovich, S.Y. Shneiderman, B.
+.W {'local', 'to', 'lexically', '.', ',', "''", 'broad', 'in', 'concerned', 'information', 'scheme', 'retrieval', 'of', 'dictionaries', 'separate', 'is', 'which', 'large', 'that', 'incorrect', 'design', 'linguistic', 'any', 'problems', 'systems', 'execution', 'creation', 'covered', 'handling', 'rather', 'functions', '``', 'paper', 'special', 'distributed', 'view', 'with', 'hope', 'promotes', 'filter', 'number', 'component', 'program', 'created', 'efficiently', 'network', 'not', 'system', 'database', 'subsystems', 'lexical', 'mostly', 'We', 'concerning', 'interrelations', 'deal', 'can', 'become', 'queries', 'by', 'we', 'databases', 'suybsystem', 'integration', 'data', 'architecture', 'and', 'our', 'plays', 'introduce', 'than', 'the', 'package', 'environments', 'Such', 'productive', 'facilitates', 'their', 'completely', 'In', 'especially', 'subsystem', 'sense', 'for', 'a', 'great', 'this', 'as', 'necessity', 'The', 'names', 'organized', 'control', 'role', 'are', 'concept', 'operations', 'an'}
+.B (Information Processing & Management, Vol. 16, February 1980, pp. 259-267) 
+.I 81
+.T {'Relational', 'Model', 'in', 'Information', 'Retrieval', 'The'}
+.A Crawford, R.G.
+.W {'decade', 'sound', 'first', 'bibliographical', 'notion', 'normalization', 'naturalness', 'In', 'theoretical', 'noted', 'advantages', 'relational', 'to', '.', 'attention', 'third', 'article', ',', 'algebra', 'pertinent', 'these', 'past', 'basis', 'fourth', 'in', 'approach', 'increasing', 'information', 'languages', 'consistency', 'retrieval', 'received', 'a', 'include', 'demonstrated', 'of', 'viewing', 'normal', 'including', 'this', 'Relational', 'relationally', 'examples', 'shown', 'SEQUEL', 'simplicity', 'The', 'is', 'Numerous', 'and', 'forms', 'calculus', 'are', 'the', 'database', 'model', 'second', 'discussed', 'Its', 'introduced', 'has', 'Advantages', 'presented', 'during', 'organization'}
+.B (JASIS, Vol. 32, No. 1, January 1981, pp. 51-64) 
+.I 82
+.T {'Interchange', 'in', 'Information', 'Environment', 'Office', 'an', 'Electronic'}
+.A DeSousa, M.R.
+.W {'exchange', 'its', 'These', 'utilize', 'Office', 'described', 'implemented', 'transmission', 'Some', 'to', 'automation', '.', ',', 'broad', 'basis', 'in', 'application', 'associated', 'information', 'interchange', 'general', 'of', 'streams', 'is', '(', 'IBM', 'Administrative', 'facilities', 'that', 'address', 'technical', 'A', 'System/370', 'between', 'DISOSS', 'paper', 'processes', 'products', 'overview', 'detailed', 'Distributed', 'herein', 'Displaywriter', 'will', 'not', '5520', 'specific', 'provided', 'other', 'This', 'office', 'capability', 'they', 'interface', 'Support', 'description', 'applications', 'System', 'data', 'protocols', 'communications', 'architecture', 'across', 'provide', 'distribution', 'architectural', 'do', 'and', 'SNA', 'the', 'such', 'Specifically', ';', 'provides', 'opposed', 'approach', 'for', 'currently', 'a', ')', 'as', 'describes', 'user', 'others', 'The', 'existing', 'control', 'are', 'offerings', 'spectrum', 'architectures', 'an', 'document'}
+.B (IBM Systems Journal, Vol. 20, No. 1, 1981, pp. 4-22) 
+.I 83
+.T {'of', 'Relevance', 'Systems', 'Automatic', 'in', 'Retrieval', 'Feedback', 'Use', 'The', 'Boolean'}
+.A Dillon, M. Desper, J.
+.W {'its', 'relevance', 'reflect', 'These', 'A', 'compare', 'technique', 'Results', 'validate', 'then', 'described', 'MOre', 'subsequent', "'s", 'feedback', 'terms', 'patron', 'series', 'to', 'extensive', '.', 'retrieved', 'queries', ',', 'relevant', 'boolean', 'employed', 'used', 'SMART-type', 'in', 'application', 'illustrate', 'measures', 'small', 'with', 'for', 'base', 'retrieval', 'reformulation', 'a', 'judgements', 'guide', 'query', 'of', 'data', 'environment', 'documents', 'among', 'as', 'non-relevant', 'To', 'on', 'distribution', 'is', 'and', 'favourably', 'construction', 'Based', 'initial', 'are', 'appearing', 'tests', 'experimental', 'system', 'the', 'automatic', 'derived', 'that', 'testing', 'prevalence', 'an', 'suggested', 'term', 'set'}
+.B (Journal of Documentation, Vol. 36, No. 3, September 1980, pp. 197-208) 
+.I 84
+.T {'Interacting', 'Artificial', 'Systems', 'in', 'With', 'Donau', ':', 'The', 'Project', 'Language', 'Natural'}
+.A Guida, G. Somalvico, M.
+.W {'exchange', 'oriented', 'ensures', 'described', 'development', ':', 'particular', 'to', '.', 'language', ',', 'parallel', 'future', 'in', 'application', 'Intelligence', 'information', 'propose', 'general', 'segments', 'of', 'flexibility', 'extractor', 'parsing', 'is', '(', 'analyser', 'which', 'independent', 'design', 'possibility', 'contribution', 'overcome', 'research', 'conclusions', 'intended', 'supported', 'between', 'systems', 'directions', 'Artificial', 'user-oriented', 'Milan', 'paper', 'incremental', 'generality', 'selected', 'changing', 'base', 'algorithms', 'presently', 'horizontal', 'vertical', 'examples', 'implementation', 'modular', 'developed', 'system', 'often', 'way', 'inquiry', 'projects', 'definition', 'This', 'actual', 'simple', 'semantic', 'natural', 'detail', 'two', 'allows', 'knowledge', 'illustrated', 'by', 'or', 'Project', 'version', 'at', 'Polytechnic', 'experiences', 'data', 'level', 'operation', 'architecture', 'lack', 'representation', 'controller', 'on', 'and', 'Linguistic', 'different', 'the', 'enlarging', 'experimentation', 'presented', 'methodological', 'new', 'facilitate', 'In', 'pointed', 'purpose', 'running', 'Promising', 'mode', 'approach', 'specialized', 'conception', 'redefining', 'understanding', 'segment', 'for', 'domain', 'a', 'each', ')', 'Performance', 'based', 'The', 'evaluations', 'existing', 'reported', 'DONAU', 'models', 'means', 'are', 'syntactic', 'single', 'many', 'discussed', 'results', 'an', 'legality', 'out'}
+.B (Inform. Systems, Vol. 5, NO. 4, February 1980, pp. 333-344) 
+.I 85
+.T {'Matching', 'Approximate', 'String'}
+.A Hall, P.A.V. Dowling, G.R.
+.W {'difference', 'though', 'canonical', 'to', '.', ',', 'similarity', 'in', 'relating', 'of', 'parsing', 'is', 'solved', 'method', 'using', 'been', '(', 'large', 'probabilities', 'correction', 'during', 'methods', 'full', 'suitable', 'problems', 'keyword', 'item', 'aim', 'programming', 'measures', 'with', 'still', 'Approximate', 'surveyed', 'several', 'techniques', 'database', 'when', 'other', 'be', 'promising', 'function', 'sets', 'readily', 'found', 'may', 'likelihoods', 'Searches', 'strings', 'spelling', 'or', 'matching', 'Equivalence', 'description', 'dynamic', 'finding', 'and', 'open', 'approximate', 'the', 'briefly', 'For', 'error', 'forms', 'mistake', 'seen', 'matches', 'ideas', 'equivalence', 'approach', 'classified', 'for', 'either', 'a', ')', 'problem', 'as', 'there', 'this', 'have', 'The', 'are', 'surveying', 'an', 'well-established', 'suggested', 'reviewed'}
+.B (Computing Surveys, Vol. 12, No. 4, December 1980, pp. 381-402) 
+.I 86
+.T {'Catalog', 'Bibliographic', 'of', 'Online', 'Data', 'Using', 'Retrieval', 'Microfiche', 'and', 'an', 'Service', 'for', 'Technical'}
+.A Hayes, R.M. Borko, H.
+.W {'demonstrate', 'evaluation', 'Experimental', 'feasible', 'to', '.', 'costs', 'project', 'magnetic', ',', 'in', 'operational', 'procedures', 'retrieval', 'various', 'of', 'including', 'into', 'is', 'economical', 'that', 'permits', 'primary', 'technical', 'A', 'necessary', 'storage', 'creation', 'cost', 'demonstrated', 'all', 'created', 'experimental', 'system', 'computer', 'feasibility', 'microfiche', 'be', 'bases', 'more', 'from', 'library', 'data', 'collected', 'and', 'records', 'than', 'the', 'derived', 'catalog', 'second', 'times', 'services', 'effectiveness', 'set', 'Costs', 'completely', 'facility', 'disk', 'analyzed', 'integrates', 'use', 'online', 'for', 'prototype', 'a', 'The', 'software', 'control', 'equipment', 'result', 'are', 'tests', 'comparable', 'bibliographic', 'operations', 'an', 'results', 'would'}
+.B (Information Processing and Management, Vol. 16, No. 6, February 1980, pp. 277-289) 
+.I 87
+.T {'.', 'Access', 'of', 'Evaluation', 'Systems', 'Study', 'Users', 'Acceptance', 'Information', 'by', 'Its', 'End', 'Language', 'An', 'Natural', 'to'}
+.A Krause, J.
+.W {'actual', 'be', 'it', 'evaluation', 'natural', 'answering', 'systems', 'feasible', 'asked', 'to', 'bases', '.', 'language', 'suggest', 'subset', 'use', "''", 'German', 'Methods', 'in', 'LANGUAGES', 'application', '``', 'information', 'languages', 'for', 'general', 'query', 'a', ')', 'of', 'data', 'applications', 'as', 'USER', 'question', 'architecture', 'whether', 'based', 'how', 'The', 'is', 'SPECIALTY', '(', 'using', 'and', 'evaluating', 'will', 'subsets', 'which', 'system', 'form', 'the', 'discussed', 'error', 'results', 'USL', 'structure'}
+.B (Inform. Systems, Vol. 5, No. 4, May 1980, pp. 297-318) 
+.I 88
+.T {'Relating', 'of', 'Online', 'Services', 'the', 'Considerations', 'in', 'Libraries', 'Cost-Effectiveness', 'Some', 'to'}
+.A Lancaster, F.W.
+.W {'misleadingly', 'This', 'some', 'way', 'information', 'pessimistic', 'In', 'but', 'access', 'completely', 'hypothetical', "'s", ':', 'two', 'An', 'to', '.', 'costs', 'use', 'compared', 'seems', 'cost', ',', '2', 'mode', 'in', 'work', 'comparing', 'cost-effectiveness', 'economic', 'online', 'printed', 'with', 'view', 'corrected', 'economics', 'at', 'a', 'analysis', 'data', 'of', 'subscriptions', 'searching', 'because', 'combining', 'as', ')', 'give', 'unfair', 'contains', 'on', 'grossly', 'The', 'is', '(', 'would', 'and', '1978', 'i.e.', 'libraries', 'regarding', 'are', 'Collier', 'different', 'not', 'the', 'It', 'only', 'picture', 'services', '1', 'looks', 'effectiveness', 'modes', 'presented', 'aspects'}
+.B (Aslib Proceedings, 33(1), January 1981, pp. 10-14, printed in Great Britain) 
+.I 89
+.T {'of', 'Co-Citation', 'the', 'Analysis', 'Context', 'Structure', 'and', 'Paradigms'}
+.A Small, H.
+.W {'represented', 'concepts', 'intellectual', 'though', "'", 'so', 'taken', 'something', 'time', 'particular', 'authors', 'to', '.', 'groups', ',', 'in', 'concerned', 'measure', 'weights', 'information', 'show', 'citation', 'highly', 'retrieval', 'various', 'sample', 'of', 'totality', 'relations', 'corpus', 'share', 'knowing', 'designated', 'is', '(', 'been', 'using', 'regarding', 'identify', 'which', 'paradigm', 'that', 'together', 'text', 'called', 'consensus', 'obtained', 'scientists', 'Already', 'pertaining', 'A', 'read', 'between', 'systems', 'further', 'communication', 'paper', 'example', 'with', 'passages', 'about', 'field', 'Suppose', 'considered', 'invisible', 'matters', 'specified', 'those', 'manner', 'combining', 'all', 'techniques', 'fields', 'how', 'subject', 'perspective', 'will', 'possible', 'given', 'not', 'graph', 'network', 'paradigms', 'degree', 'one', 'often', 'way', 'involved', 'arc', 'specific', 'definition', 'This', 'be', 'B', 'lines', 'notion', 'Clearly', 'natural', 'referred', 'semantic', 'serving', 'displayed', 'mark', 'combine', 'two', 'can', 'matter', 'these', 'find', 'may', 'colleges', 'except', 'Often', 'combinations', 'from', 'by', 'we', 'them', 'or', 'served', 'at', 'operation', 'Many', 'frequency', "'consensual", 'occurs', 'do', 'on', 'and', 'our', 'what', 'appears', 'papers', 'the', 'I', 'For', 'such', 'might', 'artificial', 'set', 'admissible', 'connecting', 'it', 'some', 'topic', 'their', 'purpose', 'combination', 'nodes', 'intelligence', 'certain', 'n', 'mode', 'used', 'approach', 'frequent', 'specialized', 'emerge', 'a', 'each', 'analysis', 'operationalize', ')', 'this', 'as', 'sub-set', 'have', 'The', 'similar', 'same', 'another', 'are', 'concept', 'sometimes', 'members', 'arcs', 'predominant', 'discussed', 'within', 'an', 'structure', 'document'}
+.B (Journal of Documentation, Vol. 36, No. 3, September 1980, pp. 183-196) 
+.I 90
+.T {'Online', 'Cocited', 'Social', 'the', 'Experiment', 'Retrieval', 'Author', 'Indicators', ':', 'with', 'An', 'Literature'}
+.A White, H.D.
+.W {'although', "'", 'entering', 'retrieving', 'An', 'authors', 'to', '.', 'language', 'groups', ',', "''", 'nature', 'in', 'content', 'jointly', 'group', 'Sheldon', 'thought', '298', 'pair', 'general', 'citing', 'retrieval', 'of', 'integrated', 'documents', 'harder', 'movement', 'were', 'is', '(', 'SI', 'which', 'that', 'indicator-type', 'Other', 'identified', 'cocitations', '177', 'indicators', 'formed', 'tend', 'akin', 'relatively', 'retrieved', 'three', '``', 'with', 'specified', 'likely', 'Documents', 'generally', 'also', 'occur', 'not', 'It', 'other', 'be', 'seemed', 'subsequent', 'two', 'Social', 'literature', 'Duncan', 'believed', 'they', 'found', 'by', 'them', 'or', 'Land', 'Six', 'at', 'data', 'on', 'and', 'citations', 'input', 'papers', 'One', 'writers', 'the', 'Bauer', 'had', 'than', 'causal', 'formally', 'modeling', 'least', 'As', 'signs', 'first', 'expected', 'Scisearch', '121', 'additional', 'their', 'was', 'expectattions', 'retrieve', 'certain', 'mode', 'linked', 'titles', 'online', 'pairs', 'cited', 'a', ')', 'overviews', 'as', 'path-analytic', 'through', 'The', 'names', 'four', 'social', 'frequently', 'prominent', 'confirmed', 'result', 'are', 'All', 'involves', 'would'}
+.B (JASIS, Vol. 32, No. 1, January 1981, pp. 16-21) 
+.I 91
+.T {'Online', 'for', 'Database', '1979', 'Statistics', 'and'}
+.A Williams M.E.
+.W {'million', 'over', 'U.S.', 'These', 'natural', 'conducted', 'searches', 'systems', 'bringing', 'dramatically', 'Some', 'to', '.', 'language', ',', 'use', 'past', 'in', '148', 'databases', 'online', '1979', 'for', 'years', 'of', 'number', 'contained', 'totals', 'Canadian', 'several', 'were', 'via', 'The', 'contain', 'and', 'records', '4', 'increased', 'the', 'bibliographic', '528', 'bioliographic-related', 'has', 'major'}
+.B (Bulletin of ASIS, Vol. 7, No. 2, December 1980, pp. 27-29) 
+.I 92
+.T {'Systems', 'Metrical', 'in', 'Retrieval', 'Experiments', 'Feedback', 'Full-Text', 'Local'}
+.A Attar, R. Fraenkel, A.S.
+.W {'consists', '2400', 'keywords', 'local', 'consistent', 'recall', 'to', '.', ',', 'earlier', 'searchonyms', 'in', 'even', 'replacing', 'contrast', 'small', 'performance', 'of', 'manual', 'documents', 'precision', 'method', 'using', 'context', 'small-scale', 'matrices', 'text-words', 'which', 'returned', 'large', 'that', 'appear', 'improvements', 'Augumenting', 'methods', 'suited', 'A', 'limits', 'Aramaic', 'next', 'experiment', 'further', 'process', 'Further', 'with', 'improving', 'those', 'run', 'English', 'indicate', 'collect', 'database', 'weighting', 'one', 'produces', 'synonymous', 'be', 'formulation', 'arbitrarily', 'metrical', 'well', 'these', 'simultaneously', 'more', 'by', 'databases', 'Hebrew', 'or', 'leads', 'clustering', 'applications', 'frequency', 'on', 'via', 'and', 'iterative', 'applied', 'experiments', 'the', 'iteration', 'search', 'global', 'some', 'was', 'test-queries', 'doubtful', 'size', 'should', 'feedback', 'terms', 'made', 'formulate', 'consisting', 'larger', 'where', 'full-text', 'query', 'a', 'searching', 'proximity', 'as', 'The', '1,3000,000', 'are', 'single', 'automatic', 'results', 'an', 'evidence'}
+.B (Information Processing & Management, Vol. 17, No. 3, 1981, pp. 115-126) 
+.I 93
+.T {'A', 'Alternative', 'Information', 'Handling', 'Microcomputer', 'Refles', ':', 'for'}
+.A Bivins, K.T. Palmer, R.C.
+.W {'its', 'considerations', 'conclude', 'microcomputer-based', 'theoretical', 'terms', 'reference', 'to', '.', ',', 'use', 'Examples', 'functions', 'in', 'from', 'by', 'process', 'Future', 'information', 'paper', 'view', 'library', 'for', 'followed', 'prototype', 'retrieval', 'at', 'a', 'currently', 'environment', 'analysis', 'data', 'problem', 'of', 'description', 'leading', 'versions', 'contained', 'gathered', 'REFLES', 'on', 'The', 'is', 'software', 'and', 'present', 'point', 'are', 'hardware', 'thereby', 'speculations', 'system', 'the', 'environments', 'discussed', 'test', 'an', 'presented', 'other'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 93-101) 
+.I 94
+.T {'of', 'Systems', 'Comparison', 'A', 'Retrieval', 'Boolean', 'Two', 'Weighted'}
+.A Bookstein, A.
+.W {'to', '.', 'article', 'algebra', ',', 'weights', 'associated', 'limit', 'scheme', 'retrieval', 'of', 'properties', 'is', 'which', 'that', 'only', 'proven', '--', 'major', 'varying', 'most', 'alternative', 'A', 'any', 'theory', 'systems', 'inability', 'conditions', 'compared', 'with', 'converge', 'fuzzy-', 'considered', 'number', 'all', 'subject', 'system', 'weighting', 'It', 'one', 'other', 'be', 'then', 'two', 'well', 'criteria', 'capability', 'these', 'may', 'by', 'we', 'rule', 'on', 'and', 'isolate', 'generalized', 'the', 'introduced', 'Boolean', 'set', 'Probabilistic', 'degrees', 'satisfies', 'their', 'In', 'should', 'written', 'approach', 'zero/one', 'represent', 'a', 'this', 'met', 'as', 'deficiency', 'have', 'traditional', 'an', 'document'}
+.B (JASIS, Vol. 32, No. 4, July 1981) 
+.I 95
+.T {'Threshold', 'Systems', 'Values', 'Retrieval', 'Boolean', 'and'}
+.A Buell, D.A. Kraft, D.H.
+.W {'explore', 'considerations', 'inherent', 'relevance', 'evaluation', 'Several', 'threshold', 'We', 'values', 'problems', 'purpose', 'analyzed', 'to', '.', 'shall', 'queries', 'recent', ',', 'in', 'weights', 'paper', 'show', 'we', 'expressions', 'with', 'for', 'retrieval', 'a', 'expressed', 'analysis', 'of', 'problem', 'fuzzy-set-theoretic', 'developments', 'processing', 'as', 'this', 'Moreover', 'documents', 'based', 'on', 'have', 'The', 'is', 'concept', 'papers', 'possible', 'system', 'the', 'resolves', 'that', 'continue', 'appeared', 'mechanisms', 'Boolean', 'document'}
+.B (Information Processing & Management, Vol. 17, No. 3, 1981, pp. 127-136) 
+.I 96
+.T {'System', 'A', 'Model', 'Retrieval', 'for', 'Weighted', 'a'}
+.A Buell, D.A. Kraft, D.H.
+.W {'They', 'mechanism', 'discrete', 'evaluation', 'threshold', 'articles', 'type', 'to', 'describe', '.', ',', "''", 'in', 'weights', 'information', 'involving', 'retrieval', 'thresholds', 'of', 'entirely', 'been', 'assigned', 'which', 'that', 'good', 'systems', 'subset', 'desired', '``', 'continuous', 'with', 'attach', 'record', 'improved', 'also', 'look', 'database', 'mechanisms', 'previous', 'This', 'generate', 'We', 'deal', 'criteria', 'these', 'queries', 'allows', 'seems', 'and/or', 'satisfy', 'more', 'from', 'we', 'generalization', 'There', 'at', 'fulfill', 'on', 'and', 'records', 'different', 'offer', 'the', 'than', 'such', 'has', 'Boolean', 'index', 'new', 'terms', 'analyzed', 'work', 'approach', 'larger', 'ought', 'for', 'query', 'either', 'a', 'analysis', 'Recent', 'partially', 'based', 'user', 'have', 'careful', 'an', 'suggested', 'structure', 'term'}
+.B (JASIS, Vol. 32, No. 3, May 1981, pp. 211-216) 
+.I 97
+.T {'.', 'Operation', 'of', 'Systems', 'A', 'Computer', 'Translating', 'End-User', 'Interface', 'Retrieval', 'I', 'Design', 'Heterogeneous', 'for'}
+.A Marcus, R.S. Reintjes, J.F.
+.W {'These', 'described', 'commands', 'to', '.', 'language', 'end', ',', "''", 'in', 'concerned', 'before', 'retrieval', 'of', 'transformed', 'Online', 'translated', 'into', 'is', 'make', 'form', 'design', 'like', 'systems', 'responses', '``', 'requests', 'implementation', 'complexity', 'also', 'look', 'given', 'network', 'experimental', 'system', 'users', 'computer', 'other', 'be', 'virtual', 'translating', 'access', 'named', 'interface', 'allows', 'may', 'by', 'databases', 'System', 'being', 'operation', 'and', 'different', 'the', 'interrogated', 'search', 'aids', 'heterogeneous', 'philosophy', 'appropriate', 'provides', 'whatever', 'especially', 'use', 'made', 'Thus', 'difficult', 'for', 'a', 'because', 'as', 'user', 'have', 'The', 'CONIT', 'instruction', 'Investigations', 'means', 'are', 'concept', 'single', 'bibliographic', 'common', 'an', 'heterogeneity', 'simplify'}
+.B (JASIS, Vol. 32, No. 4, July 1981, pp. 287-303) 
+.I 98
+.T {'.', 'Operation', 'of', 'Evaluations', 'Systems', 'A', 'Computer', 'Translating', 'End-User', 'Interface', 'Retrieval', 'Heterogeneous', 'for', 'II'}
+.A Marcus, R.S. Reintjes, J.F.
+.W {'could', 'command', 'evaluation', 'An', 'type', 'to', '.', 'language', 'end', ',', 'automated', 'in', 'operational', 'master', 'class', 'attributed', 'retrieval', 'of', 'were', 'is', 'been', 'wide', 'keyword/stem', 'undertaken', 'that', 'inexperienced', 'A', 'document', 'studied', 'usability', 'systems', 'further', 'conditions', 'cost', 'enhance', 'with', 'manner', 'detailed', 'techniques', 'improved', 'experimental', 'system', 'tested', 'users', 'It', 'sufficiently', 'simple', 'concluded', 'translating', 'named', 'well', 'can', 'built', 'find', 'interface', 'more', 'under', 'advanced', 'operation', 'provide', 'on', 'simplified', 'multiple', 'and', 'adequate', 'searchers', 'the', 'has', 'search', 'effectiveness', 'references', 'compuyter', 'usages', 'was', 'controlled', 'relevant', 'especially', 'approach', 'online', 'for', 'part', 'able', 'a', 'analysis', 'searching', 'natural-language', 'showed', 'based', 'simplifying', 'effective', 'The', 'CONIT', 'existing', 'interfaces', 'instruction', 'concept', 'increased', 'bibliographic', 'heterogenous', 'Furthermore', 'Success', 'strategy'}
+.B (JASIS, Vol. 32, No. 4, July 1981, pp. 304-317) 
+.I 99
+.T {'Systems', 'Computerized', 'Interface', 'Retrieval', 'Micrographic', 'Between', 'The', 'and'}
+.A McMurdo, G.
+.W {'scientists', 'This', 'new', 'reviews', 'interaction', 'technology', 'between', 'sophisticated', 'systems', 'combination', '.', 'automated', ',', 'may', 'future', 'benefits', 'in', 'from', 'micrographs', 'paper', 'notes', 'micrographic', 'advances', 'information', 'computerized', 'with', 'retrieval', 'generation', 'a', 'devices', 'of', 'communications', 'state', 'conclusion', 'The', 'is', 'and', 'accruing', 'input', 'libraries', 'indexing', 'on-line', 'the', 'It', 'that', 'current', 'constitute', 'document'}
+.B (Journal of Information Science I, 1980, pp. 345-349) 
+.I 100
+.T {'in', 'Information', 'Retrieval', 'Parallel', 'Computations'}
+.A Salton, G. Bergmark, D.
+.W {'methods', 'demonstrate', 'In', 'greatest', 'described', 'systems', 'array', 'arithmetic', 'refined', 'beneficial', 'integer', 'to', '.', ',', 'manipulations', 'use', 'may', 'more', 'parallel', 'serve', 'in', 'from', 'conventional', 'enhance', 'information', 'largely', 'processes', 'retrieval', 'substantial', 'a', 'advanced', 'processors', 'examined', 'data', 'algorithms', 'of', 'study', 'processing', 'benefit', 'number', 'movement', 'based', 'on', 'is', 'and', 'present', 'also', 'power', 'pointer', 'list', 'are', 'addition', 'given', 'computational', 'the', 'facilities', 'usefulness', 'that', 'environments', 'fast', 'interest', 'Conventional', 'services', 'search', 'proves', 'Various', 'evidence', ';'}
+.B (In Lecture Notes in Computer Science, No. III, W. Handler, Ed., Springer Verlag, Berlin-New York, 1981, pp. 328-342) 
+.I 101
+.T {'of', 'Importance', 'Measurement', 'Automatic', 'in', 'Indexing', 'The', 'Term'}
+.A Salton, G. Wu, H. Yu, C.T.
+.W {'evaluation', 'normally', 'utility', 'nonrelevant', 'particular', 'to', '.', ',', 'in', 'content', 'weights', 'importance', 'less', 'of', 'properties', 'documents', 'precision', 'methodologies', 'shown', 'been', 'using', 'that', 'only', 'major', 'Finally', 'indicators', 'purposes', 'theories', 'occurrence', 'systems', 'estimating', 'Methods', 'with', 'rare', 'also', 'experimental', 'not', 'weighting', 'overall', 'be', 'relevance', 'term', 'but', 'then', 'believed', 'term-weighting', 'more', 'or', 'devised', 'characteristics', 'frequency', 'on', 'and', 'medium-frequency', 'very', 'than', 'the', 'briefly', 'introduced', 'Recently', 'first', 'collection', 'their', 'In', 'terms', 'frequency-based', 'relevant', 'use', 'used', 'opposed', 'frequent', 'conventional', 'comparing', 'for', 'a', 'analysis', 'as', 'based', 'have', 'effective', 'The', 'indexing', 'are', 'automatic', 'results', 'suggested', 'reviewed'}
+.B (JASIS, Vol. 32, No. 3, May 1981, pp. 175-186) 
+.I 102
+.T {'of', 'NDX-100', 'the', 'Office', 'Filing', 'Future', 'Electronic', 'Machine', ':', 'for', 'An'}
+.A Slonim, J. MacRae, L.J. Mennie, W.E. Diamond, N.
+.W {'This', 'quickly', 'be', 'A', 'filing', 'storing', 'way', 'capable', 'particular', '.', 'retrieved', ',', "''", 'may', 'in', '``', 'paper', 'distributed', 'a', 'functional', 'of', 'mixture', 'documents', 'architecture', 'describes', 'easily', 'implementation', 'is', 'software', 'and', 'hardware', 'which', 'unstructured', 'system', 'the', 'large', 'such', 'an', 'permits', 'machine', 'numbers', 'design', 'document', 'electronic'}
+.B (Computer, Vol. 14, No. 5, May 1981, pp. 24-36) 
+.I 103
+.T {'Selection', 'of', 'Search', 'The', 'Terms', 'Good'}
+.A van Rijsbergen, C.J. Harper, D.J. Porter, M.F.
+.W {'measured', 'This', 'be', 'relevance', 'These', 'A', 'spanning', 'select', 'variety', 'feedback', 'terms', 'recall', 'tree', 'to', '.', 'further', ',', 'three', 'tackles', 'extracted', 'in', 'from', 'paper', 'approximately', 'measures', 'for', 'query', 'association', 'a', 'retrieval', 'of', 'problem', 'precision', 'number', 'vocabulary', 'Effectiveness', 'all', 'shown', 'on', 'how', 'The', 'is', 'collections', 'same', 'using', 'and', 'maximum', 'are', 'tests', 'given', 'different', 'the', 'one', 'generated', 'done', 'might', 'trees', 'search', 'test', 'effectiveness', 'term', 'index', 'connecting'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 77-91) 
+.I 104
+.T {',', 'Indexing', 'and', 'Quality', 'Efficiency', 'Consistency'}
+.A Rolling, L.
+.W {'accurately', 'it', 'represented', 'every', 'Measurement', 'correctly', 'indexed', 'time', 'criteria', 'to', '.', 'retrieved', 'relevant', 'these', 'prefer', 'article', 'in', 'quality', 'content', 'measure', 'information', 'measures', 'or', 'validity', 'costly', 'base', 'query', 'consistency', 'a', 'substitution', 'various', 'of', 'data', 'as', 'this', 'whether', 'The', 'is', 'cumbersome', 'and', 'present', 'therefore', 'indexing', 'determines', 'inter-indexer', 'the', 'Indexing', 'environments', 'an', 'effectiveness', 'assesses', ';', 'producers', 'document'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 69-76) 
+.I 105
+.T {'Text', 'Based', 'Performance', 'Passage', 'Classification', 'Retrieval', 'on', 'Colon', ':'}
+.A Shepherd, M.A.
+.W {'perform', 'Classification-based', 'compare', 'conducted', "'", ':', 'An', 'recall', 'to', '.', 'automated', ',', 'in', 'information', 'word', 'retrieval', 'various', 'of', 'factors', 'documents', 'precision', 'against', 'were', 'is', 'using', 'which', 'that', 'test', 'text', 'mean', 'primary', 'measured', 'full', 'occurrence', 'types', 'A', 'determine', 'systems', 'abstract', 'Boolean-based', 'with', 'significantly', 'contents', 'generally', 'subject', 'better', 'created', 'not', 'system', 'Classification', 'one', 'foundation', 'areas', 'Overall', 'other', 'solicited', 'simple', 'Colon', 'two', 'along', 'order', 'queries', 'found', 'more', 'from', 'databases', 'or', 'representation', 'features', 'embodied', 'and', 'Two', 'Full', 'experiments', 'than', 'the', 'such', 'search', 'index', 'forms', 'set', 'performances', 'expected', 'it', 'reduction', 'passage', 'was', 'secondary', 'Primary', 'table', 'use', 'length', 'opposed', 'for', 'a', 'each', 'did', 'analysis', 'as', 'The', 'suitability', 'four', 'indexing', 'are', 'area', 'common', 'an', 'results', 'document', 'specialists'}
+.B (Journal of Documentation, Vol. 37, No. I, March 1981, pp. 25-35) 
+.I 106
+.T {'User-Responsive', 'Bibliographic', 'Systems', 'in', 'Retrieval', 'Control', 'Subject'}
+.A Tague, J.M.
+.W {'keywords', 'Clustering', 'implemented', 'development', 'relationship', 'to', '.', ',', 'in', 'operational', 'title-user', 'retrieval', 'sample', 'of', 'documents', 'maintenance', 'were', 'dictionaries', 'co-occurrences', 'title', 'which', 'test', 'A', 'Results', 'between', 'added', 'keyword', 'with', 'study', 'vocabulary', 'record', 'indicated', 'system', 'Western', 'examine', 'University', 'previous', 'but', 'statistical', 'setting', 'queries', 'value', 'from', 'Ontario', 'databases', 'Library', 'at', 'description', 'data', 'adding', 'Information', 'via', 'and', 'Two', 'School', 'had', 'the', 'proved', 'incorporating', 'impracticality', 'effect', 'was', 'analyses', 'thesauri', 'relevant', 'Science', 'used', 'procedure', 'for', 'query', 'a', 'analysis', 'showed', 'user', 'tests', 'useful', 'carried', 'an', 'out', 'document'}
+.B (Information Processing & Management, Vol. 17, No. 3, 1981, pp. 149-159) 
+.I 107
+.T {'A', 'Program', 'for', 'Machine-Mediated', 'Searching'}
+.A Toliver, D.
+.W {'assistance', 'This', 'while', 'A', 'technique', 'help', 'searches', 'Much', 'described', 'elsewhere', "'s", 'feedback', 'to', 'IIDA', '.', 'Access', 'project', ',', 'work', 'available', 'Science', 'concerned', 'by', 'process', 'paper', 'online', 'with', 'for', 'behavior', 'largely', 'base', 'performed', 'draw', ')', 'of', 'data', 'real-time', 'being', 'analysis', 'Extensive', 'this', 'as', 'searching', 'Franklin', 'Individualized', 'based', 'Information', 'providing', 'on', 'Instruction', 'assists', 'is', '(', 'and', 'itself', 'subcontract', 'instruction', 'Services', 'developed', 'are', 'which', 'searchers', 'Data', 'experimental', 'will', 'bibliographic', 'Drexel', 'facilities', 'users', 'the', 'system', 'University', 'called', 'computer', 'Institute', 'address'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 61-68) 
+.I 108
+.T {'of', 'Measure', 'A', 'Cocitation', 'Intellectual', 'Author', 'Structure', ':', 'Literature'}
+.A White, H.D. Griffith, B.C.
+.W {'drawn', '3', 'specialties', 'proximities', 'GThe', 'intellectual', 'aid', 'case', "'s", 'particular', 'relationship', 'authors', 'to', '.', 'groups', ',', "''", 'unit', 'in', 'group', 'rely', 'information', 'raw', 'identifiable', 'various', 'of', 'distances', 'documents', 'shown', 'were', 'is', '(', 'using', 'Citation', 'schools', 'divergent', 'which', 'interpretation', 'possibly', 'that', 'together', '1', 'cocitations', 'border', 'serial', 'most', 'research', 'spanning', 'technique', 'peripherality', 'between', 'akin', 'connect', '``', '1972-1979', 'with', 'Cocitation', 'those', 'Sciences', 'subject', 'extent', 'indicates', 'offers', 'It', 'degree', 'respect', 'areas', 'other', 'over', 'be', 'shows', 'positions', 'closer', 'arbitrarily', 'two', 'Social', 'well', 'order', 'can', 'these', 'more', '5', 'from', 'them', 'establishes', 'data', 'who', 'contribute', 'map', 'across', 'on', 'and', 'sciences', 'analyzing', 'author', 'centrality', 'units', 'the', 'publications', 'seem', 'might', 'set', 'new', 'Scisearch', 'their', 'cocitation', 'assumes', '2', 'online', 'understanding', 'variable', 'resulting', 'pairs', 'locations', 'cited', 'boundaries', 'a', 'each', 'analysis', ')', 'science', 'this', 'as', 'effective', 'The', 'counts', 'axes', 'Index', 'period', 'are', '4', 'area', 'done', 'within', 'an', 'structure', 'mapping'}
+.B (JASIS, Vol. 32, No. 3, May 1981, pp. 163-171) 
+.I 109
+.T {'.', 'Appraisal', 'Progress', 'in', 'Processing', 'Introduction', ':', 'Word', 'and', 'An', 'Documentation'}
+.A Whitehead, J.
+.W {'inflation', 'These', 'Management', 'Office', 'automating', 'to', 'much', '.', 'describe', ',', "''", 'jobs', 'in', 'of', 'already', 'is', 'equally', 'high', 'Communications', 'large', 'place', 'Word', 'greater', 'bites', 'take', 'included', 'investment', 'compared', 'organizations', '``', 'Future', 'tedious', 'with', 'companies', 'improving', 'changing', 'factories', 'rapidly', 'all', 'usually', 'taking', 'look', 'scale', 'forcing', 'areas', 'Convergence', 'This', 'low', 'office', 'ten', 'technology', 'activities', 'closer', 'Technology', 'hard', 'plants', 'by', 'ever-increasing', 'at', 'buzz', 'being', 'level', 'quoted', 'per', 'Information', 'on', 'Electronic', 'routine', 'and', 'fight', 'employee', 'than', 'the', 'times', 'improve', ';', 'however', 'present-day', 'their', 'words', 'Mail', 'terms', 'productivity', 'used', 'dull', 'extremely', 'environment', 'a', 'as', 'Processing', 'The', 'list', 'are', 'manhy', 'many', 'area', 'current', 'operations', 'factory'}
+.B (Journal of Documentation, Vol. 36, No. 4, December 1980, pp. 313-341) 
+.I 110
+.T {'File', 'Using', 'Document', 'Inverted', 'Clustering', 'an', 'Approach'}
+.A Willett, P.
+.W {'single-linkage', 'matrix', 'described', 'An', 'order', 'terms', 'processed', 'to', '.', 'clusters', 'automated', 'use', 'certain', 'compared', 'similarity', 'used', 'in', 'procedure', 'from', 'inter-document', 'with', 'clustering', 'retrieval', 'of', 'require', 'file', 'searching', 'documents', 'makes', 'serial', 'vocabulary', 'characterise', 'The', 'is', 'method', 'and', 'using', 'initial', 'indexing', 'are', 'clustered', 'which', 'not', 'independent', 'set', 'the', 'derived', 'that', 'an', 'effectiveness', 'does', 'obtained', 'document'}
+.B (Journal of Information Science, 2, 1980, pp. 222-231) 
+.I 111
+.T {'of', 'Procedure', 'A', 'the', 'Automatic', 'in', 'Classification', 'Fast', 'Similarity', 'Calculation', 'for', 'Coefficients'}
+.A Willett, P.
+.W {'A', 'algorithm', 'collection', 'described', 'lists', 'running', 'terms', 'time', 'to', '.', 'coefficicents', ',', 'compared', 'in', 'procedure', 'from', 'comparing', 'procedures', 'with', 'for', 'a', 'of', 'file', 'documents', 'all', 'The', 'is', 'using', 'and', 'complexity', 'arises', 'are', 'given', 'experiments', 'previously', 'the', 'automatic', 'that', 'fast', 'non-zero-valued', 'together', 'speed', 'fact', 'an', 'identified', 'representing', 'document', 'inverted', 'classification'}
+.B (Information Processing & Management, Vol. 17, No. 2, 1981, pp. 53-60)

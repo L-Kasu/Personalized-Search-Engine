@@ -1,10 +1,11 @@
-import searching_algorithm as search
+from search import searching_algorithm as search
+
 
 # evaluates the search, that uses the preprocessing with stemming
 # returns a dictionary that associates the querry index with the precision and recall
 def evaluate_with_stemming() -> dict:
-    qry = read_qry_list('PP_output/pp_output_tnwsl_CISI.QRY.txt')
-    rel = read_related_documents('PP_output/pp_output_tnwsp_CISI.REL.txt')
+    qry = read_qry_list('../preprocessing/PP_output/pp_output_tnwsl_CISI.QRY.txt')
+    rel = read_related_documents('../preprocessing/PP_output/pp_output_tnwsp_CISI.REL.txt')
     evaluation = {}
     for i in rel:
         searched = search.and_search(qry[i])
@@ -17,8 +18,8 @@ def evaluate_with_stemming() -> dict:
     return evaluation
 
 def evaluate_without_stemming() -> dict:
-    qry = read_qry_list('PP_output/pp_output_tnxx_CISI.QRY.txt')
-    rel = read_related_documents('PP_output/pp_output_tnxx_CISI.REL.txt')
+    qry = read_qry_list('../preprocessing/PP_output/pp_output_tnxx_CISI.QRY.txt')
+    rel = read_related_documents('../preprocessing/PP_output/pp_output_tnxx_CISI.REL.txt')
     evaluation = {}
     for i in rel:
         searched = search.and_search_without_stemming(qry[i])

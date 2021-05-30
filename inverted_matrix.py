@@ -1,5 +1,5 @@
-import pp_file_reader as pp
-import pp_main
+from preprocessing import pp_file_reader as pp
+from preprocessing import pp_main
 
 
 class InvertedMatrix:

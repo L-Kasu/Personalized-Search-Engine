@@ -1,13 +1,8 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
-import evaluation_alt
-import pp_main
-import pp_preprocessing_functions
-import searching_algorithm
-import inverted_matrix
-import pp_execution_functions
+import utilities.__init__ as init
 
-
+init
 def main():
     # preprocessing
     pp_main

@@ -1,5 +1,4 @@
-import pp_main
-import searching_algorithm as search
+from search import searching_algorithm as search
 import inverted_matrix
 
 
