@@ -4,7 +4,7 @@
 import sys
 import time
 import nltk
-import pp_preprocessing_functions as ppf
+import preprocessing.pp_preprocessing_functions as ppf
 
 
 taskstring_dict = { "t" : ppf.tokenize,

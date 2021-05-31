@@ -1,4 +1,5 @@
 from search import searching_algorithm as search
+from preprocessing import *
 import inverted_matrix
 
 

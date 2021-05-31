@@ -3,15 +3,15 @@
 
 import sys
 import os
-import pp_sulyvahn as pps
-import pp_execution_functions as execution_function
+import preprocessing.pp_sulyvahn as pps
+import preprocessing.pp_execution_functions as execution_function
 
 
 # init globals
 req_nltk_packages = ['punkt', 'stopwords']
-dir_containers = "./PP_Containers/"
-dir_archive = "./CISI_archive/"
-dir_output = "./PP_output/"
+dir_containers = "./preprocessing/PP_Containers/"
+dir_archive = "./preprocessing/CISI_archive/"
+dir_output = "./preprocessing/PP_output/"
 
 
 print("----------------------")
