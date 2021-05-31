@@ -1,6 +1,6 @@
 # Personalized-Search-Engine
 ## Overview
-pending
+pending.
 
 ## Requirements
 pending
