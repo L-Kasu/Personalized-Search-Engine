@@ -5,7 +5,7 @@
 import sys
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
-from pp_sulyvahn import SulyvahnStemmer
+from preprocessing.pp_sulyvahn import SulyvahnStemmer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords as sw
 

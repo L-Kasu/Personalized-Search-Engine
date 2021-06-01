@@ -1,8 +1,8 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
-import utilities.__init__ as init
 
-init
+from utilities import *
+
 def main():
     # preprocessing
     pp_main
@@ -48,4 +48,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
