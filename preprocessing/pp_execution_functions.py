@@ -55,7 +55,6 @@ def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_outpu
                             continue
                     pp_item.append(split_line)
 
-
         database.save_object(pp_item, taskstring + "_pp_" + filename)
         container.close()
     pp_container.close()
