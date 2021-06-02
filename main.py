@@ -6,6 +6,7 @@ import pp_preprocessing_functions
 import searching_algorithm
 import inverted_matrix
 import pp_execution_functions
+import tf_idf_main
 
 
 def main():
@@ -46,9 +47,8 @@ def main():
 
         evaluation_alt
         print('The evaluation results can be found at ./eval_output/evaluation_' + pp_main.taskstring_1 + '_' + pp_main.taskstring_2 + '.txt')
-        exit()
-    else:
-        exit()
+
+    tf_idf_main.main()
 
 
 if __name__=="__main__":
