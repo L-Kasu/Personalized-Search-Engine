@@ -8,7 +8,7 @@ import evaluation.evaluation as ev
 algorithm = search.searching_algorithm.and_search
 
 
-def main_search(matrix: inverted_matrix.InvertedMatrix):
+def main_search(taskstring):
     # print("\nEnter the words you are looking for:")
     # print('> ', end='')
     # query = {input()}
@@ -23,7 +23,9 @@ def main_search(matrix: inverted_matrix.InvertedMatrix):
     # else:
     #     print("These are the documents you were looking for:")
     #     print(documents)
-    tf_idf_main.main()
+    qry_dicts = database.load_object(taskstring + "_pp_" + "CISI.QRY")
+    doc_dicts = database.load_object(taskstring + "_pp_" + "CISI.ALL")
+    tf_idf_main.main(doc_dicts, qry_dicts)
 
 
 def main_evaluate(matrix: inverted_matrix.InvertedMatrix):
@@ -59,9 +61,8 @@ def main():
     i = input()
     if i == "y":
         main_preprocess()
-    print("enter taskstring of matrix you want to work with: ")
+    print("enter taskstring you want to work with: ")
     taskstring = input()
-    matrix = database.load_object(taskstring + "_matrix")
     print("do you want to:")
     print("1: enter a search query")
     print("2: evaluate the current searching_algorithm")
@@ -69,7 +70,7 @@ def main():
     print("4: exit")
     i = input()
     if i == "1":
-        main_search(matrix)
+        main_search(taskstring)
     elif i == "2":
         print(main_evaluate(matrix))
     elif i == "3":
