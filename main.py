@@ -9,23 +9,37 @@ algorithm = search.searching_algorithm.and_search
 
 
 def main_search(taskstring):
-    # print("\nEnter the words you are looking for:")
-    # print('> ', end='')
-    # query = {input()}
-    # taskstring = matrix.get_taskstring()
-    # stemmer = pp_execution_functions.taskstring_dict[taskstring[-1]]
-    # preprocessed_query = pp_preprocessing_functions.preprocessing_pipeline(query, stemmer)
-    # preprocessed_query_as_list = list(preprocessed_query)
-    # documents = algorithm(preprocessed_query_as_list, matrix)
-    #
-    # if documents == []:
-    #     print("There are no documents that contain all of the words you are looking for.")
-    # else:
-    #     print("These are the documents you were looking for:")
-    #     print(documents)
+    test_qry = [{"I" : 0, "W" : {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face', 'mason', 'remodeling',
+     'libraries', 'evaluations', 'make', 'show', 'book', 'case', 'university', 'ellsworth', 'present', 'representative',
+     'attempt', 'important', 'architectural', 'unsuccessful', 'yale', 'college', 'architects', 'done', 'study',
+     'except', 'mistakes', 'cases', 'attempts', 'existing', 'brown', 'examples', 'library', 'solutions', 'buildings',
+     'enlarging', 'planning'}}, {"I" : 1, "W" : {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face', 'mason', 'remodeling',
+     'libraries', 'evaluations', 'make', 'show'}}]
+    test_doc =  [{"I": 0,
+                "W": {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face',
+                      'mason', 'remodeling',
+                      'libraries', 'evaluations', 'make', 'show', 'book', 'case', 'university', 'ellsworth', 'present',
+                      'representative',
+                      'attempt', 'important', 'architectural', 'unsuccessful', 'yale', 'college', 'architects', 'done',
+                      'study',
+                      'except', 'mistakes', 'cases', 'attempts', 'existing', 'brown', 'examples', 'library',
+                      'solutions', 'buildings',
+                      'enlarging', 'planning'}}, {"I": 1,
+                "W": {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face',
+                      'mason', 'remodeling',
+                      'libraries', 'evaluations', 'make', 'show', 'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face',
+                      'mason', 'remodeling',
+                      'libraries', 'evaluations', 'make', 'show', 'book', 'case', 'university', 'ellsworth', 'present',
+                      'representative',
+                      'attempt', 'important', 'architectural', 'unsuccessful', 'yale', 'college', 'architects', 'done',
+                      'study',
+                      'except', 'mistakes', 'cases', 'attempts', 'existing', 'brown', 'examples', 'library',
+                      'solutions', 'buildings',
+                      'enlarging', 'planning'}}]
+
     qry_dicts = database.load_object(taskstring + "_pp_" + "CISI.QRY")
     doc_dicts = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-    tf_idf_main.main(doc_dicts, qry_dicts)
+    tf_idf_main.main(test_doc, test_qry)
 
 
 def main_evaluate(matrix: inverted_matrix.InvertedMatrix):
@@ -63,7 +77,7 @@ def main():
         main_preprocess()
     print("enter taskstring you want to work with: ")
     taskstring = input()
-    print("do you want to:")
+    print("\nDo you want to:")
     print("1: enter a search query")
     print("2: evaluate the current searching_algorithm")
     print("3: rerun")
