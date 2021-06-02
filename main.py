@@ -1,6 +1,7 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
 import database
+import tf_idf_main
 from utilities import *
 import evaluation.evaluation as ev
 
@@ -8,20 +9,21 @@ algorithm = search.searching_algorithm.and_search
 
 
 def main_search(matrix: inverted_matrix.InvertedMatrix):
-    print("\nEnter the words you are looking for:")
-    print('> ', end='')
-    query = {input()}
-    taskstring = matrix.get_taskstring()
-    stemmer = pp_execution_functions.taskstring_dict[taskstring[-1]]
-    preprocessed_query = pp_preprocessing_functions.preprocessing_pipeline(query, stemmer)
-    preprocessed_query_as_list = list(preprocessed_query)
-    documents = algorithm(preprocessed_query_as_list, matrix)
-
-    if documents == []:
-        print("There are no documents that contain all of the words you are looking for.")
-    else:
-        print("These are the documents you were looking for:")
-        print(documents)
+    # print("\nEnter the words you are looking for:")
+    # print('> ', end='')
+    # query = {input()}
+    # taskstring = matrix.get_taskstring()
+    # stemmer = pp_execution_functions.taskstring_dict[taskstring[-1]]
+    # preprocessed_query = pp_preprocessing_functions.preprocessing_pipeline(query, stemmer)
+    # preprocessed_query_as_list = list(preprocessed_query)
+    # documents = algorithm(preprocessed_query_as_list, matrix)
+    #
+    # if documents == []:
+    #     print("There are no documents that contain all of the words you are looking for.")
+    # else:
+    #     print("These are the documents you were looking for:")
+    #     print(documents)
+    tf_idf_main.main()
 
 
 def main_evaluate(matrix: inverted_matrix.InvertedMatrix):
