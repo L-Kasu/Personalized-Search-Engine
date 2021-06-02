@@ -50,7 +50,10 @@ def main_preprocess():
 
 
 def main():
-    print("do you want to preprocess? (type 'y', otherwise 'n'")
+    print("----------------------")
+    print("Simple IR System Setup")
+    print("----------------------\n")
+    print("Do you want to preprocess (y/n)?")
     i = input()
     if i == "y":
         main_preprocess()
@@ -61,6 +64,7 @@ def main():
     print("1: enter a search query")
     print("2: evaluate the current searching_algorithm")
     print("3: rerun")
+    print("4: exit")
     i = input()
     if i == "1":
         main_search(matrix)

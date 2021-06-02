@@ -15,10 +15,7 @@ dir_output = "./preprocessing/PP_output/"
 
 
 def preprocessing_main() -> (str, str, str):
-    print("----------------------")
-    print("Simple IR System Setup")
-    print("----------------------\n")
-    print("place the files you wish to search here:")
+    print("Place the files you wish to search here:")
     print(dir_archive + "\n")
 
     for dirname, _, filenames in os.walk(dir_archive):
