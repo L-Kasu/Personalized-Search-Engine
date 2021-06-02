@@ -4,7 +4,7 @@
 
 
 import sys
-import tf_idf_functions as func
+import tf_idf.tf_idf_functions as func
 
 
 def main(doc_dicts: list, qry_dicts: list) -> None:

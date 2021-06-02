@@ -1,7 +1,6 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
-import database
-import tf_idf_main
+from tf_idf import tf_idf_main
 from utilities import *
 import evaluation.evaluation as ev
 

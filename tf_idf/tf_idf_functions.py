@@ -127,7 +127,6 @@ def document_rank_matrix(matrix_doc: np.ndarray, matrix_qry: np.ndarray) -> np.n
 
 def sort_document_rank_matrix(matrix: np.ndarray) -> np.ndarray:
     data_sorted = np.zeros((len(matrix[:, 0]), len(matrix[0, :]), 2))
-    cos_sim_exists = False
     for n in range(0, len(matrix[0, :])):
         data = matrix[:, n]
         data_sorted[:, n] = sorted(data, key=(lambda x: x[1]))
