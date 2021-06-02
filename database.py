@@ -1,7 +1,5 @@
 import pickle
 
-matrix = object
-
 
 def save_object(obj, name):
     try:
