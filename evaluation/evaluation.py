@@ -13,12 +13,9 @@ from utilities import *
 # matrix: matrix object
 # algorithm: function of the search algorithm (two arguments: query, Matrix)
 
-def evaluate(query: list, rel: list, matrix: im.InvertedMatrix, algorithm: func) -> dict:
+def evaluate(query: dict, rel: list, matrix: im.InvertedMatrix, algorithm: func) -> dict:
     evaluation = {}
     for i in rel:
-        print(i)
-        print(query[i])
-        print(rel[i])
         searched = algorithm(query[i], matrix)
         print(searched)
         found_wanted_documents = len(search_algo.intersect(searched, rel[i])) # number of the documents that were wanted and foud
@@ -42,7 +39,27 @@ def get_recall(found_wanted_documents: int, wanted_documents: int) -> float:
     return found_wanted_documents/wanted_documents
 
 
-# maps the querrys to an index
+# get a list of mappings of a query to a single document and
+# return a list of list of expected documents for each query
+def rel_mapping_to_list_of_expected_results(data: list) -> dict:
+    result = {}
+    for item in data:
+        if item:
+            if item[0] in result:
+                result[item[0]].append(item[1])
+            else:
+                result[item[0]] = [item[1]]
+    return result
+
+
+def query_list_to_dic(data: list) -> dict:
+    result = {}
+    for item in data:
+        if item and type(item) == type({}):
+            result[int(item["I"])] = item["W"]
+    return result
+
+
 def read_qry_list(filename: str) -> dict:
     qry_list = {}
     file = open(filename, "r")

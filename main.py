@@ -1,6 +1,6 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
-
+import database
 from utilities import *
 import evaluation.evaluation as ev
 
@@ -29,11 +29,11 @@ def main_evaluate(matrix: inverted_matrix.InvertedMatrix):
     try:
         return database.load_object(taskstring + "_evaluation")
     finally:
-        query_dict = ev.read_qry_list("./preprocessing/PP_output/pp_output_" + taskstring + "_CISI.QRY.txt")
-        rel_dict = ev.read_related_documents("./preprocessing/PP_output/pp_output_" + taskstring + "_CISI.REL.txt")
+        query_dict = ev.query_list_to_dic(database.load_object(taskstring + "_pp" + "_CISI.QRY"))
+        rel_dict = ev.rel_mapping_to_list_of_expected_results(database.load_object(taskstring + "_pp" + "_CISI.REL"))
         result = ev.evaluate(query_dict, rel_dict, matrix, algorithm)
         database.save_object(result, taskstring + "_evaluation")
-        print(result)
+        return result
 
 
 def main_preprocess():
@@ -43,8 +43,8 @@ def main_preprocess():
         for i in range(1, 3):
             # i = 1: with stemming, i = 2: without stemming
             taskstring = datatuple[i]
-            file = pp_main.dir_output + "pp_output_" + taskstring + "_" + filename + ".txt"
-            matrix = inverted_matrix.InvertedMatrix(file)
+            collection_of_pp_output = database.load_object(taskstring + "_pp_" + filename)
+            matrix = inverted_matrix.InvertedMatrix(collection_of_pp_output, taskstring)
             database.save_object(matrix, taskstring + "_matrix")
 
 
@@ -65,7 +65,7 @@ def main():
     if i == "1":
         main_search(matrix)
     elif i == "2":
-        main_evaluate(matrix)
+        print(main_evaluate(matrix))
     elif i == "3":
         main()
     else:
@@ -74,3 +74,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+    '''
+    matrix = database.load_object("tnwl_matrix").get_matrix()
+    query = database.load_object("tnwp_pp_CISI.QRY")
+    for item in query:
+        print(item)
+    print("\n")
+    for item in matrix:
+        print(item)
+    print(matrix)
+    '''

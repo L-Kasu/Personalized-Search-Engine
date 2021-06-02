@@ -4,6 +4,8 @@
 import sys
 import time
 import nltk
+
+import database
 import preprocessing.pp_preprocessing_functions as ppf
 
 
@@ -18,22 +20,43 @@ taskstring_dict = { "t" : ppf.tokenize,
 def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_output: str) -> None:
     pp_container = open(dir_output + "pp_output_" + taskstring + "_" + filename + ".txt", 'w')
     with open(dir_containers + "pp_container_" + filename + ".txt", 'r') as container:
+        pp_item = []
         for line in container.readlines():
             if line.startswith(".I"):
-                pp_container.write(".I " + str(int(line.lstrip(".I ").rstrip("\n")) - 1))
+                index_adjustment = str(int(line.lstrip(".I ").rstrip("\n")) - 1)
+                pp_container.write(".I " + index_adjustment)
+                pp_item.append({"I": index_adjustment})
                 pp_container.write("\n")
             elif line.startswith(".W") or line.startswith(".T"):
                 reduced_line = line[3:]
                 line_reduction = line[:3]
                 processing_item = {reduced_line}
 
-                for i in range(0, len(taskstring)-1):
+                for i in range(0, len(taskstring)):
                     processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict)
 
                 pp_container.write(line_reduction + str(processing_item))
+                item_index = "W" if line.startswith(".W") else "T"
+                pp_item[-1][item_index] = processing_item
                 pp_container.write("\n")
-            else:
+            elif line.startswith(".A") or line.startswith(".X"):
                 pp_container.write(line)
+                line_without_prefix = line[3:].strip()
+                item_index = "A" if line.startswith(".A") else "X"
+                pp_item[-1][item_index] = line_without_prefix
+            else:
+                if filename == "CISI.REL":
+                    split_line = line.split()
+                    # adjust index for rel file
+                    for i in range(0, 2):
+                        try:
+                            split_line[i] = int(split_line[i]) - 1
+                        finally:
+                            continue
+                    pp_item.append(split_line)
+
+
+        database.save_object(pp_item, taskstring + "_pp_" + filename)
         container.close()
     pp_container.close()
 

@@ -1,3 +1,4 @@
+import database
 from preprocessing import pp_file_reader as pp
 # from preprocessing import pp_main
 
@@ -8,11 +9,11 @@ class InvertedMatrix:
     # - the matrix itself containing a pair of matrix as a dictionary {word: list_of_documents}
     # - taskstring defining how the file got preprocessed
 
-    def __init__(self, filename):
-        self.matrix = inverted_matrix(filename)
+    def __init__(self, collection, taskstring):
+        self.matrix = inverted_matrix(collection)
 
         # split string between "output_" and "_"
-        self.taskstring = filename.split("output_")[1].split("_")[0]
+        self.taskstring = taskstring
 
     def get_taskstring(self):
         return self.taskstring
@@ -47,9 +48,8 @@ def frequency_mapping(matrix: dict) -> dict:
 # in the form: {word1: [doc_id1, doc_id1, ...], word1: [doc_id1, do_id2, ...], ...}
 # matrix key is the word
 # matrix value is the list of documents containing the word
-def inverted_matrix(filename) -> dict:
+def inverted_matrix(collection) -> dict:
     matrix = {}
-    collection = pp.file_reader(filename)
     for x in collection:
         add_to_matrix(x['I'], x['W'], matrix)
     return matrix
