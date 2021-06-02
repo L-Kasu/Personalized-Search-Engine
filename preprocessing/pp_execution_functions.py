@@ -48,7 +48,7 @@ def save_text_as_txt(filename: str, dir_containers: str, dir_archive: str) -> No
     with open(dir_archive+filename) as file:
         lines = ""
         for line in file.readlines():
-            lines += "\n" + line.strip() if line.startswith(".") else " " + line.strip()
+            lines += "\n" + line.strip() if (line.startswith(".") or filename == "CISI.REL") else " " + line.strip()
         lines = lines.lstrip("\n").split("\n")
         for line in lines:
             container.write(line)

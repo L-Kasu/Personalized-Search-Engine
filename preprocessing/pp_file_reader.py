@@ -28,11 +28,11 @@ def file_reader(filename: str) -> list:
             line_without_prefix = line[3:].strip()
             content = line_without_prefix
 
-            if line.startswith('.W {'):
+            if line.startswith('.W'):
                 content = set()
 
                 for element in line_without_prefix[1:-1].split(","):
-                    content.add(element[2:-1])
+                    content.add(element[1:-1].replace("'", ""))
 
             text_list[-1][line[1]] = content
 
