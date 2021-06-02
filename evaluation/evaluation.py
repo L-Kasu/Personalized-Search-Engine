@@ -1,32 +1,29 @@
-from search import searching_algorithm as search
+from _ctypes_test import func
+from search import searching_algorithm as search_algo
+from matrix import inverted_matrix as im
+from utilities import *
 
 
 # evaluates the search, that uses the preprocessing with stemming
 # returns a dictionary that associates the query index with the precision and recall
-def evaluate_with_stemming() -> dict:
-    qry = read_qry_list('./preprocessing/PP_output/pp_output_tnwsl_CISI.QRY.txt')
-    rel = read_related_documents('./preprocessing/PP_output/pp_output_tnwsp_CISI.REL.txt')
+
+# parameters:
+# querys: dictionary of (preprocessed) querys
+# rel: dictionary of relations
+# matrix: matrix object
+# algorithm: function of the search algorithm (two arguments: query, Matrix)
+
+def evaluate(query: list, rel: list, matrix: im.InvertedMatrix, algorithm: func) -> dict:
     evaluation = {}
     for i in rel:
-        searched = search.and_search(qry[i])
-        found_wanted_documents = len(search.intersect(searched, rel[i]))  # number of the documents that were wanted and foud
+        print(i)
+        print(query[i])
+        print(rel[i])
+        searched = algorithm(query[i], matrix)
+        print(searched)
+        found_wanted_documents = len(search_algo.intersect(searched, rel[i])) # number of the documents that were wanted and foud
         found_documents = len(searched)   # number of documents that were found
         wanted_documents = len(rel[i])  # number of wanted documents
-        precision = get_precision(found_wanted_documents, found_documents)
-        recall = get_recall(found_wanted_documents, wanted_documents)
-        evaluation[i] = [precision, recall]
-    return evaluation
-
-
-def evaluate_without_stemming() -> dict:
-    qry = read_qry_list('./preprocessing/PP_output/pp_output_tnxx_CISI.QRY.txt')
-    rel = read_related_documents('./preprocessing/PP_output/pp_output_tnxx_CISI.REL.txt')
-    evaluation = {}
-    for i in rel:
-        searched = search.and_search_without_stemming(qry[i])
-        found_wanted_documents = len(search.intersect(searched, rel[i])) # number of the documents that were wanted and foud
-        found_documents = len(searched)   # number of documents that were found
-        wanted_documents =  len(rel[i])  # number of wanted documents
         precision = get_precision(found_wanted_documents, found_documents)
         recall = get_recall(found_wanted_documents, wanted_documents)
         evaluation[i] = [precision, recall]
@@ -49,13 +46,13 @@ def get_recall(found_wanted_documents: int, wanted_documents: int) -> float:
 def read_qry_list(filename: str) -> dict:
     qry_list = {}
     file = open(filename, "r")
-    i = 1
+    i = 0
     for line in file:
         if line.startswith('.W {'):
             line_without_prefix = line[3:].strip()
             content = set()
             for element in line_without_prefix[1:-1].split(","):
-                content.add(element[2:-1])
+                content.add(element[1:-1].replace("'", ""))
             qry_list[i] = list(content)
             i = i +1
     file.close()
@@ -70,10 +67,10 @@ def read_related_documents(filename: str) -> dict:
         i = 1
         for element in line.split():
             if i == 1:
-                key = int(element)
+                key = int(element) - 1 # adjusrting index
                 i = 2
             elif i == 2:
-                value = int(element)
+                value = int(element) - 1 # adjusting index
                 i = 3
             elif i == 3:
                 if key in relation:
@@ -86,7 +83,7 @@ def read_related_documents(filename: str) -> dict:
     file.close()
     return relation
 
-
+'''
 # saves the evaluation in txt file
 def save_eval() -> None:
     evaluation_with_stemming = evaluate_with_stemming()
@@ -103,6 +100,4 @@ def save_eval() -> None:
         file.write("\t\tprecission: "+ str(evaluation_without_stemming[i][0]))
         file.write("\t\trecall: " + str(evaluation_without_stemming[i][1]) + "\n")
     file.close()
-
-
-save_eval()
+'''

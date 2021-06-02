@@ -1,11 +1,10 @@
 from search import searching_algorithm as search
 from preprocessing import *
-import inverted_matrix
+from matrix import inverted_matrix
 
-
+'''
 inv_matrix_obj1 = inverted_matrix.InvertedMatrix(pp_main.dir_output + "pp_output_" + pp_main.taskstring_1 + "_" + pp_main.filename + ".txt")
 inv_matrix_obj2 = inverted_matrix.InvertedMatrix(pp_main.dir_output + "pp_output_" + pp_main.taskstring_2 + "_" + pp_main.filename + ".txt")
-
 
 # evaluates the search, that uses the preprocessing with stemming
 # returns a dictionary that associates the querry index with the precision and recall
@@ -110,3 +109,4 @@ def save_eval() -> None:
 
 
 save_eval()
+'''
