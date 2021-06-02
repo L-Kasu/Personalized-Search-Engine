@@ -23,8 +23,8 @@ def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_outpu
         pp_item = []
         for line in container.readlines():
             if line.startswith(".I"):
-                index_adjustment = str(int(line.lstrip(".I ").rstrip("\n")) - 1)
-                pp_container.write(".I " + index_adjustment)
+                index_adjustment = int(line.lstrip(".I ").rstrip("\n")) - 1
+                pp_container.write(".I " + str(index_adjustment))
                 pp_item.append({"I": index_adjustment})
                 pp_container.write("\n")
             elif line.startswith(".W") or line.startswith(".T"):
