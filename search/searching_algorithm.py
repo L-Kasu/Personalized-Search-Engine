@@ -1,4 +1,5 @@
-import inverted_matrix
+from matrix import inverted_matrix
+
 
 # gets two postings
 # returns a posting
@@ -58,9 +59,33 @@ def and_search(words: list, inv_matrix_obj: inverted_matrix.InvertedMatrix) -> l
 
     # intersect all postings (smaller ones first)
     postings.sort(key=len)
+    if postings:
+        documents = postings[0]
+
+        for i in range(1, len(postings)):
+            documents = intersect(documents, postings[i])
+        return documents
+
+
+def or_search(words: list, inv_matrix_obj: inverted_matrix.InvertedMatrix) -> list:
+
+    if len(words) == 0:
+        return []
+
+    inv_matrix = inv_matrix_obj.get_matrix()
+
+    # gather all postings
+    postings = []
+    for word in words:
+        if word in inv_matrix:
+            postings.append(inv_matrix[word])
+
+
+    # intersect all postings (smaller ones first)
+    postings.sort(key=len)
     documents = postings[0]
 
     for i in range(1, len(postings)):
-        documents = intersect(documents, postings[i])
+        documents += postings[i]
 
     return documents

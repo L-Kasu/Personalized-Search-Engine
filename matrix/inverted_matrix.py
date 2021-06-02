@@ -1,5 +1,5 @@
 from preprocessing import pp_file_reader as pp
-from preprocessing import pp_main
+# from preprocessing import pp_main
 
 
 class InvertedMatrix:
@@ -21,7 +21,7 @@ class InvertedMatrix:
         return self.matrix
     # builds the matrix with stemming and stopword removal (stemmer = lancaster)
 
-
+'''
 def build_matrix_with_stemming() -> dict:
     matrix = inverted_matrix(pp_main.dir_output + "pp_output_" + pp_main.taskstring_1 + "_" + pp_main.filename + ".txt")
     return matrix
@@ -31,7 +31,7 @@ def build_matrix_with_stemming() -> dict:
 def build_matrix_without_stemming() -> dict:
     matrix = inverted_matrix(pp_main.dir_output + "pp_output_" + pp_main.taskstring_2 + "_" + pp_main.filename + ".txt")
     return matrix
-
+'''
 
 # creates a dictionary of the mappings of each word(term) and its frequency (in how many documents it appears)
 def frequency_mapping(matrix: dict) -> dict:
@@ -66,7 +66,7 @@ def add_to_matrix(doc_id: int, words: list, matrix: dict):
             matrix[word] = [doc_id]
     return matrix
 
-
+'''
 # prints matrix to a txt file
 def print_matrix(matrix: dict, filename):
     file = open(filename, "w")
@@ -77,3 +77,4 @@ def print_matrix(matrix: dict, filename):
 
 print_matrix(build_matrix_with_stemming(), "matrix_output/matrix_" + pp_main.taskstring_1 + ".txt")
 print_matrix(build_matrix_without_stemming(), "matrix_output/matrix_" + pp_main.taskstring_2 + ".txt")
+'''
