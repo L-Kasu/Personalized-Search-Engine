@@ -1,2 +1,4 @@
 .I 0
 .W {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face', 'mason', 'remodeling', 'libraries', 'evaluations', 'make', 'show', 'book', 'case', 'university', 'ellsworth', 'present', 'representative', 'attempt', 'important', 'architectural', 'unsuccessful', 'yale', 'college', 'architects', 'done', 'study', 'except', 'mistakes', 'cases', 'attempts', 'existing', 'brown', 'examples', 'library', 'solutions', 'buildings', 'enlarging', 'planning'}
+.I 1
+.W {'appear', 'provide', 'detailed', 'work', 'first', 'edition', 'told', 'librarianship', 'abroad', 'present', 'continue', 'attempt', 'spurred', 'eighteenth', 'describe', 'dewey', 'ddc', 'history', 'future', 'healthy', '1971', 'briefly', 'growth', 'life', 'study', 'country', '1876', 'never', 'editions', 'full', 'spite', 'published', 'system', 'long', 'however', 'story', 'biographies', 'decimal', 'needed', 'classification'}

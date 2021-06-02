@@ -160,7 +160,10 @@ def weight_matrix_qry_tf_idf(doc_dicts: list, query_dicts: list) -> np.ndarray:
 
 
 def cosine_similarity(vec_query: np.ndarray, vec_document: np.ndarray) -> float:
-    return np.dot(np.linalg.norm(vec_query), np.linalg.norm(vec_document))
+    cos_sim = 0
+    for i in range(0, len(vec_query)):
+        cos_sim = cos_sim + (float(vec_query[i]) * float(vec_document[i]))
+    return cos_sim
     # return np.dot(vec_query, vec_document) / (np.abs(vec_query) * np.abs(vec_document))
 
 
@@ -169,7 +172,10 @@ def document_rank_matrix(matrix_doc: np.ndarray, matrix_qry: np.ndarray) -> np.n
     matrix = np.zeros((len(matrix_doc[:, 0]), len(matrix_qry[:, 0]), 2))
     for m_doc in range(0, len(matrix_doc[:, 0])):
         for m_qry in range(0, len(matrix_qry[:, 0])):
-            matrix[m_doc][m_qry] = [m_doc, cosine_similarity(matrix_qry[m_qry, :], matrix_doc[m_doc, :])]
+            # no idea why i have to shift doc index here... (m_doc-1)
+            matrix[m_doc][m_qry] = [m_doc-1, cosine_similarity(matrix_qry[m_qry, :], matrix_doc[m_doc, :])]
+            print("matrix["+str(m_doc)+"]["+str(m_qry)+"]")
+            print(matrix[m_doc][m_qry])
     return matrix
 
 
@@ -192,12 +198,23 @@ def get_k_documents_for_query_i_matrix(matrix: np.ndarray, k: int, i: int) -> li
 # alters the input of get_k_documents_for_query_i_matrix
 def get_k_documents_for_query_i(doc_dicts: list, query_dicts: list, k: int, i: int) -> list:
     weight_matrix_doc = weight_matrix_doc_tf_idf(doc_dicts, query_dicts)
+    # print("weight_matrix_doc")
+    # print(weight_matrix_doc)
     weight_matrix_qry = weight_matrix_qry_tf_idf(doc_dicts, query_dicts)
+    # print("weight_matrix_qry")
+    # print(weight_matrix_qry)
     rank_matrix = document_rank_matrix(weight_matrix_doc, weight_matrix_qry)
-    return get_k_documents_for_query_i_matrix(sort_document_rank_matrix(rank_matrix), k, i)
+    # print("rank_matrix")
+    # print(rank_matrix)
+    # cast to int
+    float_list = get_k_documents_for_query_i_matrix(sort_document_rank_matrix(rank_matrix), k, i)
+    int_list = list()
+    for i in range(0, len(float_list)):
+        int_list.append(int(float_list[i]))
+    return int_list
 
 
 # print(get_k_documents_for_query_i(document_dict_ts1, query_dict_ts1, 5, 0))
 # print(cProfile.run("get_k_documents_for_query_i(document_dict_ts1, query_dict_ts1, 5, 0)"))
-print(get_k_documents_for_query_i(document_dict_ts1_tenALL, query_dict_ts1_oneQRY, 5, 0))
-print(cProfile.run("get_k_documents_for_query_i(document_dict_ts1_tenALL, query_dict_ts1_oneQRY, 5, 0)"))
+print(get_k_documents_for_query_i(document_dict_ts1_tenALL, query_dict_ts1_oneQRY, 10, 1))
+# print(cProfile.run("get_k_documents_for_query_i(document_dict_ts1_tenALL, query_dict_ts1_oneQRY, 5, 0)"))
