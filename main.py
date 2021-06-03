@@ -6,37 +6,9 @@ algorithm = search.searching_algorithm.and_search
 
 
 def main_search(taskstring):
-    test_qry = [{"I" : 0, "W" : {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face', 'mason', 'remodeling',
-     'libraries', 'evaluations', 'make', 'show', 'book', 'case', 'university', 'ellsworth', 'present', 'representative',
-     'attempt', 'important', 'architectural', 'unsuccessful', 'yale', 'college', 'architects', 'done', 'study',
-     'except', 'mistakes', 'cases', 'attempts', 'existing', 'brown', 'examples', 'library', 'solutions', 'buildings',
-     'enlarging', 'planning'}}, {"I" : 1, "W" : {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face', 'mason', 'remodeling',
-     'libraries', 'evaluations', 'make', 'show'}}]
-    test_doc =  [{"I": 0,
-                "W": {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face',
-                      'mason', 'remodeling',
-                      'libraries', 'evaluations', 'make', 'show', 'book', 'case', 'university', 'ellsworth', 'present',
-                      'representative',
-                      'attempt', 'important', 'architectural', 'unsuccessful', 'yale', 'college', 'architects', 'done',
-                      'study',
-                      'except', 'mistakes', 'cases', 'attempts', 'existing', 'brown', 'examples', 'library',
-                      'solutions', 'buildings',
-                      'enlarging', 'planning'}}, {"I": 1,
-                "W": {'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face',
-                      'mason', 'remodeling',
-                      'libraries', 'evaluations', 'make', 'show', 'librarians', 'successful', 'avoid', 'new', 'identified', 'problems', 'structures', 'face',
-                      'mason', 'remodeling',
-                      'libraries', 'evaluations', 'make', 'show', 'book', 'case', 'university', 'ellsworth', 'present',
-                      'representative',
-                      'attempt', 'important', 'architectural', 'unsuccessful', 'yale', 'college', 'architects', 'done',
-                      'study',
-                      'except', 'mistakes', 'cases', 'attempts', 'existing', 'brown', 'examples', 'library',
-                      'solutions', 'buildings',
-                      'enlarging', 'planning'}}]
-
     qry_dicts = database.load_object(taskstring + "_pp_" + "CISI.QRY")
     doc_dicts = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-    tf_idf_main.main(test_doc, test_qry)
+    tf_idf_main.main(doc_dicts, qry_dicts)
 
 
 def main_evaluate(matrix: inverted_matrix.InvertedMatrix):
