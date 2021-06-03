@@ -41,14 +41,15 @@ def main_search(taskstring):
     tf_idf_main.main(test_doc, test_qry)
 
 
-def main_evaluate(matrix: inverted_matrix.InvertedMatrix):
-    taskstring = matrix.get_taskstring()
+def main_evaluate(taskstring):
     try:
         return database.load_object(taskstring + "_evaluation")
     finally:
-        query_dict = ev.query_list_to_dic(database.load_object(taskstring + "_pp" + "_CISI.QRY"))
+        query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
+        doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
         rel_dict = ev.rel_mapping_to_list_of_expected_results(database.load_object(taskstring + "_pp" + "_CISI.REL"))
-        result = ev.evaluate(query_dict, rel_dict, matrix, algorithm)
+        result = ev.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
+        ev.save_eval_tf_idf(result, taskstring)
         database.save_object(result, taskstring + "_evaluation")
         return result
 
@@ -85,7 +86,7 @@ def main():
     if i == "1":
         main_search(taskstring)
     elif i == "2":
-        print(main_evaluate(matrix))
+        main_evaluate(taskstring)
     elif i == "3":
         main()
     else:
