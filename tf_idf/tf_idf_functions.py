@@ -54,12 +54,10 @@ def document_frequency(term: str, doc_dicts: list) -> int:
     freq_of_term = 0
     for i in range(0, len(doc_dicts)):
         curr_doc_dict = doc_dicts[i]
-        for key in curr_doc_dict:
-            if key == 'W':
-                for item in curr_doc_dict[key]:
-                    if item == term:
-                        freq_of_term += 1
-                        continue
+        for item in curr_doc_dict['W']:
+            if item == term:
+                freq_of_term += 1
+                continue
     return freq_of_term
 
 
