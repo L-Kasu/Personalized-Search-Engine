@@ -1,6 +1,7 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
 
+from evaluation import evaluation_functions
 from utilities import *
 algorithm = search.searching_algorithm.and_search
 
@@ -13,17 +14,13 @@ def main_search(taskstring):
 
 
 def main_evaluate(taskstring):
-    try:
-        return database.load_object(taskstring + "_evaluation")
-    finally:
         query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
         doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-        rel_dict = ev.rel_mapping_to_list_of_expected_results(database.load_object(taskstring + "_pp" + "_CISI.REL"))
-        result = ev.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
-        ev.save_eval_tf_idf(result, taskstring)
+        rel_dict = evaluation_functions.rel_mapping_to_list_of_expected_results(database.load_object(taskstring + "_pp" + "_CISI.REL"))
+        result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
+        evaluation_functions.save_eval_tf_idf(result, taskstring)
         database.save_object(result, taskstring + "_evaluation")
         return result
-    pass
 
 
 def main_preprocess():

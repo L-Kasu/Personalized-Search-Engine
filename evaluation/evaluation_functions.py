@@ -1,9 +1,7 @@
 from _ctypes_test import func
-
-import tf_idf.tf_idf_functions
 from search import searching_algorithm as search_algo
 from matrix import inverted_matrix as im
-from tf_idf import tf_idf_functions as tf_idf
+from tf_idf import tf_idf_functions as tf
 from utilities import *
 
 
@@ -36,7 +34,7 @@ def evaluate_tf_idf(qry_dicts: list, doc_dicts: list, related) -> dict:
     evaluation = {}
     for i in range(0, len(qry_dicts)):
         wanted_documents = len(related[i])
-        searched = tf_idf.get_k_documents_for_query_i(doc_dicts, qry_dicts, wanted_documents, i)
+        searched = tf.get_k_documents_for_query_i_lightweight(doc_dicts, qry_dicts, wanted_documents, i)
         found_wanted_documents = len(search_algo.intersect(searched, related[i]))
         recall = get_recall(found_wanted_documents, wanted_documents)
         evaluation[i] = recall
