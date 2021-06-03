@@ -16,35 +16,29 @@ taskstring_dict = { "t" : ppf.tokenize,
                     "l" : lambda s: ppf.stemming(s, "lancaster"),
                     "v" : lambda s: ppf.stemming(s, "sulyvahn")}
 
-
+# TODO: remove filesaving
 def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_output: str) -> None:
-    pp_container = open(dir_output + "pp_output_" + taskstring + "_" + filename + ".txt", 'w')
     with open(dir_containers + "pp_container_" + filename + ".txt", 'r') as container:
         pp_item = []
         for line in container.readlines():
             if line.startswith(".I"):
                 index_adjustment = int(line.lstrip(".I ").rstrip("\n")) - 1
-                pp_container.write(".I " + str(index_adjustment))
                 pp_item.append({"I": index_adjustment})
-                pp_container.write("\n")
             elif line.startswith(".W") or line.startswith(".T"):
                 reduced_line = line[3:]
-                line_reduction = line[:3]
                 processing_item = {reduced_line}
-
+                # TODO: All in one func
                 for i in range(0, len(taskstring)):
                     processing_item = read_taskstring_at_index(taskstring, i, processing_item, taskstring_dict)
 
-                pp_container.write(line_reduction + str(processing_item))
                 item_index = "W" if line.startswith(".W") else "T"
                 pp_item[-1][item_index] = processing_item
-                pp_container.write("\n")
             elif line.startswith(".A") or line.startswith(".X"):
-                pp_container.write(line)
                 line_without_prefix = line[3:].strip()
                 item_index = "A" if line.startswith(".A") else "X"
                 pp_item[-1][item_index] = line_without_prefix
             else:
+                # TODO: clean this up
                 if filename == "CISI.REL":
                     split_line = line.split()
                     # adjust index for rel file
@@ -56,8 +50,6 @@ def pre_processor(taskstring: str, filename: str, dir_containers: str, dir_outpu
                     pp_item.append(split_line)
 
         database.save_object(pp_item, taskstring + "_pp_" + filename)
-        container.close()
-    pp_container.close()
 
 
 def throw_exception_invalid_taskstring(taskstring: str, index: int, key: str) -> Exception:
@@ -83,7 +75,7 @@ def download_NLTK_packages(packages: list) -> None:
         nltk.download(package)
         time.sleep(1)
 
-
+# TODO: change to be fuction(taskstring) -> function that applies taskstring(pp_item)
 def read_taskstring_at_index(taskstring: str, index: int, processing_item: set, taskdict: dict) -> set:
     key = taskstring[index]
     if key in taskdict:

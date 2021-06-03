@@ -15,16 +15,17 @@ dir_output = "./preprocessing/PP_output/"
 
 
 def preprocessing_main() -> (str, str, str):
+
+    # archive -> container
     print("Place the files you wish to search here:")
     print(dir_archive + "\n")
-
     for dirname, _, filenames in os.walk(dir_archive):
         for filename in filenames:
             print("saving data as pp_container_" + filename + ".txt...", end='')
             execution_function.save_text_as_txt(filename, dir_containers, dir_archive)
             print("DONE")
 
-
+    # choose-file-to-prprocess
     print("\nplease specify the file you wish to preprocess:")
     filename = "default, should not appear"
     for dirname, _, filenames in os.walk(dir_archive):
@@ -46,7 +47,8 @@ def preprocessing_main() -> (str, str, str):
     execution_function.download_NLTK_packages(req_nltk_packages)
     print("DONE\n")
 
-    print("please chose a stemming algorithm:")
+    # choose stemmer
+    print("please choose a stemming algorithm:")
     print("1. PorterStemmer")
     print("2. LancasterStemmer")
     print('> ', end='')
@@ -100,6 +102,7 @@ def preprocessing_main() -> (str, str, str):
         raise Exception(
             "Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
 
+    # create preprocessing files
     print("preprocessing with stop word removal and stemming...", end='')
     execution_function.pre_processor(taskstring_1, filename, dir_containers, dir_output)
     print("DONE")
@@ -107,6 +110,7 @@ def preprocessing_main() -> (str, str, str):
     execution_function.pre_processor(taskstring_2, filename, dir_containers, dir_output)
     print("DONE")
 
+    # create evaluation files
     print("creating files for evaluation...", end='')
     execution_function.pre_processor(taskstring_1, "CISI.QRY", dir_containers, dir_output)
     QRY_file_taskstring_1 = dir_output + "pp_output_" + taskstring_1 + "_CISI.QRY.txt"
@@ -119,7 +123,7 @@ def preprocessing_main() -> (str, str, str):
     print("DONE")
 
     return (filename, taskstring_1, taskstring_2)
-
+dir_output
 
 if __name__ == "__main__":
     preprocessing_main()
