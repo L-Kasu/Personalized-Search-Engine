@@ -1,6 +1,9 @@
 from _ctypes_test import func
+
+import tf_idf.tf_idf_functions
 from search import searching_algorithm as search_algo
 from matrix import inverted_matrix as im
+from tf_idf.tf_idf_functions import
 from utilities import *
 
 
@@ -12,7 +15,6 @@ from utilities import *
 # rel: dictionary of relations
 # matrix: matrix object
 # algorithm: function of the search algorithm (two arguments: query, Matrix)
-
 def evaluate(query: dict, rel: list, matrix: im.InvertedMatrix, algorithm: func) -> dict:
     evaluation = {}
     for i in rel:
@@ -24,6 +26,21 @@ def evaluate(query: dict, rel: list, matrix: im.InvertedMatrix, algorithm: func)
         precision = get_precision(found_wanted_documents, found_documents)
         recall = get_recall(found_wanted_documents, wanted_documents)
         evaluation[i] = [precision, recall]
+    return evaluation
+
+# parameters:
+# qry_dicts: dictionary of preprocessed querries
+# doc_dicts: dictionary of preprocessed documents
+# output: dictionary, that maps the querry index to the recall
+def evaluate_tf_idf(qry_dicts: list, doc_dicts: list) -> dict:
+    evaluation = {}
+    related = read_related_documents("PP_output/pp_output_tnwl_CISI_REL.txt")
+    for i in qry_dicts:
+        wanted_documents = len(related[i])
+        searched = tf_idf.tf_idf_functions.get_k_documents_for_query_i(doc_dicts, qry_dicts, k, i)
+        found_wanted_documents = len(search_algo.intersect(searched, related[i]))
+        recall = get_recall(found_wanted_documents, wanted_documents)
+        evaluation[i] = recall
     return evaluation
 
 
