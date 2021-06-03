@@ -1,5 +1,5 @@
 # function container for the tf-idf algorithm
-# version: alpha1.1
+# version: alpha1.2
 # author: Niklas Munkes
 
 
@@ -54,12 +54,10 @@ def document_frequency(term: str, doc_dicts: list) -> int:
     freq_of_term = 0
     for i in range(0, len(doc_dicts)):
         curr_doc_dict = doc_dicts[i]
-        for key in curr_doc_dict:
-            if key == 'W':
-                for item in curr_doc_dict[key]:
-                    if item == term:
-                        freq_of_term += 1
-                        continue
+        for item in curr_doc_dict['W']:
+            if item == term:
+                freq_of_term += 1
+                continue
     return freq_of_term
 
 
@@ -108,6 +106,14 @@ def weight_matrix_qry_tf_idf(doc_dicts: list, query_dicts: list) -> np.ndarray:
     return matrix
 
 
+def weight_vec_qry_tf_idf(doc_dicts: list, query_dicts: list, qry_index: int) -> np.ndarray:
+    vocab = vocabulary(doc_dicts, query_dicts)
+    matrix = np.zeros((1, len(vocab)))
+    for n in range(0, len(vocab)):
+        matrix[0][n] = tf_idf(vocab[n], query_dicts[qry_index]["W"], doc_dicts)
+    return matrix
+
+
 def cosine_similarity(vec_query: np.ndarray, vec_document: np.ndarray) -> float:
     cos_sim = 0
     for i in range(0, len(vec_query)):
@@ -145,6 +151,19 @@ def get_k_documents_for_query_i(doc_dicts: list, query_dicts: list, k: int, i: i
     weight_matrix_qry = weight_matrix_qry_tf_idf(doc_dicts, query_dicts)
     rank_matrix = document_rank_matrix(weight_matrix_doc, weight_matrix_qry)
     sorted_rank_matrix = sort_document_rank_matrix_for_qry_i(rank_matrix, i)
+    float_list = get_k_documents(sorted_rank_matrix, k)
+    # cast to int
+    int_list = list()
+    for i in range(0, len(float_list)):
+        int_list.append(int(float_list[i]))
+    return int_list
+
+
+def get_k_documents_for_query_i_lightweight(doc_dicts: list, query_dicts: list, k: int, i: int) -> list:
+    weight_matrix_doc = weight_matrix_doc_tf_idf(doc_dicts, query_dicts)
+    weight_vec_qry = weight_vec_qry_tf_idf(doc_dicts, query_dicts, i)
+    rank_matrix = document_rank_matrix(weight_matrix_doc, weight_vec_qry)
+    sorted_rank_matrix = sort_document_rank_matrix_for_qry_i(rank_matrix, 0)
     float_list = get_k_documents(sorted_rank_matrix, k)
     # cast to int
     int_list = list()

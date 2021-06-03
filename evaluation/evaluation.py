@@ -1,6 +1,9 @@
 from _ctypes_test import func
+
+import tf_idf.tf_idf_functions
 from search import searching_algorithm as search_algo
 from matrix import inverted_matrix as im
+from tf_idf import tf_idf_functions as tf_idf
 from utilities import *
 
 
@@ -12,7 +15,6 @@ from utilities import *
 # rel: dictionary of relations
 # matrix: matrix object
 # algorithm: function of the search algorithm (two arguments: query, Matrix)
-
 def evaluate(query: dict, rel: list, matrix: im.InvertedMatrix, algorithm: func) -> dict:
     evaluation = {}
     for i in rel:
@@ -24,6 +26,20 @@ def evaluate(query: dict, rel: list, matrix: im.InvertedMatrix, algorithm: func)
         precision = get_precision(found_wanted_documents, found_documents)
         recall = get_recall(found_wanted_documents, wanted_documents)
         evaluation[i] = [precision, recall]
+    return evaluation
+
+# parameters:
+# qry_dicts: dictionary of preprocessed querries
+# doc_dicts: dictionary of preprocessed documents
+# output: dictionary, that maps the querry index to the recall
+def evaluate_tf_idf(qry_dicts: list, doc_dicts: list, related) -> dict:
+    evaluation = {}
+    for i in range(0, len(qry_dicts)):
+        wanted_documents = len(related[i])
+        searched = tf_idf.get_k_documents_for_query_i(doc_dicts, qry_dicts, wanted_documents, i)
+        found_wanted_documents = len(search_algo.intersect(searched, related[i]))
+        recall = get_recall(found_wanted_documents, wanted_documents)
+        evaluation[i] = recall
     return evaluation
 
 
@@ -99,6 +115,15 @@ def read_related_documents(filename: str) -> dict:
                 i = 1
     file.close()
     return relation
+
+def save_eval_tf_idf(evaluation: dict, taskstring):
+    file = open("eval_output/evaluation" + taskstring + ".txt", "w")
+    file.write("Evaluation tf_idf: \n")
+    for i in evaluation:
+        file.write("Querry"+str(i)+": ")
+        file.write("\t\trecall: "+str(evaluation[i]))
+    file.close()
+
 
 '''
 # saves the evaluation in txt file

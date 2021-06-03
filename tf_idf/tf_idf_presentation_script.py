@@ -1,5 +1,5 @@
 # tf-idf script for scrum presentation
-# version: alpha1.1
+# version: alpha1.2
 # author: Niklas Munkes
 
 import tf_idf.tf_idf_main as main
