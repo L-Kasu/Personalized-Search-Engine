@@ -23,7 +23,6 @@ def main_evaluate(taskstring):
         ev.save_eval_tf_idf(result, taskstring)
         database.save_object(result, taskstring + "_evaluation")
         return result
-    '''
     pass
 
 
