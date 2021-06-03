@@ -1,5 +1,5 @@
 # tf-idf algorithm function caller
-# version: alpha1.0
+# version: alpha1.1
 # author: Niklas Munkes
 
 
