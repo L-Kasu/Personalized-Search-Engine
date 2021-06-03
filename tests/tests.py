@@ -1,6 +1,5 @@
 import preprocessing.pp_preprocessing_functions as ppf
-from search import searching_algorithm as sa
-import unittest
+from utilities import *
 
 # stemmed_matrix_f = open("./matrix_output/matrix_with_stemming.txt")
 # unstemmed_matrix_f = open("./matrix_output/matrix_without_stemming.txt")
