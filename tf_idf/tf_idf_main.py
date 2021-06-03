@@ -1,5 +1,5 @@
 # tf-idf algorithm function caller
-# version: alpha1.0
+# version: alpha1.2
 # author: Niklas Munkes
 
 
@@ -48,7 +48,8 @@ def want_predef_qry_i(index: int, doc_dicts: list, qry_dicts: list) -> None:
     doc_count = int(input())
     if doc_count in range(1, len(doc_dicts)+1):
         print("\nretrieving documents...", end='')
-        result = func.get_k_documents_for_query_i(doc_dicts, qry_dicts, doc_count, index)
+        # result = func.get_k_documents_for_query_i(doc_dicts, qry_dicts, doc_count, index)
+        result = func.get_k_documents_for_query_i_lightweight(doc_dicts, qry_dicts, doc_count, index)
         print("DONE")
         print("\nHere is your result:")
         print(result)
