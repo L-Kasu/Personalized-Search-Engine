@@ -16,7 +16,8 @@ def main_search(taskstring):
 def main_evaluate(taskstring):
         query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
         doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-        rel_dict = evaluation_functions.rel_mapping_to_list_of_expected_results(database.load_object(taskstring + "_pp" + "_CISI.REL"))
+        #rel_dict = evaluation_functions.rel_mapping_to_list_of_expected_results(database.load_object(taskstring + "_pp" + "_CISI.REL"))
+        rel_dict = evaluation_functions.read_related_documents("preprocessing/PP_Containers/pp_container_CISI.REL.txt")
         result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
         evaluation_functions.save_eval_tf_idf(result, taskstring)
         database.save_object(result, taskstring + "_evaluation")
