@@ -1,9 +1,7 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
-from tf_idf import tf_idf_main
-from utilities import *
-import evaluation.evaluation as ev
 
+from utilities import *
 algorithm = search.searching_algorithm.and_search
 
 
@@ -42,6 +40,7 @@ def main_search(taskstring):
 
 
 def main_evaluate(matrix: inverted_matrix.InvertedMatrix):
+    '''
     taskstring = matrix.get_taskstring()
     try:
         return database.load_object(taskstring + "_evaluation")
@@ -51,6 +50,8 @@ def main_evaluate(matrix: inverted_matrix.InvertedMatrix):
         result = ev.evaluate(query_dict, rel_dict, matrix, algorithm)
         database.save_object(result, taskstring + "_evaluation")
         return result
+    '''
+    pass
 
 
 def main_preprocess():

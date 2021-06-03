@@ -5,7 +5,7 @@ import sys
 import time
 import nltk
 
-import database
+from data import database
 import preprocessing.pp_preprocessing_functions as ppf
 
 
