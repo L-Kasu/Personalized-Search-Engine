@@ -100,10 +100,10 @@ def df_dict(doc_dicts: list, query_dicts: list) -> dict:
 
 def weight_vec_qry_tf_idf(doc_dicts: list, query_dicts: list, qry_index: int, vocab_dict: dict) -> np.ndarray:
     vocab = vocabulary(doc_dicts, query_dicts)
-    matrix = np.zeros((1, len(vocab)))
+    vector = np.zeros((1, len(vocab)))
     for n in range(0, len(vocab)):
-        matrix[0][n] = tf_idf(vocab[n], query_dicts[qry_index]["W"], doc_dicts, vocab_dict)
-    return matrix
+        vector[0][n] = tf_idf(vocab[n], query_dicts[qry_index]["W"], doc_dicts, vocab_dict)
+    return vector
 
 
 def cosine_similarity(vec_query: np.ndarray, vec_document: np.ndarray) -> float:
