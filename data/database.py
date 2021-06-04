@@ -1,11 +1,13 @@
 import pickle
+import os
 
 # usage: sve obejects as .pickle file
 # input: name (just the name it will be saved it the data folder) as "./data/" + name + ".pickle"
 # can only be called from the same folder as the data folder is in
 def save_object(obj, name):
+    filename = "./data/" + name + ".pickle"
     try:
-        with open("./data/" + name + ".pickle", "wb") as f:
+        with open(filename, "wb") as f:
             pickle.dump(obj, f, protocol=pickle.HIGHEST_PROTOCOL)
     except Exception as ex:
         print("Error during pickling object (Possibly unsupported):", ex)
@@ -20,3 +22,12 @@ def load_object(filename="data"):
             return pickle.load(f)
     except Exception as ex:
         print("Error during unpickling object (Possibly unsupported):", ex)
+
+
+def list_files_in_database() -> list:
+    result = list(filter(lambda file: file.endswith(".pickle"), os.listdir(".")))
+    return result
+
+
+# list of saved files in this directory
+list_of_files = list_files_in_database()

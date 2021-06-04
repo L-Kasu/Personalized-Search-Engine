@@ -6,7 +6,7 @@ import time
 import nltk
 from preprocessing import text_processing
 from preprocessing import sulyvahn
-from preprocessing import main as pp
+from preprocessing import pp_main as pp
 from data import database
 taskstring_dict = { "t" : text_processing.tokenize,
                     "n" : text_processing.normalize,
@@ -16,14 +16,23 @@ taskstring_dict = { "t" : text_processing.tokenize,
                     "v" : lambda s: text_processing.stemming(s, "sulyvahn")}
 
 
+def is_taskstring_valid(taskstring) -> bool:
+    if taskstring == "":
+        return True
+    else:
+        return type(taskstring) == str\
+               and taskstring[0] in taskstring_dict\
+               and is_taskstring_valid(taskstring[1:])
+
+
 def inline(container):
     result = []
     for line in container:
         if line.startswith("."):
-            result.append(line.strip())
+            result.append(line.replace("\n", " "))
         else:
             if result:
-                result[-1] += line.strip()
+                result[-1] += line.replace("\n", " ")
     return result
 
 
@@ -38,39 +47,6 @@ def inline_for_REL(container):
         else:
             result[split_0] = [split_1]
     return result
-
-
-def choose_stemmer_and_return_taskstrings_as_list() -> list:
-    print("please choose a stemming algorithm:")
-    print("1. PorterStemmer")
-    print("2. LancasterStemmer")
-    print('> ', end='')
-    i = input()
-    if i == "1":
-        stemmer = "porter"
-    elif i == "2":
-        stemmer = "lancaster"
-    elif i == "273":  # base damage of the Pontiff Knight Curved Sword
-        stemmer = "sulyvahn"
-        sulyvahn.form_follows_function()
-    else:
-        print("nope, try aain")
-
-    # see execution_functions.py for taskstring structure
-    taskstring_1 = "tnw"
-    taskstring_2 = "tn"
-
-    if stemmer == "porter":
-        taskstring_1 = taskstring_1 + "p"
-    elif stemmer == "lancaster":
-        taskstring_1 = taskstring_1 + "l"
-    elif stemmer == "sulyvahn":
-        taskstring_1 = taskstring_1 + "v"
-    else:
-        print("you can't fool me! Try again. And this time a valid input!")
-        return choose_stemmer_and_return_taskstrings_as_list()
-
-    return [taskstring_1, taskstring_2]
 
 
 def pre_processor(taskstring: str, filename: str) -> None:
@@ -102,32 +78,6 @@ def pre_processor(taskstring: str, filename: str) -> None:
         database.save_object(preprocessed_items, taskstring + "_pp_" + filename)
 
 
-def throw_exception_invalid_taskstring(taskstring: str, index: int, key: str) -> Exception:
-    tb = sys.exc_info()[2]
-    raise Exception("'" + taskstring + "' is not a valid taskstring. Failed to read index " + str(index) + ", key " + key).with_traceback(tb)
-
-
-def save_text_as_txt(filename: str, dir_containers: str, dir_archive: str) -> None:
-    container = open(dir_containers+"pp_container_"+ filename+".txt", 'w')
-    with open(dir_archive+filename) as file:
-            lines = ""
-            i = 0
-            for line in file.readlines():
-                if filename.endswith(".REL"):
-                    lines += ".I " + str(i) + line.rstrip()
-                    i += 1
-                else:
-                    lines = ""
-                    for line in file.readlines():
-                        lines += "\n" + line.strip() if (line.startswith(".")) else " " + line.strip()
-                    lines = lines.lstrip("\n").split("\n")
-            for line in lines:
-                container.write(line)
-                container.write("\n")
-    container.close()
-
-
-
 def download_NLTK_packages(packages: list) -> None:
     for package in packages:
         nltk.download(package)
@@ -140,9 +90,4 @@ def chain_tasks_by_taskstring(taskstring: str, processing_item) -> list:
         result = taskstring_dict[letter](result)
     return result
 
-
-def apply_preprocessor_to_files_and_taskstrings(taskstrings= str, filenames = list):
-    for filename in filenames:
-        for taskstring in taskstrings:
-            pre_processor(taskstring, filename)
 
