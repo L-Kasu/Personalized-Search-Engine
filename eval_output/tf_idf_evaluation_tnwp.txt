@@ -1,7 +1,8 @@
 Evaluation tf_idf: 
+If recall = 10, then there were no expected documents given
 Querry0: 		recall: 0.0
 Querry1: 		recall: 0.0
-Querry2: 		recall: 0.0
+Querry2: 		recall: 0.013157894736842105
 Querry3: 		recall: 0.0
 Querry4: 		recall: 0.0
 Querry5: 		recall: 0.0
@@ -9,7 +10,7 @@ Querry6: 		recall: 0.0
 Querry7: 		recall: 0.0
 Querry8: 		recall: 0.0
 Querry9: 		recall: 0.0
-Querry10: 		recall: 0.0
+Querry10: 		recall: 0.013157894736842105
 Querry11: 		recall: 0.0
 Querry12: 		recall: 0.0
 Querry13: 		recall: 0.0
@@ -37,7 +38,7 @@ Querry34: 		recall: 0.0
 Querry35: 		recall: 10
 Querry36: 		recall: 0.0
 Querry37: 		recall: 10
-Querry38: 		recall: 0.013157894736842105
+Querry38: 		recall: 0.0
 Querry39: 		recall: 10
 Querry40: 		recall: 0.0
 Querry41: 		recall: 0.0
@@ -67,14 +68,14 @@ Querry64: 		recall: 0.0
 Querry65: 		recall: 0.0
 Querry66: 		recall: 0.0
 Querry67: 		recall: 10
-Querry68: 		recall: 0.0
+Querry68: 		recall: 0.013157894736842105
 Querry69: 		recall: 10
 Querry70: 		recall: 0.0
 Querry71: 		recall: 10
 Querry72: 		recall: 10
 Querry73: 		recall: 10
 Querry74: 		recall: 10
-Querry75: 		recall: 0.0
+Querry75: 		recall: 0.013157894736842105
 Querry76: 		recall: 10
 Querry77: 		recall: 10
 Querry78: 		recall: 0.0
@@ -88,7 +89,7 @@ Querry85: 		recall: 10
 Querry86: 		recall: 10
 Querry87: 		recall: 10
 Querry88: 		recall: 10
-Querry89: 		recall: 0.02631578947368421
+Querry89: 		recall: 0.013157894736842105
 Querry90: 		recall: 10
 Querry91: 		recall: 0.0
 Querry92: 		recall: 10
@@ -107,6 +108,6 @@ Querry104: 		recall: 10
 Querry105: 		recall: 10
 Querry106: 		recall: 10
 Querry107: 		recall: 10
-Querry108: 		recall: 0.039473684210526314
+Querry108: 		recall: 0.013157894736842105
 Querry109: 		recall: 10
 Querry110: 		recall: 0.0

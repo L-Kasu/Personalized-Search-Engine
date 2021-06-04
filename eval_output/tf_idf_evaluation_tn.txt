@@ -1,4 +1,5 @@
 Evaluation tf_idf: 
+If recall = 10, then there were no expected documents given
 Querry0: 		recall: 0.0
 Querry1: 		recall: 0.0
 Querry2: 		recall: 0.0

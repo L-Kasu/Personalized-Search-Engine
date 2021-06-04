@@ -63,6 +63,7 @@ def evaluate_tf_idf(doc_dicts: list, query_dicts: list, rel_dict: dict) -> dict:
             found_wanted_documents = len(search_algo.intersect(searched, rel_dict[i]))
             recall = get_recall(found_wanted_documents, wanted_documents)
         else:
+            # if no expected documents given, then recall = 10
             recall = 10
         evaluation[i] = recall
     return evaluation
@@ -143,8 +144,9 @@ def read_related_documents(filename: str) -> dict:
     return relation
 
 def save_eval_tf_idf(evaluation: dict, taskstring):
-    file = open("eval_output/evaluation_" + taskstring + ".txt", "w")
+    file = open("eval_output/tf_idf_evaluation_" + taskstring + ".txt", "w")
     file.write("Evaluation tf_idf: \n")
+    file.write("If recall = 10, then there were no expected documents given\n")
     for i in evaluation:
         file.write("Querry"+str(i)+": ")
         file.write("\t\trecall: "+str(evaluation[i]) + "\n")
