@@ -1,9 +1,15 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
-
+# import sys
+import time
+import utilities
+from data import database
+from search import searching_algorithm
+from tf_idf import tf_idf_main
 from evaluation import evaluation_functions
-from utilities import *
-algorithm = search.searching_algorithm.and_search
+from preprocessing import main as preprocessing_main
+from matrix import inverted_matrix
+algorithm = searching_algorithm.and_search
 
 
 def main_search(taskstring):
@@ -16,24 +22,36 @@ def main_search(taskstring):
 def main_evaluate(taskstring):
         query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
         doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-        #rel_dict = evaluation_functions.rel_mapping_to_list_of_expected_results(database.load_object(taskstring + "_pp" + "_CISI.REL"))
-        rel_dict = evaluation_functions.read_related_documents("preprocessing/PP_Containers/pp_container_CISI.REL.txt")
+        rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
+        print((query_dict, doc_dict, rel_dict))
         result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
         evaluation_functions.save_eval_tf_idf(result, taskstring)
         database.save_object(result, taskstring + "_evaluation")
         return result
 
 
-def main_preprocess():
-    datatuple = pp_main.preprocessing_main()
-    filename = datatuple[0]
-    if filename == "CISI.ALL":
-        for i in range(1, 3):
-            # i = 1: with stemming, i = 2: without stemming
-            taskstring = datatuple[i]
-            collection_of_pp_output = database.load_object(taskstring + "_pp_" + filename)
-            matrix = inverted_matrix.InvertedMatrix(collection_of_pp_output, taskstring)
-            database.save_object(matrix, taskstring + "_matrix")
+def main_preprocess() -> None:
+    pair_of_list_taskstrings_filenames = preprocessing_main.run_preprocessing()
+    taskstrings = pair_of_list_taskstrings_filenames[0]
+    filenames = pair_of_list_taskstrings_filenames[1]
+    time.sleep(.1)
+    for filename in filenames:
+        if filename.endswith(".ALL"):
+            for i in range(1, len(pair_of_list_taskstrings_filenames)):
+                # i = 1: with stemming, i = 2: without stemming
+                taskstring = taskstrings[i]
+                try:
+                    collection_of_pp_output = database.load_object(taskstring + "_pp_" + filename)
+                    matrix = inverted_matrix.InvertedMatrix(taskstring, collection_of_pp_output)
+                    database.save_object(matrix, taskstring + "_matrix")
+                    time.sleep(.1)
+                except():
+                    print("nothing saved yet. rerun!")
+                    exit()
+                finally:
+                    print("pp_output and inverted matrix created")
+
+
 
 
 
@@ -64,14 +82,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
-    '''
-    matrix = database.load_object("tnwl_matrix").get_matrix()
-    query = database.load_object("tnwp_pp_CISI.QRY")
-    for item in query:
-        print(item)
-    print("\n")
-    for item in matrix:
-        print(item)
-    print(matrix)
-    '''
+    # main()
+    print(database.load_object("tnwp_pp_CISI.ALL"))

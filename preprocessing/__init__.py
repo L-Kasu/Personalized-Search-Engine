@@ -1,5 +1,1 @@
-import preprocessing.pp_execution_functions
-import preprocessing.pp_file_reader
-import preprocessing.pp_main
-import preprocessing.pp_preprocessing_functions
-import preprocessing.pp_sulyvahn
+from preprocessing import execution, main, sulyvahn, text_processing

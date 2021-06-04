@@ -7,7 +7,7 @@ class InvertedMatrix:
     # - the matrix itself containing a pair of matrix as a dictionary {word: list_of_documents}
     # - taskstring defining how the file got preprocessed
 
-    def __init__(self, collection, taskstring):
+    def __init__(self, taskstring, collection):
         self.matrix = inverted_matrix(collection)
 
         # split string between "output_" and "_"
