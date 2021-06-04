@@ -82,5 +82,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    print(database.load_object("tnwp_pp_CISI.ALL"))
+    main()
+    # print(database.load_object("tnwp_pp_CISI.ALL"))

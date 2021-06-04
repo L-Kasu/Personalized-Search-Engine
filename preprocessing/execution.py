@@ -27,6 +27,18 @@ def inline(container):
     return result
 
 
+def inline_for_REL(container):
+    result = {}
+    for line in container:
+        split = line.split()
+        split_0 = int(split[0]) -1
+        split_1 = int(split[1]) -1
+        if split_0 in result:
+            result[split_0].append(split_1)
+        else:
+            result[split_0] = [split_1]
+    return result
+
 
 def choose_stemmer_and_return_taskstrings_as_list() -> list:
     print("please choose a stemming algorithm:")
@@ -64,23 +76,28 @@ def choose_stemmer_and_return_taskstrings_as_list() -> list:
 def pre_processor(taskstring: str, filename: str) -> None:
     with open(pp.dir_archive + filename, 'r') as container:
         preprocessed_items = []
-        lines_as_list = inline(container)
-        for line in lines_as_list:
-            if line.startswith(".I"):
-                index_string_to_integer = int(line.split()[1])
-                preprocessed_items.append({"I": index_string_to_integer})
-            elif line.startswith(".W") or line.startswith(".T"):
-                reduced_line = line[3:]
-                processing_item = chain_tasks_by_taskstring(taskstring, reduced_line)
-                item_index = "W" if line.startswith(".W") else "T"
-                preprocessed_items[-1][item_index] = processing_item
-            elif line.startswith(".A") or line.startswith(".X"):
-                line_without_prefix = line[3:].strip()
-                item_index = "A" if line.startswith(".A") else "X"
-                preprocessed_items[-1][item_index] = line_without_prefix
-            else:
-                print("line without index")
-                continue
+        if(filename.endswith(".REL")):
+            preprocessed_items = inline_for_REL(container)
+        else:
+            lines_as_list = inline(container)
+            for line in lines_as_list:
+                if line.startswith(".I"):
+                    index_string_to_integer = int(line.split()[1])
+                    preprocessed_items.append({"I": index_string_to_integer})
+                elif line.startswith(".W") or line.startswith(".T"):
+                    reduced_line = line[3:]
+                    processing_item = chain_tasks_by_taskstring(taskstring, reduced_line)
+                    item_index = "W" if line.startswith(".W") else "T"
+                    preprocessed_items[-1][item_index] = processing_item
+                elif line.startswith(".A") or line.startswith(".X"):
+                    line_without_prefix = line[3:].strip()
+                    item_index = "A" if line.startswith(".A") else "X"
+                    preprocessed_items[-1][item_index] = line_without_prefix
+                else:
+                    print("empty line")
+                    continue
+
+
 
         database.save_object(preprocessed_items, taskstring + "_pp_" + filename)
 
