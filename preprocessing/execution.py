@@ -70,7 +70,6 @@ def pre_processor(taskstring: str, filename: str) -> None:
                     item_index = "A" if line.startswith(".A") else "X"
                     preprocessed_items[-1][item_index] = line_without_prefix
                 else:
-                    print("empty line")
                     continue
 
 

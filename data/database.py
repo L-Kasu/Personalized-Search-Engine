@@ -25,7 +25,9 @@ def load_object(filename="data"):
 
 
 def list_files_in_database() -> list:
-    result = list(filter(lambda file: file.endswith(".pickle"), os.listdir(".")))
+    list_of_folders = os.listdir("./data/")
+    result = filter(lambda file: file.endswith(".pickle"), list_of_folders)
+    result = [filename.rstrip(".pickle") for filename in list(result)]
     return result
 
 
