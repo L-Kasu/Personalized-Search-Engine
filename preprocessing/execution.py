@@ -44,9 +44,11 @@ def __transform_rel_to_query_to_expected_documents_dictionary(filename):
         result = {}
         for line in container:
             split = line.split()
-            if len(split > 1):
-                result[split[0]] = result[split[1]] \
-                    if split[0] not in result else result[split[0]].append(split[1])
+            if len(split) > 1:
+                doc_id = int(split[0]) - 1
+                res_id = int(split[1]) - 1
+                result[doc_id] = [split[1]] \
+                    if doc_id not in result.keys() else result[doc_id] + [res_id]
         return result
 
 
@@ -59,23 +61,26 @@ def __transform_indexed_file_to_dictionary_of_indexed_parts(taskstring, filename
 
             if match_on_index_letter:
                 index_letter = match_on_index_letter.__getitem__(2)
+
                 rest = match_on_index_letter.__getitem__(4)
 
                 if index_letter.strip() == 'I':
                     rest = int(rest) - 1
                     index_letters.append([index_letter])
-                    content.append([rest])
+                    content.append([str(rest)])
                 else:
-                    rest = apply_tasks_by_taskstring(taskstring, rest)
                     index_letters[-1].append(index_letter)
                     content[-1].append(rest)
 
             elif content:
                 content[-1][-1] += line
-
     # map indeces to content and turn into dictionary for every pair of indeces, content lists
     # returns a list of dictionary
-    return [dict(zip(i, r)) for i, r in zip(index_letters, content)]
+    result = []
+    for i, r in zip(index_letters, content):
+        r = [apply_tasks_by_taskstring(taskstring, item) for item in r]
+        result.append(dict(zip(i, r)))
+    return result
 
 
 def __simple_preprocess(taskstring, filename):
@@ -84,6 +89,7 @@ def __simple_preprocess(taskstring, filename):
     return apply_tasks_by_taskstring(taskstring, big_string)
 
 
+# the mighty preprocessor
 def pre_processor(taskstring: str, filename: str) -> None:
     preprocessed_items = []
     # for relation files
