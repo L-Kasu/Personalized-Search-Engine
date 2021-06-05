@@ -33,7 +33,7 @@ def file_type():
 
 # instantiating a Window:
 window = Tk()
-window.geometry("600x400")
+window.geometry("800x400")
 window.title("Search Engine")
 
 # Allows the user to select the directory they want to search in
@@ -47,13 +47,17 @@ select_directory.pack(side=TOP, anchor=NW)
 settings_frame = Frame(window)
 settings_frame.pack(side=TOP)
 
-settings_label = Label(settings_frame, text="Settings")
+settings_label = Label(settings_frame,
+                       text="Settings",
+                       font=("Arial", 20, "bold"))
 settings_label.pack()
 
 file_size_frame = Frame(settings_frame)
 file_size_frame.pack()
 
-file_size_label = Label(file_size_frame, text="Pick file size (in MB)")
+file_size_label = Label(file_size_frame,
+                        text="Pick file size (in MB)",
+                        font=("Arial", 10, "bold"))
 file_size_label.pack()
 
 file_size_scale = Scale(settings_frame,
@@ -66,7 +70,9 @@ file_size_scale.pack()
 file_type_frame = Frame(settings_frame)
 file_type_frame.pack()
 
-file_type_label = Label(file_type_frame, text="Select file type:")
+file_type_label = Label(file_type_frame,
+                        text="Select file type:",
+                        font=("Arial", 10, "bold"))
 file_type_label.pack()
 
 pdf = IntVar()
@@ -86,7 +92,7 @@ preprocess_button.pack(side=BOTTOM)
 
 # Entry frame
 entry_frame = Frame(window)
-entry_frame.pack(side=TOP, anchor=NE)
+entry_frame.pack(anchor=NE)
 
 search_entry = Entry(entry_frame)
 search_entry.pack(side=TOP)
