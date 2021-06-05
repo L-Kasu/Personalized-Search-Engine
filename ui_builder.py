@@ -12,7 +12,7 @@ def select_dir():
 
 # Returns the file size the user chose
 def get_file_size():
-    file_size_scale.get()
+    return file_size_scale.get()
 
 
 # Preprocesses based on the search settings
@@ -29,6 +29,11 @@ def file_type():
     elif docx.get() == 1:
         pass
     pass
+
+
+# Gets user input
+def user_entry():
+    return search_entry.get()
 
 
 # instantiating a Window:
@@ -77,22 +82,22 @@ file_type_label.pack()
 
 pdf = IntVar()
 file_type_pdf = Checkbutton(file_type_frame, text="PDF", variable=pdf)
-file_type_pdf.pack()
+file_type_pdf.pack(side=LEFT)
 
 txt = IntVar()
 file_type_txt = Checkbutton(file_type_frame, text="TXT", variable=txt)
-file_type_txt.pack()
+file_type_txt.pack(side=LEFT)
 
 docx = IntVar()
 file_type_docx = Checkbutton(file_type_frame, text="DOCX", variable=docx)
-file_type_docx.pack()
+file_type_docx.pack(side=LEFT)
 
 preprocess_button = Button(settings_frame, text="preprocess", command=preprocess)
 preprocess_button.pack(side=BOTTOM)
 
 # Entry frame
 entry_frame = Frame(window)
-entry_frame.pack(anchor=NE)
+entry_frame.pack()
 
 search_entry = Entry(entry_frame)
 search_entry.pack(side=TOP)
