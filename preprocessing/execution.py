@@ -5,7 +5,6 @@ import re
 import time
 import nltk
 from preprocessing import text_processing
-from preprocessing import sulyvahn
 from preprocessing import pp_main as pp
 from data import database
 
@@ -61,13 +60,12 @@ def __transform_indexed_file_to_dictionary_of_indexed_parts(taskstring, filename
 
             if match_on_index_letter:
                 index_letter = match_on_index_letter.__getitem__(2)
-
                 rest = match_on_index_letter.__getitem__(4)
 
                 if index_letter.strip() == 'I':
                     rest = int(rest) - 1
                     index_letters.append([index_letter])
-                    content.append([str(rest)])
+                    content.append([""])
                 else:
                     index_letters[-1].append(index_letter)
                     content[-1].append(rest)
@@ -78,7 +76,7 @@ def __transform_indexed_file_to_dictionary_of_indexed_parts(taskstring, filename
     # returns a list of dictionary
     result = []
     for i, r in zip(index_letters, content):
-        r = [apply_tasks_by_taskstring(taskstring, item) for item in r]
+        r = apply_tasks_by_taskstring(taskstring, " ".join(r))
         result.append(dict(zip(i, r)))
     return result
 
