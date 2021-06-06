@@ -3,11 +3,13 @@
 # author: Haitham Samaan
 
 from tkinter import *
+from tkinter import filedialog
 
 
 # Selects the directory the user wants to search in
 def select_dir():
-    pass
+    dir_selected = filedialog.askdirectory()
+    return dir_selected
 
 
 # Returns the file size the user chose
@@ -33,7 +35,7 @@ def file_type():
 
 # Gets user input
 def user_entry():
-    return search_entry.get()
+    search_entry.get()
 
 
 # clears the entry box
@@ -43,7 +45,7 @@ def delete():
 
 # instantiating a Window:
 window = Tk()
-window.geometry("810x480")
+window.geometry("870x480")
 window.title("Search Engine")
 window.config(relief=RAISED, bd=7, bg="#212326")
 # Upper empty label
@@ -62,7 +64,10 @@ empty_0.grid(row=1, column=0)
 select_directory = Button(upleft_frame,
                           text="Select Directory",
                           command=select_dir)
-select_directory.config(bg="#212326", fg="#00FF00")
+select_directory.config(bg="#212326",
+                        fg="#00FF00",
+                        activebackground="#141414",
+                        activeforeground="#00FF00")
 select_directory.grid(row=1, column=1)
 
 # empty space
@@ -121,7 +126,8 @@ file_type_pdf.config(bg="#141414",
                      fg="#00FF00",
                      selectcolor="black",
                      activebackground="#141414",
-                     activeforeground="#00FF00")
+                     activeforeground="#00FF00",
+                     highlightbackground="#141414")
 file_type_pdf.grid(row=6, column=0)
 
 txt = IntVar()
@@ -130,7 +136,8 @@ file_type_txt.config(bg="#141414",
                      fg="#00FF00",
                      selectcolor="black",
                      activebackground="#141414",
-                     activeforeground="#00FF00")
+                     activeforeground="#00FF00",
+                     highlightbackground="#141414")
 file_type_txt.grid(row=6, column=1)
 
 docx = IntVar()
@@ -139,11 +146,15 @@ file_type_docx.config(bg="#141414",
                       fg="#00FF00",
                       selectcolor="black",
                       activebackground="#141414",
-                      activeforeground="#00FF00")
+                      activeforeground="#00FF00",
+                      highlightbackground="#141414")
 file_type_docx.grid(row=6, column=2)
 
 preprocess_button = Button(settings_frame, text="preprocess", command=preprocess)
-preprocess_button.config(bg="#212326", fg="#00FF00")
+preprocess_button.config(bg="#212326",
+                         fg="#00FF00",
+                         activebackground="#141414",
+                         activeforeground="#00FF00")
 preprocess_button.grid(row=7, column=1)
 
 # empty space
@@ -157,6 +168,11 @@ entry_frame.config(bg="#141414")
 entry_frame.config(relief=RAISED, bd=0.5)
 entry_frame.grid(row=1, column=2)
 
+# search_logo = Label(entry_frame, text="tf_idf")
+# search_logo.config(font=("Arial", 40, "bold"),
+#                    fg="#a30bba",
+#                    bg="#141414")
+# search_logo.grid(row=0, column=3)
 search_entry = Entry(entry_frame)
 search_entry.config(bg="black", fg="#00FF00")
 search_entry.grid(row=1, column=3, ipadx=120, ipady=10)
@@ -166,10 +182,16 @@ buttons_frame = Frame(entry_frame)
 buttons_frame.grid(row=2, column=3)
 
 search_button = Button(buttons_frame, text="Search")
-search_button.config(bg="#212326", fg="#00FF00")
+search_button.config(bg="#212326",
+                     fg="#00FF00",
+                     activebackground="#141414",
+                     activeforeground="#00FF00")
 search_button.grid(row=2, column=3)
 delete_button = Button(buttons_frame, text="Clear", command=delete)
-delete_button.config(bg="#212326", fg="#00FF00")
+delete_button.config(bg="#212326",
+                     fg="#00FF00",
+                     activebackground="#141414",
+                     activeforeground="#00FF00")
 delete_button.grid(row=2, column=4)
 
 # empty space
