@@ -1,9 +1,7 @@
 from _ctypes_test import func
-
-import tf_idf.tf_idf_functions
 from search import searching_algorithm as search_algo
 from matrix import inverted_matrix as im
-from tf_idf import tf_idf_functions as tf_idf
+from tf_idf import tf_idf_functions as tf
 from utilities import *
 
 
@@ -28,19 +26,48 @@ def evaluate(query: dict, rel: list, matrix: im.InvertedMatrix, algorithm: func)
         evaluation[i] = [precision, recall]
     return evaluation
 
+
 # parameters:
 # qry_dicts: dictionary of preprocessed querries
 # doc_dicts: dictionary of preprocessed documents
 # output: dictionary, that maps the querry index to the recall
-def evaluate_tf_idf(qry_dicts: list, doc_dicts: list, related) -> dict:
+def evaluate_tf_idf_alt(qry_dicts: list, doc_dicts: list, related) -> dict:
     evaluation = {}
     for i in range(0, len(qry_dicts)):
         wanted_documents = len(related[i])
-        searched = tf_idf.get_k_documents_for_query_i(doc_dicts, qry_dicts, wanted_documents, i)
+        searched = tf.get_k_documents_for_query_i_lightweight(doc_dicts, qry_dicts, wanted_documents, i)
         found_wanted_documents = len(search_algo.intersect(searched, related[i]))
         recall = get_recall(found_wanted_documents, wanted_documents)
         evaluation[i] = recall
     return evaluation
+
+
+def evaluate_tf_idf(doc_dicts: list, query_dicts: list, rel_dict: dict) -> dict:
+    vocab_dict = tf.df_dict(doc_dicts, query_dicts)
+    weight_matrix_doc = tf.weight_matrix_doc_tf_idf(doc_dicts, query_dicts, vocab_dict)
+    evaluation = {}
+    # workaround because query:dict is broken
+    for i in range(0, 111):
+    #for i in range(0, len(query_dicts)):
+        weight_vec_qry = tf.weight_vec_qry_tf_idf(doc_dicts, query_dicts, i, vocab_dict)
+        rank_matrix = tf.document_rank_matrix(weight_matrix_doc, weight_vec_qry)
+        sorted_rank_matrix = tf.sort_document_rank_matrix_for_qry_i(rank_matrix, 0)
+        wanted_documents = len(rel_dict)
+        float_list = tf.get_k_documents(sorted_rank_matrix, wanted_documents)
+        # cast to int
+        int_list = list()
+        for j in range(0, len(float_list)):
+            int_list.append(int(float_list[j]))
+        searched = int_list
+        if i in rel_dict:
+            found_wanted_documents = len(search_algo.intersect(searched, rel_dict[i]))
+            recall = get_recall(found_wanted_documents, wanted_documents)
+        else:
+            # if no expected documents given, then recall = 10
+            recall = 10
+        evaluation[i] = recall
+    return evaluation
+
 
 
 def get_precision(found_wanted_documents: int, found_documents: int) -> float:
@@ -117,11 +144,12 @@ def read_related_documents(filename: str) -> dict:
     return relation
 
 def save_eval_tf_idf(evaluation: dict, taskstring):
-    file = open("eval_output/evaluation" + taskstring + ".txt", "w")
+    file = open("eval_output/tf_idf_evaluation_" + taskstring + ".txt", "w")
     file.write("Evaluation tf_idf: \n")
+    file.write("If recall = 10, then there were no expected documents given\n")
     for i in evaluation:
         file.write("Querry"+str(i)+": ")
-        file.write("\t\trecall: "+str(evaluation[i]))
+        file.write("\t\trecall: "+str(evaluation[i]) + "\n")
     file.close()
 
 

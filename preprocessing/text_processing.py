@@ -5,17 +5,18 @@
 import sys
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
-from preprocessing.pp_sulyvahn import SulyvahnStemmer
+from preprocessing.sulyvahn import SulyvahnStemmer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords as sw
 
 
 def tokenize(raw_text: list) -> list:
-    r = raw_text.pop()
+    r = []
+    if raw_text:
+        r = raw_text[0]
     if type(r) == str:
-        return list(word_tokenize(r))
-    else:
-        return list()
+        r = word_tokenize(r)
+    return r
 
 
 def normalize(tokens: list) -> list:
