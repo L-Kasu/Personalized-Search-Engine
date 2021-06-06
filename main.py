@@ -15,9 +15,9 @@ from matrix import inverted_matrix
 # the algorithm you want to use
 algorithm = searching_algorithm.and_search
 # only fill in if you want to preprocess a specific file again
-filenames_for_preprocessing = []
+filenames_for_preprocessing = ["CISI.ALL"]
 # fill in all taskstrings to use for preprocessing
-taskstrings_for_preprocessing = ["tnwl", "tnwp", "tn"]
+taskstrings_for_preprocessing = ["tn"]
 # taskstring to work with
 default_taskstring = "tnwl"
 
@@ -84,5 +84,5 @@ text = "Abstracting is a key segment of the information industry Opportunities a
 
 
 if __name__ == "__main__":
-    # main()
-    print(preprocessing.text_processing.tokenize([]))
+    main()
+    print(database.load_object("tn_pp_CISI.ALL"))

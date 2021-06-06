@@ -1,10 +1,11 @@
 # preprocessing function container
 # authors: Niklas Munkes, Lars Kasüschke
+import re
 import sys
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
 from preprocessing.sulyvahn import SulyvahnStemmer
-from nltk.tokenize import RegexpTokenizer
+from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords as sw
 
 
@@ -13,14 +14,28 @@ def tokenize(raw_text: list) -> list:
     r = ""
     for item in raw_text:
         r += item
-    tokenizer = RegexpTokenizer(r'[\w\\.]+')
-    r = tokenizer.tokenize(r)
+    r = word_tokenize(r)
     return list(r)
 
 
+# reurn a list of words
+def __normalize_word(word: str) -> list:
+    result = []
+    words = word.split("-")
+    for word in words:
+        item = re.sub('\\W', "", word)
+        item = item.lower()
+        result.append(item)
+    return result
+
+
 def normalize(tokens: list) -> list:
-    result = map(lambda word: word.replace(".", "").lower(), tokens)
-    return list(result)
+    result = []
+    for word in tokens:
+        normalized_words =__normalize_word(word)
+        for part_word in normalized_words:
+            result.append(part_word)
+    return result
 
 
 def remove_stop_words(words: list) -> list:

@@ -67,7 +67,7 @@ def __transform_indexed_file_to_dictionary_of_indexed_parts(taskstring, filename
                 if index_letter.strip() == 'I':
                     rest = int(rest) - 1
                     index_letters.append([index_letter])
-                    content.append([""])
+                    content.append([str(rest)])
                 else:
                     index_letters[-1].append(index_letter)
                     content[-1].append(rest)
@@ -78,7 +78,7 @@ def __transform_indexed_file_to_dictionary_of_indexed_parts(taskstring, filename
     # returns a list of dictionary
     result = []
     for i, r in zip(index_letters, content):
-        r = apply_tasks_by_taskstring(taskstring, " ".join(r))
+        r = [apply_tasks_by_taskstring(taskstring, item) for item in r]
         result.append(dict(zip(i, r)))
     return result
 
