@@ -15,7 +15,7 @@ def tokenize(raw_text: list) -> list:
         r += item
     tokenizer = RegexpTokenizer(r'[\w\\.]+')
     r = tokenizer.tokenize(r)
-    return r
+    return list(r)
 
 
 def normalize(tokens: list) -> list:
@@ -30,7 +30,6 @@ def remove_stop_words(words: list) -> list:
 
 
 def stemming(words: list, stemmer: list) -> list:
-    new_pp_set = list()
     if stemmer == "porter":
         stem = PorterStemmer().stem
     elif stemmer == "lancaster":

@@ -38,6 +38,7 @@ def is_taskstring_valid(taskstring) -> bool:
                and is_taskstring_valid(taskstring[1:])
 
 
+# for REL files
 def __transform_rel_to_query_to_expected_documents_dictionary(filename):
     with open(pp.dir_archive + filename, 'r') as container:
         result = {}
@@ -51,6 +52,7 @@ def __transform_rel_to_query_to_expected_documents_dictionary(filename):
         return result
 
 
+# for indexed files
 def __transform_indexed_file_to_dictionary_of_indexed_parts(taskstring, filename):
     index_letters, content = [], []
     with open(pp.dir_archive + filename, 'r') as container:
@@ -81,6 +83,7 @@ def __transform_indexed_file_to_dictionary_of_indexed_parts(taskstring, filename
     return result
 
 
+# for any text file
 def __simple_preprocess(taskstring, filename):
     with open(pp.dir_archive + filename, 'r') as container:
         big_string = " ".join(container.readlines())
@@ -97,5 +100,5 @@ def pre_processor(taskstring: str, filename: str) -> None:
     elif filename.endswith(".ALL") or filename.endswith(".QRY"):
         preprocessed_items = __transform_indexed_file_to_dictionary_of_indexed_parts(taskstring, filename)
     else:
-        __simple_preprocess(taskstring, filename)
+        preprocessed_items = __simple_preprocess(taskstring, filename)
     database.save_object(preprocessed_items, taskstring + "_pp_" + filename)
