@@ -2,7 +2,83 @@ from _ctypes_test import func
 from search import searching_algorithm as search_algo
 from matrix import inverted_matrix as im
 from tf_idf import tf_idf_functions as tf
-from utilities import *
+from sklearn import metrics
+from numpy import ndarray
+
+
+# gets the results of querrys for the evalutation
+# returns a dicitonary of querry index and the results
+def get_results_for_evaluation(query_dicts: list, doc_dicts: list) -> dict:
+    None
+
+
+# calculates for every querrry precision and recal
+# returns a dictionary: dict[querry_index] = [precission, recall]
+# special case: evaluation[-1] = average_precision
+def evaluate_querrys(query_results: dict, rel_dict: dict) -> dict:
+    y_true = get_relation_labels(query_results, rel_dict)
+    y_pred = get_result_labels(query_results, rel_dict)
+    evaluation = {}
+    for i in query_results:
+        i_true = y_true[i]
+        i_pred = y_pred[i]
+        precision = metrics.precision_score(i_true, i_pred)
+        recall = metrics.recall_score(i_true, i_pred)
+        evaluation[i] = [precision, recall]
+    average = metrics.average_precision_score(y_true, y_pred)
+    evaluation[-1] = average
+    return evaluation
+
+
+# saves the results of the evaluation in txt file
+def save_evaluation(evaluation: dict, algo: str, taskstring: str):
+    file = open('eval_output/' + algo + '_evaluation_' + taskstring + '.txt', "w")
+    for i in evaluation:
+        file.write("Querry " + str(i) + ":")
+        file.write("\t\tprecission: " + str(evaluation[i][0]))
+        file.write("\t\trecall: " + str(evaluation[i][1]) + "\n")
+    file.write("\n\n\nwithout stemming: \n")
+
+
+# compares to evaluations
+def comp_evaluations(evaluation1: dict, evaluation2: dict):
+    None
+
+
+# labes the documents if they are expected for a querry
+# returns a ndarray: result[i] = expected for querry i
+def get_relation_labels(query_results: dict, rel_dict: dict) -> ndarray:
+    result = ndarray((len(query_results), len(query_results[1])))
+    for i in rel_dict:
+        for x in range(0, len(query_results)):
+            if x in rel_dict[i]:
+                result[i][x] = True
+            else:
+                result[i][x] = False
+    return result
+
+
+def get_result_labels(query_results: dict, rel_dict: dict) -> ndarray:
+    result = ndarray((len(query_results), len(query_results[1])))
+    for i in rel_dict:
+        k = len(rel_dict[i])
+        count = 0
+        for x in query_results[i]:
+            if count < k:
+                result[i][x] = True
+                count = count + 1
+            else:
+                result[i][x] = False
+                count = count + 1
+    return result
+
+
+
+
+#########################################################################################################
+# old functions
+# going to delete them
+##########################################################################################################
 
 
 # evaluates the search, that uses the preprocessing with stemming
@@ -153,7 +229,7 @@ def save_eval_tf_idf(evaluation: dict, taskstring):
     file.close()
 
 
-'''
+
 # saves the evaluation in txt file
 def save_eval() -> None:
     evaluation_with_stemming = evaluate_with_stemming()
@@ -170,4 +246,4 @@ def save_eval() -> None:
         file.write("\t\tprecission: "+ str(evaluation_without_stemming[i][0]))
         file.write("\t\trecall: " + str(evaluation_without_stemming[i][1]) + "\n")
     file.close()
-'''
+
