@@ -15,11 +15,11 @@ from matrix import inverted_matrix
 # the algorithm you want to use
 algorithm = searching_algorithm.and_search
 # only fill in if you want to preprocess a specific file again
-filenames_for_preprocessing = []
+filenames_for_preprocessing = ["CISI.ALL"]
 # fill in all taskstrings to use for preprocessing
 taskstrings_for_preprocessing = ["tnwl", "tnwp", "tn"]
 # taskstring to work with
-taskstring = "tnwl"
+default_taskstring = "tnwl"
 
 
 def main_search(taskstring):
@@ -28,24 +28,24 @@ def main_search(taskstring):
     tf_idf_main.main(doc_dicts, qry_dicts)
 
 
-
 def main_evaluate(taskstring):
-        query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
-        doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-        rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
-        print((query_dict, doc_dict, rel_dict))
-        result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
-        evaluation_functions.save_eval_tf_idf(result, taskstring)
-        database.save_object(result, taskstring + "_evaluation")
-        return result
+    query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
+    doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
+    rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
+    print((query_dict, doc_dict, rel_dict))
+    result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
+    evaluation_functions.save_eval_tf_idf(result, taskstring)
+    database.save_object(result, taskstring + "_evaluation")
+    return result
 
 
 def main_preprocess() -> None:
     print("Place the files you wish to preprocess: " + preprocessing.pp_main.dir_archive)
-    print("endings: '.ALL' for documents, 'QRY' for querys, 'REL' for expected results.")
+    print("endings for indexed: '.ALL' for documents, 'QRY' for querys, 'REL' for expected results.")
+    print("for indexed files every distint part starts with .[A-Z]")
     print("press any key when you are finished")
     input()
-    print("Let's go")
+    print("Let's go...")
     if taskstrings_for_preprocessing:
         for taskstring in taskstrings_for_preprocessing:
             if filenames_for_preprocessing:
@@ -55,12 +55,6 @@ def main_preprocess() -> None:
     else:
         preprocessing.pp_main.run_preprocessing()
     time.sleep(.5)
-
-
-
-
-
-
 
 
 def main():
@@ -75,9 +69,9 @@ def main():
     print("5: exit")
     i = input()
     if i == "1":
-        main_search(taskstring)
+        main_search(default_taskstring)
     elif i == "2":
-        main_evaluate(taskstring)
+        main_evaluate(default_taskstring)
     elif i == "3":
         main()
     elif i == "4":
@@ -86,6 +80,10 @@ def main():
         exit()
 
 
+text = "Abstracting is a key segment of the information industry Opportunities are available for both full-time professionals and part-time orvolunteer workers.Many librarians find such activities pleasant and rewarding, for they knowthey are contributing to the more effective use of stored information.One chapter is devoted to career opportunities for abstractors."
+
+
 if __name__ == "__main__":
     main()
-    # print(database.load_object("tnwp_pp_CISI.ALL"))
+    #print(database.load_object("tnwp_pp_CISI.ALL"))
+    print(preprocessing.text_processing.normalize(preprocessing.text_processing.tokenize([text])))
