@@ -34,7 +34,8 @@ def normalize(tokens: list) -> list:
     for word in tokens:
         normalized_words =__normalize_word(word)
         for part_word in normalized_words:
-            result.append(part_word)
+            if part_word:
+                result.append(part_word)
     return result
 
 
