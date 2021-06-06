@@ -98,7 +98,10 @@ file_size_scale = Scale(settings_frame,
                         to=200,
                         length=150,
                         orient=HORIZONTAL)
-file_size_scale.config(bg="#141414", fg="#00FF00")
+file_size_scale.config(bg="#141414", fg="#00FF00",
+                       activebackground="#141414",
+                       troughcolor="#212326",
+                       highlightbackground="#141414")
 file_size_scale.grid(row=3, column=1)
 
 # File type
@@ -114,17 +117,29 @@ file_type_label.grid(row=5, column=1)
 
 pdf = IntVar()
 file_type_pdf = Checkbutton(file_type_frame, text="PDF", variable=pdf)
-file_type_pdf.config(bg="#141414", fg="#00FF00", selectcolor="black", activebackground="#141414", activeforeground="#00FF00")
+file_type_pdf.config(bg="#141414",
+                     fg="#00FF00",
+                     selectcolor="black",
+                     activebackground="#141414",
+                     activeforeground="#00FF00")
 file_type_pdf.grid(row=6, column=0)
 
 txt = IntVar()
 file_type_txt = Checkbutton(file_type_frame, text="TXT", variable=txt)
-file_type_txt.config(bg="#141414", fg="#00FF00", selectcolor="black", activebackground="#141414", activeforeground="#00FF00")
+file_type_txt.config(bg="#141414",
+                     fg="#00FF00",
+                     selectcolor="black",
+                     activebackground="#141414",
+                     activeforeground="#00FF00")
 file_type_txt.grid(row=6, column=1)
 
 docx = IntVar()
 file_type_docx = Checkbutton(file_type_frame, text="DOCX", variable=docx)
-file_type_docx.config(bg="#141414", fg="#00FF00", selectcolor="black", activebackground="#141414", activeforeground="#00FF00")
+file_type_docx.config(bg="#141414",
+                      fg="#00FF00",
+                      selectcolor="black",
+                      activebackground="#141414",
+                      activeforeground="#00FF00")
 file_type_docx.grid(row=6, column=2)
 
 preprocess_button = Button(settings_frame, text="preprocess", command=preprocess)
@@ -174,7 +189,7 @@ path_label.grid(row=5, column=0)
 path_text = Text(path_frame)
 path_text.config(bg="#212326", fg="white")
 path_text.config(width=30, height=9)
-path_text.grid(row=6, column=0, ipadx=43, ipady=30)
+path_text.grid(row=6, column=0, ipadx=42, ipady=30)
 
 # Result frame
 result_frame = Frame(window)
