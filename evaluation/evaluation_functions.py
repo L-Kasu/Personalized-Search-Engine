@@ -7,32 +7,47 @@ from numpy import ndarray
 
 
 # gets the results of querrys for the evalutation
+# using the tf_idf algorithm
 # returns a dicitonary of querry index and the results
-def get_results_for_evaluation(query_dicts: list, doc_dicts: list) -> dict:
-    None
+def get_results_for_evaluation_tf_idf(query_dicts: list, doc_dicts: list) -> dict:
+    searched = {}
+    # for i in query_dicts:
+        # docs = search i in doc_list
+        # searched[i] = docs
+    return searched
+
+
+# gets the results of querrys for the evalutation
+# using the and_search algorithm
+# returns a dicitonary of querry index and the results
+def get_results_for_evaluation_and_search(query_dicts: list, doc_dicts: list) -> dict:
+    searched = {}
+    # for i in query_dicts:
+        # docs = search i in doc_list
+        # searched[i] = docs
+    return searched
 
 
 # calculates for every querrry precision and recal
+# parameter ndarrays with labels true and false
 # returns a dictionary: dict[querry_index] = [precission, recall]
 # special case: evaluation[-1] = average_precision
-def evaluate_querrys(query_results: dict, rel_dict: dict) -> dict:
-    y_true = get_relation_labels(query_results, rel_dict)
-    y_pred = get_result_labels(query_results, rel_dict)
+def evaluate_querrys(query_labels: ndarray, rel_labels: ndarray) -> dict:
     evaluation = {}
-    for i in query_results:
-        i_true = y_true[i]
-        i_pred = y_pred[i]
+    for i in range(0, len(query_labels)):
+        i_true = query_labels[i]
+        i_pred = rel_labels[i]
         precision = metrics.precision_score(i_true, i_pred)
         recall = metrics.recall_score(i_true, i_pred)
         evaluation[i] = [precision, recall]
-    average = metrics.average_precision_score(y_true, y_pred)
+    average = metrics.average_precision_score(query_labels, rel_labels)
     evaluation[-1] = average
     return evaluation
 
 
 # saves the results of the evaluation in txt file
-def save_evaluation(evaluation: dict, algo: str, taskstring: str):
-    file = open('eval_output/' + algo + '_evaluation_' + taskstring + '.txt', "w")
+def save_evaluation(evaluation: dict, name: str):
+    file = open(name + '.txt', "w")
     for i in evaluation:
         file.write("Querry " + str(i) + ":")
         file.write("\t\tprecission: " + str(evaluation[i][0]))
@@ -226,24 +241,5 @@ def save_eval_tf_idf(evaluation: dict, taskstring):
     for i in evaluation:
         file.write("Querry"+str(i)+": ")
         file.write("\t\trecall: "+str(evaluation[i]) + "\n")
-    file.close()
-
-
-
-# saves the evaluation in txt file
-def save_eval() -> None:
-    evaluation_with_stemming = evaluate_with_stemming()
-    file = open('eval_output/evaluation.txt', "w")
-    file.write("with stemminng: \n")
-    for i in evaluation_with_stemming:
-        file.write("Querry " + str(i) + ":")
-        file.write("\t\tprecission: "+ str(evaluation_with_stemming[i][0]))
-        file.write("\t\trecall: " + str(evaluation_with_stemming[i][1]) + "\n")
-    file.write("\n\n\nwithout stemming: \n")
-    evaluation_without_stemming = evaluate_without_stemming()
-    for i in evaluation_without_stemming:
-        file.write("Querry " + str(i) + ":")
-        file.write("\t\tprecission: "+ str(evaluation_without_stemming[i][0]))
-        file.write("\t\trecall: " + str(evaluation_without_stemming[i][1]) + "\n")
     file.close()
 
