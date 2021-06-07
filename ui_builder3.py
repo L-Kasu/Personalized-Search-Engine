@@ -45,7 +45,7 @@ def delete():
 
 # instantiating a Window:
 window = Tk()
-window.geometry("870x480")
+window.geometry("810x480")
 window.title("Search Engine")
 window.config(relief=RAISED, bd=7, bg="#212326")
 # Upper empty label
