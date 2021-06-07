@@ -164,10 +164,14 @@ empty_2.grid(row=1, column=1)
 
 # Entry frame
 entry_frame = Frame(window)
-entry_frame.config(bg="#141414")
-entry_frame.config(relief=RAISED, bd=0.5)
+entry_frame.config(bg="#212326")
+# entry_frame.config(relief=RAISED, bd=0.5)
 entry_frame.grid(row=1, column=2)
 
+logo = PhotoImage(file="search_logo3.png")
+logo_label = Label(entry_frame, image=logo)
+logo_label.config(bg="#212326")
+logo_label.grid(row=0, column=3)
 # search_logo = Label(entry_frame, text="tf_idf")
 # search_logo.config(font=("Arial", 40, "bold"),
 #                    fg="#a30bba",
