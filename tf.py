@@ -16,13 +16,15 @@ def same_len(corpus, titles):
     
 
 class tfidf:
+    # corpus and titles should be lists of str
     def __init__(self, corpus:list, titles:list):
         
         self.tfidfVectorizer = TfidfVectorizer(analyzer='word',stop_words= 'english')
         self.corpus = corpus
         self.titles = titles
         self.tfidf_mat = self.tfidfVectorizer.fit_transform(self.corpus)
-        
+       
+    # corpus and titles should be lists of str
     def add_to_corpus(self, new_corpus:list, new_titles:list):
         
         self.corpus += new_corpus
