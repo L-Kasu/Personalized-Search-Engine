@@ -5,7 +5,6 @@
 #TODO: code cleanup
 
 from tkinter import *
-from tkinter import filedialog
 import ui_builder_util as util
 
 
@@ -30,6 +29,12 @@ filesearchspan_min = 0
 filesearchspan_max = 200
 
 
+def main():
+    root = Tk()
+    app = Application(master=root)
+    app.mainloop()
+
+
 class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -41,13 +46,11 @@ class Application(Frame):
         self.frame_settings(self.grid_01, filesearchspan_min, filesearchspan_max)
         # self.frame_entry()
 
-
     def create_window(self):
         # instantiating a window
         self.master.geometry(str(master_height)+"x"+str(master_width))
         self.master.title("Search Engine")
         self.master.config(relief=FLAT, bd=7, bg=col_bg)
-
 
     def create_grids(self):
         self.grid_00 = self.create_grid(0, 0, master_height/2, master_width/3, 2, col_bg)
@@ -56,13 +59,11 @@ class Application(Frame):
         self.grid_10 = self.create_grid(1, 0, master_height/2, master_width/2, 3, col_bg)
         self.grid_11 = self.create_grid(1, 3, master_height/2, master_width/2, 3, col_bg)
 
-
     def create_grid(self, m, n, h, w, n_span, col_bg):
         grid = Frame(self, height=str(h), width=str(w))
         grid.config(bg=col_bg)
         grid.grid(row=m, column=n, columnspan=n_span)
         return grid
-
 
     def btn_select_dir(self, location):
         self.select_directory = Button(location,
@@ -77,7 +78,6 @@ class Application(Frame):
                                         activeforeground=col_acc_lgt
                                      )
         self.select_directory.pack(side=RIGHT)
-
 
     def frame_settings(self, location, scale_min, scale_max):
         # Used many frames here to organize the different widgets better
@@ -210,7 +210,6 @@ class Application(Frame):
                                   activeforeground=col_acc_lgt)
         self.delete_button.grid(row=2, column=4)
 
-
     def frame_path(self):
         # Path frame
         self.path_frame = Frame(self.master)
@@ -225,7 +224,6 @@ class Application(Frame):
         self.path_text.config(bg=col_bg, fg=former_white)
         self.path_text.config(width=30, height=9)
         self.path_text.grid(row=6, column=0, ipadx=42, ipady=30)
-
 
     def frame_result(self):
         # Result frame
@@ -243,6 +241,5 @@ class Application(Frame):
         self.result_text.grid(row=6, column=1, ipadx=81, ipady=30)
 
 
-root = Tk()
-app = Application(master=root)
-app.mainloop()
+if __name__ == "__main__":
+    main()
