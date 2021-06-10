@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.2
+# version: alpha0.21
 # author: Haitham Samaan, Niklas Munkes
 
 #TODO: code cleanup
@@ -14,8 +14,8 @@ col_bg = "#3b3b3b"
 col_bg_lgt = "#5f5f5f"
 col_btn_idle = "#940000"
 col_btn_active = "#d50000"
-col_acc_1 = "#2c24a0"
-col_acc_2 = "#0007f7"
+col_acc = "#2c24a0"
+col_acc_lgt = "#00f707"
 former_black = "#2c24a0"
 former_white = "#2c24a0"
 
@@ -69,10 +69,10 @@ class Application(Frame):
                                         command=util.select_dir
                                        )
         self.select_directory.config(bg=col_btn_idle,
-                                        # fg=col_acc_2,
+                                        fg=col_acc_lgt,
                                         relief=FLAT,
                                         activebackground=col_btn_active,
-                                        # activeforeground=col_acc_2
+                                        activeforeground=col_acc_lgt
                                      )
         self.select_directory.pack(side=RIGHT)
 
@@ -87,7 +87,7 @@ class Application(Frame):
         self.settings_label = Label(self.settings_frame,
                                     text="Settings",
                                     font=font_header_1)
-        self.settings_label.config(bg=col_bg_lgt, fg=col_acc_1)
+        self.settings_label.config(bg=col_bg_lgt, fg=col_acc)
         self.settings_label.grid(row=1, column=1)
 
         # File size
@@ -98,7 +98,7 @@ class Application(Frame):
         self.file_size_label = Label(self.file_size_frame,
                                         text="Select file size (in MB)",
                                         font=font_header_2)
-        self.file_size_label.config(bg=col_bg_lgt, fg=col_acc_2)
+        self.file_size_label.config(bg=col_bg_lgt, fg=col_acc_lgt)
         self.file_size_label.grid(row=1, column=0)
         self.scale_filesize(self.settings_frame, scale_min, scale_max)
 
@@ -112,7 +112,7 @@ class Application(Frame):
         self.file_type_label = Label(self.file_type_frame,
                                         text="Select file type:",
                                         font=font_header_2)
-        self.file_type_label.config(bg=col_bg_lgt, fg=col_acc_2)
+        self.file_type_label.config(bg=col_bg_lgt, fg=col_acc_lgt)
         self.file_type_label.grid(row=5, column=1)
         self.checkbtn_pdf()
         self.checkbtn_txt()
@@ -122,19 +122,19 @@ class Application(Frame):
     def btn_preprocessing(self):
         self.preprocess_button = Button(self.settings_frame, text="preprocess", command=util.preprocess)
         self.preprocess_button.config(bg=col_bg,
-                                      fg=col_acc_2,
+                                      fg=col_acc_lgt,
                                       activebackground=col_bg_lgt,
-                                      activeforeground=col_acc_2)
+                                      activeforeground=col_acc_lgt)
         self.preprocess_button.grid(row=7, column=1)
 
     def checkbtn_docx(self):
         self.docx = IntVar()
         self.file_type_docx = Checkbutton(self.file_type_frame, text="DOCX", variable=self.docx)
         self.file_type_docx.config(bg=col_bg_lgt,
-                                   fg=col_acc_2,
+                                   fg=col_acc_lgt,
                                    selectcolor=former_black,
                                    activebackground=col_bg_lgt,
-                                   activeforeground=col_acc_2,
+                                   activeforeground=col_acc_lgt,
                                    highlightbackground=col_bg_lgt)
         self.file_type_docx.grid(row=6, column=2)
 
@@ -142,10 +142,10 @@ class Application(Frame):
         self.txt = IntVar()
         self.file_type_txt = Checkbutton(self.file_type_frame, text="TXT", variable=self.txt)
         self.file_type_txt.config(bg=col_bg_lgt,
-                                  fg=col_acc_2,
+                                  fg=col_acc_lgt,
                                   selectcolor=former_black,
                                   activebackground=col_bg_lgt,
-                                  activeforeground=col_acc_2,
+                                  activeforeground=col_acc_lgt,
                                   highlightbackground=col_bg_lgt)
         self.file_type_txt.grid(row=6, column=1)
 
@@ -153,10 +153,10 @@ class Application(Frame):
         self.pdf = IntVar()
         self.file_type_pdf = Checkbutton(self.file_type_frame, text="PDF", variable=self.pdf)
         self.file_type_pdf.config(bg=col_bg_lgt,
-                                  fg=col_acc_2,
+                                  fg=col_acc_lgt,
                                   selectcolor=former_black,
                                   activebackground=col_bg_lgt,
-                                  activeforeground=col_acc_2,
+                                  activeforeground=col_acc_lgt,
                                   highlightbackground=col_bg_lgt)
         self.file_type_pdf.grid(row=6, column=0)
 
@@ -166,7 +166,7 @@ class Application(Frame):
                                      to=max,
                                      length=150,
                                      orient=HORIZONTAL)
-        self.file_size_scale.config(bg=col_bg_lgt, fg=col_acc_2,
+        self.file_size_scale.config(bg=col_bg_lgt, fg=col_acc_lgt,
                                     activebackground=col_bg_lgt,
                                     troughcolor=col_bg,
                                     highlightbackground=col_bg_lgt)
@@ -188,7 +188,7 @@ class Application(Frame):
         #                    bg=col_bg_lgt)
         # search_logo.grid(row=0, column=3)
         self.search_entry = Entry(self.entry_frame)
-        self.search_entry.config(bg=former_black, fg=col_acc_2)
+        self.search_entry.config(bg=former_black, fg=col_acc_lgt)
         self.search_entry.grid(row=1, column=3, ipadx=120, ipady=10)
 
         # Buttons frame
@@ -197,15 +197,15 @@ class Application(Frame):
 
         self.search_button = Button(self.buttons_frame, text="Search")
         self.search_button.config(bg=col_bg,
-                                    fg=col_acc_2,
-                                    activebackground=col_bg_lgt,
-                                    activeforeground=col_acc_2)
+                                  fg=col_acc_lgt,
+                                  activebackground=col_bg_lgt,
+                                  activeforeground=col_acc_lgt)
         self.search_button.grid(row=2, column=3)
         self.delete_button = Button(self.buttons_frame, text="Clear", command=self.search_entry.delete(0, END))
         self.delete_button.config(bg=col_bg,
-                                    fg=col_acc_2,
-                                    activebackground=col_bg_lgt,
-                                    activeforeground=col_acc_2)
+                                  fg=col_acc_lgt,
+                                  activebackground=col_bg_lgt,
+                                  activeforeground=col_acc_lgt)
         self.delete_button.grid(row=2, column=4)
 
 
@@ -217,7 +217,7 @@ class Application(Frame):
         self.path_label = Label(self.path_frame,
                                 text="Path to result:",
                                 font=font_header_2)
-        self.path_label.config(bg=col_bg_lgt, fg=col_acc_2)
+        self.path_label.config(bg=col_bg_lgt, fg=col_acc_lgt)
         self.path_label.grid(row=5, column=0)
         self.path_text = Text(self.path_frame)
         self.path_text.config(bg=col_bg, fg=former_white)
@@ -233,7 +233,7 @@ class Application(Frame):
         self.result_label = Label(self.result_frame,
                                     text="Search result:",
                                     font=font_header_2)
-        self.result_label.config(bg=col_bg_lgt, fg=col_acc_2)
+        self.result_label.config(bg=col_bg_lgt, fg=col_acc_lgt)
         self.result_label.grid(row=5, column=1)
         self.result_text = Text(self.result_frame)
         self.result_text.config(bg=col_bg, fg=former_white)
