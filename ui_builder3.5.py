@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.21
+# version: alpha0.22
 # author: Haitham Samaan, Niklas Munkes
 
 #TODO: code cleanup
@@ -26,6 +26,8 @@ font_header_2 = ("Arial", 10, "bold")
 
 master_height = 400
 master_width = 600
+filesearchspan_min = 0
+filesearchspan_max = 200
 
 
 class Application(Frame):
@@ -36,7 +38,7 @@ class Application(Frame):
         self.create_window()
         self.create_grids()
         self.btn_select_dir(self.grid_00)
-        self.frame_settings(self.grid_01, 0, 2000)
+        self.frame_settings(self.grid_01, filesearchspan_min, filesearchspan_max)
         # self.frame_entry()
 
 
