@@ -18,7 +18,7 @@ def tokenize(raw_text: list) -> list:
     return list(r)
 
 
-# reurn a list of words
+# return a list of words
 def __normalize_word(word: str) -> list:
     result = []
     words = word.split("-")
