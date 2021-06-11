@@ -2,14 +2,24 @@
 # author: Lars Kasüschke
 # import sys
 import time
+
+import preprocessing.pp_main
 import utilities
 from data import database
 from search import searching_algorithm
 from tf_idf import tf_idf_main
 from evaluation import evaluation_functions
-from preprocessing import main as preprocessing_main
+from preprocessing import pp_main as preprocessing_main
 from matrix import inverted_matrix
+
+# the algorithm you want to use
 algorithm = searching_algorithm.and_search
+# only fill in if you want to preprocess a specific file again
+filenames_for_preprocessing = ["CISI.ALL"]
+# fill in all taskstrings to use for preprocessing
+taskstrings_for_preprocessing = ["tn"]
+# taskstring to work with
+default_taskstring = "tnwl"
 
 
 def main_search(taskstring):
@@ -18,68 +28,61 @@ def main_search(taskstring):
     tf_idf_main.main(doc_dicts, qry_dicts)
 
 
-
 def main_evaluate(taskstring):
-        query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
-        doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-        rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
-        result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
-        evaluation_functions.save_eval_tf_idf(result, taskstring)
-        database.save_object(result, taskstring + "_evaluation")
-        return result
+    query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
+    doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
+    rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
+    print((query_dict, doc_dict, rel_dict))
+    result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
+    evaluation_functions.save_eval_tf_idf(result, taskstring)
+    database.save_object(result, taskstring + "_evaluation")
+    return result
 
 
 def main_preprocess() -> None:
-    pair_of_list_taskstrings_filenames = preprocessing_main.run_preprocessing()
-    taskstrings = pair_of_list_taskstrings_filenames[0]
-    filenames = pair_of_list_taskstrings_filenames[1]
-    time.sleep(.1)
-    for filename in filenames:
-        if filename.endswith(".ALL"):
-            for i in range(1, len(pair_of_list_taskstrings_filenames)):
-                # i = 1: with stemming, i = 2: without stemming
-                taskstring = taskstrings[i]
-                try:
-                    collection_of_pp_output = database.load_object(taskstring + "_pp_" + filename)
-                    matrix = inverted_matrix.InvertedMatrix(taskstring, collection_of_pp_output)
-                    database.save_object(matrix, taskstring + "_matrix")
-                    time.sleep(.1)
-                except():
-                    print("nothing saved yet. rerun!")
-                    exit()
-                finally:
-                    print("pp_output and inverted matrix created")
-
-
-
+    print("Place the files you wish to preprocess: " + preprocessing.pp_main.dir_archive)
+    print("endings for indexed: '.ALL' for documents, 'QRY' for querys, 'REL' for expected results.")
+    print("for indexed files every distint part starts with .[A-Z]")
+    print("press any key when you are finished")
+    input()
+    print("Let's go...")
+    if taskstrings_for_preprocessing:
+        for taskstring in taskstrings_for_preprocessing:
+            if filenames_for_preprocessing:
+                preprocessing.pp_main.run_preprocessing(taskstring=taskstring, filenames=filenames_for_preprocessing)
+            else:
+                preprocessing.pp_main.run_preprocessing(taskstring=taskstring)
+    else:
+        preprocessing.pp_main.run_preprocessing()
+    time.sleep(.5)
 
 
 def main():
     print("----------------------")
     print("Simple IR System Setup")
     print("----------------------\n")
-    print("Do you want to preprocess (y/n)?")
-    i = input()
-    if i == "y":
-        main_preprocess()
-    print("enter taskstring you want to work with: ")
-    taskstring = input()
     print("\nDo you want to:")
     print("1: enter a search query")
     print("2: evaluate the current searching_algorithm")
     print("3: rerun")
-    print("4: exit")
+    print("4: preprocess")
+    print("5: exit")
     i = input()
     if i == "1":
-        main_search(taskstring)
+        main_search(default_taskstring)
     elif i == "2":
-        main_evaluate(taskstring)
+        main_evaluate(default_taskstring)
     elif i == "3":
         main()
+    elif i == "4":
+        main_preprocess()
     else:
         exit()
 
 
+text = "Abstracting is a key segment of the information industry Opportunities are available for both full-time professionals and part-time orvolunteer workers.Many librarians find such activities pleasant and rewarding, for they knowthey are contributing to the more effective use of stored information.One chapter is devoted to career opportunities for abstractors."
+
+
 if __name__ == "__main__":
     main()
-    # print(database.load_object("tnwp_pp_CISI.ALL"))
+    print(database.load_object("tn_pp_CISI.ALL"))
