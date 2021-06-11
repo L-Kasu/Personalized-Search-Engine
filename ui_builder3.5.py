@@ -41,7 +41,7 @@ class Application(Frame):
         self.frame_settings(self.grid_01, filesearchspan_min, filesearchspan_max)
         self.frame_entry(self.grid_02)
         self.frame_path(self.grid_10)
-        # self.frame_result(self.grid_11)
+        self.frame_result(self.grid_11)
         self.pack(fill='both', expand=True)
 
     def create_window(self):
@@ -51,7 +51,7 @@ class Application(Frame):
         self.master.config(relief=FLAT, bd=7, bg=col_bg)
 
     def create_grids(self):
-        self.grid_00 = self.create_grid(0, 0, master_height/2, master_width/3, 2, col_bg)
+        self.grid_00 = self.create_grid(0, 0, master_height/2, master_width/3, 2, col_mark)
         self.grid_01 = self.create_grid(0, 2, master_height/2, master_width/3, 2, col_bg)
         self.grid_02 = self.create_grid(0, 4, master_height/2, master_width/3, 2, col_bg)
         self.grid_10 = self.create_grid(1, 0, master_height/2, master_width/2, 3, col_bg)
