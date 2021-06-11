@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.23
+# version: alpha0.24
 # author: Haitham Samaan, Niklas Munkes
 
 #TODO: code cleanup
@@ -24,6 +24,7 @@ col_mark = "#ffb200"
 
 font_header_1 = ("Arial", 15, "bold")
 font_header_2 = ("Arial", 10, "bold")
+font_returntext = ("Arial", 10)
 
 master_height = 400
 master_width = 600
@@ -37,12 +38,13 @@ class Application(Frame):
         self.master = master
         self.create_window()
         self.create_grids()
+        self.pack()
         self.btn_select_dir(self.grid_00)
         self.frame_settings(self.grid_01, filesearchspan_min, filesearchspan_max)
         self.frame_entry(self.grid_02)
         self.frame_path(self.grid_10)
         self.frame_result(self.grid_11)
-        self.pack(fill='both', expand=True)
+
 
     def create_window(self):
         # instantiating a window
@@ -51,7 +53,7 @@ class Application(Frame):
         self.master.config(relief=FLAT, bd=7, bg=col_bg)
 
     def create_grids(self):
-        self.grid_00 = self.create_grid(0, 0, master_height/2, master_width/3, 2, col_mark)
+        self.grid_00 = self.create_grid(0, 0, master_height/2, master_width/3, 2, col_bg)
         self.grid_01 = self.create_grid(0, 2, master_height/2, master_width/3, 2, col_bg)
         self.grid_02 = self.create_grid(0, 4, master_height/2, master_width/3, 2, col_bg)
         self.grid_10 = self.create_grid(1, 0, master_height/2, master_width/2, 3, col_bg)
@@ -241,58 +243,51 @@ class Application(Frame):
                                 )
 
     def frame_path(self, location):
-        # Path frame
-        # self.path_frame = Frame(location)
-        # self.path_frame.config(bg=col_bg_lgt,
-        #                        relief=FLAT,
-        #                        bd=0.5
-        #                        )
-        # self.path_frame.grid(row=0,
-        #                      column=0,
-        #                      rowspan=2
-        #                      )
-
         self.path_label = Label(location,
-                                text="Path to result:",
+                                text="Path to result",
                                 font=font_header_2
                                 )
         self.path_label.config(bg=col_bg_lgt,
                                fg=col_acc_lgt
                                )
         self.path_label.grid(row=0,
-                             column=0
+                             sticky=EW
                              )
 
-        self.path_text = Text(location)
+        self.path_text = Listbox(location)
         self.path_text.config(bg=col_bg,
-                              fg=col_bg_lgt
-                              )
-        self.path_text.config(
-                                # width=int(master_width/2*0.1),
-                                # height=int(master_height/2*0.1)
+                              fg=col_bg_lgt,
+                              font=font_returntext,
+                              height=0,
+                              width=0
                               )
         self.path_text.grid(row=1,
-                            column=0,
-                            rowspan=1,
-                            columnspan=3,
-                            # ipadx=42,
-                            # ipady=30
+                            sticky=EW
                             )
 
     def frame_result(self, location):
-        # Result frame
-        self.result_frame = Frame(location)
-        self.result_frame.grid(row=4, column=2)
-        self.result_frame.config(bg=col_bg_lgt, relief=FLAT, bd=0.5)
-        self.result_label = Label(self.result_frame,
-                                    text="Search result:",
-                                    font=font_header_2)
-        self.result_label.config(bg=col_bg_lgt, fg=col_acc_lgt)
-        self.result_label.grid(row=5, column=1)
-        self.result_text = Text(self.result_frame)
-        self.result_text.config(bg=col_bg, fg=col_bg_lgt)
-        self.result_text.config(width=30, height=9)
-        self.result_text.grid(row=6, column=1, ipadx=81, ipady=30)
+        self.result_label = Label(location,
+                                    text="Search result",
+                                    font=font_header_2
+                                    )
+        self.result_label.config(bg=col_bg_lgt,
+                                fg=col_acc_lgt
+                                )
+        self.result_label.grid(row=0,
+                                sticky=EW
+                                )
+
+        self.result_text = Listbox(location)
+        self.result_text.config(bg=col_bg,
+                                fg=col_bg_lgt,
+                                font=font_returntext,
+                                height=0,
+                                width=0
+                                )
+        self.result_text.grid(row=1,
+                                sticky=EW
+                                )
+
 
 def main():
     root = Tk()
