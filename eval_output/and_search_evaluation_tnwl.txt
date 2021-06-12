@@ -110,7 +110,3 @@ Querry 107:		precission: 0.0		recall: 1.0
 Querry 108:		precission: 0.0		recall: 0.0
 Querry 109:		precission: 0.0		recall: 1.0
 Querry 110:		precission: 0.0		recall: 0.0
-
-
-
-without stemming: 

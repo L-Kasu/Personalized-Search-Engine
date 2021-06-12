@@ -1,19 +1,17 @@
 from _ctypes_test import func
 from search import searching_algorithm as search_algo
-from matrix import inverted_matrix as im
-from tf_idf import tf_idf_functions as tf
 from sklearn import metrics
 import numpy
-from numpy import ndarray
+from numpy import  ndarray
 
 
 # gets the results of querrys for the evalutation
 # using the tf_idf algorithm
 # returns a dicitonary of querry index and the results
-def get_results_for_evaluation_tf_idf(query_dicts: list, doc_dicts: list) -> dict:
+def get_results_for_evaluation_tf_idf(query_dict: dict, tf_search) -> dict:
     searched = {}
-    for i in query_dicts:
-        docs = tf.get_k_documents_for_query_i_lightweight(doc_dicts, query_dicts, len(doc_dicts), i)
+    for i in query_dict:
+        docs = tf_search.query_indicies(query_dict[i])
         searched[i] = docs
     return searched
 
@@ -72,7 +70,6 @@ def get_relation_labels(doc_dicts: list, query_results: dict, rel_dict: dict) ->
             if x in rel_dict[i]:
                 result[i][x] = 1
     return result
-
 
 def get_result_labels_tf_idf(doc_dicts: list, query_results: dict, rel_dict: dict) -> ndarray:
     result = numpy.zeros((len(query_results), len(doc_dicts)))
