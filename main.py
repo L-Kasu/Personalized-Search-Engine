@@ -21,7 +21,7 @@ filenames_for_preprocessing = ["CISI.ALL"]
 # fill in all taskstrings to use for preprocessing
 taskstrings_for_preprocessing = ["tn"]
 # taskstring to work with
-default_taskstring = "tn"
+default_taskstring = "tnwl"
 # initialise the tf algorithm
 documents = file_reader.load_all()
 titles = documents[1]

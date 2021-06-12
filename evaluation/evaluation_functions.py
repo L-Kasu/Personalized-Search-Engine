@@ -40,7 +40,7 @@ def evaluate_querrys(query_labels: ndarray, rel_labels: ndarray) -> dict:
         precision = metrics.precision_score(i_true, i_pred, zero_division=0)
         recall = metrics.recall_score(i_true, i_pred, zero_division=1)
         evaluation[i] = [precision, recall]
-    average = metrics.average_precision_score(rel_labels, query_labels)
+    average = metrics.average_precision_score(rel_labels, query_labels, average='micro')
     evaluation[-1] = average
     return evaluation
 
