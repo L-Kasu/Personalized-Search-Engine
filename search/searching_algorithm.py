@@ -54,14 +54,13 @@ def and_search(words: list, inv_matrix_obj: inverted_matrix.InvertedMatrix) -> l
     for word in words:
         if word in inv_matrix:
             postings.append(inv_matrix[word])
-        else:
-            return []
+        #else:
+           # return []
 
     # intersect all postings (smaller ones first)
     postings.sort(key=len)
     if postings:
         documents = postings[0]
-
         for i in range(1, len(postings)):
             documents = intersect(documents, postings[i])
         return documents

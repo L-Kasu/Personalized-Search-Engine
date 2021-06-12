@@ -6,7 +6,7 @@ import utilities
 from data import database
 from search import searching_algorithm
 from tf_idf import tf_idf_main
-from evaluation import evaluation_functions
+from evaluation import evaluation_main
 from preprocessing import main as preprocessing_main
 from matrix import inverted_matrix
 algorithm = searching_algorithm.and_search
@@ -20,13 +20,17 @@ def main_search(taskstring):
 
 
 def main_evaluate(taskstring):
-        query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
-        doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-        rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
-        result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
-        evaluation_functions.save_eval_tf_idf(result, taskstring)
-        database.save_object(result, taskstring + "_evaluation")
-        return result
+    query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
+    doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
+    rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
+    print("What algorithm do you want to evaluate?")
+    print("1: tf_idf")
+    print("2: and_search")
+    i = input()
+    if i == "1": algo = "tf_idf"
+    elif i == "2": algo = "and_search"
+    else: algo = ""
+    evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, taskstring, algo)
 
 
 def main_preprocess() -> None:
