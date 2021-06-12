@@ -21,22 +21,22 @@ filenames_for_preprocessing = ["CISI.ALL"]
 # fill in all taskstrings to use for preprocessing
 taskstrings_for_preprocessing = ["tn"]
 # taskstring to work with
-default_taskstring = "tnwl"
+default_taskstring = "tn"
 # initialise the tf algorithm
 documents = file_reader.load_all()
 titles = documents[1]
 corpus = documents[2]
 tf_search = tf.tfidf(corpus, titles)
 
-def main_search(taskstring):
-    qry_dicts = database.load_object(taskstring + "_pp_" + "CISI.QRY")
-    doc_dicts = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-    tf_idf_main.main(doc_dicts, qry_dicts)
+def main_search():
+    print("Enter your search:")
+    i = input()
+    tf_search.query_k_titles(i)
 
 
 def main_evaluate(taskstring):
     doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-    rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
+    rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     print("What algorithm do you want to evaluate?")
     print("1: tf_idf")
     print("2: and_search")
@@ -83,7 +83,7 @@ def main():
     print("5: exit")
     i = input()
     if i == "1":
-        main_search(default_taskstring)
+        main_search()
     elif i == "2":
         main_evaluate(default_taskstring)
     elif i == "3":
