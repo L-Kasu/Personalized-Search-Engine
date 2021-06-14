@@ -34,3 +34,7 @@ def evaluate_and_search(query_dicts: list, matrix, rel_dict: dict, doc_dicts: li
     rel_labels = ev.get_relation_labels(doc_dicts, search_result, rel_dict)
     evaluation = ev.evaluate_querrys(query_labels, rel_labels)
     return evaluation
+
+
+def run_compare(eval1: dict, eval2: dict, name1, name2):
+    ev.comp_evaluations(eval1, eval2, name1, name2)

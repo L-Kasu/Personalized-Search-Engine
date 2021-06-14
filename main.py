@@ -52,6 +52,11 @@ def main_evaluate(taskstring):
         query_dict = {}
     evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, taskstring, algo)
 
+def main_compare():
+    eval_tf = database.load_object("tf_idf_evaluation_" + default_taskstring)
+    evl_and = database.load_object("and_search_evaluation_" + default_taskstring)
+    evaluation_main.run_compare(eval_tf, evl_and, "tf_idf_"+default_taskstring, "and_search_"+default_taskstring)
+
 
 def main_preprocess() -> None:
     print("Place the files you wish to preprocess: " + preprocessing.pp_main.dir_archive)
@@ -81,6 +86,7 @@ def main():
     print("3: rerun")
     print("4: preprocess")
     print("5: exit")
+    print("6: compare tf_idf and and_search")
     i = input()
     if i == "1":
         main_search()
@@ -90,6 +96,8 @@ def main():
         main()
     elif i == "4":
         main_preprocess()
+    elif i == "6":
+        main_compare()
     else:
         exit()
 
