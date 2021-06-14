@@ -23,7 +23,12 @@ class TestAndEvaluation(unittest.TestCase):
     def test_evaluation(self):
         self.assertEqual(evaluation, ev_f.evaluate_querrys(result_label, relation_labels))
 
-#class TestTfIdfEvaluation(unittest.TestCase)
+search_result_tf = {0:[1,0], 1:[1,0], 2:[0,1]}
+result_labesl_tf = numpy.array([[1,1], [0,0], [1,0]])
+
+class TestTfIdfEvaluation(unittest.TestCase):
+    def test_get_result_labels(self):
+        numpy.testing.assert_array_equal(result_labesl_tf, ev_f.get_result_labels_tf_idf(doc_dicts, search_result_tf, rel_dict))
 
 
 if __name__ == '__main__':
