@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.teatime import *
+from ui_colortemplates.wip import *
 
 
 master_height = 400
