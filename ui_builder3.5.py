@@ -61,7 +61,7 @@ class Application(Frame):
 
     def frame_select_dir(self):
         self.select_dir_frame = Frame(self.upper_frame, bg=col_bg)
-        self.select_dir_frame.pack(fill=BOTH, expand=True, side=LEFT)
+        self.select_dir_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
         self.select_directory = Button(self.select_dir_frame,
                                        relief=FLAT,
                                        text="Select Directory",
@@ -79,7 +79,7 @@ class Application(Frame):
         # Used many frames here to organize the different widgets better
         # a settings frame including: options for selecting file size and type
         self.all_settings_frame = Frame(self.upper_frame, bg=col_bg)
-        self.all_settings_frame.pack(fill=BOTH, expand=True, side=LEFT)
+        self.all_settings_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
         self.settings_frame = Frame(self.all_settings_frame, relief=FLAT, bd=5)
         self.settings_frame.config(bg=col_bg_lgt)
         self.settings_frame.pack(fill=BOTH, expand=True)
@@ -88,12 +88,12 @@ class Application(Frame):
                                     text="Settings",
                                     font=font_header_1)
         self.settings_label.config(bg=col_bg_lgt, fg=col_acc)
-        self.settings_label.pack(fill=BOTH, side=TOP)
+        self.settings_label.pack(side=TOP, fill=BOTH)
 
         # File size
         self.file_size_frame = Frame(self.settings_frame)
         self.file_size_frame.config(bg=col_bg_lgt)
-        self.file_size_frame.pack(fill=X, expand=True, side=TOP)
+        self.file_size_frame.pack(side=TOP, fill=X, expand=True)
 
         self.file_size_label = Label(self.file_size_frame,
                                      text="Select file size (in MB)",
@@ -105,13 +105,13 @@ class Application(Frame):
         # File type
         self.file_type_frame = Frame(self.settings_frame)
         self.file_type_frame.config(bg=col_bg_lgt)
-        self.file_type_frame.pack(fill=X, expand=True, side=TOP)
+        self.file_type_frame.pack(side=TOP, fill=X, expand=True)
 
         self.file_type_label = Label(self.file_type_frame,
                                      text="Select file type:",
                                      font=font_header_2)
         self.file_type_label.config(bg=col_bg_lgt, fg=col_acc_lgt)
-        self.file_type_label.pack(fill=X, side=TOP)
+        self.file_type_label.pack(side=TOP, fill=X)
         self.checkbtn_pdf(self.file_type_frame, col_bg_lgt, col_acc_lgt)
         self.checkbtn_txt(self.file_type_frame, col_bg_lgt, col_acc_lgt)
         self.checkbtn_docx(self.file_type_frame, col_bg_lgt, col_acc_lgt)
@@ -148,7 +148,7 @@ class Application(Frame):
                                   activebackground=color_bg,
                                   activeforeground=color_text,
                                   highlightbackground=color_bg)
-        self.file_type_txt.pack(expand=True, side=LEFT)
+        self.file_type_txt.pack(side=LEFT, expand=True)
 
     def checkbtn_pdf(self, location, color_bg, color_text):
         self.pdf = IntVar()
@@ -159,7 +159,7 @@ class Application(Frame):
                                   activebackground=color_bg,
                                   activeforeground=color_text,
                                   highlightbackground=color_bg)
-        self.file_type_pdf.pack(expand=True, side=LEFT)
+        self.file_type_pdf.pack(side=LEFT, expand=True)
 
     def scale_filesize(self, location, min, max):
         self.file_size_scale = Scale(location,
@@ -171,12 +171,12 @@ class Application(Frame):
                                     activebackground=col_bg_lgt,
                                     troughcolor=col_scale_idle,
                                     highlightbackground=col_bg_lgt)
-        self.file_size_scale.pack(fill=X,side=TOP)
+        self.file_size_scale.pack(side=TOP, fill=X)
 
     def frame_entry(self):
         # Entry frame
         self.all_entry_frame = Frame(self.upper_frame, bg=col_bg)
-        self.all_entry_frame.pack(fill=BOTH, expand=True, side=LEFT)
+        self.all_entry_frame.pack(side=LEFT, fill=BOTH, expand=True)
         self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt,  relief=FLAT, bd=5)
         self.entry_frame.pack(fill=X, expand=True)
 
@@ -190,7 +190,7 @@ class Application(Frame):
         # search_logo.grid(row=0, column=3)
         self.search_entry = Entry(self.entry_frame)
         self.search_entry.config(bg=col_bg, fg=col_acc_lgt)
-        self.search_entry.pack(fill=X, expand=True, side=TOP, ipadx=50)
+        self.search_entry.pack(side=TOP, fill=X, expand=True, ipadx=50)
 
         # Buttons frame
         self.buttons_frame = Frame(self.entry_frame)
@@ -224,7 +224,7 @@ class Application(Frame):
 
     def frame_path(self):
         self.path_frame = Frame(self.lower_frame, bg=col_bg)
-        self.path_frame.pack(fill=BOTH, expand=True, side=LEFT)
+        self.path_frame.pack(side=LEFT, fill=BOTH, expand=True)
         self.path_label = Label(self.path_frame,
                                 text="Path to result",
                                 font=font_header_2
@@ -241,11 +241,11 @@ class Application(Frame):
                               height=0,
                               width=0
                               )
-        self.path_text.pack(fill=BOTH, expand=True, side=BOTTOM)
+        self.path_text.pack(side=BOTTOM, fill=BOTH, expand=True)
 
     def frame_result(self):
         self.result_frame = Frame(self.lower_frame, bg=col_bg)
-        self.result_frame.pack(fill=BOTH, expand=True, side=LEFT)
+        self.result_frame.pack(side=LEFT, fill=BOTH, expand=True)
         self.result_label = Label(self.result_frame,
                                   text="Search result",
                                   font=font_header_2
@@ -262,7 +262,7 @@ class Application(Frame):
                                 height=10,
                                 width=0
                                 )
-        self.result_text.pack(fill=BOTH, expand=True, side=BOTTOM)
+        self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
 
 
 def main():
