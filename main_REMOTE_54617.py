@@ -8,11 +8,9 @@ import utilities
 from data import database
 from search import searching_algorithm
 from tf_idf import tf_idf_main
-from evaluation import evaluation_main
+from evaluation import evaluation_functions
 from preprocessing import pp_main as preprocessing_main
 from matrix import inverted_matrix
-import file_reader
-import tf
 
 # the algorithm you want to use
 algorithm = searching_algorithm.and_search
@@ -22,40 +20,23 @@ filenames_for_preprocessing = ["CISI.ALL"]
 taskstrings_for_preprocessing = ["tn"]
 # taskstring to work with
 default_taskstring = "tnwl"
-# initialise the tf algorithm
-documents = file_reader.load_all()
-titles = documents[1]
-corpus = documents[2]
-tf_search = tf.tfidf(corpus, titles)
 
-def main_search():
-    print("Enter your search:")
-    i = input()
-    tf_search.query_k_titles(i)
+
+def main_search(taskstring):
+    qry_dicts = database.load_object(taskstring + "_pp_" + "CISI.QRY")
+    doc_dicts = database.load_object(taskstring + "_pp_" + "CISI.ALL")
+    tf_idf_main.main(doc_dicts, qry_dicts)
 
 
 def main_evaluate(taskstring):
+    query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
     doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-    rel_dict = database.load_object("tn_pp" + "_CISI.REL")
-    print("What algorithm do you want to evaluate?")
-    print("1: tf_idf")
-    print("2: and_search")
-    i = input()
-    if i == "1":
-        algo = "tf_idf"
-        query_dict = file_reader.load_qry()
-    elif i == "2":
-        algo = "and_search"
-        query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
-    else:
-        algo = ""
-        query_dict = {}
-    evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, taskstring, algo)
-
-def main_compare():
-    eval_tf = database.load_object("tf_idf_evaluation_" + default_taskstring)
-    evl_and = database.load_object("and_search_evaluation_" + default_taskstring)
-    evaluation_main.run_compare(eval_tf, evl_and, "tf_idf_"+default_taskstring, "and_search_"+default_taskstring)
+    rel_dict = database.load_object(taskstring + "_pp" + "_CISI.REL")
+    print((query_dict, doc_dict, rel_dict))
+    result = evaluation_functions.evaluate_tf_idf(query_dict, doc_dict, rel_dict)
+    evaluation_functions.save_eval_tf_idf(result, taskstring)
+    database.save_object(result, taskstring + "_evaluation")
+    return result
 
 
 def main_preprocess() -> None:
@@ -82,22 +63,19 @@ def main():
     print("----------------------\n")
     print("\nDo you want to:")
     print("1: enter a search query")
-    print("2: evaluate the search engine")
+    print("2: evaluate the current searching_algorithm")
     print("3: rerun")
     print("4: preprocess")
     print("5: exit")
-    print("6: compare tf_idf and and_search")
     i = input()
     if i == "1":
-        main_search()
+        main_search(default_taskstring)
     elif i == "2":
         main_evaluate(default_taskstring)
     elif i == "3":
         main()
     elif i == "4":
         main_preprocess()
-    elif i == "6":
-        main_compare()
     else:
         exit()
 
