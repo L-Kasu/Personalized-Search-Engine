@@ -7,22 +7,8 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
+from ui_colortemplates.wip import *
 
-
-# style definitions
-col_bg = "#3b3b3b"
-col_bg_lgt = "#5f5f5f"
-col_btn_idle = "#940000"
-col_btn_active = "#d50000"
-col_interactionpoint_idle = "#bbbbbb"
-col_interactionpoint_contrast = "#3b3b3b"
-col_acc_major = "#b3b3b3"
-col_acc_minor = "#b3b3b3"
-col_mark = "#ffb200"
-
-font_header_1 = ("Arial", 15, "bold")
-font_header_2 = ("Arial", 10, "bold")
-font_returntext = ("Arial", 10)
 
 master_height = 400
 master_width = 600
@@ -63,7 +49,8 @@ class Application(Frame):
         self.select_directory = Button(self.select_dir_frame,
                                        relief=FLAT,
                                        text="Select Directory",
-                                       command=filedialog.askdirectory
+                                       command=filedialog.askdirectory,
+                                       font=font_header_2
                                        )
         self.select_directory.config(bg=col_btn_idle,
                                      fg=col_acc_minor,
@@ -123,7 +110,8 @@ class Application(Frame):
                                       fg=color_text,
                                       activebackground=color_active,
                                       activeforeground=color_text,
-                                      borderwidth=0)
+                                      borderwidth=0,
+                                      font=font_header_2)
         self.preprocess_button.pack(side=BOTTOM)
 
     def checkbtn_docx(self, location, color_bg, color_text):
@@ -133,7 +121,8 @@ class Application(Frame):
                                    fg=color_text,
                                    selectcolor=color_bg,
                                    activebackground=color_bg,
-                                   activeforeground=color_text)
+                                   activeforeground=color_text,
+                                   font=font_header_2)
         self.file_type_docx.pack(expand=True, side=LEFT)
 
     def checkbtn_txt(self, location, color_bg, color_text):
@@ -143,7 +132,8 @@ class Application(Frame):
                                   fg=color_text,
                                   selectcolor=color_bg,
                                   activebackground=color_bg,
-                                  activeforeground=color_text)
+                                  activeforeground=color_text,
+                                  font=font_header_2)
         self.file_type_txt.pack(side=LEFT, expand=True)
 
     def checkbtn_pdf(self, location, color_bg, color_text):
@@ -153,7 +143,8 @@ class Application(Frame):
                                   fg=color_text,
                                   selectcolor=color_bg,
                                   activebackground=color_bg,
-                                  activeforeground=color_text)
+                                  activeforeground=color_text,
+                                  font=font_header_2)
         self.file_type_pdf.pack(side=LEFT, expand=True)
 
     def scale_filesize(self, location, min, max):
@@ -165,7 +156,8 @@ class Application(Frame):
         self.file_size_scale.config(bg=col_bg_lgt, fg=col_acc_minor,
                                     activebackground=col_interactionpoint_contrast,
                                     troughcolor=col_interactionpoint_idle,
-                                    highlightbackground=col_bg_lgt)
+                                    highlightbackground=col_bg_lgt,
+                                    font=font_header_2)
         self.file_size_scale.pack(side=TOP, fill=X)
 
     def frame_entry(self):
@@ -184,7 +176,7 @@ class Application(Frame):
         #                    bg=col_bg_lgt)
         # search_logo.grid(row=0, column=3)
         self.search_entry = Entry(self.entry_frame)
-        self.search_entry.config(bg=col_interactionpoint_idle, fg=col_interactionpoint_contrast)
+        self.search_entry.config(bg=col_interactionpoint_idle, fg=col_interactionpoint_contrast, font=font_header_2)
         self.search_entry.pack(side=TOP, fill=X, expand=True, ipadx=50)
 
         # Buttons frame
@@ -201,7 +193,8 @@ class Application(Frame):
                                   fg=color_text,
                                   activebackground=color_active,
                                   activeforeground=color_text,
-                                  borderwidth=0
+                                  borderwidth=0,
+                                  font=font_header_2
                                   )
         self.search_button.pack(side=LEFT)
 
@@ -213,7 +206,8 @@ class Application(Frame):
                                   fg=color_text,
                                   activebackground=color_active,
                                   activeforeground=color_text,
-                                  borderwidth=0
+                                  borderwidth=0,
+                                  font=font_header_2
                                   )
         self.delete_button.pack(side=LEFT)
 
