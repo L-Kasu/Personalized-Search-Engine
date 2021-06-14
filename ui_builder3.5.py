@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.24
+# version: alpha0.25
 # author: Haitham Samaan, Niklas Munkes
 
 #TODO: code cleanup
@@ -14,12 +14,10 @@ col_bg = "#3b3b3b"
 col_bg_lgt = "#5f5f5f"
 col_btn_idle = "#940000"
 col_btn_active = "#d50000"
-col_checkbtn_idle = "#bbbbbb"
-col_checkbtn_active = "#ffff00"
-# col_checkbtn_mark = "#"
-col_scale_idle = "#bbbbbb"
-col_acc = "#b3b3b3"
-col_acc_lgt = "#b3b3b3"
+col_interactionpoint_idle = "#bbbbbb"
+col_interactionpoint_contrast = "#3b3b3b"
+col_acc_major = "#b3b3b3"
+col_acc_minor = "#b3b3b3"
 col_mark = "#ffb200"
 
 font_header_1 = ("Arial", 15, "bold")
@@ -68,9 +66,9 @@ class Application(Frame):
                                        command=filedialog.askdirectory
                                        )
         self.select_directory.config(bg=col_btn_idle,
-                                     fg=col_acc_lgt,
+                                     fg=col_acc_minor,
                                      activebackground=col_btn_active,
-                                     activeforeground=col_acc_lgt,
+                                     activeforeground=col_acc_minor,
                                      borderwidth=0
                                      )
         self.select_directory.pack(expand=True)
@@ -87,7 +85,7 @@ class Application(Frame):
         self.settings_label = Label(self.settings_frame,
                                     text="Settings",
                                     font=font_header_1)
-        self.settings_label.config(bg=col_bg_lgt, fg=col_acc)
+        self.settings_label.config(bg=col_bg_lgt, fg=col_acc_major)
         self.settings_label.pack(side=TOP, fill=BOTH)
 
         # File size
@@ -98,7 +96,7 @@ class Application(Frame):
         self.file_size_label = Label(self.file_size_frame,
                                      text="Select file size (in MB)",
                                      font=font_header_2)
-        self.file_size_label.config(bg=col_bg_lgt, fg=col_acc_lgt)
+        self.file_size_label.config(bg=col_bg_lgt, fg=col_acc_minor)
         self.file_size_label.pack(side=TOP)
         self.scale_filesize(self.file_size_frame, scale_min, scale_max)
 
@@ -110,12 +108,12 @@ class Application(Frame):
         self.file_type_label = Label(self.file_type_frame,
                                      text="Select file type:",
                                      font=font_header_2)
-        self.file_type_label.config(bg=col_bg_lgt, fg=col_acc_lgt)
+        self.file_type_label.config(bg=col_bg_lgt, fg=col_acc_minor)
         self.file_type_label.pack(side=TOP, fill=X)
-        self.checkbtn_pdf(self.file_type_frame, col_bg_lgt, col_acc_lgt)
-        self.checkbtn_txt(self.file_type_frame, col_bg_lgt, col_acc_lgt)
-        self.checkbtn_docx(self.file_type_frame, col_bg_lgt, col_acc_lgt)
-        self.btn_preprocessing(self.settings_frame, col_btn_idle, col_btn_active, col_acc_lgt)
+        self.checkbtn_pdf(self.file_type_frame, col_bg_lgt, col_acc_minor)
+        self.checkbtn_txt(self.file_type_frame, col_bg_lgt, col_acc_minor)
+        self.checkbtn_docx(self.file_type_frame, col_bg_lgt, col_acc_minor)
+        self.btn_preprocessing(self.settings_frame, col_btn_idle, col_btn_active, col_acc_minor)
 
     def btn_preprocessing(self, location, color_idle, color_active, color_text):
         self.preprocess_button = Button(location,
@@ -135,8 +133,7 @@ class Application(Frame):
                                    fg=color_text,
                                    selectcolor=color_bg,
                                    activebackground=color_bg,
-                                   activeforeground=color_text,
-                                   highlightbackground=color_bg)
+                                   activeforeground=color_text)
         self.file_type_docx.pack(expand=True, side=LEFT)
 
     def checkbtn_txt(self, location, color_bg, color_text):
@@ -146,8 +143,7 @@ class Application(Frame):
                                   fg=color_text,
                                   selectcolor=color_bg,
                                   activebackground=color_bg,
-                                  activeforeground=color_text,
-                                  highlightbackground=color_bg)
+                                  activeforeground=color_text)
         self.file_type_txt.pack(side=LEFT, expand=True)
 
     def checkbtn_pdf(self, location, color_bg, color_text):
@@ -157,8 +153,7 @@ class Application(Frame):
                                   fg=color_text,
                                   selectcolor=color_bg,
                                   activebackground=color_bg,
-                                  activeforeground=color_text,
-                                  highlightbackground=color_bg)
+                                  activeforeground=color_text)
         self.file_type_pdf.pack(side=LEFT, expand=True)
 
     def scale_filesize(self, location, min, max):
@@ -167,9 +162,9 @@ class Application(Frame):
                                      to=max,
                                      length=150,
                                      orient=HORIZONTAL)
-        self.file_size_scale.config(bg=col_bg_lgt, fg=col_acc_lgt,
+        self.file_size_scale.config(bg=col_bg_lgt, fg=col_acc_minor,
                                     activebackground=col_bg_lgt,
-                                    troughcolor=col_scale_idle,
+                                    troughcolor=col_interactionpoint_idle,
                                     highlightbackground=col_bg_lgt)
         self.file_size_scale.pack(side=TOP, fill=X)
 
@@ -189,14 +184,14 @@ class Application(Frame):
         #                    bg=col_bg_lgt)
         # search_logo.grid(row=0, column=3)
         self.search_entry = Entry(self.entry_frame)
-        self.search_entry.config(bg=col_bg, fg=col_acc_lgt)
+        self.search_entry.config(bg=col_interactionpoint_idle, fg=col_interactionpoint_contrast)
         self.search_entry.pack(side=TOP, fill=X, expand=True, ipadx=50)
 
         # Buttons frame
         self.buttons_frame = Frame(self.entry_frame)
         self.buttons_frame.pack(side=BOTTOM)
-        self.btn_entry_search(self.buttons_frame, col_btn_idle, col_btn_active, col_acc_lgt)
-        self.btn_entry_delete(self.buttons_frame, col_btn_idle, col_btn_active, col_acc_lgt)
+        self.btn_entry_search(self.buttons_frame, col_btn_idle, col_btn_active, col_acc_minor)
+        self.btn_entry_delete(self.buttons_frame, col_btn_idle, col_btn_active, col_acc_minor)
 
     def btn_entry_search(self, location, color_idle, color_active, color_text):
         self.search_button = Button(location,
@@ -213,7 +208,7 @@ class Application(Frame):
     def btn_entry_delete(self, location, color_idle, color_active, color_text):
         self.delete_button = Button(location,
                                     text="Clear",
-                                    command=self.search_entry.delete(0, END))
+                                    command=(lambda: self.search_entry.delete(0, END)))
         self.delete_button.config(bg=color_idle,
                                   fg=color_text,
                                   activebackground=color_active,
@@ -230,7 +225,7 @@ class Application(Frame):
                                 font=font_header_2
                                 )
         self.path_label.config(bg=col_bg_lgt,
-                               fg=col_acc_lgt
+                               fg=col_acc_major
                                )
         self.path_label.pack(side=TOP)
 
@@ -251,7 +246,7 @@ class Application(Frame):
                                   font=font_header_2
                                   )
         self.result_label.config(bg=col_bg_lgt,
-                                 fg=col_acc_lgt
+                                 fg=col_acc_major
                                 )
         self.result_label.pack(side=TOP)
 
