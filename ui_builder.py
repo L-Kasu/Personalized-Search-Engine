@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.wip import *
+from ui_colortemplates.teatime import *
 
 
 master_height = 400
@@ -221,7 +221,7 @@ class Application(Frame):
         self.path_label.config(bg=col_bg_lgt,
                                fg=col_acc_major
                                )
-        self.path_label.pack(side=TOP)
+        self.path_label.pack(side=TOP, fill=X)
 
         self.path_text = Listbox(self.path_frame)
         self.path_text.config(bg=col_bg,
@@ -242,7 +242,7 @@ class Application(Frame):
         self.result_label.config(bg=col_bg_lgt,
                                  fg=col_acc_major
                                 )
-        self.result_label.pack(side=TOP)
+        self.result_label.pack(side=TOP, fill=X)
 
         self.result_text = Listbox(self.result_frame)
         self.result_text.config(bg=col_bg,
