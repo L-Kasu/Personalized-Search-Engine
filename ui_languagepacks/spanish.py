@@ -1,6 +1,6 @@
 # spanish
 
-txt_mastertitle = "Search Engine"
+txt_mastertitle = "Buscador"
 txt_selectdir = "Seleccionar Directorio"
 txt_settingsheader = "Ajustes"
 txt_settingsfilesize = "Seleccionar el tamaño del archivo (en MB)"
