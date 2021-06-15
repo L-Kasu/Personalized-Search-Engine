@@ -1,4 +1,4 @@
-# english
+# german
 
 txt_mastertitle = "Suchmaschine"
 txt_selectdir = "Verzeichnis auswählen"
