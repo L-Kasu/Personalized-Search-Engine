@@ -13,7 +13,7 @@ from ui_colortemplates.wip import *
 master_height = 400
 master_width = 600
 filesearchspan_min = 0
-filesearchspan_max = 200
+filesearchspan_max = 2000
 
 
 class Application(Frame):
@@ -228,7 +228,8 @@ class Application(Frame):
                               fg=col_bg_lgt,
                               font=font_returntext,
                               height=0,
-                              width=0
+                              width=0,
+                              borderwidth=0
                               )
         self.path_text.pack(side=BOTTOM, fill=BOTH, expand=True)
 
@@ -249,7 +250,8 @@ class Application(Frame):
                                 fg=col_bg_lgt,
                                 font=font_returntext,
                                 height=10,
-                                width=0
+                                width=0,
+                                borderwidth=0
                                 )
         self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
 
