@@ -12,3 +12,5 @@ col_acc_minor = "#b3b3b3"
 font_header_1 = ("Arial", 15, "bold")
 font_header_2 = ("Arial", 10, "bold")
 font_returntext = ("Arial", 10)
+
+relief_widget = "flat"

@@ -12,3 +12,5 @@ col_acc_minor = "#272727"
 font_header_1 = ("Biome", 16, "bold")
 font_header_2 = ("Biome", 10, "bold")
 font_returntext = ("Biome", 10)
+
+relief_widget = "flat"
