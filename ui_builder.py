@@ -7,12 +7,12 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.wip import *
+from ui_colortemplates.cyberpunk import *
 from ui_languagepacks.english import *
 
 
-master_height = 400
-master_width = 600
+master_height = 600
+master_width = 800
 filesearchspan_min = 0
 filesearchspan_max = 2000
 
