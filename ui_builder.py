@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.25
+# version: alpha0.26
 # author: Haitham Samaan, Niklas Munkes
 
 #TODO: code cleanup
@@ -8,6 +8,7 @@ from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
 from ui_colortemplates.wip import *
+from ui_languagepacks.english import *
 
 
 master_height = 400
@@ -33,7 +34,7 @@ class Application(Frame):
     def create_window(self):
         # instantiating a window
         self.master.geometry(str(master_width)+"x"+str(master_height))
-        self.master.title("Search Engine")
+        self.master.title(txt_mastertitle)
         self.master.config(relief=FLAT, bd=7, bg=col_bg)
 
 
@@ -48,7 +49,7 @@ class Application(Frame):
         self.select_dir_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
         self.select_directory = Button(self.select_dir_frame,
                                        relief=FLAT,
-                                       text="Select Directory",
+                                       text=txt_selectdir,
                                        command=filedialog.askdirectory,
                                        font=font_header_2
                                        )
@@ -70,7 +71,7 @@ class Application(Frame):
         self.settings_frame.pack(fill=BOTH, expand=True)
 
         self.settings_label = Label(self.settings_frame,
-                                    text="Settings",
+                                    text=txt_settingsheader,
                                     font=font_header_1)
         self.settings_label.config(bg=col_bg_lgt, fg=col_acc_major)
         self.settings_label.pack(side=TOP, fill=BOTH)
@@ -81,7 +82,7 @@ class Application(Frame):
         self.file_size_frame.pack(side=TOP, fill=X, expand=True)
 
         self.file_size_label = Label(self.file_size_frame,
-                                     text="Select file size (in MB)",
+                                     text=txt_settingsfilesize,
                                      font=font_header_2)
         self.file_size_label.config(bg=col_bg_lgt, fg=col_acc_minor)
         self.file_size_label.pack(side=TOP)
@@ -93,7 +94,7 @@ class Application(Frame):
         self.file_type_frame.pack(side=TOP, fill=X, expand=True)
 
         self.file_type_label = Label(self.file_type_frame,
-                                     text="Select file type:",
+                                     text=txt_settingsfiletype,
                                      font=font_header_2)
         self.file_type_label.config(bg=col_bg_lgt, fg=col_acc_minor)
         self.file_type_label.pack(side=TOP, fill=X)
@@ -104,7 +105,7 @@ class Application(Frame):
 
     def btn_preprocessing(self, location, color_idle, color_active, color_text):
         self.preprocess_button = Button(location,
-                                        text="preprocess",
+                                        text=txt_preprocess,
                                         command=s_util.preprocess)
         self.preprocess_button.config(bg=color_idle,
                                       fg=color_text,
@@ -187,7 +188,7 @@ class Application(Frame):
 
     def btn_entry_search(self, location, color_idle, color_active, color_text):
         self.search_button = Button(location,
-                                    text="Search"
+                                    text=txt_entrysearch
                                     )
         self.search_button.config(bg=color_idle,
                                   fg=color_text,
@@ -200,7 +201,7 @@ class Application(Frame):
 
     def btn_entry_delete(self, location, color_idle, color_active, color_text):
         self.delete_button = Button(location,
-                                    text="Clear",
+                                    text=txt_entryclear,
                                     command=(lambda: self.search_entry.delete(0, END)))
         self.delete_button.config(bg=color_idle,
                                   fg=color_text,
@@ -215,7 +216,7 @@ class Application(Frame):
         self.path_frame = Frame(self.lower_frame, bg=col_bg)
         self.path_frame.pack(side=LEFT, fill=BOTH, expand=True)
         self.path_label = Label(self.path_frame,
-                                text="Path to result",
+                                text=txt_resultpath,
                                 font=font_header_2
                                 )
         self.path_label.config(bg=col_bg_lgt,
@@ -237,7 +238,7 @@ class Application(Frame):
         self.result_frame = Frame(self.lower_frame, bg=col_bg)
         self.result_frame.pack(side=LEFT, fill=BOTH, expand=True)
         self.result_label = Label(self.result_frame,
-                                  text="Search result",
+                                  text=txt_resultitems,
                                   font=font_header_2
                                   )
         self.result_label.config(bg=col_bg_lgt,
