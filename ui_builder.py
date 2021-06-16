@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.26
+# version: alpha0.30
 # author: Haitham Samaan, Niklas Munkes
 
 #TODO: code cleanup
@@ -35,7 +35,7 @@ class Application(Frame):
         # instantiating a window
         self.master.geometry(str(master_width)+"x"+str(master_height))
         self.master.title(txt_mastertitle)
-        self.master.config(relief=relief_widget, bd=7, bg=col_bg)
+        self.master.config(relief=relief_frames, bd=7, bg=col_bg)
 
 
     def split_window(self):
@@ -48,7 +48,7 @@ class Application(Frame):
         self.select_dir_frame = Frame(self.upper_frame, bg=col_bg)
         self.select_dir_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
         self.select_directory = Button(self.select_dir_frame,
-                                       relief=relief_widget,
+                                       relief=relief_frames,
                                        text=txt_selectdir,
                                        command=filedialog.askdirectory,
                                        font=font_header_2
@@ -57,7 +57,7 @@ class Application(Frame):
                                      fg=col_acc_minor,
                                      activebackground=col_btn_active,
                                      activeforeground=col_acc_minor,
-                                     borderwidth=0
+                                     relief=relief_btn
                                      )
         self.select_directory.pack(expand=True)
 
@@ -66,7 +66,7 @@ class Application(Frame):
         # a settings frame including: options for selecting file size and type
         self.all_settings_frame = Frame(self.upper_frame, bg=col_bg)
         self.all_settings_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
-        self.settings_frame = Frame(self.all_settings_frame, relief=relief_widget, bd=5)
+        self.settings_frame = Frame(self.all_settings_frame, relief=relief_frames, bd=5)
         self.settings_frame.config(bg=col_bg_lgt)
         self.settings_frame.pack(fill=BOTH, expand=True)
 
@@ -111,7 +111,7 @@ class Application(Frame):
                                       fg=color_text,
                                       activebackground=color_active,
                                       activeforeground=color_text,
-                                      borderwidth=0,
+                                      relief=relief_btn,
                                       font=font_header_2)
         self.preprocess_button.pack(side=BOTTOM)
 
@@ -165,7 +165,7 @@ class Application(Frame):
         # Entry frame
         self.all_entry_frame = Frame(self.upper_frame, bg=col_bg)
         self.all_entry_frame.pack(side=LEFT, fill=BOTH, expand=True)
-        self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt,  relief=relief_widget, bd=5)
+        self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt,  relief=relief_frames, bd=5)
         self.entry_frame.pack(fill=X, expand=True)
 
         # self.logo_label = Label(self.entry_frame, image=PhotoImage(file="./search_logo3.png"))
@@ -194,8 +194,8 @@ class Application(Frame):
                                   fg=color_text,
                                   activebackground=color_active,
                                   activeforeground=color_text,
-                                  borderwidth=0,
-                                  font=font_header_2
+                                  font=font_header_2,
+                                  relief=relief_btn
                                   )
         self.search_button.pack(side=LEFT)
 
@@ -207,7 +207,7 @@ class Application(Frame):
                                   fg=color_text,
                                   activebackground=color_active,
                                   activeforeground=color_text,
-                                  borderwidth=0,
+                                  relief=relief_btn,
                                   font=font_header_2
                                   )
         self.delete_button.pack(side=LEFT)

@@ -13,4 +13,5 @@ font_header_1 = ("Old English Text MT", 20, "bold")
 font_header_2 = ("Goudy Old Style", 12, "bold")
 font_returntext = ("Goudy Old Style", 10)
 
-relief_widget = "flat"
+relief_frames = "flat"
+relief_btn = "raise"
