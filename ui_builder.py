@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.30
+# version: alpha0.31
 # author: Haitham Samaan, Niklas Munkes
 
 #TODO: code cleanup
@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.wip import *
+from ui_colortemplates.cyberpunk import *
 from ui_languagepacks.english import *
 
 
@@ -59,6 +59,8 @@ class Application(Frame):
                                      activeforeground=col_acc_minor,
                                      relief=relief_btn
                                      )
+        if relief_btn == "flat":
+            self.select_directory.config(borderwidth=0)
         self.select_directory.pack(expand=True)
 
     def frame_settings(self, scale_min, scale_max):
@@ -113,6 +115,8 @@ class Application(Frame):
                                       activeforeground=color_text,
                                       relief=relief_btn,
                                       font=font_header_2)
+        if relief_btn == "flat":
+            self.preprocess_button.config(borderwidth=0)
         self.preprocess_button.pack(side=BOTTOM)
 
     def checkbtn_docx(self, location, color_bg, color_text):
@@ -197,6 +201,8 @@ class Application(Frame):
                                   font=font_header_2,
                                   relief=relief_btn
                                   )
+        if relief_btn == "flat":
+            self.search_button.config(borderwidth=0)
         self.search_button.pack(side=LEFT)
 
     def btn_entry_delete(self, location, color_idle, color_active, color_text):
@@ -210,6 +216,8 @@ class Application(Frame):
                                   relief=relief_btn,
                                   font=font_header_2
                                   )
+        if relief_btn == "flat":
+            self.delete_button.config(borderwidth=0)
         self.delete_button.pack(side=LEFT)
 
     def frame_path(self):
