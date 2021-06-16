@@ -1,11 +1,13 @@
-# classic
+# back to the roots!
 
 col_bg = "#282828"
 col_bg_lgt = "#282828"
 col_btn_idle = "black"
 col_btn_active = "#ffcc00"
-col_interactionpoint_idle = "black"
+col_interactionpoint_idle = "#ffb000"
+col_interactionpoint_idle_1 = "black"
 col_interactionpoint_contrast = "#ffb000"
+col_interactionpoint_contrast_1 = "#00ff00"
 col_acc_major = "#ffb000"
 col_acc_minor = "#ffb000"
 

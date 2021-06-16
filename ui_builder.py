@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.sharky import *
+from ui_colortemplates.monochrome import *
 from ui_languagepacks.english import *
 
 
@@ -182,7 +182,7 @@ class Application(Frame):
         #                    bg=col_bg_lgt)
         # search_logo.grid(row=0, column=3)
         self.search_entry = Entry(self.entry_frame)
-        self.search_entry.config(bg=col_interactionpoint_idle, fg=col_interactionpoint_contrast, font=font_header_2)
+        self.search_entry.config(bg=col_interactionpoint_idle_1, fg=col_interactionpoint_contrast_1, font=font_header_2)
         self.search_entry.pack(side=TOP, fill=X, expand=True, ipadx=50)
 
         # Buttons frame
