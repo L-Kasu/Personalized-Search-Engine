@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.monochrome import *
+from ui_colortemplates.wip import *
 from ui_languagepacks.english import *
 
 
