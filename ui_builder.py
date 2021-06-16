@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.cyberpunk import *
+from ui_colortemplates.sharky import *
 from ui_languagepacks.english import *
 
 
@@ -162,7 +162,8 @@ class Application(Frame):
                                     activebackground=col_interactionpoint_contrast,
                                     troughcolor=col_interactionpoint_idle,
                                     highlightbackground=col_bg_lgt,
-                                    font=font_header_2)
+                                    font=font_header_2
+                                    )
         self.file_size_scale.pack(side=TOP, fill=X)
 
     def frame_entry(self):
