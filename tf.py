@@ -28,7 +28,7 @@ class tfidf:
     def add_to_corpus(self, new_corpus:list, new_titles:list):
         
         self.corpus += new_corpus
-        self.titles += new_titels
+        self.titles += new_titles
         
         self.tfidf_mat = self.tfidfVectorizer.fit_transform(self.corpus)
     
