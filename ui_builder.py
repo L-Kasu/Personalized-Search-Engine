@@ -35,7 +35,7 @@ class Application(Frame):
         # instantiating a window
         self.master.geometry(str(master_width)+"x"+str(master_height))
         self.master.title(txt_mastertitle)
-        self.master.config(relief=FLAT, bd=7, bg=col_bg)
+        self.master.config(relief=relief_widget, bd=7, bg=col_bg)
 
 
     def split_window(self):
@@ -48,7 +48,7 @@ class Application(Frame):
         self.select_dir_frame = Frame(self.upper_frame, bg=col_bg)
         self.select_dir_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
         self.select_directory = Button(self.select_dir_frame,
-                                       relief=FLAT,
+                                       relief=relief_widget,
                                        text=txt_selectdir,
                                        command=filedialog.askdirectory,
                                        font=font_header_2
@@ -66,7 +66,7 @@ class Application(Frame):
         # a settings frame including: options for selecting file size and type
         self.all_settings_frame = Frame(self.upper_frame, bg=col_bg)
         self.all_settings_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
-        self.settings_frame = Frame(self.all_settings_frame, relief=FLAT, bd=5)
+        self.settings_frame = Frame(self.all_settings_frame, relief=relief_widget, bd=5)
         self.settings_frame.config(bg=col_bg_lgt)
         self.settings_frame.pack(fill=BOTH, expand=True)
 
@@ -165,7 +165,7 @@ class Application(Frame):
         # Entry frame
         self.all_entry_frame = Frame(self.upper_frame, bg=col_bg)
         self.all_entry_frame.pack(side=LEFT, fill=BOTH, expand=True)
-        self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt,  relief=FLAT, bd=5)
+        self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt,  relief=relief_widget, bd=5)
         self.entry_frame.pack(fill=X, expand=True)
 
         # self.logo_label = Label(self.entry_frame, image=PhotoImage(file="./search_logo3.png"))
