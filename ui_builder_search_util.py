@@ -11,7 +11,7 @@ from tkinter import filedialog
 # Selects the directory the user wants to search in
 def select_dir():
     dir_selected = filedialog.askdirectory()
-    return dir_selected
+    print(dir_selected)
 
 
 # # Returns the file size the user chose

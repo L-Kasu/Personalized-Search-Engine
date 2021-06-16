@@ -50,7 +50,7 @@ class Application(Frame):
         self.select_directory = Button(self.select_dir_frame,
                                        relief=relief_frames,
                                        text=txt_selectdir,
-                                       command=filedialog.askdirectory,
+                                       command=lambda: s_util.select_dir(),
                                        font=font_header_2
                                        )
         self.select_directory.config(bg=col_btn_idle,
