@@ -1,6 +1,6 @@
 # (C) アラサカ社 (Arasaka Corporation)
 
-col_bg = "#col_entryfield_idle"
+col_bg = "#272727"
 col_bg_lgt = "#787878"
 col_btn_idle = "#f7ff00"
 col_btn_active = "#c2c800"
