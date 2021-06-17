@@ -10,7 +10,6 @@ from preprocessing import pp_main as pm
 from data import database
 import tf
 import io
-
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -29,29 +28,16 @@ def convert_pdf_to_txt(path):
     maxpages = 0
     caching = True
     pagenos = set()
-
     for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
                                   password=password,
                                   caching=caching,
                                   check_extractable=True):
         interpreter.process_page(page)
-
-
-
     fp.close()
     device.close()
     text = retstr.getvalue()
     retstr.close()
     return text
-
-
-# initiates the searching algorithm
-
-
-
-# # Returns the file size the user chose
-# def get_file_size():
-#     return file_size_scale.get()
 
 
 def any_file_to_str(path):
@@ -62,7 +48,6 @@ def any_file_to_str(path):
     elif path.endswith("pdf"):
         text = convert_pdf_to_txt(path)
     else:
-        text = ""
         print("unsupported file format at:" + path)
     return text
 

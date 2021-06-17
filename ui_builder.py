@@ -298,19 +298,17 @@ class Application(Frame):
         self.select_dir_path_listbox.pack(side=TOP, fill=X)
 
     def search(self, query):
+        self.result_text.delete(0, self.result_text.size())
         return_docs_num = 10
         tf_obj = self.tf_object
         if tf_obj:
             result = tf_obj.query_k_titles(query, return_docs_num)
             for x in range(0, len(result)):
                 self.result_text.insert(x, result[x])
-                # path = self.dir_selected + "/" + result[x]
-                # self.path_text.insert(x, path)
 
     # Selects the directory the user wants to search in
     def select_dir(self):
         self.dir_selected = filedialog.askdirectory()
-
 
     def preprocess(self):
         corpus_list = []
