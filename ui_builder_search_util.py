@@ -6,12 +6,14 @@
 
 
 from tkinter import filedialog
+from preprocessing import pp_main as pm
+from data import database
+import tf
 
 
-# Selects the directory the user wants to search in
-def select_dir():
-    dir_selected = filedialog.askdirectory()
-    print(dir_selected)
+
+# initiates the searching algorithm
+
 
 
 # # Returns the file size the user chose

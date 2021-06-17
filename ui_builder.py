@@ -2,14 +2,15 @@
 # version: alpha0.32
 # author: Haitham Samaan, Niklas Munkes
 
-#TODO: code cleanup
+# TODO: code cleanup
 
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
 from ui_colortemplates.cb_friendly import *
 from ui_languagepacks.english import *
-
+import os
+import tf
 
 master_height = 500
 master_width = 800
@@ -21,6 +22,7 @@ class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
+        self.dir_selected = ""
         self.create_window()
         self.split_window()
         self.pack()
@@ -30,13 +32,11 @@ class Application(Frame):
         self.frame_path()
         self.frame_result()
 
-
     def create_window(self):
         # instantiating a window
-        self.master.geometry(str(master_width)+"x"+str(master_height))
+        self.master.geometry(str(master_width) + "x" + str(master_height))
         self.master.title(txt_mastertitle)
         self.master.config(relief=relief_frames, bd=7, bg=col_bg)
-
 
     def split_window(self):
         self.upper_frame = Frame(self.master, bg=col_bg)
@@ -50,7 +50,7 @@ class Application(Frame):
         self.select_directory = Button(self.select_dir_frame,
                                        relief=relief_frames,
                                        text=txt_selectdir,
-                                       command=lambda: s_util.select_dir(),
+                                       command=lambda: self.select_dir(),
                                        font=font_header_2
                                        )
         self.select_directory.config(bg=col_btn_idle,
@@ -170,7 +170,7 @@ class Application(Frame):
         # Entry frame
         self.all_entry_frame = Frame(self.upper_frame, bg=col_bg)
         self.all_entry_frame.pack(side=LEFT, fill=BOTH, expand=True)
-        self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt,  relief=relief_frames, bd=5)
+        self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt, relief=relief_frames, bd=5)
         self.entry_frame.pack(fill=X, expand=True)
 
         # self.logo_label = Label(self.entry_frame, image=PhotoImage(file="./search_logo3.png"))
@@ -193,7 +193,8 @@ class Application(Frame):
 
     def btn_entry_search(self, location, color_idle, color_active, color_text):
         self.search_button = Button(location,
-                                    text=txt_entrysearch
+                                    text=txt_entrysearch,
+                                    command=lambda: self.search(self.search_entry.get())
                                     )
         self.search_button.config(bg=color_idle,
                                   fg=color_text,
@@ -252,7 +253,7 @@ class Application(Frame):
                                   )
         self.result_label.config(bg=col_bg_lgt,
                                  fg=col_acc_major
-                                )
+                                 )
         self.result_label.pack(side=TOP, fill=X)
 
         self.result_text = Listbox(self.result_frame)
@@ -264,6 +265,23 @@ class Application(Frame):
                                 borderwidth=0
                                 )
         self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
+
+    def search(self, query):
+        for _, _, filenames in os.walk(self.dir_selected):
+            titles = filenames
+            corpus_list = []
+            for filename in filenames:
+                path = self.dir_selected + "\\" + filename
+                with open(path) as container:
+                    text = container.read()
+                    corpus_list.append(text)
+                tf_obj = tf.tfidf(titles, corpus_list)
+                result = tf_obj.query_k_titles(query, 1)
+            break
+
+    # Selects the directory the user wants to search in
+    def select_dir(self):
+        self.dir_selected = filedialog.askdirectory()
 
 
 def main():

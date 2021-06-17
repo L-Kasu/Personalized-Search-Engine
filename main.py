@@ -1,22 +1,23 @@
 # simple application to run the search from preprocessing to the returned query
 # author: Lars Kasüschke
 # import sys
-import time
+import time, os
+
+import tf
+import ui_builder_search_util
 import utilities
 from data import database
 from search import searching_algorithm
 from tf_idf import tf_idf_main
 from evaluation import evaluation_functions
-from preprocessing import main as preprocessing_main
+from preprocessing import pp_main as pm
 from matrix import inverted_matrix
 algorithm = searching_algorithm.and_search
+dir_selected = ui_builder_search_util.dir_selected
 
 
-def main_search(taskstring):
-    qry_dicts = database.load_object(taskstring + "_pp_" + "CISI.QRY")
-    doc_dicts = database.load_object(taskstring + "_pp_" + "CISI.ALL")
-    tf_idf_main.main(doc_dicts, qry_dicts)
-
+def main_search():
+    pass
 
 
 def main_evaluate(taskstring):
@@ -30,7 +31,7 @@ def main_evaluate(taskstring):
 
 
 def main_preprocess() -> None:
-    pair_of_list_taskstrings_filenames = preprocessing_main.run_preprocessing()
+    pair_of_list_taskstrings_filenames = pm.run_preprocessing()
     taskstrings = pair_of_list_taskstrings_filenames[0]
     filenames = pair_of_list_taskstrings_filenames[1]
     time.sleep(.1)

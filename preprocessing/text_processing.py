@@ -1,7 +1,6 @@
 # preprocessing function container
 # authors: Niklas Munkes, Lars Kasüschke
-
-
+import re
 import sys
 from nltk.stem import PorterStemmer
 from nltk.stem import LancasterStemmer
@@ -11,52 +10,47 @@ from nltk.corpus import stopwords as sw
 
 
 def tokenize(raw_text: list) -> list:
-    r = []
-    if raw_text:
-        r = raw_text[0]
-    if type(r) == str:
-        r = word_tokenize(r)
-    return r
+    # picks only sequences of alphanumeric characters and removes everything else
+    r = ""
+    for item in raw_text:
+        r += item
+    r = word_tokenize(r)
+    return list(r)
+
+
+# return a list of words
+def __normalize_word(word: str) -> list:
+    result = []
+    words = word.split("-")
+    for word in words:
+        item = re.sub('\\W', "", word)
+        item = item.lower()
+        result.append(item)
+    return result
 
 
 def normalize(tokens: list) -> list:
-    tokens = list(tokens)
-    normalized = []
-    tokens_filtered = filter(lambda x: len(x) > 2 or x.isalpha() or x.isdigit(),
-                             tokens)
-    normalized += tokens_filtered
-    normalized = ["".join(word.lower().split(".")) for word in normalized]
-    return list(normalized)
+    result = []
+    for word in tokens:
+        normalized_words =__normalize_word(word)
+        for part_word in normalized_words:
+            if part_word:
+                result.append(part_word)
+    return result
 
 
-def remove_stop_words(pp_set: list) -> list:
-    new_pp_set = list()
+def remove_stop_words(words: list) -> list:
     stopwords = list(sw.words("english"))
-    for item in pp_set:
-        if item not in stopwords:
-            new_pp_set.append(item)
-    return new_pp_set
+    words_without_stopwords = [word for word in words if word not in stopwords]
+    return words_without_stopwords
 
 
-def stemming(pp_set: list, stemmer: list) -> list:
-    new_pp_set = list()
-    for item in pp_set:
-        if stemmer == "porter":
-            new_pp_set.append(PorterStemmer().stem(item))
-        elif stemmer == "lancaster":
-            new_pp_set.append(LancasterStemmer().stem(item))
-        elif stemmer == "sulyvahn":
-            new_pp_set.append(SulyvahnStemmer().stem(item))
-        else:
-            tb = sys.exc_info()[2]
-            raise Exception("Stemmer not recognized. Supported stemming algorithms are 'porter' and 'lancaster'").with_traceback(tb)
-    return new_pp_set
-
-
-# lightweight preprocessing for the query0
-def preprocessing_pipeline(raw_text: list, stemmer: list) -> list:
-    preprocessed_text = remove_stop_words(normalize(tokenize(raw_text)))
-    try:
-        preprocecessed_text = stemming(preprocessed_text, stemmer)
-    finally:
-        return preprocessed_text
+def stemming(words: list, stemmer: list) -> list:
+    if stemmer == "porter":
+        stem = PorterStemmer().stem
+    elif stemmer == "lancaster":
+        stem = LancasterStemmer().stem
+    else:
+        stem = SulyvahnStemmer().stem
+    stemmed_words = [stem(word) for word in words]
+    return stemmed_words
