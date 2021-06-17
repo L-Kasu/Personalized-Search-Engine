@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.40
+# version: alpha0.41
 # author: Haitham Samaan, Niklas Munkes
 
 # TODO: code cleanup
@@ -56,7 +56,8 @@ class Application(Frame):
         self.select_dir_path_listbox.config(bg=col_bg_lgt,
                                             fg=col_acc_minor,
                                             height=1,
-                                            relief=relief_btn
+                                            borderwidth=0,
+                                            highlightthickness=0
                                             )
         self.select_dir_path_listbox.pack(side=TOP, fill=X)
 
@@ -265,7 +266,8 @@ class Application(Frame):
                               font=font_returntext,
                               height=0,
                               width=0,
-                              borderwidth=0
+                              borderwidth=0,
+                              highlightthickness=0
                               )
         self.path_text.pack(side=BOTTOM, fill=BOTH, expand=True)
 
@@ -287,7 +289,8 @@ class Application(Frame):
                                 font=font_returntext,
                                 height=10,
                                 width=0,
-                                borderwidth=0
+                                borderwidth=0,
+                                highlightthickness=0
                                 )
         self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
 
