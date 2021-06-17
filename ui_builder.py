@@ -316,16 +316,17 @@ class Application(Frame):
         titles = []
         for _, _, filenames in os.walk(self.dir_selected):
             titles = filenames
+            dir = os.path.basename(self.dir_selected)
             for filename in filenames:
                 path = self.dir_selected + "/" + filename
                 text = s_util.any_file_to_str(path)
                 corpus_list.append(text)
 
             if filename in database.list_of_files:
-                self.tf_object = database.load_object(self.dir_selected)
+                self.tf_object = database.load_object(dir)
             else:
                 self.tf_object = tf.tfidf(corpus_list, titles)
-                database.save_object(self.tf_object, self.dir_selected)
+                database.save_object(self.tf_object, dir)
             break
 
 
