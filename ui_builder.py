@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.42
+# version: alpha0.43
 # author: Haitham Samaan, Niklas Munkes
 
 # TODO: code cleanup
@@ -7,14 +7,14 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.wip import *
+from ui_colortemplates.sharky import *
 from ui_languagepacks.english import *
 import os
 import tf
 from data import database
 
-master_height = 700
-master_width = 1700
+master_height = 500
+master_width = 800
 filesearchspan_min = 0
 filesearchspan_max = 2000
 
@@ -50,16 +50,6 @@ class Application(Frame):
         self.select_dir_frame = Frame(self.upper_frame, bg=col_bg)
         self.select_dir_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
         self.btn_select_directory()
-        self.select_dir_path_listbox = Listbox(self.select_dir_frame,
-                                                font=font_header_2
-                                                )
-        self.select_dir_path_listbox.config(bg=col_bg_lgt,
-                                            fg=col_acc_minor,
-                                            height=1,
-                                            borderwidth=0,
-                                            highlightthickness=0
-                                            )
-        self.select_dir_path_listbox.pack(side=TOP, fill=X)
 
     def btn_select_directory(self):
         self.select_directory = Button(self.select_dir_frame,
@@ -80,7 +70,7 @@ class Application(Frame):
 
     def btn_select_directory_function(self):
         self.select_dir()
-        self.select_dir_path_listbox.insert(1, self.dir_selected)
+        self.select_dir_path_listbox.insert(1, self.dir_selected+"/")
 
 
     def frame_settings(self, scale_min, scale_max):
@@ -276,13 +266,13 @@ class Application(Frame):
         self.result_frame.pack(side=LEFT, fill=BOTH, expand=True)
         self.result_label = Label(self.result_frame,
                                   text=txt_resultitems,
-                                  font=font_header_2
+                                  font=font_header_1
                                   )
         self.result_label.config(bg=col_bg_lgt,
                                  fg=col_acc_major
                                  )
         self.result_label.pack(side=TOP, fill=X)
-
+        self.listbox_dir(self.result_frame)
         self.result_text = Listbox(self.result_frame)
         self.result_text.config(bg=col_bg_lgt,
                                 fg=col_acc_minor,
@@ -293,6 +283,18 @@ class Application(Frame):
                                 highlightthickness=0
                                 )
         self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
+
+    def listbox_dir(self, location):
+        self.select_dir_path_listbox = Listbox(location,
+                                               font=font_header_2
+                                               )
+        self.select_dir_path_listbox.config(bg=col_bg_lgt,
+                                            fg=col_acc_minor,
+                                            height=1,
+                                            borderwidth=0,
+                                            highlightthickness=0
+                                            )
+        self.select_dir_path_listbox.pack(side=TOP, fill=X)
 
     def search(self, query):
         return_docs_num = 10
