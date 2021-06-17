@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.33
+# version: alpha0.40
 # author: Haitham Samaan, Niklas Munkes
 
 # TODO: code cleanup
@@ -13,8 +13,8 @@ import os
 import tf
 from data import database
 
-master_height = 500
-master_width = 800
+master_height = 700
+master_width = 1700
 filesearchspan_min = 0
 filesearchspan_max = 2000
 
@@ -30,7 +30,7 @@ class Application(Frame):
         self.pack()
         self.frame_select_dir()
         self.frame_settings(filesearchspan_min, filesearchspan_max)
-        self.frame_path()
+        # self.frame_path()
         self.frame_result()
         self.frame_entry()
 
@@ -50,23 +50,37 @@ class Application(Frame):
         self.select_dir_frame = Frame(self.upper_frame, bg=col_bg)
         self.select_dir_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
         self.btn_select_directory()
+        self.select_dir_path_listbox = Listbox(self.select_dir_frame,
+                                                font=font_header_2
+                                                )
+        self.select_dir_path_listbox.config(bg=col_bg_lgt,
+                                            fg=col_acc_minor,
+                                            height=1,
+                                            relief=relief_btn
+                                            )
+        self.select_dir_path_listbox.pack(side=TOP, fill=X)
 
     def btn_select_directory(self):
         self.select_directory = Button(self.select_dir_frame,
                                        relief=relief_frames,
                                        text=txt_selectdir,
-                                       command=lambda: self.select_dir(),
+                                       command=self.btn_select_directory_function,
                                        font=font_header_2
                                        )
         self.select_directory.config(bg=col_btn_idle,
                                      fg=col_acc_minor,
                                      activebackground=col_btn_active,
                                      activeforeground=col_acc_minor,
-                                     relief=relief_btn
+                                     borderwidth=0
                                      )
         if relief_btn == "flat":
             self.select_directory.config(borderwidth=0)
         self.select_directory.pack(expand=True)
+
+    def btn_select_directory_function(self):
+        self.select_dir()
+        self.select_dir_path_listbox.insert(1, self.dir_selected)
+
 
     def frame_settings(self, scale_min, scale_max):
         # Used many frames here to organize the different widgets better
@@ -230,7 +244,7 @@ class Application(Frame):
 
     def btn_entry_delete_function(self):
         self.search_entry.delete(0, END)
-        self.path_text.delete(0, END)
+        # self.path_text.delete(0, END)
         self.result_text.delete(0, END)
 
     def frame_path(self):
@@ -284,8 +298,8 @@ class Application(Frame):
             result = tf_obj.query_k_titles(query, return_docs_num)
             for x in range(0, len(result)):
                 self.result_text.insert(x, result[x])
-                path = self.dir_selected + "/" + tf_obj.titles[x]
-                self.path_text.insert(x, path)
+                # path = self.dir_selected + "/" + result[x]
+                # self.path_text.insert(x, path)
 
     # Selects the directory the user wants to search in
     def select_dir(self):
