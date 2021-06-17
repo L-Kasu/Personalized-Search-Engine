@@ -321,11 +321,12 @@ class Application(Frame):
                 text = s_util.any_file_to_str(path)
                 corpus_list.append(text)
 
-            if filename in database.list_of_files:
+            if dir in database.list_of_files:
                 self.tf_object = database.load_object(dir)
             else:
-                self.tf_object = tf.tfidf(corpus_list, titles)
-                database.save_object(self.tf_object, dir)
+                if titles and corpus_list:
+                    self.tf_object = tf.tfidf(corpus_list, titles)
+                    database.save_object(self.tf_object, dir)
             break
 
 
