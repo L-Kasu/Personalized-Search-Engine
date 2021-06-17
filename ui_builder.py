@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.32
+# version: alpha0.33
 # author: Haitham Samaan, Niklas Munkes
 
 # TODO: code cleanup
@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.cb_friendly import *
+from ui_colortemplates.wip import *
 from ui_languagepacks.english import *
 import os
 import tf
@@ -30,9 +30,9 @@ class Application(Frame):
         self.pack()
         self.frame_select_dir()
         self.frame_settings(filesearchspan_min, filesearchspan_max)
-        self.frame_entry()
         self.frame_path()
         self.frame_result()
+        self.frame_entry()
 
     def create_window(self):
         # instantiating a window
@@ -49,6 +49,9 @@ class Application(Frame):
     def frame_select_dir(self):
         self.select_dir_frame = Frame(self.upper_frame, bg=col_bg)
         self.select_dir_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
+        self.btn_select_directory()
+
+    def btn_select_directory(self):
         self.select_directory = Button(self.select_dir_frame,
                                        relief=relief_frames,
                                        text=txt_selectdir,
@@ -212,7 +215,8 @@ class Application(Frame):
     def btn_entry_delete(self, location, color_idle, color_active, color_text):
         self.delete_button = Button(location,
                                     text=txt_entryclear,
-                                    command=(lambda: self.search_entry.delete(0, END)))
+                                    command=self.btn_entry_delete_function
+                                    )
         self.delete_button.config(bg=color_idle,
                                   fg=color_text,
                                   activebackground=color_active,
@@ -223,6 +227,11 @@ class Application(Frame):
         if relief_btn == "flat":
             self.delete_button.config(borderwidth=0)
         self.delete_button.pack(side=LEFT)
+
+    def btn_entry_delete_function(self):
+        self.search_entry.delete(0, END)
+        self.path_text.delete(0, END)
+        self.result_text.delete(0, END)
 
     def frame_path(self):
         self.path_frame = Frame(self.lower_frame, bg=col_bg)
@@ -237,8 +246,8 @@ class Application(Frame):
         self.path_label.pack(side=TOP, fill=X)
 
         self.path_text = Listbox(self.path_frame)
-        self.path_text.config(bg=col_bg,
-                              fg=col_bg_lgt,
+        self.path_text.config(bg=col_bg_lgt,
+                              fg=col_acc_minor,
                               font=font_returntext,
                               height=0,
                               width=0,
@@ -259,8 +268,8 @@ class Application(Frame):
         self.result_label.pack(side=TOP, fill=X)
 
         self.result_text = Listbox(self.result_frame)
-        self.result_text.config(bg=col_bg,
-                                fg=col_bg_lgt,
+        self.result_text.config(bg=col_bg_lgt,
+                                fg=col_acc_minor,
                                 font=font_returntext,
                                 height=10,
                                 width=0,
