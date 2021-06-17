@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.43
+# version: alpha0.44
 # author: Haitham Samaan, Niklas Munkes
 
 # TODO: code cleanup
@@ -7,7 +7,7 @@
 from tkinter import *
 from tkinter import filedialog
 import ui_builder_search_util as s_util
-from ui_colortemplates.sharky import *
+from ui_colortemplates.wip import *
 from ui_languagepacks.english import *
 import os
 import tf
@@ -237,6 +237,7 @@ class Application(Frame):
         self.search_entry.delete(0, END)
         # self.path_text.delete(0, END)
         self.result_text.delete(0, END)
+        self.select_dir_path_listbox.delete(0, END)
 
     def frame_path(self):
         self.path_frame = Frame(self.lower_frame, bg=col_bg)
