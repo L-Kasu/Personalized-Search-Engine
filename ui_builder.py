@@ -88,31 +88,31 @@ class Application(Frame):
         self.settings_label.config(bg=col_bg_lgt, fg=col_acc_major)
         self.settings_label.pack(side=TOP, fill=BOTH)
 
-        # File size
-        self.file_size_frame = Frame(self.settings_frame)
-        self.file_size_frame.config(bg=col_bg_lgt)
-        self.file_size_frame.pack(side=TOP, fill=X, expand=True)
-
-        self.file_size_label = Label(self.file_size_frame,
-                                     text=txt_settingsfilesize,
-                                     font=font_header_2)
-        self.file_size_label.config(bg=col_bg_lgt, fg=col_acc_minor)
-        self.file_size_label.pack(side=TOP)
-        self.scale_filesize(self.file_size_frame, scale_min, scale_max)
-
-        # File type
-        self.file_type_frame = Frame(self.settings_frame)
-        self.file_type_frame.config(bg=col_bg_lgt)
-        self.file_type_frame.pack(side=TOP, fill=X, expand=True)
-
-        self.file_type_label = Label(self.file_type_frame,
-                                     text=txt_settingsfiletype,
-                                     font=font_header_2)
-        self.file_type_label.config(bg=col_bg_lgt, fg=col_acc_minor)
-        self.file_type_label.pack(side=TOP, fill=X)
-        self.checkbtn_pdf(self.file_type_frame, col_bg_lgt, col_acc_minor)
-        self.checkbtn_txt(self.file_type_frame, col_bg_lgt, col_acc_minor)
-        self.checkbtn_docx(self.file_type_frame, col_bg_lgt, col_acc_minor)
+        # # File size
+        # self.file_size_frame = Frame(self.settings_frame)
+        # self.file_size_frame.config(bg=col_bg_lgt)
+        # self.file_size_frame.pack(side=TOP, fill=X, expand=True)
+        #
+        # self.file_size_label = Label(self.file_size_frame,
+        #                              text=txt_settingsfilesize,
+        #                              font=font_header_2)
+        # self.file_size_label.config(bg=col_bg_lgt, fg=col_acc_minor)
+        # self.file_size_label.pack(side=TOP)
+        # self.scale_filesize(self.file_size_frame, scale_min, scale_max)
+        #
+        # # File type
+        # self.file_type_frame = Frame(self.settings_frame)
+        # self.file_type_frame.config(bg=col_bg_lgt)
+        # self.file_type_frame.pack(side=TOP, fill=X, expand=True)
+        #
+        # self.file_type_label = Label(self.file_type_frame,
+        #                              text=txt_settingsfiletype,
+        #                              font=font_header_2)
+        # self.file_type_label.config(bg=col_bg_lgt, fg=col_acc_minor)
+        # self.file_type_label.pack(side=TOP, fill=X)
+        # self.checkbtn_pdf(self.file_type_frame, col_bg_lgt, col_acc_minor)
+        # self.checkbtn_txt(self.file_type_frame, col_bg_lgt, col_acc_minor)
+        # self.checkbtn_docx(self.file_type_frame, col_bg_lgt, col_acc_minor)
         self.btn_preprocessing(self.settings_frame, col_btn_idle, col_btn_active, col_acc_minor)
 
     def btn_preprocessing(self, location, color_idle, color_active, color_text):
