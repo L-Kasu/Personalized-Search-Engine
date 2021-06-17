@@ -11,6 +11,7 @@ from ui_colortemplates.cb_friendly import *
 from ui_languagepacks.english import *
 import os
 import tf
+from data import database
 
 master_height = 500
 master_width = 800
@@ -23,6 +24,7 @@ class Application(Frame):
         super().__init__(master)
         self.master = master
         self.dir_selected = ""
+        self.tf_object = None
         self.create_window()
         self.split_window()
         self.pack()
@@ -108,7 +110,7 @@ class Application(Frame):
     def btn_preprocessing(self, location, color_idle, color_active, color_text):
         self.preprocess_button = Button(location,
                                         text=txt_preprocess,
-                                        command=s_util.preprocess)
+                                        command=lambda: self.preprocess())
         self.preprocess_button.config(bg=color_idle,
                                       fg=color_text,
                                       activebackground=color_active,
@@ -267,21 +269,36 @@ class Application(Frame):
         self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
 
     def search(self, query):
-        for _, _, filenames in os.walk(self.dir_selected):
-            titles = filenames
-            corpus_list = []
-            for filename in filenames:
-                path = self.dir_selected + "\\" + filename
-                with open(path) as container:
-                    text = container.read()
-                    corpus_list.append(text)
-                tf_obj = tf.tfidf(titles, corpus_list)
-                result = tf_obj.query_k_titles(query, 1)
-            break
+        return_docs_num = 10
+        tf_obj = self.tf_object
+        if tf_obj:
+            result = tf_obj.query_k_titles(query, return_docs_num)
+            for x in range(0, len(result)):
+                self.result_text.insert(x, result[x])
+                path = self.dir_selected + "/" + tf_obj.titles[x]
+                self.path_text.insert(x, path)
 
     # Selects the directory the user wants to search in
     def select_dir(self):
         self.dir_selected = filedialog.askdirectory()
+
+
+    def preprocess(self):
+        corpus_list = []
+        titles = []
+        for _, _, filenames in os.walk(self.dir_selected):
+            titles = filenames
+            for filename in filenames:
+                path = self.dir_selected + "/" + filename
+                text = s_util.any_file_to_str(path)
+                corpus_list.append(text)
+
+            if filename in database.list_of_files:
+                self.tf_object = database.load_object(self.dir_selected)
+            else:
+                self.tf_object = tf.tfidf(corpus_list, titles)
+                database.save_object(self.tf_object, self.dir_selected)
+            break
 
 
 def main():

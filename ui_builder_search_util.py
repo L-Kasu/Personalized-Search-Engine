@@ -21,9 +21,12 @@ import tf
 #     return file_size_scale.get()
 
 
-# Preprocesses based on the search settings
-def preprocess():
-    pass
+def any_file_to_str(path):
+    text = ""
+    if path.endswith("txt"):
+        with open(path, "r") as container:
+            text = container.read()
+    return text
 
 
 # # Filters the search based on the user's choice of file types
