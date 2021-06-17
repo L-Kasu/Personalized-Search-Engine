@@ -1,5 +1,5 @@
 # script for a simple ui
-# version: alpha0.41
+# version: alpha0.42
 # author: Haitham Samaan, Niklas Munkes
 
 # TODO: code cleanup
@@ -72,7 +72,7 @@ class Application(Frame):
                                      fg=col_acc_minor,
                                      activebackground=col_btn_active,
                                      activeforeground=col_acc_minor,
-                                     borderwidth=0
+                                     relief=relief_btn
                                      )
         if relief_btn == "flat":
             self.select_directory.config(borderwidth=0)
