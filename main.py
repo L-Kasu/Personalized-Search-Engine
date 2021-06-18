@@ -107,4 +107,3 @@ text = "Abstracting is a key segment of the information industry Opportunities a
 
 if __name__ == "__main__":
     main()
-    print(database.load_object("tn_pp_CISI.ALL"))

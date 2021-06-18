@@ -37,7 +37,7 @@ def evaluate_querrys(query_labels: ndarray, rel_labels: ndarray) -> dict:
     for i in range(0, len(query_labels)-1):
         i_true = rel_labels[i]
         i_pred = query_labels[i]
-        precision = metrics.precision_score(i_true, i_pred, zero_division=0)
+        precision = metrics.precision_score(i_true, i_pred, zero_division=1)
         recall = metrics.recall_score(i_true, i_pred, zero_division=1)
         evaluation[i] = [precision, recall]
     average = metrics.average_precision_score(rel_labels, query_labels, average='micro')
