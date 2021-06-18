@@ -1,78 +1,112 @@
-Evaluation tf_idf: 
-If recall = 10, then there were no expected documents given
-Querry0: 		recall: 0.0
-Querry1: 		recall: 0.0
-Querry2: 		recall: 0.013157894736842105
-Querry3: 		recall: 0.0
-Querry4: 		recall: 0.0
-Querry5: 		recall: 0.0
-Querry6: 		recall: 0.0
-Querry7: 		recall: 0.0
-Querry8: 		recall: 0.0
-Querry9: 		recall: 0.0
-Querry10: 		recall: 0.013157894736842105
-Querry11: 		recall: 0.0
-Querry12: 		recall: 0.0
-Querry13: 		recall: 0.0
-Querry14: 		recall: 0.0
-Querry15: 		recall: 0.0
-Querry16: 		recall: 0.0
-Querry17: 		recall: 0.0
-Querry18: 		recall: 0.0
-Querry19: 		recall: 0.0
-Querry20: 		recall: 0.0
-Querry21: 		recall: 0.0
-Querry22: 		recall: 0.0
-Querry23: 		recall: 0.0
-Querry24: 		recall: 0.0
-Querry25: 		recall: 0.0
-Querry26: 		recall: 0.0
-Querry27: 		recall: 0.0
-Querry28: 		recall: 0.013157894736842105
-Querry29: 		recall: 0.02631578947368421
-Querry30: 		recall: 0.013157894736842105
-Querry31: 		recall: 0.0
-Querry32: 		recall: 0.0
-Querry33: 		recall: 0.0
-Querry34: 		recall: 0.0
-Querry36: 		recall: 0.0
-Querry38: 		recall: 0.0
-Querry40: 		recall: 0.0
-Querry41: 		recall: 0.0
-Querry42: 		recall: 0.0
-Querry43: 		recall: 0.0
-Querry44: 		recall: 0.0
-Querry45: 		recall: 0.0
-Querry48: 		recall: 0.013157894736842105
-Querry49: 		recall: 0.0
-Querry51: 		recall: 0.0
-Querry53: 		recall: 0.0
-Querry54: 		recall: 0.0
-Querry55: 		recall: 0.0
-Querry56: 		recall: 0.0
-Querry57: 		recall: 0.0
-Querry60: 		recall: 0.0
-Querry61: 		recall: 0.0
-Querry64: 		recall: 0.0
-Querry65: 		recall: 0.0
-Querry66: 		recall: 0.0
-Querry68: 		recall: 0.013157894736842105
-Querry70: 		recall: 0.0
-Querry75: 		recall: 0.013157894736842105
-Querry78: 		recall: 0.0
-Querry80: 		recall: 0.0
-Querry81: 		recall: 0.0
-Querry83: 		recall: 0.0
-Querry89: 		recall: 0.0
-Querry91: 		recall: 0.0
-Querry94: 		recall: 0.0
-Querry95: 		recall: 0.0
-Querry96: 		recall: 0.0
-Querry97: 		recall: 0.013157894736842105
-Querry98: 		recall: 0.0
-Querry99: 		recall: 0.0
-Querry100: 		recall: 0.0
-Querry101: 		recall: 0.0
-Querry103: 		recall: 0.0
-Querry108: 		recall: 0.02631578947368421
-Querry110: 		recall: 0.0
+average precision: 0.06097514005243138
+Querry 0:		precission: 0.3695652173913043		recall: 0.3695652173913043
+Querry 1:		precission: 0.038461538461538464		recall: 0.038461538461538464
+Querry 2:		precission: 0.3409090909090909		recall: 0.3409090909090909
+Querry 3:		precission: 0.0		recall: 0.0
+Querry 4:		precission: 0.041666666666666664		recall: 0.041666666666666664
+Querry 5:		precission: 0.0		recall: 0.0
+Querry 6:		precission: 0.0		recall: 0.0
+Querry 7:		precission: 0.05555555555555555		recall: 0.05555555555555555
+Querry 8:		precission: 0.20588235294117646		recall: 0.20588235294117646
+Querry 9:		precission: 0.19230769230769232		recall: 0.19230769230769232
+Querry 10:		precission: 0.2677165354330709		recall: 0.2677165354330709
+Querry 11:		precission: 0.15384615384615385		recall: 0.15384615384615385
+Querry 12:		precission: 0.26373626373626374		recall: 0.26373626373626374
+Querry 13:		precission: 0.0		recall: 0.0
+Querry 14:		precission: 0.18292682926829268		recall: 0.18292682926829268
+Querry 15:		precission: 0.07692307692307693		recall: 0.07692307692307693
+Querry 16:		precission: 0.038461538461538464		recall: 0.038461538461538464
+Querry 17:		precission: 0.09090909090909091		recall: 0.09090909090909091
+Querry 18:		precission: 0.18518518518518517		recall: 0.18518518518518517
+Querry 19:		precission: 0.14583333333333334		recall: 0.14583333333333334
+Querry 20:		precission: 0.0		recall: 0.0
+Querry 21:		precission: 0.11320754716981132		recall: 0.11320754716981132
+Querry 22:		precission: 0.22916666666666666		recall: 0.22916666666666666
+Querry 23:		precission: 0.28846153846153844		recall: 0.28846153846153844
+Querry 24:		precission: 0.15151515151515152		recall: 0.15151515151515152
+Querry 25:		precission: 0.3392857142857143		recall: 0.3392857142857143
+Querry 26:		precission: 0.20869565217391303		recall: 0.20869565217391303
+Querry 27:		precission: 0.08333333333333333		recall: 0.08333333333333333
+Querry 28:		precission: 0.10416666666666667		recall: 0.10416666666666667
+Querry 29:		precission: 0.3582089552238806		recall: 0.3582089552238806
+Querry 30:		precission: 0.08196721311475409		recall: 0.08196721311475409
+Querry 31:		precission: 0.1794871794871795		recall: 0.1794871794871795
+Querry 32:		precission: 0.0		recall: 0.0
+Querry 33:		precission: 0.13157894736842105		recall: 0.13157894736842105
+Querry 34:		precission: 0.18604651162790697		recall: 0.18604651162790697
+Querry 35:		precission: 0.0		recall: 1.0
+Querry 36:		precission: 0.1		recall: 0.1
+Querry 37:		precission: 0.0		recall: 1.0
+Querry 38:		precission: 0.16666666666666666		recall: 0.16666666666666666
+Querry 39:		precission: 0.0		recall: 1.0
+Querry 40:		precission: 0.09090909090909091		recall: 0.09090909090909091
+Querry 41:		precission: 0.26		recall: 0.26
+Querry 42:		precission: 0.07692307692307693		recall: 0.07692307692307693
+Querry 43:		precission: 0.33548387096774196		recall: 0.33548387096774196
+Querry 44:		precission: 0.22077922077922077		recall: 0.22077922077922077
+Querry 45:		precission: 0.27586206896551724		recall: 0.27586206896551724
+Querry 46:		precission: 0.0		recall: 1.0
+Querry 47:		precission: 0.0		recall: 1.0
+Querry 48:		precission: 0.17647058823529413		recall: 0.17647058823529413
+Querry 49:		precission: 0.38202247191011235		recall: 0.38202247191011235
+Querry 50:		precission: 0.0		recall: 1.0
+Querry 51:		precission: 0.4		recall: 0.4
+Querry 52:		precission: 0.0		recall: 1.0
+Querry 53:		precission: 0.19607843137254902		recall: 0.19607843137254902
+Querry 54:		precission: 0.4444444444444444		recall: 0.4444444444444444
+Querry 55:		precission: 0.044444444444444446		recall: 0.044444444444444446
+Querry 56:		precission: 0.1111111111111111		recall: 0.1111111111111111
+Querry 57:		precission: 0.30434782608695654		recall: 0.30434782608695654
+Querry 58:		precission: 0.0		recall: 1.0
+Querry 59:		precission: 0.0		recall: 1.0
+Querry 60:		precission: 0.09090909090909091		recall: 0.09090909090909091
+Querry 61:		precission: 0.3333333333333333		recall: 0.3333333333333333
+Querry 62:		precission: 0.0		recall: 1.0
+Querry 63:		precission: 0.0		recall: 1.0
+Querry 64:		precission: 0.23076923076923078		recall: 0.23076923076923078
+Querry 65:		precission: 0.34285714285714286		recall: 0.34285714285714286
+Querry 66:		precission: 0.1875		recall: 0.1875
+Querry 67:		precission: 0.0		recall: 1.0
+Querry 68:		precission: 0.26666666666666666		recall: 0.26666666666666666
+Querry 69:		precission: 0.0		recall: 1.0
+Querry 70:		precission: 0.2222222222222222		recall: 0.2222222222222222
+Querry 71:		precission: 0.0		recall: 1.0
+Querry 72:		precission: 0.0		recall: 1.0
+Querry 73:		precission: 0.0		recall: 1.0
+Querry 74:		precission: 0.0		recall: 1.0
+Querry 75:		precission: 0.2		recall: 0.2
+Querry 76:		precission: 0.0		recall: 1.0
+Querry 77:		precission: 0.0		recall: 1.0
+Querry 78:		precission: 0.2727272727272727		recall: 0.2727272727272727
+Querry 79:		precission: 0.0		recall: 1.0
+Querry 80:		precission: 0.18181818181818182		recall: 0.18181818181818182
+Querry 81:		precission: 0.0		recall: 0.0
+Querry 82:		precission: 0.0		recall: 1.0
+Querry 83:		precission: 0.0		recall: 0.0
+Querry 84:		precission: 0.0		recall: 1.0
+Querry 85:		precission: 0.0		recall: 1.0
+Querry 86:		precission: 0.0		recall: 1.0
+Querry 87:		precission: 0.0		recall: 1.0
+Querry 88:		precission: 0.0		recall: 1.0
+Querry 89:		precission: 0.2571428571428571		recall: 0.2571428571428571
+Querry 90:		precission: 0.0		recall: 1.0
+Querry 91:		precission: 0.07894736842105263		recall: 0.07894736842105263
+Querry 92:		precission: 0.0		recall: 1.0
+Querry 93:		precission: 0.0		recall: 1.0
+Querry 94:		precission: 0.09090909090909091		recall: 0.09090909090909091
+Querry 95:		precission: 0.1111111111111111		recall: 0.1111111111111111
+Querry 96:		precission: 0.16666666666666666		recall: 0.16666666666666666
+Querry 97:		precission: 0.3103448275862069		recall: 0.3103448275862069
+Querry 98:		precission: 0.11764705882352941		recall: 0.11764705882352941
+Querry 99:		precission: 0.1111111111111111		recall: 0.1111111111111111
+Querry 100:		precission: 0.0		recall: 0.0
+Querry 101:		precission: 0.4583333333333333		recall: 0.4583333333333333
+Querry 102:		precission: 0.0		recall: 1.0
+Querry 103:		precission: 0.09090909090909091		recall: 0.09090909090909091
+Querry 104:		precission: 0.0		recall: 1.0
+Querry 105:		precission: 0.0		recall: 1.0
+Querry 106:		precission: 0.0		recall: 1.0
+Querry 107:		precission: 0.0		recall: 1.0
+Querry 108:		precission: 0.2535211267605634		recall: 0.2535211267605634
+Querry 109:		precission: 0.0		recall: 1.0
+Querry 110:		precission: 0.3333333333333333		recall: 0.3333333333333333
