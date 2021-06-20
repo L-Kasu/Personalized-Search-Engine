@@ -7,4 +7,4 @@ pending
 
 ## License
 pending
-(GNU GPL v3 under consideration, but not applied yet)
+(GNU LGPL under consideration, but not applied yet)
