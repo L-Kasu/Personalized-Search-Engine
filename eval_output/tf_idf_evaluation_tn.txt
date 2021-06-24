@@ -1,113 +1,115 @@
-Evaluation tf_idf: 
-If recall = 10, then there were no expected documents given
-Querry0: 		recall: 0.0
-Querry1: 		recall: 0.0
-Querry2: 		recall: 0.0
-Querry3: 		recall: 0.0
-Querry4: 		recall: 0.0
-Querry5: 		recall: 0.0
-Querry6: 		recall: 0.0
-Querry7: 		recall: 0.0
-Querry8: 		recall: 0.0
-Querry9: 		recall: 0.0
-Querry10: 		recall: 0.0
-Querry11: 		recall: 0.0
-Querry12: 		recall: 0.0
-Querry13: 		recall: 0.0
-Querry14: 		recall: 0.0
-Querry15: 		recall: 0.0
-Querry16: 		recall: 0.0
-Querry17: 		recall: 0.0
-Querry18: 		recall: 0.0
-Querry19: 		recall: 0.0
-Querry20: 		recall: 0.0
-Querry21: 		recall: 0.0
-Querry22: 		recall: 0.0
-Querry23: 		recall: 0.0
-Querry24: 		recall: 0.0
-Querry25: 		recall: 0.0
-Querry26: 		recall: 0.0
-Querry27: 		recall: 0.0
-Querry28: 		recall: 0.013157894736842105
-Querry29: 		recall: 0.02631578947368421
-Querry30: 		recall: 0.0
-Querry31: 		recall: 0.0
-Querry32: 		recall: 0.0
-Querry33: 		recall: 0.0
-Querry34: 		recall: 0.0
-Querry35: 		recall: 10
-Querry36: 		recall: 0.0
-Querry37: 		recall: 10
-Querry38: 		recall: 0.013157894736842105
-Querry39: 		recall: 10
-Querry40: 		recall: 0.0
-Querry41: 		recall: 0.0
-Querry42: 		recall: 0.0
-Querry43: 		recall: 0.0
-Querry44: 		recall: 0.0
-Querry45: 		recall: 0.0
-Querry46: 		recall: 10
-Querry47: 		recall: 10
-Querry48: 		recall: 0.013157894736842105
-Querry49: 		recall: 0.0
-Querry50: 		recall: 10
-Querry51: 		recall: 0.0
-Querry52: 		recall: 10
-Querry53: 		recall: 0.0
-Querry54: 		recall: 0.0
-Querry55: 		recall: 0.0
-Querry56: 		recall: 0.0
-Querry57: 		recall: 0.0
-Querry58: 		recall: 10
-Querry59: 		recall: 10
-Querry60: 		recall: 0.0
-Querry61: 		recall: 0.0
-Querry62: 		recall: 10
-Querry63: 		recall: 10
-Querry64: 		recall: 0.0
-Querry65: 		recall: 0.0
-Querry66: 		recall: 0.0
-Querry67: 		recall: 10
-Querry68: 		recall: 0.0
-Querry69: 		recall: 10
-Querry70: 		recall: 0.0
-Querry71: 		recall: 10
-Querry72: 		recall: 10
-Querry73: 		recall: 10
-Querry74: 		recall: 10
-Querry75: 		recall: 0.0
-Querry76: 		recall: 10
-Querry77: 		recall: 10
-Querry78: 		recall: 0.0
-Querry79: 		recall: 10
-Querry80: 		recall: 0.0
-Querry81: 		recall: 0.0
-Querry82: 		recall: 10
-Querry83: 		recall: 0.0
-Querry84: 		recall: 10
-Querry85: 		recall: 10
-Querry86: 		recall: 10
-Querry87: 		recall: 10
-Querry88: 		recall: 10
-Querry89: 		recall: 0.02631578947368421
-Querry90: 		recall: 10
-Querry91: 		recall: 0.0
-Querry92: 		recall: 10
-Querry93: 		recall: 10
-Querry94: 		recall: 0.0
-Querry95: 		recall: 0.0
-Querry96: 		recall: 0.0
-Querry97: 		recall: 0.013157894736842105
-Querry98: 		recall: 0.0
-Querry99: 		recall: 0.0
-Querry100: 		recall: 0.0
-Querry101: 		recall: 0.0
-Querry102: 		recall: 10
-Querry103: 		recall: 0.0
-Querry104: 		recall: 10
-Querry105: 		recall: 10
-Querry106: 		recall: 10
-Querry107: 		recall: 10
-Querry108: 		recall: 0.039473684210526314
-Querry109: 		recall: 10
-Querry110: 		recall: 0.0
+average precision: 0.06097514005243138
+average f_score: 0.4360300056635252
+Querry 0:		f-score: 0.36956521739130427
+Querry 1:		f-score: 0.038461538461538464
+Querry 2:		f-score: 0.3409090909090909
+Querry 3:		f-score: 0.0
+Querry 4:		f-score: 0.041666666666666664
+Querry 5:		f-score: 0.0
+Querry 6:		f-score: 0.0
+Querry 7:		f-score: 0.05555555555555555
+Querry 8:		f-score: 0.20588235294117646
+Querry 9:		f-score: 0.19230769230769232
+Querry 10:		f-score: 0.2677165354330709
+Querry 11:		f-score: 0.15384615384615385
+Querry 12:		f-score: 0.26373626373626374
+Querry 13:		f-score: 0.0
+Querry 14:		f-score: 0.18292682926829268
+Querry 15:		f-score: 0.07692307692307693
+Querry 16:		f-score: 0.038461538461538464
+Querry 17:		f-score: 0.09090909090909091
+Querry 18:		f-score: 0.18518518518518517
+Querry 19:		f-score: 0.14583333333333334
+Querry 20:		f-score: 0.0
+Querry 21:		f-score: 0.11320754716981132
+Querry 22:		f-score: 0.22916666666666666
+Querry 23:		f-score: 0.28846153846153844
+Querry 24:		f-score: 0.15151515151515152
+Querry 25:		f-score: 0.3392857142857143
+Querry 26:		f-score: 0.20869565217391303
+Querry 27:		f-score: 0.08333333333333333
+Querry 28:		f-score: 0.10416666666666667
+Querry 29:		f-score: 0.35820895522388063
+Querry 30:		f-score: 0.08196721311475409
+Querry 31:		f-score: 0.1794871794871795
+Querry 32:		f-score: 0.0
+Querry 33:		f-score: 0.13157894736842105
+Querry 34:		f-score: 0.18604651162790695
+Querry 35:		f-score: 1.0
+Querry 36:		f-score: 0.10000000000000002
+Querry 37:		f-score: 1.0
+Querry 38:		f-score: 0.16666666666666666
+Querry 39:		f-score: 1.0
+Querry 40:		f-score: 0.09090909090909091
+Querry 41:		f-score: 0.26
+Querry 42:		f-score: 0.07692307692307693
+Querry 43:		f-score: 0.33548387096774196
+Querry 44:		f-score: 0.22077922077922077
+Querry 45:		f-score: 0.27586206896551724
+Querry 46:		f-score: 1.0
+Querry 47:		f-score: 1.0
+Querry 48:		f-score: 0.17647058823529413
+Querry 49:		f-score: 0.3820224719101124
+Querry 50:		f-score: 1.0
+Querry 51:		f-score: 0.4000000000000001
+Querry 52:		f-score: 1.0
+Querry 53:		f-score: 0.19607843137254902
+Querry 54:		f-score: 0.4444444444444444
+Querry 55:		f-score: 0.044444444444444446
+Querry 56:		f-score: 0.1111111111111111
+Querry 57:		f-score: 0.30434782608695654
+Querry 58:		f-score: 1.0
+Querry 59:		f-score: 1.0
+Querry 60:		f-score: 0.09090909090909091
+Querry 61:		f-score: 0.3333333333333333
+Querry 62:		f-score: 1.0
+Querry 63:		f-score: 1.0
+Querry 64:		f-score: 0.23076923076923078
+Querry 65:		f-score: 0.34285714285714286
+Querry 66:		f-score: 0.1875
+Querry 67:		f-score: 1.0
+Querry 68:		f-score: 0.26666666666666666
+Querry 69:		f-score: 1.0
+Querry 70:		f-score: 0.2222222222222222
+Querry 71:		f-score: 1.0
+Querry 72:		f-score: 1.0
+Querry 73:		f-score: 1.0
+Querry 74:		f-score: 1.0
+Querry 75:		f-score: 0.20000000000000004
+Querry 76:		f-score: 1.0
+Querry 77:		f-score: 1.0
+Querry 78:		f-score: 0.2727272727272727
+Querry 79:		f-score: 1.0
+Querry 80:		f-score: 0.18181818181818182
+Querry 81:		f-score: 0.0
+Querry 82:		f-score: 1.0
+Querry 83:		f-score: 0.0
+Querry 84:		f-score: 1.0
+Querry 85:		f-score: 1.0
+Querry 86:		f-score: 1.0
+Querry 87:		f-score: 1.0
+Querry 88:		f-score: 1.0
+Querry 89:		f-score: 0.2571428571428571
+Querry 90:		f-score: 1.0
+Querry 91:		f-score: 0.07894736842105263
+Querry 92:		f-score: 1.0
+Querry 93:		f-score: 1.0
+Querry 94:		f-score: 0.09090909090909091
+Querry 95:		f-score: 0.1111111111111111
+Querry 96:		f-score: 0.16666666666666666
+Querry 97:		f-score: 0.3103448275862069
+Querry 98:		f-score: 0.11764705882352941
+Querry 99:		f-score: 0.1111111111111111
+Querry 100:		f-score: 0.0
+Querry 101:		f-score: 0.4583333333333333
+Querry 102:		f-score: 1.0
+Querry 103:		f-score: 0.09090909090909091
+Querry 104:		f-score: 1.0
+Querry 105:		f-score: 1.0
+Querry 106:		f-score: 1.0
+Querry 107:		f-score: 1.0
+Querry 108:		f-score: 0.2535211267605634
+Querry 109:		f-score: 1.0
+Querry 110:		f-score: 0.3333333333333333
+Querry -2:		f-score: 0.4360300056635252
+Querry -1:		f-score: 0.06097514005243138
