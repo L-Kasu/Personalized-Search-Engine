@@ -37,9 +37,15 @@ def evaluate_querrys(query_labels: ndarray, rel_labels: ndarray) -> dict:
     for i in range(0, len(query_labels)-1):
         i_true = rel_labels[i]
         i_pred = query_labels[i]
-        precision = metrics.precision_score(i_true, i_pred, zero_division=1)
-        recall = metrics.recall_score(i_true, i_pred, zero_division=1)
-        evaluation[i] = [precision, recall]
+        f_score = metrics.f1_score(i_true, i_pred, zero_division=1)
+        evaluation[i] = f_score
+    sum = 0
+    c = 0
+    for i in evaluation:
+        sum += evaluation[i]
+        c += 1
+    average_f = sum / c
+    evaluation[-2] = average_f
     average = metrics.average_precision_score(rel_labels, query_labels, average='micro')
     evaluation[-1] = average
     return evaluation
@@ -49,33 +55,23 @@ def evaluate_querrys(query_labels: ndarray, rel_labels: ndarray) -> dict:
 def save_evaluation(evaluation: dict, name: str):
     file = open('eval_output/' + name + '.txt', "w")
     file.write("average precision: " + str(evaluation[-1]) + "\n")
-    for i in range(0,len(evaluation)-1):
+    file.write("average f_score: " + str(evaluation[-2]) + "\n")
+    for i in evaluation:
         file.write("Querry " + str(i) + ":")
-        file.write("\t\tprecission: " + str(evaluation[i][0]))
-        file.write("\t\trecall: " + str(evaluation[i][1]) + "\n")
+        file.write("\t\tf-score: " + str(evaluation[i]) + "\n")
     file.close()
 
 
 # compares to evaluations
 def comp_evaluations(evaluation1: dict, evaluation2: dict, name1: str, name2: str):
-    diff = {}
-    for i in evaluation1:
-        if i == -1:
-            average1 = evaluation1[-1]
-            average2 = evaluation2[-1]
-            average_diff = average1 - average2
-            diff[-1] = average_diff
-        else:
-            print(evaluation2[i])
-            prec1 = evaluation1[i][0]
-            prec2 = evaluation2[i][0]
-            rec1 = evaluation1[i][1]
-            rec2 = evaluation2[i][1]
-            prec = prec1 - prec2
-            rec = rec1 - rec2
-            diff[i] = [prec, rec]
     name = "comp_" + name1 + "_and_" + name2
-    save_comparson(diff, name)
+    file = open('eval_output/' + name + '.txt', "w")
+
+    file.write("\t\t\t\t\t\t" + name1 + "\t\t\t" + name2 + "\n")
+    file.write("average precission:\t" + str(evaluation1[-1]) + "\t\t" + str(evaluation2[-1]) + "\n")
+    file.write("average f1-score:\t" +  str(evaluation1[-2]) + "\t\t" + str(evaluation2[-2]) + "\n")
+
+    file.close()
 
 
 # labes the documents if they are expected for a querry
@@ -106,13 +102,3 @@ def get_result_labels_and_search(doc_dicts: list, query_results: dict) -> ndarra
         for x in query_results[i]:
             result[i][x]=1
     return result
-
-
-def save_comparson(diff: dict, name: str):
-    file = open('eval_output/' + name + '.txt', "w")
-    file.write("average precision difference: " + str(diff[-1]) + "\n")
-    for i in range(0, len(diff) - 1):
-        file.write("Querry " + str(i) + ":")
-        file.write("\t\tprecission difference: " + str(diff[i][0]))
-        file.write("\t\trecall difference: " + str(diff[i][1]) + "\n")
-    file.close()

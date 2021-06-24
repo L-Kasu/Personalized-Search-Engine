@@ -38,3 +38,4 @@ def evaluate_and_search(query_dicts: list, matrix, rel_dict: dict, doc_dicts: li
 
 def run_compare(eval1: dict, eval2: dict, name1, name2):
     ev.comp_evaluations(eval1, eval2, name1, name2)
+
