@@ -1,23 +1,19 @@
+import sys
 from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
-import pandas as pd
 import numpy as np
 import os
 
-
-# currently not used
-def same_len(corpus, titles):
-    if len(new_corpus) != len(new_titles):
-        print("not for each doc a title was given")
-        print("number of docs:", len(corpus))
-        print("number of titels:", len(titles))
-        return False
-    else:
-        return True
+def check_len(corpus, titles):
     
+    tb = sys.exc_info()[2]
+    if(len(corpus) != len(titles)): raise Exception("Lenght of corpus dosn't match the the lenght of titles.\n len(corpus) =", len(corpus),"len(titles) =", len(titles)).with_traceback(tb)
+
 
 class tfidf:
     # corpus and titles should be lists of str
     def __init__(self, corpus:list, titles:list):
+        
+        check_len(corpus,titles)
         
         self.tfidfVectorizer = TfidfVectorizer(analyzer='word',stop_words= 'english')
         self.corpus = corpus
@@ -27,6 +23,8 @@ class tfidf:
     # corpus and titles should be lists of str
     def add_to_corpus(self, new_corpus:list, new_titles:list):
         
+        check_len(new_corpus,new_titels)
+        
         self.corpus += new_corpus
         self.titles += new_titles
         
@@ -35,28 +33,25 @@ class tfidf:
     # returns a list of indicies sorted by relevance
     def query_indicies(self, query: str):
         
-        voc = self.tfidfVectorizer.get_feature_names()
-        tfidfvectorizer_query = TfidfVectorizer(analyzer='word',stop_words= 'english',vocabulary=voc)
-        
-        query_tfidf = tfidfvectorizer_query.fit_transform([query])
+        query_vec = self.tfidfVectorizer.transform([query])
         
         # matrix multiplicatin to calculate cosine similarity
-        query_result_matrix = self.tfidf_mat @ query_tfidf.reshape(-1,1)
+        cos_sim = self.tfidf_mat @ query_vec.T
         
-        # result_list will be filled with (index, idf-value) tuples
+        # result_list will be filled with (index, cos-sim) tuples
         result_list =[]
         
         for i in range(query_result_matrix.shape[0]):
-            result_list.append((i,query_result_matrix[i,0]))
+            result_list.append((i,cos_sim[i,0]))
         
-        #sorts from large to small based on idf-value
+        #sorts from large to small based on cos-sim value
         result_list.sort(key=lambda x:x[1], reverse=True)
         
-        only_indices = []
+        only_indicies = []
         for i in range(len(result_list)):
-            only_indices.append(result_list[i][0])
+            only_indicies.append(result_list[i][0])
 
-        return only_indices
+        return only_indicies
     
     # returns a list of all titles sorted by relevance
     def query_titles(self, query:str):
