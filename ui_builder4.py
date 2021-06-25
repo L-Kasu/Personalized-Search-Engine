@@ -27,7 +27,7 @@ class Application(Frame):
         self.menu_language()
         # self.frame_settings(filesearchspan_min, filesearchspan_max)
         # # self.frame_path()
-        # self.frame_result()
+        self.frame_result()
         self.frame_entry()
 
     def create_window(self):
@@ -73,9 +73,9 @@ class Application(Frame):
         #     self.select_directory.config(borderwidth=0)
         # self.select_directory.pack(expand=True)
 
-    # def btn_select_directory_function(self):
-    #     self.select_dir()
-    #     self.select_dir_path_listbox.insert(1, self.dir_selected+"/")
+    def btn_select_directory_function(self):
+        self.select_dir()
+        self.select_dir_path_listbox.insert(1, self.dir_selected+"/")
 
     def menu_language(self):
         clicked = StringVar()
@@ -86,7 +86,8 @@ class Application(Frame):
                              bg=col_btn_idle,
                              fg=col_acc_minor,
                              activebackground=col_btn_active,
-                             activeforeground=col_acc_minor
+                             activeforeground=col_acc_minor,
+                             highlightthickness=0
                              )
         self.language.pack(side=LEFT, anchor=NE)
 
@@ -139,12 +140,101 @@ class Application(Frame):
             self.delete_button.config(borderwidth=0)
         self.delete_button.pack(side=LEFT)
 
-    # def btn_entry_delete_function(self):
-    #     self.search_entry.delete(0, END)
-    #     # self.path_text.delete(0, END)
-    #     self.result_text.delete(0, END)
-    #     self.select_dir_path_listbox.delete(0, END)
+    def btn_entry_delete_function(self):
+        self.search_entry.delete(0, END)
+        # self.path_text.delete(0, END)
+        self.result_text.delete(0, END)
+        self.select_dir_path_listbox.delete(0, END)
 
+    def frame_path(self):
+        self.path_frame = Frame(self.lower_frame, bg=col_bg)
+        self.path_frame.pack(side=LEFT, fill=BOTH, expand=True)
+        self.path_label = Label(self.path_frame,
+                                text=txt_resultpath,
+                                font=font_header_2
+                                )
+        self.path_label.config(bg=col_bg_lgt,
+                               fg=col_acc_major
+                               )
+        self.path_label.pack(side=TOP, fill=X)
+
+        self.path_text = Listbox(self.path_frame)
+        self.path_text.config(bg=col_bg_lgt,
+                              fg=col_acc_minor,
+                              font=font_returntext,
+                              height=0,
+                              width=0,
+                              borderwidth=0,
+                              highlightthickness=0
+                              )
+        self.path_text.pack(side=BOTTOM, fill=BOTH, expand=True)
+
+    def frame_result(self):
+        self.result_frame = Frame(self.lower_frame, bg=col_bg)
+        self.result_frame.pack(side=LEFT, fill=BOTH, expand=True)
+        self.result_label = Label(self.result_frame,
+                                  text=txt_resultitems,
+                                  font=font_header_1
+                                  )
+        self.result_label.config(bg=col_bg_lgt,
+                                 fg=col_acc_major
+                                 )
+        self.result_label.pack(side=TOP, fill=X)
+        self.listbox_dir(self.result_frame)
+        self.result_text = Listbox(self.result_frame)
+        self.result_text.config(bg=col_bg_lgt,
+                                fg=col_acc_minor,
+                                font=font_returntext,
+                                height=10,
+                                width=0,
+                                borderwidth=0,
+                                highlightthickness=0
+                                )
+        self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
+
+    def listbox_dir(self, location):
+        self.select_dir_path_listbox = Listbox(location,
+                                               font=font_header_2
+                                               )
+        self.select_dir_path_listbox.config(bg=col_bg_lgt,
+                                            fg=col_acc_minor,
+                                            height=1,
+                                            borderwidth=0,
+                                            highlightthickness=0
+                                            )
+        self.select_dir_path_listbox.pack(side=TOP, fill=X)
+
+    def search(self, query):
+        self.result_text.delete(0, self.result_text.size())
+        return_docs_num = 10
+        tf_obj = self.tf_object
+        if tf_obj:
+            result = tf_obj.query_k_titles(query, return_docs_num)
+            for x in range(0, len(result)):
+                self.result_text.insert(x, result[x])
+
+    # Selects the directory the user wants to search in
+    def select_dir(self):
+        self.dir_selected = filedialog.askdirectory()
+
+    def preprocess(self):
+        corpus_list = []
+        titles = []
+        for _, _, filenames in os.walk(self.dir_selected):
+            titles = filenames
+            dir = os.path.basename(self.dir_selected)
+            for filename in filenames:
+                path = self.dir_selected + "/" + filename
+                text = s_util.any_file_to_str(path)
+                corpus_list.append(text)
+
+            if dir in database.list_of_files:
+                self.tf_object = database.load_object(dir)
+            else:
+                if titles and corpus_list:
+                    self.tf_object = tf.tfidf(corpus_list, titles)
+                    database.save_object(self.tf_object, dir)
+            break
 
 
 def main():
