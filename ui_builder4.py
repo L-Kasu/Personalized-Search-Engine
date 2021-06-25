@@ -7,8 +7,8 @@ import os
 import tf
 from data import database
 
-master_height = 500
-master_width = 800
+master_height = 377 
+master_width = 610
 filesearchspan_min = 0
 filesearchspan_max = 2000
 
