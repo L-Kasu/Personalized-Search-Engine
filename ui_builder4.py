@@ -7,7 +7,7 @@ import os
 import tf
 from data import database
 
-master_height = 377 
+master_height = 377
 master_width = 610
 filesearchspan_min = 0
 filesearchspan_max = 2000
@@ -24,7 +24,8 @@ class Application(Frame):
         self.split_up_upper_frame()
         self.pack()
         self.btn_select_directory()
-        self.menu_language()
+        self.menu_languages()
+        # self.change_language()
         # self.frame_settings(filesearchspan_min, filesearchspan_max)
         # # self.frame_path()
         self.frame_result()
@@ -58,7 +59,7 @@ class Application(Frame):
         self.select_directory = Button(self.left_up_upper_frame,
                                        relief=relief_frames,
                                        text=txt_selectdir,
-                                       # command=self.btn_select_directory_function,
+                                       command=self.btn_select_directory_function,
                                        font=font_header_2
                                        )
         self.select_directory.config(bg=col_btn_idle,
@@ -77,19 +78,31 @@ class Application(Frame):
         self.select_dir()
         self.select_dir_path_listbox.insert(1, self.dir_selected+"/")
 
-    def menu_language(self):
+    def menu_languages(self):
         clicked = StringVar()
-        clicked.set("English")
-        self.language = OptionMenu(self.right_up_upper_frame, clicked, "English", "Deutsch", "Español")
-        self.language.config(relief=relief_btn,
-                             font=font_header_2,
-                             bg=col_btn_idle,
-                             fg=col_acc_minor,
-                             activebackground=col_btn_active,
-                             activeforeground=col_acc_minor,
-                             highlightthickness=0
-                             )
-        self.language.pack(side=LEFT, anchor=NE)
+        options = [
+            "English",
+            "Deutsch",
+            "Español"
+        ]
+        clicked.set(options[0])
+        self.lst_languages = OptionMenu(self.right_up_upper_frame, clicked, *options)
+        self.lst_languages.config(relief=relief_btn,
+                                  font=font_header_2,
+                                  bg=col_btn_idle,
+                                  fg=col_acc_minor,
+                                  activebackground=col_btn_active,
+                                  activeforeground=col_acc_minor,
+                                  highlightthickness=0)
+        self.lst_languages.pack(side=LEFT, anchor=NE)
+
+    # def change_language(self, *args):
+    #     if self.lst_languages.getvar() == "English":
+    #         pass
+    #     elif self.lst_languages.getvar() == "Deutsch":
+    #         pass
+    #     elif self.lst_languages.getvar == "Español":
+    #         pass
 
     def frame_entry(self):
         # Entry frame
@@ -111,7 +124,7 @@ class Application(Frame):
     def btn_entry_search(self, location, color_idle, color_active, color_text):
         self.search_button = Button(location,
                                     text=txt_entrysearch,
-                                    # command=lambda: self.search(self.search_entry.get())
+                                    command=lambda: self.search(self.search_entry.get())
                                     )
         self.search_button.config(bg=color_idle,
                                   fg=color_text,
@@ -127,7 +140,7 @@ class Application(Frame):
     def btn_entry_delete(self, location, color_idle, color_active, color_text):
         self.delete_button = Button(location,
                                     text=txt_entryclear,
-                                    # command=self.btn_entry_delete_function
+                                    command=self.btn_entry_delete_function
                                     )
         self.delete_button.config(bg=color_idle,
                                   fg=color_text,
