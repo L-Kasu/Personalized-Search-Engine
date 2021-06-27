@@ -1,14 +1,16 @@
+# version: alpha0.5
+
 from tkinter import *
 from tkinter import filedialog
-import ui_builder_search_util as s_util
-from ui_colortemplates.wip import *
-from ui_languagepacks.english import *
 import os
 import tf
 from data import database
+from gui import ui_builder_search_util as s_util
+from gui.languagepacks.english import *
+from gui.colortemplates.wip import *
 
-master_height = 377
-master_width = 610
+master_height = 500
+master_width = 800
 filesearchspan_min = 0
 filesearchspan_max = 2000
 
@@ -218,19 +220,6 @@ class Application(Frame):
         self.select_dir_path_listbox.pack(side=TOP, fill=X)
 
     def search(self, query):
-        self.result_text.delete(0, self.result_text.size())
-        return_docs_num = 10
-        tf_obj = self.tf_object
-        if tf_obj:
-            result = tf_obj.query_k_titles(query, return_docs_num)
-            for x in range(0, len(result)):
-                self.result_text.insert(x, result[x])
-
-    # Selects the directory the user wants to search in
-    def select_dir(self):
-        self.dir_selected = filedialog.askdirectory()
-
-    def preprocess(self):
         corpus_list = []
         titles = []
         for _, _, filenames in os.walk(self.dir_selected):
@@ -248,13 +237,33 @@ class Application(Frame):
                     self.tf_object = tf.tfidf(corpus_list, titles)
                     database.save_object(self.tf_object, dir)
             break
+        self.result_text.delete(0, self.result_text.size())
+        return_docs_num = 10
+        tf_obj = self.tf_object
+        if tf_obj:
+            result = tf_obj.query_k_titles(query, return_docs_num)
+            for x in range(0, len(result)):
+                self.result_text.insert(x, result[x])
 
+    # Selects the directory the user wants to search in
+    def select_dir(self):
+        self.dir_selected = filedialog.askdirectory()
 
-def main():
-    root = Tk()
-    app = Application(master=root)
-    app.mainloop()
-
-
-if __name__ == "__main__":
-    main()
+    # def preprocess(self):
+    #     corpus_list = []
+    #     titles = []
+    #     for _, _, filenames in os.walk(self.dir_selected):
+    #         titles = filenames
+    #         dir = os.path.basename(self.dir_selected)
+    #         for filename in filenames:
+    #             path = self.dir_selected + "/" + filename
+    #             text = s_util.any_file_to_str(path)
+    #             corpus_list.append(text)
+    #
+    #         if dir in database.list_of_files:
+    #             self.tf_object = database.load_object(dir)
+    #         else:
+    #             if titles and corpus_list:
+    #                 self.tf_object = tf.tfidf(corpus_list, titles)
+    #                 database.save_object(self.tf_object, dir)
+    #         break
