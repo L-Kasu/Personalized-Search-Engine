@@ -1,4 +1,4 @@
-# version: alpha0.5
+# version: alpha0.51
 
 from tkinter import *
 from tkinter import filedialog
@@ -28,13 +28,10 @@ class Application(Frame):
         self.btn_select_directory()
         self.menu_languages()
         # self.change_language()
-        # self.frame_settings(filesearchspan_min, filesearchspan_max)
-        # # self.frame_path()
         self.frame_result()
         self.frame_entry()
 
     def create_window(self):
-        # instantiating a window
         self.master.geometry(str(master_width) + "x" + str(master_height))
         self.master.title(txt_mastertitle)
         self.master.config(relief=relief_frames, bd=7, bg=col_bg)
@@ -70,11 +67,9 @@ class Application(Frame):
                                      activeforeground=col_acc_minor,
                                      relief=relief_btn
                                      )
+        if relief_btn == "flat":
+            self.select_directory.config(borderwidth=0)
         self.select_directory.pack(side=LEFT, anchor=W)
-
-        # if relief_btn == "flat":
-        #     self.select_directory.config(borderwidth=0)
-        # self.select_directory.pack(expand=True)
 
     def btn_select_directory_function(self):
         self.select_dir()
@@ -107,7 +102,6 @@ class Application(Frame):
     #         pass
 
     def frame_entry(self):
-        # Entry frame
         self.all_entry_frame = Frame(self.upper_frame, bg=col_bg)
         self.all_entry_frame.pack(side=BOTTOM, fill=BOTH, expand=True)
         self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt, relief=relief_frames, bd=5)
@@ -117,7 +111,6 @@ class Application(Frame):
         self.search_entry.config(bg=col_entryfield_idle, fg=col_entryfield_contrast, font=font_header_2)
         self.search_entry.pack(side=TOP, fill=X, expand=True, ipadx=50)
 
-        # Buttons frame
         self.buttons_frame = Frame(self.entry_frame)
         self.buttons_frame.pack(side=BOTTOM)
         self.btn_entry_search(self.buttons_frame, col_btn_idle, col_btn_active, col_acc_minor)
@@ -157,7 +150,6 @@ class Application(Frame):
 
     def btn_entry_delete_function(self):
         self.search_entry.delete(0, END)
-        # self.path_text.delete(0, END)
         self.result_text.delete(0, END)
         self.select_dir_path_listbox.delete(0, END)
 
@@ -221,7 +213,6 @@ class Application(Frame):
 
     def search(self, query):
         corpus_list = []
-        titles = []
         for _, _, filenames in os.walk(self.dir_selected):
             titles = filenames
             dir = os.path.basename(self.dir_selected)
@@ -248,22 +239,3 @@ class Application(Frame):
     # Selects the directory the user wants to search in
     def select_dir(self):
         self.dir_selected = filedialog.askdirectory()
-
-    # def preprocess(self):
-    #     corpus_list = []
-    #     titles = []
-    #     for _, _, filenames in os.walk(self.dir_selected):
-    #         titles = filenames
-    #         dir = os.path.basename(self.dir_selected)
-    #         for filename in filenames:
-    #             path = self.dir_selected + "/" + filename
-    #             text = s_util.any_file_to_str(path)
-    #             corpus_list.append(text)
-    #
-    #         if dir in database.list_of_files:
-    #             self.tf_object = database.load_object(dir)
-    #         else:
-    #             if titles and corpus_list:
-    #                 self.tf_object = tf.tfidf(corpus_list, titles)
-    #                 database.save_object(self.tf_object, dir)
-    #         break
