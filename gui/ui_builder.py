@@ -9,8 +9,6 @@ from gui.colortemplates.wip import *
 
 master_height = 500
 master_width = 800
-filesearchspan_min = 0
-filesearchspan_max = 2000
 
 class Application(Frame):
     def __init__(self, master=None):
