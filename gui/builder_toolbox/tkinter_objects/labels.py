@@ -1,5 +1,5 @@
 from tkinter import *
-from gui.languagepacks.english import *
+from gui.languagepacks.English import *
 from gui.colortemplates.wip import *
 
 

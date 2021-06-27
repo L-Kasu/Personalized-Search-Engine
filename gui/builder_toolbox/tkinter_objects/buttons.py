@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import filedialog
 
 from gui.builder_toolbox.search_util import *
-from gui.languagepacks.english import *
+from gui.languagepacks.English import *
 from gui.colortemplates.wip import *
 
 
