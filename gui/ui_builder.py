@@ -151,7 +151,6 @@ class Application(Frame):
     def btn_entry_delete_function(self):
         self.search_entry.delete(0, END)
         self.result_text.delete(0, END)
-        self.select_dir_path_listbox.delete(0, END)
 
     def frame_path(self):
         self.path_frame = Frame(self.lower_frame, bg=col_bg)

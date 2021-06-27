@@ -18,3 +18,5 @@
 /gui/__pycache__/
 /gui/colortemplates/__pycache__/
 /gui/languagepacks/__pycache__/
+/gui/resources/__pycache__/
+/gui/builder_toolbox/__pycache__/
