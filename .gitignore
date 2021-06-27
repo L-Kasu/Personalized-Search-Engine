@@ -20,3 +20,4 @@
 /gui/languagepacks/__pycache__/
 /gui/resources/__pycache__/
 /gui/builder_toolbox/__pycache__/
+/gui/builder_toolbox/tkinter_objects/__pycache__/
