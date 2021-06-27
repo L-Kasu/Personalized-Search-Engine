@@ -46,16 +46,20 @@ def master_entry_frame(self, location):
 
     self.buttons_frame = None
     buttons_frame(self, self.entry_frame)
-    self.btn_entry_search = btn_entry_search(self,
-                                             self.buttons_frame,
-                                             col_btn_idle,
-                                             col_btn_active,
-                                             col_acc_minor)
-    self.btn_entry_delete = btn_entry_delete(self,
-                                             self.buttons_frame,
-                                             col_btn_idle,
-                                             col_btn_active,
-                                             col_acc_minor)
+
+    self.btn_entry_search = None
+    btn_entry_search(self,
+                     self.buttons_frame,
+                     col_btn_idle,
+                     col_btn_active,
+                     col_acc_minor)
+
+    self.btn_entry_delete = None
+    btn_entry_delete(self,
+                     self.buttons_frame,
+                     col_btn_idle,
+                     col_btn_active,
+                     col_acc_minor)
 
 
 def entry_frame(self, location):
