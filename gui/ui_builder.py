@@ -40,7 +40,7 @@ class Application(Frame):
         self.result_frame = None
         result_frame(self, self.lower_frame)
 
-        self.menu_languages = None
-        menu_languages(self, self.right_up_upper_frame)
+        # self.menu_languages = None
+        # menu_languages(self, self.right_up_upper_frame)
 
         self.pack()
