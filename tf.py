@@ -23,7 +23,7 @@ class tfidf:
     # corpus and titles should be lists of str
     def add_to_corpus(self, new_corpus:list, new_titles:list):
         
-        check_len(new_corpus,new_titels)
+        check_len(new_corpus, new_titels)
         
         self.corpus += new_corpus
         self.titles += new_titles
