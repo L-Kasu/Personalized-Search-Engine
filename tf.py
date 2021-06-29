@@ -41,7 +41,7 @@ class tfidf:
         # result_list will be filled with (index, cos-sim) tuples
         result_list =[]
         
-        for i in range(query_result_matrix.shape[0]):
+        for i in range(cos_sim.shape[0]):
             result_list.append((i,cos_sim[i,0]))
         
         #sorts from large to small based on cos-sim value
