@@ -1,5 +1,4 @@
 from gui.builder_toolbox.tkinter_objects.entries import *
-from gui.builder_toolbox.tkinter_objects.labels import *
 from gui.builder_toolbox.tkinter_objects.listboxes import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 
@@ -82,4 +81,3 @@ def result_frame(self, location):
     listbox_dir(self, self.result_frame)
     self.result_text = None
     result_text(self, self.result_frame)
-

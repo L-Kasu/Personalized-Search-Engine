@@ -68,6 +68,6 @@ def search(self, query):
     return_docs_num = 10
     tf_obj = self.tf_object
     if tf_obj:
-        result = tf_obj.query_k_titles(query, return_docs_num)
-        for x in range(0, len(result)):
-            self.result_text.insert(x, result[x])
+        self.result = tf_obj.query_k_titles(query, return_docs_num)
+        for x in range(0, len(self.result)):
+            self.result_text.insert(x, self.result[x])

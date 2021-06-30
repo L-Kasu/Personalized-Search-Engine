@@ -1,4 +1,5 @@
 from tkinter import *
+from gui.builder_toolbox.tkinter_objects.buttons import btn_preview
 from gui.colortemplates.wip import *
 
 
@@ -26,3 +27,6 @@ def result_text(self, location):
                             highlightthickness=0
                             )
     self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
+
+    self.btn_preview = None
+    btn_preview(self, self.result_text)

@@ -1,4 +1,4 @@
-# version: alpha0.53
+# version: alpha0.6
 
 
 from gui.builder_toolbox.tkinter_objects.frames import *
@@ -16,6 +16,7 @@ class Application(Frame):
         super().__init__(master)
         self.master = master
         self.dir_selected = ""
+        self.result = list()
         self.tf_object = None
         self.master.geometry(str(master_width) + "x" + str(master_height))
         self.master.title(txt_mastertitle)

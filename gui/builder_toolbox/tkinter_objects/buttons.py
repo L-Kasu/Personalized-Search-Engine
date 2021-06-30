@@ -1,14 +1,15 @@
-from tkinter import *
 from tkinter import filedialog
-
 from gui.builder_toolbox.search_util import *
+from gui.builder_toolbox.tkinter_objects.labels import *
 from gui.languagepacks.English import *
 from gui.colortemplates.wip import *
 
 
+preview_size = 300
+
+
 def btn_select_directory(self, location):
     self.btn_select_directory = Button(location,
-                                       relief=relief_frames,
                                        text=txt_selectdir,
                                        command=lambda: btn_select_directory_function(self),
                                        font=font_header_2
@@ -66,3 +67,30 @@ def btn_entry_delete(self, location, color_idle, color_active, color_text):
 def btn_entry_delete_function(self):
     self.search_entry.delete(0, END)
     self.result_text.delete(0, END)
+
+
+def btn_preview(self, location):
+    self.btn_preview = Button(location,
+                              text="previewBtn",
+                              command=lambda: preview_function(self, preview_size),
+                              font=font_header_2
+                              )
+    self.btn_preview.config(bg=col_btn_idle,
+                            fg=col_acc_minor,
+                            activebackground=col_btn_active,
+                            activeforeground=col_acc_minor,
+                            relief=relief_btn
+                            )
+    if relief_btn == "flat":
+        self.btn_preview.config(borderwidth=0)
+    self.btn_preview.pack(side=BOTTOM)
+
+
+def preview_function(self, n):
+    text = any_file_to_str(self.dir_selected + "/" + self.result_text.get(ANCHOR))[0:n:1] + "..."
+    self.preview_window = None
+    self.preview_window = Toplevel(bg=col_bg_lgt)
+    self.preview_window.title("Preview: " + self.result_text.get(ANCHOR))
+
+    self.preview_window_label = None
+    preview_window_label(self, self.preview_window, text)
