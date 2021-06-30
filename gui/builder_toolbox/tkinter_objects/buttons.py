@@ -1,5 +1,6 @@
 from tkinter import filedialog
 from gui.builder_toolbox.search_util import *
+from gui.builder_toolbox.tkinter_objects.labels import dir_label
 from gui.builder_toolbox.tkinter_objects.textboxes import *
 from gui.languagepacks.English import *
 from gui.colortemplates.wip import *
@@ -27,7 +28,8 @@ def btn_select_directory(self, location):
 
 def btn_select_directory_function(self):
     self.dir_selected = filedialog.askdirectory()
-    self.select_dir_path_listbox.insert(1, self.dir_selected + "/")
+    self.dir_label = None
+    dir_label(self, self.result_frame, self.dir_selected + "/")
 
 
 def btn_entry_search(self, location, color_idle, color_active, color_text):

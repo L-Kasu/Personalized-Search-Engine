@@ -78,7 +78,5 @@ def result_frame(self, location):
 
     self.result_label = None
     result_label(self, self.result_frame)
-    self.listbox_dir = None
-    listbox_dir(self, self.result_frame)
     self.result_text = None
     result_text(self, self.result_frame)
