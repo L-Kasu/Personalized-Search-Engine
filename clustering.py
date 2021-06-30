@@ -8,10 +8,11 @@ KMAX = 8
 
 class Clustering():
     def __init__(self, tf_mat):
+        self.KMAX = 8
         self.matrix = tf_mat
-        self.clustering = self.kmeans(self.find_optimal_k(self.matrix, KMAX))
+        self.clustering = self.__kmeans(self.__find_optimal_k(self.matrix, self.KMAX))
 
-    def find_optimal_k(self, kmax):
+    def __find_optimal_k(self, kmax):
         points = self.matrix
         sse = []
         k_list = list(range(1, kmax + 1))
@@ -34,21 +35,18 @@ class Clustering():
         elbow_graph.plot_knee()
         return optimal_k
 
-    def kmeans(self, k):
+    def __kmeans(self, k):
         clustering = KMeans(n_clusters=k).fit(self.matrix)
         return clustering
 
-    def get_cluster_center_of_vector(self):
-        pass
+    def get_cluster_of_vector(self, vec):
+        return self.clustering.predict(vec)
 
-    def get_centers(self):
-        pass
-
-    def get_whole_cluster_of_vector(self):
-        pass
+    def get_cluster_of_index(self, i):
+        return self.clustering.array[i]
 
     def get_all_clusters(self):
-        pass
+        return self.clustering
 
     def process_example_clustering(self):
         tf_obj = database.load_object("doc_folder")

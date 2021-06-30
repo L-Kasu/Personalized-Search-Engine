@@ -12,6 +12,7 @@ from ui_languagepacks.english import *
 import os
 import tf
 from data import database
+import clustering
 
 master_height = 500
 master_width = 800
@@ -299,8 +300,14 @@ class Application(Frame):
 
     def search(self, query):
         self.result_text.delete(0, self.result_text.size())
-        return_docs_num = 10
         tf_obj = self.tf_object
+        Cluster_obj = clustering.Clustering(tf_obj.tf_mat)
+        query_vec = tf_obj.tfidfVectorizer.transform([query])
+        cluster_index = Cluster_obj.clustering.get_cluster_of_vector(query_vec)
+        target_cluster = Cluster_obj.get_cluster_of_index(cluster_index)
+        cos_sim = tf.cos_sim_func(query_vec, target_cluster)
+
+
         if tf_obj:
             result = tf_obj.query_k_titles(query, return_docs_num)
             for x in range(0, len(result)):
