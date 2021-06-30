@@ -1,26 +1,18 @@
-from sklearn.cluster import kmeans_plusplus as km
 from sklearn.cluster import KMeans
 from kneed import KneeLocator
-import os
 from data import database
 
-import tf
-from DOCUMENTS import extract_docs
-
+# TODO: what should  KMAX be?
 KMAX = 8
 
 
 class Clustering():
     def __init__(self, tf_mat):
-         self.matrix = tf_mat
-         self.clustering = self.kmeans(self.find_optimal_k(self.matrix, KMAX))
+        self.matrix = tf_mat
+        self.clustering = self.kmeans(self.find_optimal_k(self.matrix, KMAX))
 
-    def kmeans(self, k):
-        clustering = km(self.matrix, k)
-        return clustering
-
-    # uses elbow method
-    def find_optimal_k(self, points, kmax):
+    def find_optimal_k(self, kmax):
+        points = self.matrix
         sse = []
         k_list = list(range(1, kmax + 1))
         for k in k_list:
@@ -38,13 +30,29 @@ class Clustering():
 
         elbow_graph = KneeLocator(k_list, sse, S=1.0, curve="convex", direction="decreasing")
         optimal_k = elbow_graph.elbow
+        # TODO: make plotting work
         elbow_graph.plot_knee()
         return optimal_k
 
+    def kmeans(self, k):
+        clustering = KMeans(n_clusters=k).fit(self.matrix)
+        return clustering
 
+    def get_cluster_center_of_vector(self):
+        pass
 
-tf_obj = database.load_object("doc_folder")
-clustering = Clustering(tf_obj.tfidf_mat)
-print("end")
+    def get_centers(self):
+        pass
+
+    def get_whole_cluster_of_vector(self):
+        pass
+
+    def get_all_clusters(self):
+        pass
+
+    def process_example_clustering(self):
+        tf_obj = database.load_object("doc_folder")
+        clustering = Clustering(tf_obj.tfidf_mat)
+        print("end")
 
 
