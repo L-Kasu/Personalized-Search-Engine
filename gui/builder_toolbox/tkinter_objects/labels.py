@@ -25,4 +25,4 @@ def dir_label(self, location, text):
                           borderwidth=0,
                           highlightthickness=0
                           )
-    self.dir_label.pack(side=TOP, fill=X)
+    self.dir_label.pack(side=LEFT, fill=X)

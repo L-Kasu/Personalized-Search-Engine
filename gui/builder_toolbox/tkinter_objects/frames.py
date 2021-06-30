@@ -73,10 +73,12 @@ def buttons_frame(self, location):
 
 
 def result_frame(self, location):
-    self.result_frame = Frame(location, bg=col_bg)
+    self.result_frame = Frame(location, bg=col_bg_lgt)
     self.result_frame.pack(side=LEFT, fill=BOTH, expand=True)
 
     self.result_label = None
     result_label(self, self.result_frame)
     self.result_text = None
     result_text(self, self.result_frame)
+    self.btn_preview = None
+    btn_preview(self, self.result_text)

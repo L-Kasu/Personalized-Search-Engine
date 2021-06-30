@@ -125,5 +125,3 @@ def search(self, query):
         self.result = tf_obj.query_k_titles(query, return_docs_num)
         for x in range(0, len(self.result)):
             self.result_text.insert(x, self.result[x])
-    self.btn_preview = None
-    btn_preview(self, self.result_text)
