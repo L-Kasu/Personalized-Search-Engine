@@ -2,13 +2,10 @@
 
 
 import io
-import os
-import tf
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
-from data import database
 
 
 def convert_pdf_to_txt(path):
@@ -45,6 +42,3 @@ def any_file_to_str(path):
     else:
         print("unsupported file format at:" + path)
     return text
-
-
-
