@@ -6,9 +6,7 @@
 
 from tkinter import *
 from tkinter import filedialog
-import ui_builder_search_util as s_util
-from ui_colortemplates.wip import *
-from ui_languagepacks.english import *
+from gui.builder_toolbox import search_util as s_util
 import os
 import tf
 from data import database

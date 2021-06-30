@@ -15,5 +15,9 @@
 /tests/__pycache__/
 /tf_idf/__pycache__/
 /utilities/__pycache__/
-/ui_colortemplates/__pycache__/
-/ui_languagepacks/__pycache__/
+/gui/__pycache__/
+/gui/colortemplates/__pycache__/
+/gui/languagepacks/__pycache__/
+/gui/resources/__pycache__/
+/gui/builder_toolbox/__pycache__/
+/gui/builder_toolbox/tkinter_objects/__pycache__/
