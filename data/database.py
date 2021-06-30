@@ -23,7 +23,6 @@ def load_object(filename="data"):
     except Exception as ex:
         print("Error during unpickling object (Possibly unsupported):", ex)
 
-'''
 def list_files_in_database() -> list:
     list_of_folders = os.listdir('./data/')
     result = filter(lambda file: file.endswith(".pickle"), list_of_folders)
@@ -33,4 +32,3 @@ def list_files_in_database() -> list:
 
 # list of saved files in this directory
 list_of_files = list_files_in_database()
-'''

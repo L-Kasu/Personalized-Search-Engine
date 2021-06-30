@@ -1,19 +1,21 @@
 from sklearn.cluster import KMeans
 from kneed import KneeLocator
 from data import database
+import pandas as pd
+import numpy as np
 
 # TODO: what should  KMAX be?
 KMAX = 8
 
 
 class Clustering():
-    def __init__(self, tf_mat):
+    def __init__(self, tf_obj):
         self.KMAX = 8
-        self.matrix = tf_mat
-        self.clustering = self.__kmeans(self.__find_optimal_k(self.matrix, self.KMAX))
+        self.tf_obj = tf_obj
+        self.clustering = self.__kmeans(self.__find_optimal_k(self.KMAX))
 
     def __find_optimal_k(self, kmax):
-        points = self.matrix
+        points = self.tf_obj.tfidf_mat
         sse = []
         k_list = list(range(1, kmax + 1))
         for k in k_list:
@@ -36,21 +38,32 @@ class Clustering():
         return optimal_k
 
     def __kmeans(self, k):
-        clustering = KMeans(n_clusters=k).fit(self.matrix)
+        clustering = KMeans(n_clusters=k).fit(self.tf_obj.tfidf_mat)
         return clustering
 
     def get_cluster_of_vector(self, vec):
         return self.clustering.predict(vec)
 
-    def get_cluster_of_index(self, i):
-        return self.clustering.array[i]
+    def get_cluster_of_index(self, k):
+        titles = []
+        vecs = []
+        for i in range(0, self.tf_obj.tfidf_mat.shape[0]):
+            vec = self.tf_obj.tfidf_mat[i]
+            if self.get_cluster_of_vector(vec) == k:
+                titles.append(self.tf_obj.titles[i])
+                vecs.append(self.tf_obj.tfidf_mat[i])
+        vecs = np.array(vecs)
+        return (titles, vecs)
+
 
     def get_all_clusters(self):
         return self.clustering
 
-    def process_example_clustering(self):
-        tf_obj = database.load_object("doc_folder")
-        clustering = Clustering(tf_obj.tfidf_mat)
-        print("end")
+def process_example_clustering():
+    tf_obj = database.load_object("doc_folder")
+    clustering = Clustering(tf_obj)
+    clustering_at_two = clustering.get_cluster_of_index(0)
+    print("end")
 
+process_example_clustering()
 
