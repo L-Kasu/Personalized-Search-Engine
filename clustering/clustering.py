@@ -4,7 +4,7 @@ from kneed import KneeLocator
 
 class Clustering():
     def __init__(self, tf_mat):
-       #  self.clustering = evaluate_optimal_k(self)
+       # self.clustering = evaluate_optimal_k(self)
          self.matrix = tf_mat
 
     def kmeans(self, k):
@@ -13,8 +13,8 @@ class Clustering():
     def evaluate_optimal_k(self):
          pass
 
-    # function returns WSS score for k values from 1 to kmax
-    def calculate_WSS(points, kmax):
+    # uses elbow method
+    def find_optimal_k(points, kmax):
         sse = []
         k_list = list(range(1, kmax + 1))
         for k in k_list:
