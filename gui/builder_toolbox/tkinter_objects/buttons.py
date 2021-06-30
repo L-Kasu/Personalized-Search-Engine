@@ -1,6 +1,6 @@
 from tkinter import filedialog
 from gui.builder_toolbox.search_util import *
-from gui.builder_toolbox.tkinter_objects.labels import *
+from gui.builder_toolbox.tkinter_objects.textboxes import *
 from gui.languagepacks.English import *
 from gui.colortemplates.wip import *
 
@@ -71,7 +71,7 @@ def btn_entry_delete_function(self):
 
 def btn_preview(self, location):
     self.btn_preview = Button(location,
-                              text="previewBtn",
+                              text=txt_preview,
                               command=lambda: preview_function(self, preview_size),
                               font=font_header_2
                               )
@@ -90,7 +90,7 @@ def preview_function(self, n):
     text = any_file_to_str(self.dir_selected + "/" + self.result_text.get(ANCHOR))[0:n:1] + "..."
     self.preview_window = None
     self.preview_window = Toplevel(bg=col_bg_lgt)
-    self.preview_window.title("Preview: " + self.result_text.get(ANCHOR))
+    self.preview_window.title(txt_preview + ": " + self.result_text.get(ANCHOR))
 
     self.preview_window_label = None
-    preview_window_label(self, self.preview_window, text)
+    preview_window_text(self, self.preview_window, text)

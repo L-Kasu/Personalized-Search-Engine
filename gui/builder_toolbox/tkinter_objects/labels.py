@@ -12,13 +12,3 @@ def result_label(self, location):
                              fg=col_acc_major
                              )
     self.result_label.pack(side=TOP, fill=X)
-
-
-def preview_window_label(self, location, text):
-    self.preview_window_label = Label(location,
-                                      bg=col_bg_lgt,
-                                      text=text,
-                                      font=font_returntext,
-                                      fg=col_acc_minor
-                                      )
-    self.preview_window_label.pack(padx=10, pady=5)
