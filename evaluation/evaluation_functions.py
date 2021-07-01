@@ -3,6 +3,7 @@ from search import searching_algorithm as search_algo
 from sklearn import metrics
 import numpy
 from numpy import  ndarray
+import clustering
 
 
 # gets the results of querrys for the evalutation
@@ -25,6 +26,21 @@ def get_results_for_evaluation_and_search(query_dicts: list, matrix) -> dict:
         words = query_dicts[i]["W"]
         docs = search_algo.and_search(words, matrix)
         searched[i] = docs
+    return searched
+
+def get_results_for_evaluation_clustering(query_dicts: list, tf_search) -> dict:
+    searched = {}
+    tf_obj = clustering.Clustering(tf_search.corpus, tf_search.titles)
+    for i in range(0, len(query_dicts)):
+        print(str(i) + '\n')
+        query = query_dicts[i]
+        query_vec = tf_obj.tfidfVectorizer.transform([query])
+        cluster_index = tf_obj.get_cluster_of_vector(query_vec)
+        corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
+        tf_copy = clustering.Clustering(corpus, titles)
+        if tf_copy:
+            result = tf_copy.query_indicies(query)
+            searched[i] = result
     return searched
 
 
