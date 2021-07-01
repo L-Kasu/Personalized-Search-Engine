@@ -1,14 +1,15 @@
 from sklearn.cluster import KMeans
 from kneed import KneeLocator
+
+import tf
 from data import database
 import pandas as pd
 import numpy as np
 from tf import tfidf
 
 # TODO: what should  KMAX be?
-# TODO: what should the sensitivity be
-S = 2.0
-KMAX = 50
+S = 1
+KMAX = 20
 
 
 class Clustering(tfidf):
@@ -31,7 +32,8 @@ class Clustering(tfidf):
             for i in range(points.shape[0]):
                 curr_center = centroids[pred_clusters[i]]
                 vec = points[i,:]
-                curr_sse += np.linalg.norm(vec - curr_center)**2
+                curr_sse += tf.cos_sim_func(vec, curr_center)[0]
+            curr_sse = curr_sse/k
 
             sse.append(curr_sse)
 
