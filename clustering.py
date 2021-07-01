@@ -10,7 +10,7 @@ from tf import tfidf
 # sensitivity of the elbow finder
 sensitivity = 1.0
 # max number of k to be considered for the k-means algorithm
-KMAX = 20
+KMAX = 10
 
 class Clustering(tfidf):
     def __init__(self, corpus: list, titles: list):
@@ -55,25 +55,19 @@ class Clustering(tfidf):
 
     def get_cluster_of_index(self, k):
         titles = []
+        corpus = []
         vecs = []
         for i in range(0, self.tfidf_mat.shape[0]):
             vec = self.tfidf_mat[i]
             if self.get_cluster_of_vector(vec) == k:
                 titles.append(self.titles[i])
+                corpus.append(self.corpus[i])
                 vecs.append(self.tfidf_mat[i])
         vecs = np.array(vecs)
-        return (titles, vecs)
+        return (corpus, titles, vecs)
 
 
     def get_all_clusters(self):
         return self.clustering
 
-def process_example_clustering():
-    tf_obj = database.load_object("doc_folder")
-    titles = tf_obj.titles
-    corpus = tf_obj.corpus
-    clustering = Clustering(corpus, titles)
-    clustering_at_two = clustering.get_cluster_of_index(0)
-    print("end")
 
-process_example_clustering()

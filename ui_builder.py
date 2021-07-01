@@ -5,6 +5,7 @@
 # TODO: code cleanup
 
 from tkinter import *
+import tkinter
 from tkinter import filedialog
 import ui_builder_search_util as s_util
 from ui_colortemplates.wip import *
@@ -303,10 +304,9 @@ class Application(tkinter.Frame):
         self.result_text.delete(0, self.result_text.size())
         tf_obj = self.tf_object
         query_vec = tf_obj.tfidfVectorizer.transform([query])
-        cluster_index = tf_obj.clustering.get_cluster_of_vector(query_vec)
-        target_cluster = tf_obj.get_cluster_of_index(cluster_index)
-        tf_copy = copy.deepcopy(tf_obj)
-        tf_copy.tfidf_mat = target_cluster
+        cluster_index = tf_obj.get_cluster_of_vector(query_vec)
+        corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
+        tf_copy = clustering.Clustering(corpus, titles)
         return_docs_num = 10
 
         if tf_copy:
