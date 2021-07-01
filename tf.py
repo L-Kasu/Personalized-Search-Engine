@@ -9,6 +9,10 @@ def check_len(corpus, titles):
     if(len(corpus) != len(titles)): raise Exception("Lenght of corpus dosn't match the the lenght of titles.\n len(corpus) =", len(corpus),"len(titles) =", len(titles)).with_traceback(tb)
 
 
+def cos_sim_func(query_vec, tfidf_mat):
+    return tfidf_mat @ query_vec.T
+
+
 class tfidf:
     # corpus and titles should be lists of str
     def __init__(self, corpus:list, titles:list):
@@ -23,7 +27,7 @@ class tfidf:
     # corpus and titles should be lists of str
     def add_to_corpus(self, new_corpus:list, new_titles:list):
         
-        check_len(new_corpus,new_titels)
+        check_len(new_corpus, new_titels)
         
         self.corpus += new_corpus
         self.titles += new_titles
@@ -31,12 +35,14 @@ class tfidf:
         self.tfidf_mat = self.tfidfVectorizer.fit_transform(self.corpus)
     
     # returns a list of indicies sorted by relevance
+
+
     def query_indicies(self, query: str):
         
         query_vec = self.tfidfVectorizer.transform([query])
         
         # matrix multiplicatin to calculate cosine similarity
-        cos_sim = self.tfidf_mat @ query_vec.T
+        cos_sim = cos_sim_func(query_vec, self.tfidf_mat)
         
         # result_list will be filled with (index, cos-sim) tuples
         result_list =[]

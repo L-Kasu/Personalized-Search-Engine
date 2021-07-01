@@ -1,4 +1,4 @@
-import pickle
+import pickle5 as pickle
 import os
 
 # usage: sve obejects as .pickle file
@@ -22,7 +22,6 @@ def load_object(filename="data"):
             return pickle.load(f)
     except Exception as ex:
         print("Error during unpickling object (Possibly unsupported):", ex)
-
 
 def list_files_in_database() -> list:
     list_of_folders = os.listdir('./data/')
