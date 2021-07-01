@@ -12,6 +12,7 @@ from ui_languagepacks.english import *
 import os
 import tf
 from data import database
+import copy
 import clustering
 
 master_height = 500
@@ -20,7 +21,7 @@ filesearchspan_min = 0
 filesearchspan_max = 2000
 
 
-class Application(Frame):
+class Application(tkinter.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
@@ -42,23 +43,23 @@ class Application(Frame):
         self.master.config(relief=relief_frames, bd=7, bg=col_bg)
 
     def split_window(self):
-        self.upper_frame = Frame(self.master, bg=col_bg)
-        self.upper_frame.pack(side=TOP, fill=BOTH, expand=True)
-        self.lower_frame = Frame(self.master, bg=col_bg)
-        self.lower_frame.pack(side=BOTTOM, fill=BOTH, expand=True)
+        self.upper_frame = tkinter.Frame(self.master, bg=col_bg)
+        self.upper_frame.pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=True)
+        self.lower_frame = tkinter.Frame(self.master, bg=col_bg)
+        self.lower_frame.pack(side=tkinter.BOTTOM, fill=tkinter.BOTH, expand=True)
 
     def frame_select_dir(self):
-        self.select_dir_frame = Frame(self.upper_frame, bg=col_bg)
-        self.select_dir_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
+        self.select_dir_frame = tkinter.Frame(self.upper_frame, bg=col_bg)
+        self.select_dir_frame.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True, ipadx=5, ipady=5)
         self.btn_select_directory()
 
     def btn_select_directory(self):
-        self.select_directory = Button(self.select_dir_frame,
-                                       relief=relief_frames,
-                                       text=txt_selectdir,
-                                       command=self.btn_select_directory_function,
-                                       font=font_header_2
-                                       )
+        self.select_directory = tkinter.Button(self.select_dir_frame,
+                                               relief=relief_frames,
+                                               text=txt_selectdir,
+                                               command=self.btn_select_directory_function,
+                                               font=font_header_2
+                                               )
         self.select_directory.config(bg=col_btn_idle,
                                      fg=col_acc_minor,
                                      activebackground=col_btn_active,
@@ -77,17 +78,17 @@ class Application(Frame):
     def frame_settings(self, scale_min, scale_max):
         # Used many frames here to organize the different widgets better
         # a settings frame including: options for selecting file size and type
-        self.all_settings_frame = Frame(self.upper_frame, bg=col_bg)
-        self.all_settings_frame.pack(side=LEFT, fill=BOTH, expand=True, ipadx=5, ipady=5)
-        self.settings_frame = Frame(self.all_settings_frame, relief=relief_frames, bd=5)
+        self.all_settings_frame = tkinter.Frame(self.upper_frame, bg=col_bg)
+        self.all_settings_frame.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True, ipadx=5, ipady=5)
+        self.settings_frame = tkinter.Frame(self.all_settings_frame, relief=relief_frames, bd=5)
         self.settings_frame.config(bg=col_bg_lgt)
-        self.settings_frame.pack(fill=BOTH, expand=True)
+        self.settings_frame.pack(fill=tkinter.BOTH, expand=True)
 
-        self.settings_label = Label(self.settings_frame,
-                                    text=txt_settingsheader,
-                                    font=font_header_1)
+        self.settings_label = tkinter.Label(self.settings_frame,
+                                            text=txt_settingsheader,
+                                            font=font_header_1)
         self.settings_label.config(bg=col_bg_lgt, fg=col_acc_major)
-        self.settings_label.pack(side=TOP, fill=BOTH)
+        self.settings_label.pack(side=tkinter.TOP, fill=tkinter.BOTH)
 
         # # File size
         # self.file_size_frame = Frame(self.settings_frame)
@@ -117,9 +118,9 @@ class Application(Frame):
         self.btn_preprocessing(self.settings_frame, col_btn_idle, col_btn_active, col_acc_minor)
 
     def btn_preprocessing(self, location, color_idle, color_active, color_text):
-        self.preprocess_button = Button(location,
-                                        text=txt_preprocess,
-                                        command=lambda: self.preprocess())
+        self.preprocess_button = tkinter.Button(location,
+                                                text=txt_preprocess,
+                                                command=lambda: self.preprocess())
         self.preprocess_button.config(bg=color_idle,
                                       fg=color_text,
                                       activebackground=color_active,
@@ -128,61 +129,61 @@ class Application(Frame):
                                       font=font_header_2)
         if relief_btn == "flat":
             self.preprocess_button.config(borderwidth=0)
-        self.preprocess_button.pack(side=BOTTOM)
+        self.preprocess_button.pack(side=tkinter.BOTTOM)
 
     def checkbtn_docx(self, location, color_bg, color_text):
-        self.docx = IntVar()
-        self.file_type_docx = Checkbutton(location, text="DOCX", variable=self.docx)
+        self.docx = tkinter.IntVar()
+        self.file_type_docx = tkinter.Checkbutton(location, text="DOCX", variable=self.docx)
         self.file_type_docx.config(bg=color_bg,
                                    fg=color_text,
                                    selectcolor=color_bg,
                                    activebackground=color_bg,
                                    activeforeground=color_text,
                                    font=font_header_2)
-        self.file_type_docx.pack(expand=True, side=LEFT)
+        self.file_type_docx.pack(expand=True, side=tkinter.LEFT)
 
     def checkbtn_txt(self, location, color_bg, color_text):
-        self.txt = IntVar()
-        self.file_type_txt = Checkbutton(location, text="TXT", variable=self.txt)
+        self.txt = tkinter.IntVar()
+        self.file_type_txt = tkinter.Checkbutton(location, text="TXT", variable=self.txt)
         self.file_type_txt.config(bg=color_bg,
                                   fg=color_text,
                                   selectcolor=color_bg,
                                   activebackground=color_bg,
                                   activeforeground=color_text,
                                   font=font_header_2)
-        self.file_type_txt.pack(side=LEFT, expand=True)
+        self.file_type_txt.pack(side=tkinter.LEFT, expand=True)
 
     def checkbtn_pdf(self, location, color_bg, color_text):
-        self.pdf = IntVar()
-        self.file_type_pdf = Checkbutton(location, text="PDF", variable=self.pdf)
+        self.pdf = tkinter.IntVar()
+        self.file_type_pdf = tkinter.Checkbutton(location, text="PDF", variable=self.pdf)
         self.file_type_pdf.config(bg=color_bg,
                                   fg=color_text,
                                   selectcolor=color_bg,
                                   activebackground=color_bg,
                                   activeforeground=color_text,
                                   font=font_header_2)
-        self.file_type_pdf.pack(side=LEFT, expand=True)
+        self.file_type_pdf.pack(side=tkinter.LEFT, expand=True)
 
     def scale_filesize(self, location, min, max):
-        self.file_size_scale = Scale(location,
-                                     from_=min,
-                                     to=max,
-                                     length=150,
-                                     orient=HORIZONTAL)
+        self.file_size_scale = tkinter.Scale(location,
+                                             from_=min,
+                                             to=max,
+                                             length=150,
+                                             orient=tkinter.HORIZONTAL)
         self.file_size_scale.config(bg=col_bg_lgt, fg=col_acc_minor,
                                     activebackground=col_interactionpoint_contrast,
                                     troughcolor=col_interactionpoint_idle,
                                     highlightbackground=col_bg_lgt,
                                     font=font_header_2
                                     )
-        self.file_size_scale.pack(side=TOP, fill=X)
+        self.file_size_scale.pack(side=tkinter.TOP, fill=tkinter.X)
 
     def frame_entry(self):
         # Entry frame
-        self.all_entry_frame = Frame(self.upper_frame, bg=col_bg)
-        self.all_entry_frame.pack(side=LEFT, fill=BOTH, expand=True)
-        self.entry_frame = Frame(self.all_entry_frame, bg=col_bg_lgt, relief=relief_frames, bd=5)
-        self.entry_frame.pack(fill=X, expand=True)
+        self.all_entry_frame = tkinter.Frame(self.upper_frame, bg=col_bg)
+        self.all_entry_frame.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True)
+        self.entry_frame = tkinter.Frame(self.all_entry_frame, bg=col_bg_lgt, relief=relief_frames, bd=5)
+        self.entry_frame.pack(fill=tkinter.X, expand=True)
 
         # self.logo_label = Label(self.entry_frame, image=PhotoImage(file="./search_logo3.png"))
         # self.logo_label.config(bg=col_bg)
@@ -192,21 +193,21 @@ class Application(Frame):
         #                    fg="#a30bba",
         #                    bg=col_bg_lgt)
         # search_logo.grid(row=0, column=3)
-        self.search_entry = Entry(self.entry_frame)
+        self.search_entry = tkinter.Entry(self.entry_frame)
         self.search_entry.config(bg=col_entryfield_idle, fg=col_entryfield_contrast, font=font_header_2)
-        self.search_entry.pack(side=TOP, fill=X, expand=True, ipadx=50)
+        self.search_entry.pack(side=tkinter.TOP, fill=tkinter.X, expand=True, ipadx=50)
 
         # Buttons frame
-        self.buttons_frame = Frame(self.entry_frame)
-        self.buttons_frame.pack(side=BOTTOM)
+        self.buttons_frame = tkinter.Frame(self.entry_frame)
+        self.buttons_frame.pack(side=tkinter.BOTTOM)
         self.btn_entry_search(self.buttons_frame, col_btn_idle, col_btn_active, col_acc_minor)
         self.btn_entry_delete(self.buttons_frame, col_btn_idle, col_btn_active, col_acc_minor)
 
     def btn_entry_search(self, location, color_idle, color_active, color_text):
-        self.search_button = Button(location,
-                                    text=txt_entrysearch,
-                                    command=lambda: self.search(self.search_entry.get())
-                                    )
+        self.search_button = tkinter.Button(location,
+                                            text=txt_entrysearch,
+                                            command=lambda: self.search(self.search_entry.get())
+                                            )
         self.search_button.config(bg=color_idle,
                                   fg=color_text,
                                   activebackground=color_active,
@@ -216,13 +217,13 @@ class Application(Frame):
                                   )
         if relief_btn == "flat":
             self.search_button.config(borderwidth=0)
-        self.search_button.pack(side=LEFT)
+        self.search_button.pack(side=tkinter.LEFT)
 
     def btn_entry_delete(self, location, color_idle, color_active, color_text):
-        self.delete_button = Button(location,
-                                    text=txt_entryclear,
-                                    command=self.btn_entry_delete_function
-                                    )
+        self.delete_button = tkinter.Button(location,
+                                            text=txt_entryclear,
+                                            command=self.btn_entry_delete_function
+                                            )
         self.delete_button.config(bg=color_idle,
                                   fg=color_text,
                                   activebackground=color_active,
@@ -232,27 +233,27 @@ class Application(Frame):
                                   )
         if relief_btn == "flat":
             self.delete_button.config(borderwidth=0)
-        self.delete_button.pack(side=LEFT)
+        self.delete_button.pack(side=tkinter.LEFT)
 
     def btn_entry_delete_function(self):
-        self.search_entry.delete(0, END)
+        self.search_entry.delete(0, tkinter.END)
         # self.path_text.delete(0, END)
-        self.result_text.delete(0, END)
-        self.select_dir_path_listbox.delete(0, END)
+        self.result_text.delete(0, tkinter.END)
+        self.select_dir_path_listbox.delete(0, tkinter.END)
 
     def frame_path(self):
-        self.path_frame = Frame(self.lower_frame, bg=col_bg)
-        self.path_frame.pack(side=LEFT, fill=BOTH, expand=True)
-        self.path_label = Label(self.path_frame,
-                                text=txt_resultpath,
-                                font=font_header_2
-                                )
+        self.path_frame = tkinter.Frame(self.lower_frame, bg=col_bg)
+        self.path_frame.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True)
+        self.path_label = tkinter.Label(self.path_frame,
+                                        text=txt_resultpath,
+                                        font=font_header_2
+                                        )
         self.path_label.config(bg=col_bg_lgt,
                                fg=col_acc_major
                                )
-        self.path_label.pack(side=TOP, fill=X)
+        self.path_label.pack(side=tkinter.TOP, fill=tkinter.X)
 
-        self.path_text = Listbox(self.path_frame)
+        self.path_text = tkinter.Listbox(self.path_frame)
         self.path_text.config(bg=col_bg_lgt,
                               fg=col_acc_minor,
                               font=font_returntext,
@@ -261,21 +262,21 @@ class Application(Frame):
                               borderwidth=0,
                               highlightthickness=0
                               )
-        self.path_text.pack(side=BOTTOM, fill=BOTH, expand=True)
+        self.path_text.pack(side=tkinter.BOTTOM, fill=tkinter.BOTH, expand=True)
 
     def frame_result(self):
-        self.result_frame = Frame(self.lower_frame, bg=col_bg)
-        self.result_frame.pack(side=LEFT, fill=BOTH, expand=True)
-        self.result_label = Label(self.result_frame,
-                                  text=txt_resultitems,
-                                  font=font_header_1
-                                  )
+        self.result_frame = tkinter.Frame(self.lower_frame, bg=col_bg)
+        self.result_frame.pack(side=tkinter.LEFT, fill=tkinter.BOTH, expand=True)
+        self.result_label = tkinter.Label(self.result_frame,
+                                          text=txt_resultitems,
+                                          font=font_header_1
+                                          )
         self.result_label.config(bg=col_bg_lgt,
                                  fg=col_acc_major
                                  )
-        self.result_label.pack(side=TOP, fill=X)
+        self.result_label.pack(side=tkinter.TOP, fill=tkinter.X)
         self.listbox_dir(self.result_frame)
-        self.result_text = Listbox(self.result_frame)
+        self.result_text = tkinter.Listbox(self.result_frame)
         self.result_text.config(bg=col_bg_lgt,
                                 fg=col_acc_minor,
                                 font=font_returntext,
@@ -284,32 +285,32 @@ class Application(Frame):
                                 borderwidth=0,
                                 highlightthickness=0
                                 )
-        self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
+        self.result_text.pack(side=tkinter.BOTTOM, fill=tkinter.BOTH, expand=True)
 
     def listbox_dir(self, location):
-        self.select_dir_path_listbox = Listbox(location,
-                                               font=font_header_2
-                                               )
+        self.select_dir_path_listbox = tkinter.Listbox(location,
+                                                       font=font_header_2
+                                                       )
         self.select_dir_path_listbox.config(bg=col_bg_lgt,
                                             fg=col_acc_minor,
                                             height=1,
                                             borderwidth=0,
                                             highlightthickness=0
                                             )
-        self.select_dir_path_listbox.pack(side=TOP, fill=X)
+        self.select_dir_path_listbox.pack(side=tkinter.TOP, fill=tkinter.X)
 
     def search(self, query):
         self.result_text.delete(0, self.result_text.size())
         tf_obj = self.tf_object
-        Cluster_obj = clustering.Clustering(tf_obj.tf_mat)
         query_vec = tf_obj.tfidfVectorizer.transform([query])
-        cluster_index = Cluster_obj.clustering.get_cluster_of_vector(query_vec)
-        target_cluster = Cluster_obj.get_cluster_of_index(cluster_index)
-        cos_sim = tf.cos_sim_func(query_vec, target_cluster)
+        cluster_index = tf_obj.clustering.get_cluster_of_vector(query_vec)
+        target_cluster = tf_obj.get_cluster_of_index(cluster_index)
+        tf_copy = copy.deepcopy(tf_obj)
+        tf_copy.tfidf_mat = target_cluster
+        return_docs_num = 10
 
-
-        if tf_obj:
-            result = tf_obj.query_k_titles(query, return_docs_num)
+        if tf_copy:
+            result = tf_copy.query_k_titles(query, return_docs_num)
             for x in range(0, len(result)):
                 self.result_text.insert(x, result[x])
 
@@ -332,13 +333,13 @@ class Application(Frame):
                 self.tf_object = database.load_object(dir)
             else:
                 if titles and corpus_list:
-                    self.tf_object = tf.tfidf(corpus_list, titles)
+                    self.tf_object = clustering.Clustering(corpus_list, titles)
                     database.save_object(self.tf_object, dir)
             break
 
 
 def main():
-    root = Tk()
+    root = tkinter.Tk()
     app = Application(master=root)
     app.mainloop()
 
