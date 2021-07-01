@@ -7,6 +7,8 @@ from gui.builder_toolbox.tkinter_objects.labels import dir_label
 from gui.builder_toolbox.tkinter_objects.textboxes import *
 from gui.languagepacks.English import *
 from gui.colortemplates.wip import *
+from gui.builder_toolbox import search_util
+import clustering
 
 
 preview_size = 300
@@ -102,26 +104,33 @@ def preview_function(self, n):
 
 
 def search(self, query):
+    __preprocess(self)
+    self.result_text.delete(0, self.result_text.size())
+    tf_obj = self.tf_object
+    query_vec = tf_obj.tfidfVectorizer.transform([query])
+    cluster_index = tf_obj.get_cluster_of_vector(query_vec)
+    corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
+    tf_copy = clustering.Clustering(corpus, titles)
+    return_docs_num = 10
+
+    if tf_copy:
+        result = tf_copy.query_k_titles(query, return_docs_num)
+        for x in range(0, len(result)):
+            self.result_text.insert(x, result[x])
+
+
+def __preprocess(self):
     corpus_list = []
+    titles = []
     for _, _, filenames in os.walk(self.dir_selected):
         titles = filenames
         dir = os.path.basename(self.dir_selected)
         for filename in filenames:
             path = self.dir_selected + "/" + filename
-            text = any_file_to_str(path)
+            text = search_util.any_file_to_str(path)
             corpus_list.append(text)
+        # TODO: implement saving to databases
 
-        if dir in database.list_of_files:
-            self.tf_object = database.load_object(dir)
-        else:
-            if titles and corpus_list:
-                self.tf_object = tf.tfidf(corpus_list, titles)
-                database.save_object(self.tf_object, dir)
+        if titles and corpus_list:
+            self.tf_object = clustering.Clustering(corpus_list, titles)
         break
-    self.result_text.delete(0, self.result_text.size())
-    return_docs_num = 10
-    tf_obj = self.tf_object
-    if tf_obj:
-        self.result = tf_obj.query_k_titles(query, return_docs_num)
-        for x in range(0, len(self.result)):
-            self.result_text.insert(x, self.result[x])
