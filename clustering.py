@@ -7,10 +7,10 @@ import pandas as pd
 import numpy as np
 from tf import tfidf
 
-# TODO: what should  KMAX be?
-S = 1
+# sensitivity of the elbow finder
+sensitivity = 1.0
+# max number of k to be considered for the k-means algorithm
 KMAX = 20
-
 
 class Clustering(tfidf):
     def __init__(self, corpus: list, titles: list):
@@ -33,14 +33,16 @@ class Clustering(tfidf):
                 curr_center = centroids[pred_clusters[i]]
                 vec = points[i,:]
                 curr_sse += tf.cos_sim_func(vec, curr_center)[0]
-            curr_sse = curr_sse/k
 
+            curr_sse = curr_sse/k
             sse.append(curr_sse)
 
-        elbow_graph = KneeLocator(k_list, sse, S=S, curve="convex", direction="decreasing")
+        elbow_graph = KneeLocator(k_list, sse, S=sensitivity, curve="convex", direction="decreasing")
+
         optimal_k = elbow_graph.elbow
         if not optimal_k:
             optimal_k = 1
+
         # TODO: make plotting work
         return optimal_k
 
@@ -75,4 +77,3 @@ def process_example_clustering():
     print("end")
 
 process_example_clustering()
-

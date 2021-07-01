@@ -1,4 +1,4 @@
-import pickle
+import pickle5 as pickle
 import os
 
 # usage: sve obejects as .pickle file
