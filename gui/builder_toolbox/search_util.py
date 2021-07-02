@@ -48,7 +48,6 @@ def any_file_to_str(path):
 
 
 def search(self, query, use_case = "search"):
-    __preprocess(self)
     self.result_text.delete(0, self.result_text.size())
     tf_obj = self.tf_object
     query_vec = tf_obj.tfidfVectorizer.transform([query])
@@ -66,7 +65,7 @@ def search(self, query, use_case = "search"):
             self.result_text.insert(x, result[x])
 
 
-def __preprocess(self):
+def preprocess(self):
     corpus_list = []
     titles = []
     for _, _, filenames in os.walk(self.dir_selected):

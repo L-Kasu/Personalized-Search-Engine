@@ -25,6 +25,7 @@ def btn_select_directory(self, location):
 def btn_select_directory_function(self):
     self.dir_selected = filedialog.askdirectory()
     dir_label(self, self.result_frame, self.dir_selected + "/")
+    preprocess(self)
 
 
 def btn_entry_search(self, location, color_idle, color_active, color_text):
