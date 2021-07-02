@@ -38,7 +38,7 @@ def evaluate_and_search(query_dicts: list, matrix, rel_dict: dict, doc_dicts: li
     return evaluation
 
 def evaluate_clustering(query_dicts: list, doc_dicts: list, rel_dict: dict, tf_search) -> dict:
-    search_result = ev.get_results_for_evaluation_clustering(query_dicts, tf_search)
+    search_result = ev.get_results_for_evaluation_clustering(query_dicts)
     query_labels = ev.get_result_labels_and_search(doc_dicts, search_result)
     rel_labels = ev.get_relation_labels(doc_dicts, search_result, rel_dict)
     evaluation = ev.evaluate_querrys(query_labels, rel_labels)

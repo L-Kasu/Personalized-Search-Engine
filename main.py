@@ -89,7 +89,7 @@ def main():
     print("3: rerun")
     print("4: preprocess")
     print("5: exit")
-    print("6: compare tf_idf and and_search")
+    print("6: compare tf_idf and clustering")
     i = input()
     if i == "1":
         main_search()

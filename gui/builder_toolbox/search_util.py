@@ -47,7 +47,7 @@ def any_file_to_str(path):
     return text
 
 
-def search(self, query):
+def search(self, query, use_case = "search"):
     __preprocess(self)
     self.result_text.delete(0, self.result_text.size())
     tf_obj = self.tf_object
@@ -55,7 +55,10 @@ def search(self, query):
     cluster_index = tf_obj.get_cluster_of_vector(query_vec)
     corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
     tf_copy = clustering.Clustering(corpus, titles)
-    return_docs_num = 10
+    if use_case == "search":
+        return_docs_num = 10
+    else:
+        return_docs_num = len(corpus)
 
     if tf_copy:
         result = tf_copy.query_k_titles(query, return_docs_num)
