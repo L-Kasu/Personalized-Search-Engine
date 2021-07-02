@@ -1,4 +1,4 @@
-# version: alpha0.62
+# version: alpha0.63
 
 
 from gui.builder_toolbox.tkinter_objects.frames import *
@@ -6,9 +6,7 @@ from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.menus import *
 from gui.languagepacks.English import *
 from gui.colortemplates.wip import *
-
-master_height = 500
-master_width = 800
+from gui.ui_sizedefinitions import *
 
 
 class Application(Frame):
@@ -36,10 +34,21 @@ class Application(Frame):
         left_up_upper_frame(self, self.up_upper_frame)
 
         self.btn_select_directory = None
+        self.dir_label = None
         btn_select_directory(self, self.left_up_upper_frame)
         self.master_entry_frame = None
+        self.entry_frame = None
+        self.search_entry = None
+        self.buttons_frame = None
+        self.btn_entry_search = None
+        self.btn_entry_delete = None
         master_entry_frame(self, self.upper_frame)
         self.result_frame = None
+        self.result_label = None
+        self.result_text = None
+        self.btn_preview = None
+        self.preview_window = None
+        self.preview_window_label = None
         result_frame(self, self.lower_frame)
 
         # self.menu_languages = None
