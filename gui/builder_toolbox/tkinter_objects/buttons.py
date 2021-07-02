@@ -1,8 +1,7 @@
 from tkinter import filedialog
 from gui.builder_toolbox.search_util import *
 from gui.builder_toolbox.tkinter_objects.labels import *
-from gui.languagepacks.English import *
-from gui.colortemplates.wip import *
+from gui.globalimports import *
 from gui.ui_sizedefinitions import *
 
 

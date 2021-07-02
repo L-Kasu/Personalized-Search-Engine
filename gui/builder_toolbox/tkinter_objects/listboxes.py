@@ -1,5 +1,5 @@
 from tkinter import *
-from gui.colortemplates.wip import *
+from gui.globalimports import *
 
 
 def result_text(self, location):

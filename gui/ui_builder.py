@@ -4,8 +4,7 @@
 from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.menus import *
-from gui.languagepacks.English import *
-from gui.colortemplates.wip import *
+from gui.globalimports import *
 from gui.ui_sizedefinitions import *
 
 

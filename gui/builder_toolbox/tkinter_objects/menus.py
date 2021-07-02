@@ -1,6 +1,6 @@
 import os
 from tkinter import *
-from gui.colortemplates.wip import *
+from gui.globalimports import *
 
 
 dir_languages = "./gui/languagepacks"

@@ -1,7 +1,6 @@
 import textwrap
 from tkinter import *
-from gui.languagepacks.English import *
-from gui.colortemplates.wip import *
+from gui.globalimports import *
 from gui.ui_sizedefinitions import *
 
 
