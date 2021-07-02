@@ -1,6 +1,7 @@
+import textwrap
 from tkinter import *
-from gui.languagepacks.English import *
-from gui.colortemplates.wip import *
+from gui.globalimports import *
+from gui.ui_sizedefinitions import *
 
 
 def result_label(self, location):
@@ -26,3 +27,15 @@ def dir_label(self, location, text):
                           highlightthickness=0
                           )
     self.dir_label.pack(side=LEFT, fill=X)
+
+
+def preview_window_label(self, location, text):
+    text = textwrap.fill(text, width=prev_window_size)
+    self.preview_window_label = Label(location,
+                                      bg=col_bg_lgt,
+                                      font=font_returntext,
+                                      fg=col_acc_minor,
+                                      borderwidth=0,
+                                      text=text
+                                      )
+    self.preview_window_label.pack(padx=10, pady=5)
