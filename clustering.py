@@ -19,9 +19,10 @@ class Clustering(tfidf):
         self.clustering = self.__kmeans(self.__find_optimal_k(self.KMAX))
 
     def __find_optimal_k(self, kmax):
-        if kmax > len(self.titles):
-            kmax = len(self.titles)
         points = self.tfidf_mat
+        kmax = min(kmax, len(self.titles), np.unique(points).shape[0])
+        if kmax == 1:
+            return 1
         sse = []
         k_list = range(1, min(kmax, len(self.titles)) + 1)
         for k in k_list:
@@ -96,7 +97,7 @@ class Clustering(tfidf):
             dir = os.path.basename(dir_selected)
             for filename in filenames:
                 path = dir_selected + "/" + filename
-                text = search_util.any_file_to_str(path)
+                text = search_util.file_to_list_of_string(path)
                 corpus_list.append(text)
             # TODO: implement saving to databases
 
@@ -134,7 +135,7 @@ class Clustering(tfidf):
             dir = os.path.basename(dir_selected)
             for filename in filenames:
                 path = dir_selected + "/" + filename
-                text = search_util.any_file_to_str(path)
+                text = search_util.file_to_list_of_string(path)
                 corpus_list.append(text)
             # TODO: implement saving to databases
 

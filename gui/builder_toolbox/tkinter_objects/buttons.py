@@ -91,7 +91,7 @@ def preview_function(self, n):
     elif selected_result_file == "":
         text = ERR_resultListEmpty
     else:
-        text = any_file_to_str(self.dir_selected + "/" + selected_result_file)[0:n:1] + "..."
+        text = get_page_text(self, selected_result_file)
     self.preview_window = Toplevel(bg=col_bg_lgt)
     self.preview_window.title(txt_preview + ": " + self.result_text.get(ANCHOR))
     preview_window_label(self, self.preview_window, text)
