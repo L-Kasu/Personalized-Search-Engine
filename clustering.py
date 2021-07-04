@@ -71,3 +71,79 @@ class Clustering(tfidf):
 
     def get_all_clusters(self):
         return self.clustering
+
+'''
+    def search_with_clustering(self):
+            __preprocess(self)
+            tf_obj = self.tf_object
+            query_vec = tf_obj.tfidfVectorizer.transform([query])
+            cluster_index = tf_obj.get_cluster_of_vector(query_vec)
+            corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
+            tf_copy = clustering.Clustering(corpus, titles)
+            return_docs_num = len(corpus)
+
+            if tf_copy:
+                result = tf_copy.query_k_titles(query, return_docs_num)
+                for x in range(0, len(result)):
+                    self.result_text.insert(x, result[x])
+
+    def __preprocess(self, dir_selected):
+        corpus_list = []
+        titles = []
+        tf_object = None
+        for _, _, filenames in os.walk(dir_selected):
+            titles = filenames
+            dir = os.path.basename(dir_selected)
+            for filename in filenames:
+                path = dir_selected + "/" + filename
+                text = search_util.any_file_to_str(path)
+                corpus_list.append(text)
+            # TODO: implement saving to databases
+
+            if titles and corpus_list:
+                tf_object = Clustering(corpus_list, titles)
+            break
+        return tf_object
+
+        :
+
+
+'''
+
+'''
+    def search_with_clustering(self):
+            __preprocess(self)
+            tf_obj = self.tf_object
+            query_vec = tf_obj.tfidfVectorizer.transform([query])
+            cluster_index = tf_obj.get_cluster_of_vector(query_vec)
+            corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
+            tf_copy = clustering.Clustering(corpus, titles)
+            return_docs_num = len(corpus)
+
+            if tf_copy:
+                result = tf_copy.query_k_titles(query, return_docs_num)
+                for x in range(0, len(result)):
+                    self.result_text.insert(x, result[x])
+
+    def __preprocess(self, dir_selected):
+        corpus_list = []
+        titles = []
+        tf_object = None
+        for _, _, filenames in os.walk(dir_selected):
+            titles = filenames
+            dir = os.path.basename(dir_selected)
+            for filename in filenames:
+                path = dir_selected + "/" + filename
+                text = search_util.any_file_to_str(path)
+                corpus_list.append(text)
+            # TODO: implement saving to databases
+
+            if titles and corpus_list:
+                tf_object = Clustering(corpus_list, titles)
+            break
+        return tf_object
+
+        :
+
+
+'''
