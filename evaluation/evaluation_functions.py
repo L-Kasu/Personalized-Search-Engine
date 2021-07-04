@@ -3,6 +3,10 @@ from search import searching_algorithm as search_algo
 from sklearn import metrics
 import numpy
 from numpy import  ndarray
+import clustering
+from gui.builder_toolbox import  search_util
+from gui import ui_builder
+import tkinter
 
 
 # gets the results of querrys for the evalutation
@@ -25,6 +29,18 @@ def get_results_for_evaluation_and_search(query_dicts: list, matrix) -> dict:
         words = query_dicts[i]["W"]
         docs = search_algo.and_search(words, matrix)
         searched[i] = docs
+    return searched
+
+
+def get_results_for_evaluation_clustering(query_dicts: list) -> dict:
+    searched = {}
+    for i in range(0, len(query_dicts)):
+        print(str(i) + '\n')
+        root = tkinter.Tk()
+        app = ui_builder.Application(master=root)
+        app.dir_selected = 'DOCUMENTS/doc_folder'
+        search_util.search(app, query_dicts[i], use_case="eval")
+        searched[i] = app.result
     return searched
 
 

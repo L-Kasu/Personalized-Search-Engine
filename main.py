@@ -4,7 +4,6 @@
 import time
 
 import preprocessing.pp_main
-import utilities
 from data import database
 from search import searching_algorithm
 from tf_idf import tf_idf_main
@@ -40,6 +39,7 @@ def main_evaluate(taskstring):
     print("What algorithm do you want to evaluate?")
     print("1: tf_idf")
     print("2: and_search")
+    print("3: clustering")
     i = input()
     if i == "1":
         algo = "tf_idf"
@@ -47,6 +47,9 @@ def main_evaluate(taskstring):
     elif i == "2":
         algo = "and_search"
         query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
+    elif i == "3":
+        algo = "clustering"
+        query_dict = file_reader.load_qry()
     else:
         algo = ""
         query_dict = {}
@@ -54,8 +57,8 @@ def main_evaluate(taskstring):
 
 def main_compare():
     eval_tf = database.load_object("tf_idf_evaluation_" + default_taskstring)
-    evl_and = database.load_object("and_search_evaluation_" + default_taskstring)
-    evaluation_main.run_compare(eval_tf, evl_and, "tf_idf_"+default_taskstring, "and_search_"+default_taskstring)
+    evl_and = database.load_object("clustering_evaluation_" + default_taskstring)
+    evaluation_main.run_compare(eval_tf, evl_and, "tf_idf_"+default_taskstring, "clustering_"+default_taskstring)
 
 
 def main_preprocess() -> None:
@@ -86,7 +89,7 @@ def main():
     print("3: rerun")
     print("4: preprocess")
     print("5: exit")
-    print("6: compare tf_idf and and_search")
+    print("6: compare tf_idf and clustering")
     i = input()
     if i == "1":
         main_search()

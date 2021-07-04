@@ -1,17 +1,8 @@
-import os
 from tkinter import filedialog
-import tf
-from data import database
 from gui.builder_toolbox.search_util import *
-from gui.builder_toolbox.tkinter_objects.labels import dir_label
-from gui.builder_toolbox.tkinter_objects.textboxes import *
-from gui.languagepacks.English import *
-from gui.colortemplates.wip import *
-from gui.builder_toolbox import search_util
-import clustering
-
-
-preview_size = 300
+from gui.builder_toolbox.tkinter_objects.labels import *
+from gui.globalimports import *
+from gui.ui_sizedefinitions import *
 
 
 def btn_select_directory(self, location):
@@ -33,8 +24,8 @@ def btn_select_directory(self, location):
 
 def btn_select_directory_function(self):
     self.dir_selected = filedialog.askdirectory()
-    self.dir_label = None
     dir_label(self, self.result_frame, self.dir_selected + "/")
+    preprocess(self)
 
 
 def btn_entry_search(self, location, color_idle, color_active, color_text):
@@ -94,43 +85,13 @@ def btn_preview(self, location):
 
 
 def preview_function(self, n):
-    text = any_file_to_str(self.dir_selected + "/" + self.result_text.get(ANCHOR))[0:n:1] + "..."
-    self.preview_window = None
+    selected_result_file = self.result_text.get(ANCHOR)
+    if self.dir_selected == "":
+        text = ERR_noDirectorySelected
+    elif selected_result_file == "":
+        text = ERR_resultListEmpty
+    else:
+        text = any_file_to_str(self.dir_selected + "/" + selected_result_file)[0:n:1] + "..."
     self.preview_window = Toplevel(bg=col_bg_lgt)
     self.preview_window.title(txt_preview + ": " + self.result_text.get(ANCHOR))
-
-    self.preview_window_label = None
-    preview_window_text(self, self.preview_window, text)
-
-
-def search(self, query):
-    __preprocess(self)
-    self.result_text.delete(0, self.result_text.size())
-    tf_obj = self.tf_object
-    query_vec = tf_obj.tfidfVectorizer.transform([query])
-    cluster_index = tf_obj.get_cluster_of_vector(query_vec)
-    corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
-    tf_copy = clustering.Clustering(corpus, titles)
-    return_docs_num = 10
-
-    if tf_copy:
-        result = tf_copy.query_k_titles(query, return_docs_num)
-        for x in range(0, len(result)):
-            self.result_text.insert(x, result[x])
-
-
-def __preprocess(self):
-    corpus_list = []
-    titles = []
-    for _, _, filenames in os.walk(self.dir_selected):
-        titles = filenames
-        dir = os.path.basename(self.dir_selected)
-        for filename in filenames:
-            path = self.dir_selected + "/" + filename
-            text = search_util.any_file_to_str(path)
-            corpus_list.append(text)
-        # TODO: implement saving to databases
-
-        if titles and corpus_list:
-            self.tf_object = clustering.Clustering(corpus_list, titles)
-        break
+    preview_window_label(self, self.preview_window, text)

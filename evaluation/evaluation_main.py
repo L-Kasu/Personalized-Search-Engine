@@ -14,6 +14,8 @@ def run_evaluation(query_dicts: list, doc_dicts: list, rel_dict: dict, tf_search
         elif algo == "and_search":
             matrix = inverted_matrix.InvertedMatrix(taskstring, doc_dicts)
             evaluation = evaluate_and_search(query_dicts, matrix, rel_dict, doc_dicts)
+        elif algo == "clustering":
+            evaluation = evaluate_clustering(query_dicts, doc_dicts, rel_dict, tf_search)
         else:
             evaluation = {}
         database.save_object(evaluation, name)
@@ -30,6 +32,13 @@ def evaluate_tf_idf(query_dicts: list, doc_dicts: list, rel_dict: dict, tf_searc
 
 def evaluate_and_search(query_dicts: list, matrix, rel_dict: dict, doc_dicts: list) -> dict:
     search_result = ev.get_results_for_evaluation_and_search(query_dicts, matrix)
+    query_labels = ev.get_result_labels_and_search(doc_dicts, search_result)
+    rel_labels = ev.get_relation_labels(doc_dicts, search_result, rel_dict)
+    evaluation = ev.evaluate_querrys(query_labels, rel_labels)
+    return evaluation
+
+def evaluate_clustering(query_dicts: list, doc_dicts: list, rel_dict: dict, tf_search) -> dict:
+    search_result = ev.get_results_for_evaluation_clustering(query_dicts)
     query_labels = ev.get_result_labels_and_search(doc_dicts, search_result)
     rel_labels = ev.get_relation_labels(doc_dicts, search_result, rel_dict)
     evaluation = ev.evaluate_querrys(query_labels, rel_labels)
