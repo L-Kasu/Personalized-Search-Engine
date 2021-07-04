@@ -19,9 +19,11 @@ class Clustering(tfidf):
         self.clustering = self.__kmeans(self.__find_optimal_k(self.KMAX))
 
     def __find_optimal_k(self, kmax):
+        if kmax > len(self.titles):
+            kmax = len(self.titles)
         points = self.tfidf_mat
         sse = []
-        k_list = list(range(1, kmax + 1))
+        k_list = range(1, min(kmax, len(self.titles)) + 1)
         for k in k_list:
             kmeans = KMeans(n_clusters=k).fit(points)
             centroids = kmeans.cluster_centers_
@@ -69,5 +71,3 @@ class Clustering(tfidf):
 
     def get_all_clusters(self):
         return self.clustering
-
-
