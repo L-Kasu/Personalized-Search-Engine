@@ -95,3 +95,47 @@ def preview_function(self, n):
     self.preview_window = Toplevel(bg=col_bg_lgt)
     self.preview_window.title(txt_preview + ": " + self.result_text.get(ANCHOR))
     preview_window_label(self, self.preview_window, text)
+
+
+# Settings button
+def btn_settings(self, location):
+    self.btn_settings = Button(location,
+                               text="Settings",
+                               command=lambda: settings_function(self),
+                               font=font_header_2
+                               )
+    self.btn_settings.config(bg=col_btn_idle,
+                             fg=col_acc_minor,
+                             activebackground=col_btn_active,
+                             activeforeground=col_acc_minor,
+                             relief=relief_btn
+                             )
+    if relief_btn == "flat":
+        self.btn_settings.config(borderwidth=0)
+    self.btn_settings.pack(side=LEFT)
+
+
+def settings_function(self):
+    self.settings_window = Toplevel(bg=col_bg_lgt)
+    self.settings_window.title("Settings")
+
+
+# stop word toggle
+is_off = False
+
+
+def toggle(self):
+    global is_off
+
+    if is_off:
+        self.btn_switch.config(image=self.on)
+        is_off = True
+    else:
+        self.btn_switch.config(image=self.off)
+        is_off = False
+
+
+def switch(self, location):
+    self.btn_switch = Button(location, image=self.off, bd=0, command=toggle)
+    self.on = PhotoImage(file="toggle_on.png")
+    self.off = PhotoImage(file="toggle_off.png")

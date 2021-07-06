@@ -35,6 +35,7 @@ class Application(Frame):
         self.btn_select_directory = None
         self.dir_label = None
         btn_select_directory(self, self.left_up_upper_frame)
+        btn_settings(self, self.left_up_upper_frame)
         self.master_entry_frame = None
         self.entry_frame = None
         self.search_entry = None
