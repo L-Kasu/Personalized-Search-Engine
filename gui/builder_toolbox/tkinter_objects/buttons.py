@@ -120,7 +120,13 @@ def settings_function(self):
     self.settings_window.title("Settings")
 
 
-# stop word toggle
+# # stop word toggle
+# def btn_stopword(self):
+#     self.btn_stopword = Button(self.settings_window, image=self.off, bd=0, command=toggle)
+#     self.on = PhotoImage(file="toggle_on.png")
+#     self.off = PhotoImage(file="toggle_off.png")
+
+
 is_off = False
 
 
@@ -133,9 +139,3 @@ def toggle(self):
     else:
         self.btn_switch.config(image=self.off)
         is_off = False
-
-
-def switch(self, location):
-    self.btn_switch = Button(location, image=self.off, bd=0, command=toggle)
-    self.on = PhotoImage(file="toggle_on.png")
-    self.off = PhotoImage(file="toggle_off.png")
