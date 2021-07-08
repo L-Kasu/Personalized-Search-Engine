@@ -34,7 +34,6 @@ def main_search():
 
 
 def main_evaluate(taskstring):
-    doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     print("What algorithm do you want to evaluate?")
     print("1: tf_idf")
@@ -43,12 +42,15 @@ def main_evaluate(taskstring):
     i = input()
     if i == "1":
         algo = "tf_idf"
+        doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
         query_dict = file_reader.load_qry()
     elif i == "2":
         algo = "and_search"
+        doc_dict = database.load_object(taskstring + "_pp_" + "CISI.ALL")
         query_dict = database.load_object(taskstring + "_pp_" + "CISI.QRY")
     elif i == "3":
         algo = "clustering"
+        doc_dict = file_reader.load_all()
         query_dict = file_reader.load_qry()
     else:
         algo = ""
@@ -56,9 +58,9 @@ def main_evaluate(taskstring):
     evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, taskstring, algo)
 
 def main_compare():
-    eval_tf = database.load_object("tf_idf_evaluation_" + default_taskstring)
-    evl_and = database.load_object("clustering_evaluation_" + default_taskstring)
-    evaluation_main.run_compare(eval_tf, evl_and, "tf_idf_"+default_taskstring, "clustering_"+default_taskstring)
+    eval_tf = database.load_object("tf_idf_evaluation")
+    evl_and = database.load_object("clustering_evaluation")
+    evaluation_main.run_compare(eval_tf, evl_and, "tf_idf", "clustering")
 
 
 def main_preprocess() -> None:
