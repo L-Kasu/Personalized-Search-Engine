@@ -1,7 +1,7 @@
 from tkinter import filedialog
 from gui.builder_toolbox.search_util import *
 from gui.builder_toolbox.tkinter_objects.labels import *
-from gui.builder_toolbox.tkinter_objects.checkboxes import *
+from gui.builder_toolbox.tkinter_objects.radiobuttons import *
 from gui.globalimports import *
 from gui.ui_sizedefinitions import *
 
@@ -120,3 +120,4 @@ def settings_function(self):
     self.settings_window = Toplevel(bg=col_bg_lgt)
     self.settings_window.title("Settings")
     choose_stemmer(self, self.settings_window)
+    stopword(self, self.settings_window)

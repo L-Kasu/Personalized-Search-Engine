@@ -10,5 +10,3 @@ def popup_window(self):
 
     self.exit_btn = Button(self.win, text="Okay", command=self.win.destroy)
     self.exit_btn.grid(row=1, column=0)
-
-    choose_stemmer(self, self.settings_window())
