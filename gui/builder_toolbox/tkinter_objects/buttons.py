@@ -117,7 +117,14 @@ def btn_settings(self, location):
 
 
 def settings_function(self):
-    self.settings_window = Toplevel(bg=col_bg_lgt)
-    self.settings_window.title("Settings")
-    choose_stemmer(self, self.settings_window)
-    stopword(self, self.settings_window)
+    self.window_settings = Toplevel(bg=col_bg)
+    self.window_settings.title("Settings")
+    self.label_settings = Label(self.window_settings,
+                                text="Settings",
+                                font=font_header_1)
+    self.label_settings.config(bg=col_bg,
+                               fg=col_acc_major
+                               )
+    self.label_settings.pack(side=TOP, fill=X)
+    choose_stemmer(self, self.window_settings)
+    stopword(self, self.window_settings)
