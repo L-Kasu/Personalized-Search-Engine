@@ -4,6 +4,7 @@
 from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.menus import *
+from gui.builder_toolbox.tkinter_objects.checkboxes import *
 from gui.globalimports import *
 from gui.ui_sizedefinitions import *
 
@@ -38,6 +39,7 @@ class Application(Frame):
         self.dir_label = None
         btn_select_directory(self, self.left_up_upper_frame)
         btn_settings(self, self.left_up_upper_frame)
+
         self.master_entry_frame = None
         self.entry_frame = None
         self.search_entry = None

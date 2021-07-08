@@ -1,6 +1,7 @@
 from tkinter import filedialog
 from gui.builder_toolbox.search_util import *
 from gui.builder_toolbox.tkinter_objects.labels import *
+from gui.builder_toolbox.tkinter_objects.checkboxes import *
 from gui.globalimports import *
 from gui.ui_sizedefinitions import *
 
@@ -118,24 +119,4 @@ def btn_settings(self, location):
 def settings_function(self):
     self.settings_window = Toplevel(bg=col_bg_lgt)
     self.settings_window.title("Settings")
-
-
-# # stop word toggle
-# def btn_stopword(self):
-#     self.btn_stopword = Button(self.settings_window, image=self.off, bd=0, command=toggle)
-#     self.on = PhotoImage(file="toggle_on.png")
-#     self.off = PhotoImage(file="toggle_off.png")
-
-
-is_off = False
-
-
-def toggle(self):
-    global is_off
-
-    if is_off:
-        self.btn_switch.config(image=self.on)
-        is_off = True
-    else:
-        self.btn_switch.config(image=self.off)
-        is_off = False
+    choose_stemmer(self, self.settings_window)
