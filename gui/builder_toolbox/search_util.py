@@ -47,17 +47,14 @@ def any_file_to_str(path):
     return text
 
 
-def search(self, query, use_case = "search"):
+def search(self, query):
     self.result_text.delete(0, self.result_text.size())
     tf_obj = self.tf_object
     query_vec = tf_obj.tfidfVectorizer.transform([query])
     cluster_index = tf_obj.get_cluster_of_vector(query_vec)
     corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
     tf_copy = clustering.Clustering(corpus, titles)
-    if use_case == "search":
-        return_docs_num = 10
-    else:
-        return_docs_num = len(corpus)
+    return_docs_num = 10
 
     if tf_copy:
         result = tf_copy.query_k_titles(query, return_docs_num)
