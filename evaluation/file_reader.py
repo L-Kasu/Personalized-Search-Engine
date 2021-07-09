@@ -1,6 +1,5 @@
-
 def load_all():
-    with open('preprocessing/CISI_archive/CISI.ALL') as f:
+    with open('CISI_archive/CISI.ALL') as f:
         lines = ""
         for l in f.readlines():
             lines += "\n" + l.strip() if l.startswith(".") else " " + l.strip()
@@ -24,7 +23,7 @@ def load_all():
 
 
 def load_qry():
-    with open('preprocessing/CISI_archive/CISI.QRY') as f:
+    with open('CISI_archive/CISI.QRY') as f:
         lines = ""
         for l in f.readlines():
             lines += "\n" + l.strip() if l.startswith(".") else " " + l.strip()

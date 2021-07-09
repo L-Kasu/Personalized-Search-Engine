@@ -6,11 +6,7 @@ import time
 import preprocessing.pp_main
 from data import database
 from search import searching_algorithm
-from tf_idf import tf_idf_main
-from evaluation import evaluation_main
-from preprocessing import pp_main as preprocessing_main
-from matrix import inverted_matrix
-import file_reader
+from evaluation import evaluation_main, file_reader
 import tf
 
 # the algorithm you want to use
