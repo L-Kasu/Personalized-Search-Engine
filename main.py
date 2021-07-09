@@ -5,6 +5,7 @@ import time
 
 from data import database
 from evaluation import evaluation_main, file_reader
+from search import tf
 
 
 # initialise the tf algorithm

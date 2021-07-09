@@ -7,7 +7,7 @@ from numpy import  ndarray
 # gets the results of querrys for the evalutation
 # using the tf_idf algorithm
 # returns a dicitonary of querry index and the results
-import tf
+from search import tf, clustering
 
 
 def get_results_for_evaluation_tf_idf(query_dict: dict, tf_search) -> dict:
