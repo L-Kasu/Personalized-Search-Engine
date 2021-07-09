@@ -5,9 +5,8 @@ import time
 
 import preprocessing.pp_main
 from data import database
-from search import searching_algorithm
+from search import searching_algorithm, tf
 from evaluation import evaluation_main, file_reader
-import tf
 
 # the algorithm you want to use
 algorithm = searching_algorithm.and_search

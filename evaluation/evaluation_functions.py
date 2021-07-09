@@ -1,9 +1,7 @@
-from _ctypes_test import func
-from search import searching_algorithm as search_algo
+from search import searching_algorithm as search_algo, clustering
 from sklearn import metrics
 import numpy
 from numpy import  ndarray
-import clustering
 
 
 # gets the results of querrys for the evalutation

@@ -1,11 +1,9 @@
 from sklearn.cluster import KMeans
 from kneed import KneeLocator
 
-import tf
-from data import database
-import pandas as pd
+from search import tf
 import numpy as np
-from tf import tfidf
+from search.tf import tfidf
 
 # sensitivity of the elbow finder
 sensitivity = 1.0
