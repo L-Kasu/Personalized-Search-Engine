@@ -20,7 +20,9 @@ class Clustering(tfidf):
 
     def __find_optimal_k(self, kmax):
         points = self.tfidf_mat
-        kmax = min(kmax, len(self.titles), np.unique(points).shape[0])
+        a = np.unique(points)[0].shape[0]
+        b = len(self.titles)
+        kmax = min(kmax, len(self.titles), np.unique(points)[0].shape[0])
         if kmax == 1:
             return 1
         sse = []

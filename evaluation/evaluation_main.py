@@ -1,15 +1,11 @@
 from evaluation import evaluation_functions as ev
 from data import database
-from matrix import inverted_matrix
 
 
-def run_evaluation(query_dicts: list, doc_dicts: list, rel_dict: dict, tf_search, taskstring: str, algo: str):
+def run_evaluation(query_dicts: list, doc_dicts: list, rel_dict: dict, tf_search, algo: str):
     name = algo + "_evaluation"
     if algo == "tf_idf":
         search_results = ev.get_results_for_evaluation_tf_idf(query_dicts, tf_search)
-    elif algo == "and_search":
-        matrix = inverted_matrix.InvertedMatrix(taskstring, doc_dicts)
-        search_results = ev.get_results_for_evaluation_and_search(query_dicts, matrix)
     elif algo == "clustering":
         search_results = ev.get_results_for_evaluation_clustering(doc_dicts, query_dicts)
         doc_dicts = doc_dicts[1]
