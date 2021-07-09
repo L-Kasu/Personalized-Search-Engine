@@ -4,7 +4,6 @@
 import os
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
-
 import clustering
 
 '''    for page_number, page in enumerate(PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
