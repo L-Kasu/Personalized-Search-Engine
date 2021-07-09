@@ -24,8 +24,8 @@ def btn_select_directory(self, location):
 
 
 def btn_select_directory_function(self):
-    self.dir_selected = filedialog.askdirectory()
     self.dir_label['text'] = ""
+    self.dir_selected = filedialog.askdirectory()
     dir_label(self, self.result_frame, self.dir_selected + "/")
     preprocess(self)
 
@@ -72,7 +72,7 @@ def btn_entry_delete_function(self):
 def btn_preview(self, location):
     self.btn_preview = Button(location,
                               text=txt_preview,
-                              command=lambda: preview_function(self, preview_size),
+                              command=lambda: preview_function(self),
                               font=font_header_2
                               )
     self.btn_preview.config(bg=col_btn_idle,
@@ -86,7 +86,7 @@ def btn_preview(self, location):
     self.btn_preview.pack(side=BOTTOM)
 
 
-def preview_function(self, n):
+def preview_function(self):
     selected_result_file = self.result_text.get(ANCHOR)
     if self.dir_selected == "":
         text = ERR_noDirectorySelected

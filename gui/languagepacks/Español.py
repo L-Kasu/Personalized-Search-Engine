@@ -11,6 +11,7 @@ txt_entryclear = "Borrar"
 txt_resultpath = "Ruta de archivo del resultado"
 txt_resultitems = "Buscar en resultados"
 txt_preview = "Vista previa"
+txt_page = "TODO: Translation"
 
 ERR_noDirectorySelected = "ERROR: Ningún directorio seleccionado "
 ERR_resultListEmpty = "ERROR: No hay resultados de búsqueda "

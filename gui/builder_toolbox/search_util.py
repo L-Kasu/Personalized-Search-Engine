@@ -2,11 +2,11 @@
 
 
 import os
-
 # need pdfminer.six (diffrent from pdfminer)
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 import clustering
+from gui.globalimports import *
 
 '''    for page_number, page in enumerate(PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
                                                          password=password,
@@ -35,7 +35,7 @@ def file_to_list_of_string(path):
     elif path.endswith("pdf"):
         text = convert_pdf_to_txt(path)
     else:
-        print("unsupported file format at:" + path)
+        print("unsupported file format at: " + path)
     return text
 
 
@@ -65,7 +65,7 @@ def preprocess(self):
             for i in range(0, len(page_list)):
                 page = page_list[i]
                 if page:
-                    titles.append(filename + "%" + str(i + 1))
+                    titles.append(filename + ", " + txt_page + " " + str(i + 1))
                     corpus_list.append(page)
         # TODO: implement saving to databases
         if titles and corpus_list:
