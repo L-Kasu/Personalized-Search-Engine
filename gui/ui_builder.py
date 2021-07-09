@@ -13,10 +13,11 @@ class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
+        self.master_height = master_height
         self.dir_selected = ""
         self.result = list()
-        self.tf_object = None
-        self.master.geometry(str(master_width) + "x" + str(master_height))
+        self.tf_object = clustering.Clustering(["dummyDoc"], ["dummyTitle"])
+        self.master.geometry(str(master_width) + "x" + str(self.master_height))
         self.master.title(txt_mastertitle)
         self.master.config(relief=relief_frames, bd=7, bg=col_bg)
 
