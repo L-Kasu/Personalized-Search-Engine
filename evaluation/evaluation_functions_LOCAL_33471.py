@@ -2,6 +2,7 @@ from _ctypes_test import func
 from sklearn import metrics
 import numpy
 from numpy import  ndarray
+import clustering
 
 
 # gets the results of querrys for the evalutation

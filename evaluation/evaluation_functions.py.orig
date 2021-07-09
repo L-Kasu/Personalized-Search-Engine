@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from _ctypes_test import func
+=======
+from search import searching_algorithm as search_algo, clustering
+>>>>>>> 15c3d7a5a1bd6d8a9d0d3d1544bb8f3dd9f5fbd2
 from sklearn import metrics
 import numpy
 from numpy import  ndarray

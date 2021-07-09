@@ -4,6 +4,10 @@
 import time
 
 from data import database
+<<<<<<< HEAD
+=======
+from search import searching_algorithm, tf
+>>>>>>> 15c3d7a5a1bd6d8a9d0d3d1544bb8f3dd9f5fbd2
 from evaluation import evaluation_main, file_reader
 
 

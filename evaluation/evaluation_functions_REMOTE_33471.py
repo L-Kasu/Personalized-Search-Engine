@@ -1,4 +1,4 @@
-from _ctypes_test import func
+from search import searching_algorithm as search_algo, clustering
 from sklearn import metrics
 import numpy
 from numpy import  ndarray
@@ -7,9 +7,6 @@ from numpy import  ndarray
 # gets the results of querrys for the evalutation
 # using the tf_idf algorithm
 # returns a dicitonary of querry index and the results
-import tf
-
-
 def get_results_for_evaluation_tf_idf(query_dict: dict, tf_search) -> dict:
     searched = {}
     for i in query_dict:
@@ -36,11 +33,10 @@ def get_results_for_evaluation_clustering(doc_dicts, query_dicts: list) -> dict:
     titles_list = doc_dicts[1]
     tf_obj = clustering.Clustering(corpus_list, titles_list)
     for i in range(0, len(query_dicts)):
-        print(i)
         query_vec = tf_obj.tfidfVectorizer.transform([query_dicts[i]])
         cluster_index = tf_obj.get_cluster_of_vector(query_vec)
         corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
-        tf_copy = tf.tfidf(corpus, titles)
+        tf_copy = clustering.Clustering(corpus, titles)
         if tf_copy:
             result = tf_copy.query_indicies(query_dicts[i])
             searched[i] = result[:10]
