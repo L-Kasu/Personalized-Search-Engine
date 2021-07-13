@@ -1,27 +1,26 @@
 import textwrap
 from tkinter import *
-from gui.globalimports import *
-from gui.ui_sizedefinitions import *
+from gui.builder_toolbox.settings_util import get_config
 
 
 def result_label(self, location):
     self.result_label = Label(location,
-                              text=txt_resultitems,
-                              font=font_header_1
+                              text=get_config("txt_resultitems"),
+                              font=get_config("font_header_1")
                               )
-    self.result_label.config(bg=col_bg_lgt,
-                             fg=col_acc_major
+    self.result_label.config(bg=get_config("col_bg_lgt"),
+                             fg=get_config("col_acc_major")
                              )
     self.result_label.pack(side=TOP, fill=X)
 
 
 def dir_label(self, location, text):
     self.dir_label = Label(location,
-                           font=font_header_2,
+                           font=get_config("font_header_2"),
                            text=text
                            )
-    self.dir_label.config(bg=col_bg_lgt,
-                          fg=col_acc_minor,
+    self.dir_label.config(bg=get_config("col_bg_lgt"),
+                          fg=get_config("col_acc_minor"),
                           height=1,
                           borderwidth=0,
                           highlightthickness=0
@@ -30,11 +29,11 @@ def dir_label(self, location, text):
 
 
 def preview_window_label(self, location, text):
-    text = textwrap.fill(text, width=prev_window_size)
+    text = textwrap.fill(text, width=get_config("prev_window_size"))
     self.preview_window_label = Label(location,
-                                      bg=col_bg_lgt,
-                                      font=font_returntext,
-                                      fg=col_acc_minor,
+                                      bg=get_config("col_bg_lgt"),
+                                      font=get_config("font_returntext"),
+                                      fg=get_config("col_acc_minor"),
                                       borderwidth=0,
                                       text=text
                                       )

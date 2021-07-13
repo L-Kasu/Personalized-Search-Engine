@@ -1,12 +1,12 @@
 from tkinter import *
-from gui.globalimports import *
+from gui.builder_toolbox.settings_util import get_config
 
 
 def result_text(self, location):
     self.result_text = Listbox(location)
-    self.result_text.config(bg=col_bg_lgt,
-                            fg=col_acc_minor,
-                            font=font_returntext,
+    self.result_text.config(bg=get_config("col_bg_lgt"),
+                            fg=get_config("col_acc_minor"),
+                            font=get_config("font_returntext"),
                             height=10,
                             width=0,
                             borderwidth=0,

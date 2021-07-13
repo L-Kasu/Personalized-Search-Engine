@@ -4,21 +4,19 @@
 from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.radiobuttons import *
-from gui.globalimports import *
-from gui.ui_sizedefinitions import *
 
 
 class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.master_height = master_height
+        self.master_height = get_config("master_height")
         self.dir_selected = ""
         self.result = list()
         self.tf_object = clustering.Clustering(["dummyDoc"], ["dummyTitle"])
-        self.master.geometry(str(master_width) + "x" + str(self.master_height))
-        self.master.title(txt_mastertitle)
-        self.master.config(relief=relief_frames, bd=7, bg=col_bg)
+        self.master.geometry(get_config("master_width") + "x" + self.master_height)
+        self.master.title(get_config("txt_mastertitle"))
+        self.master.config(relief=get_config("relief_frames"), bd=7, bg=get_config("col_bg"))
 
         self.lower_frame = Frame()
         lower_frame(self, self.master)
