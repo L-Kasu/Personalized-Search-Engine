@@ -1,7 +1,6 @@
 import os
 from tkinter import *
-from gui.globalimports import *
-
+from gui.builder_toolbox.settings_util import get_config
 
 dir_languages = "./gui/languagepacks"
 
@@ -13,15 +12,15 @@ def menu_languages(self, location):
     self.menu_languages = OptionMenu(location,
                                      clicked,
                                      *options)
-    self.menu_languages.config(relief=relief_btn,
-                               font=font_header_2,
-                               bg=col_btn_idle,
-                               fg=col_acc_minor,
-                               activebackground=col_btn_active,
-                               activeforeground=col_acc_minor,
+    self.menu_languages.config(relief=get_config("relief_btn"),
+                               font=get_config("font_header_2"),
+                               bg=get_config("col_btn_idle"),
+                               fg=get_config("col_acc_minor"),
+                               activebackground=get_config("col_btn_active"),
+                               activeforeground=get_config("col_acc_minor"),
                                highlightthickness=0
                                )
-    if relief_btn == "flat":
+    if get_config("relief_btn") == "flat":
         self.menu_languages.config(borderwidth=0)
     self.menu_languages.pack(side=LEFT, anchor=NE)
 

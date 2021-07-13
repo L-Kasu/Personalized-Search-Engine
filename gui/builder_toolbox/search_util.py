@@ -5,8 +5,8 @@ import os
 # need pdfminer.six (diffrent from pdfminer)
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
+from gui.builder_toolbox.settings_util import get_config
 from search import clustering
-from gui.globalimports import *
 
 '''    for page_number, page in enumerate(PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
                                                          password=password,
@@ -65,7 +65,7 @@ def preprocess(self):
             for i in range(0, len(page_list)):
                 page = page_list[i]
                 if page:
-                    titles.append(filename + ", " + txt_page + " " + str(i + 1))
+                    titles.append(filename + ", " + get_config("txt_page") + " " + str(i + 1))
                     corpus_list.append(page)
         # TODO: implement saving to databases
         if titles and corpus_list:
