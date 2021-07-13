@@ -56,12 +56,14 @@ def init_config(path=default_path):
               "font_header_2": ("Arial", 10, "bold"),
               "font_returntext": ("Arial", 10),
               "relief_frames": "flat",
-              "relief_btn": "flat"}
+              "relief_btn": "flat",
+              "stemmer": "porter",
+              "stop_word": True}
     write_config(config, path)
 
 
 def set_language(lang):
-    if lang == "english":
+    if lang == "English":
         config = {"txt_mastertitle": "Search Engine",
                   "txt_selectdir": "Select Directory",
                   "txt_settingsheader": "Settings",
@@ -72,7 +74,7 @@ def set_language(lang):
                   "txt_page": "Page",
                   "ERR_noDirectorySelected": "ERROR: No directory selected",
                   "ERR_resultListEmpty": "ERROR: There are no search results"}
-    elif lang == "german":
+    elif lang == "German":
         config = {"txt_mastertitle": "Suchmaschine",
                   "txt_selectdir": "Verzeichnis auswählen",
                   "txt_settingsheader": "Einstellungen",
@@ -83,7 +85,7 @@ def set_language(lang):
                   "txt_page": "Seite",
                   "ERR_noDirectorySelected": "FEHLER: Kein Verzeichnis ausgewählt",
                   "ERR_resultListEmpty": "FEHLER: Keine Suchergebnisse vorhanden"}
-    elif lang == "spanish":
+    elif lang == "Spanish":
         config = {"txt_mastertitle": "Buscador",
                   "txt_selectdir": "Seleccionar Directorio",
                   "txt_settingsheader": "Ajustes",
@@ -212,6 +214,26 @@ def set_colors(template):
                   "font_returntext": ("Comic Sans MS", 10),
                   "relief_frames": "flat",
                   "relief_btn": "flat"}
+    else:
+        config = {}
+    edit_config(config)
+
+
+def set_stemmer(stem):
+    if stem == "porter":
+        config = {"stemmer": "porter"}
+    elif stem == "lancaster":
+        config = {"stemmer": "lancaster"}
+    else:
+        config = {}
+    edit_config(config)
+
+
+def set_stop_word(stpwrd):
+    if stpwrd:
+        config = {"stop_word": True}
+    elif not stpwrd:
+        config = {"stop_word": False}
     else:
         config = {}
     edit_config(config)

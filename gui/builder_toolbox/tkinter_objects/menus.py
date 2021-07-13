@@ -1,17 +1,41 @@
 import os
 from tkinter import *
 from gui.builder_toolbox.settings_util import get_config
+from gui.builder_toolbox.settings_util import set_language
+from gui.builder_toolbox.settings_util import set_colors
 
 dir_languages = "./gui/languagepacks"
 
 
 def menu_languages(self, location):
     clicked = StringVar()
-    options = get_options()
+    options = ("English", "German", "Spanish")
     clicked.set(options[0])
     self.menu_languages = OptionMenu(location,
                                      clicked,
-                                     *options)
+                                     *options,
+                                     command=set_language)
+    self.menu_languages.config(relief=get_config("relief_btn"),
+                               font=get_config("font_header_2"),
+                               bg=get_config("col_btn_idle"),
+                               fg=get_config("col_acc_minor"),
+                               activebackground=get_config("col_btn_active"),
+                               activeforeground=get_config("col_acc_minor"),
+                               highlightthickness=0
+                               )
+    if get_config("relief_btn") == "flat":
+        self.menu_languages.config(borderwidth=0)
+    self.menu_languages.pack(side=LEFT, anchor=NE)
+
+
+def menu_styles(self, location):
+    clicked = StringVar()
+    options = ("wip", "teatime", "sharky", "redengine", "cb_friendly", "monochrome", "cyberpunk", "dokidokiwip")
+    clicked.set(options[0])
+    self.menu_languages = OptionMenu(location,
+                                     clicked,
+                                     *options,
+                                     command=set_colors)
     self.menu_languages.config(relief=get_config("relief_btn"),
                                font=get_config("font_header_2"),
                                bg=get_config("col_btn_idle"),
@@ -39,14 +63,3 @@ def get_options():
                 options.append(filenames_without_ending[i])
     return options
 
-
-# def change_language(self):
-#     selected_language = self.menu_languages.getvar()
-#     print(selected_language)
-#
-#     if selected_language == "English":
-#         pass
-#     elif selected_language == "Deutsch":
-#         pass
-#     elif selected_language == "Español":
-#         pass

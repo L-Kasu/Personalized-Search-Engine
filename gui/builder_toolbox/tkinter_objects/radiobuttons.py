@@ -1,4 +1,5 @@
 from gui.builder_toolbox.tkinter_objects.labels import *
+from gui.builder_toolbox.settings_util import *
 
 
 def choose_stemmer(self, location):
@@ -15,22 +16,27 @@ def choose_stemmer(self, location):
                               )
     self.label_stemmer.pack(side=TOP, fill=X, expand=True)
 
-    self.var = IntVar()
+    self.var = StringVar()
 
     self.radiobutton_PorterStemmer = Radiobutton(self.frame_stemmer,
                                                  text="Porter",
                                                  variable=self.var,
-                                                 value=1)
+                                                 value="porter",
+                                                 command=set_stemmer("porter")
+                                                 )
     self.radiobutton_PorterStemmer.config(bg=get_config("col_bg"),
                                           fg=get_config("col_acc_major"),
                                           activebackground=get_config("col_bg"),
-                                          selectcolor=get_config("col_bg_lgt"))
+                                          selectcolor=get_config("col_bg_lgt")
+                                          )
     self.radiobutton_PorterStemmer.pack(side=LEFT)
 
     self.radiobutton_LancasterStemmer = Radiobutton(self.frame_stemmer,
                                                     text="Lancaster",
                                                     variable=self.var,
-                                                    value=2)
+                                                    value="lancaster",
+                                                    command=set_stemmer("lancaster")
+                                                    )
     self.radiobutton_LancasterStemmer.config(bg=get_config("col_bg"),
                                              fg=get_config("col_acc_major"),
                                              activebackground=get_config("col_bg"),
@@ -53,12 +59,14 @@ def stopword(self, location):
                                )
     self.label_stopword.pack(side=TOP, fill=X, expand=True)
 
-    self.var = IntVar()
+    self.var = StringVar()
 
     self.radiobutton_on = Radiobutton(self.frame_stopword,
                                       text="on",
                                       variable=self.var,
-                                      value=3)
+                                      value="on",
+                                      command=set_stop_word(True)
+                                      )
     self.radiobutton_on.config(bg=get_config("col_bg"),
                                fg=get_config("col_acc_major"),
                                activebackground=get_config("col_bg"),
@@ -68,7 +76,9 @@ def stopword(self, location):
     self.radiobutton_off = Radiobutton(self.frame_stopword,
                                        text="off",
                                        variable=self.var,
-                                       value=4)
+                                       value="off",
+                                       command=set_stop_word(False)
+                                       )
     self.radiobutton_off.config(bg=get_config("col_bg"),
                                 fg=get_config("col_acc_major"),
                                 activebackground=get_config("col_bg"),

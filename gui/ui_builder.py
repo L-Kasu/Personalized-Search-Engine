@@ -4,6 +4,7 @@
 from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.radiobuttons import *
+from gui.builder_toolbox.tkinter_objects.menus import *
 
 
 class Application(Frame):
@@ -31,7 +32,6 @@ class Application(Frame):
         left_up_upper_frame(self, self.up_upper_frame)
 
         self.btn_select_directory = Button()
-        # self.switch = None
 
         self.dir_label = Label()
         btn_select_directory(self, self.left_up_upper_frame)
@@ -47,11 +47,17 @@ class Application(Frame):
         self.result_label = Label()
         self.result_text = Listbox()
         self.btn_preview = Button()
-        self.preview_window = None # needs to be none to prevent empty popup window at startup
+        self.preview_window = None  # needs to be none to prevent empty popup window at startup
         self.preview_window_label = Label()
         result_frame(self, self.lower_frame)
 
-        # self.menu_languages = None
-        # menu_languages(self, self.right_up_upper_frame)
+        self.language_label = Label()
+        language_label(self,self.right_up_upper_frame, "Language: ")
+        self.menu_languages = None
+        menu_languages(self, self.right_up_upper_frame)
+        self.color_label = Label()
+        color_label(self,self.right_up_upper_frame, "Theme: ")
+        self.menu_styles = None
+        menu_styles(self, self.right_up_upper_frame)
 
         self.pack()

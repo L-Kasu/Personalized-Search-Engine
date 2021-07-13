@@ -28,6 +28,34 @@ def dir_label(self, location, text):
     self.dir_label.pack(side=LEFT, fill=X)
 
 
+def language_label(self, location, text):
+    self.language_label = Label(location,
+                                font=get_config("font_header_2"),
+                                text=text
+                                )
+    self.language_label.config(bg=get_config("col_bg"),
+                               fg=get_config("col_acc_minor"),
+                               height=1,
+                               borderwidth=0,
+                               highlightthickness=0
+                               )
+    self.language_label.pack(side=LEFT)
+
+
+def color_label(self, location, text):
+    self.language_label = Label(location,
+                                font=get_config("font_header_2"),
+                                text=text
+                                )
+    self.language_label.config(bg=get_config("col_bg"),
+                               fg=get_config("col_acc_minor"),
+                               height=1,
+                               borderwidth=0,
+                               highlightthickness=0
+                               )
+    self.language_label.pack(side=LEFT)
+
+
 def preview_window_label(self, location, text):
     text = textwrap.fill(text, width=get_config("prev_window_size"))
     self.preview_window_label = Label(location,
