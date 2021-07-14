@@ -99,7 +99,7 @@ def set_language(lang):
     elif lang == "Arabic":
         config = {"txt_mastertitle": "مُحَرّكُ البَحث",
                   "txt_selectdir": "اِخْتَر/ي مُجَلَّد",
-                  "txt_settingsheader": "الإعدادات",
+                  "txt_settingsheader": "الإِعْدَادَات",
                   "txt_entrysearch": "بَحْث",
                   "txt_entryclear": "حَذْف",
                   "txt_resultitems": "نَتيجَةُ البَحْث",
