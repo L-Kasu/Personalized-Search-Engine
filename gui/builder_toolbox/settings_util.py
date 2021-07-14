@@ -42,6 +42,8 @@ def init_config(path=default_path):
               "txt_resultitems": "Search result",
               "txt_preview": "Preview",
               "txt_page": "Page",
+              "txt_okay": "Okay",
+              "txt_exitpreview": "Exit Preview",
               "ERR_noDirectorySelected": "ERROR: No directory selected",
               "ERR_resultListEmpty": "ERROR: There are no search results",
               "col_bg": "#3b3b3b",
@@ -72,6 +74,8 @@ def set_language(lang):
                   "txt_resultitems": "Search result",
                   "txt_preview": "Preview",
                   "txt_page": "Page",
+                  "txt_okay": "Okay",
+                  "txt_exitpreview": "Exit",
                   "ERR_noDirectorySelected": "ERROR: No directory selected",
                   "ERR_resultListEmpty": "ERROR: There are no search results"}
     elif lang == "German":
@@ -83,6 +87,8 @@ def set_language(lang):
                   "txt_resultitems": "Ergebnisse",
                   "txt_preview": "Vorschau",
                   "txt_page": "Seite",
+                  "txt_okay": "Okay",
+                  "txt_exitpreview": "Schließen",
                   "ERR_noDirectorySelected": "FEHLER: Kein Verzeichnis ausgewählt",
                   "ERR_resultListEmpty": "FEHLER: Keine Suchergebnisse vorhanden"}
     elif lang == "Spanish":
@@ -94,6 +100,8 @@ def set_language(lang):
                   "txt_resultitems": "Buscar en resultados",
                   "txt_preview": "Vista previa",
                   "txt_page": "Pagina",
+                  "txt_okay": "Okay(to be translated)",
+                  "txt_exitpreview": "Exit(to be translated)",
                   "ERR_noDirectorySelected": "ERROR: Ningún directorio seleccionado",
                   "ERR_resultListEmpty": "ERROR: No hay resultados de búsqueda"}
     elif lang == "Arabic":
@@ -105,6 +113,8 @@ def set_language(lang):
                   "txt_resultitems": "نَتيجَةُ البَحْث",
                   "txt_preview": "عَيّنَة",
                   "txt_page": "الصَّفحَة",
+                  "txt_okay": "حَسَنَاً",
+                  "txt_exitpreview": "إِغْلاق",
                   "ERR_noDirectorySelected": "خَطَأ: لَمْ يَتُمَّ اِخْتِيَارُ أَيّ مُجَلَّد",
                   "ERR_resultListEmpty": "خَطَأ: لَيْسَ هُنَالِكَ نَتَائِجٌ لِلْبَحْث"}
     else:

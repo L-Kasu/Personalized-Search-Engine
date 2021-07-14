@@ -95,7 +95,7 @@ def preview_function(self):
     self.preview_window = Toplevel(bg=get_config("col_bg_lgt"))
     self.preview_window.title(get_config("txt_preview") + ": " + self.result_text.get(ANCHOR))
     preview_window_label(self, self.preview_window, text)
-    self.btn_exit = Button(self.preview_window, text="Exit Preview", command=self.preview_window.destroy)
+    self.btn_exit = Button(self.preview_window, text=get_config("txt_exitpreview"), command=self.preview_window.destroy)
     self.btn_exit.config(bg=get_config("col_btn_idle"),
                          fg=get_config("col_acc_minor"),
                          activebackground=get_config("col_btn_active"),
@@ -108,7 +108,7 @@ def preview_function(self):
 # Settings button
 def btn_settings(self, location):
     self.btn_settings = Button(location,
-                               text="Settings",
+                               text=get_config("txt_settingsheader"),
                                command=lambda: settings_function(self),
                                font=get_config("font_header_2")
                                )
@@ -136,7 +136,10 @@ def settings_function(self):
     self.label_settings.pack(side=TOP, fill=X)
     choose_stemmer(self, self.window_settings)
     stopword(self, self.window_settings)
-    self.btn_exit = Button(self.window_settings, text="Okay", command=self.window_settings.destroy)
+    self.btn_exit = Button(self.window_settings,
+                           text=get_config("txt_okay"),
+                           command=self.window_settings.destroy
+                           )
     self.btn_exit.config(bg=get_config("col_btn_idle"),
                          fg=get_config("col_acc_minor"),
                          activebackground=get_config("col_btn_active"),
