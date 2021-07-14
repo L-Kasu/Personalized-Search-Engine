@@ -28,10 +28,10 @@ def dir_label(self, location, text):
     self.dir_label.pack(side=LEFT, fill=X)
 
 
-def language_label(self, location, text):
+def language_label(self, location):
     self.language_label = Label(location,
                                 font=get_config("font_header_2"),
-                                text=text
+                                text=get_config("txt_language")
                                 )
     self.language_label.config(bg=get_config("col_bg"),
                                fg=get_config("col_acc_minor"),
@@ -42,10 +42,10 @@ def language_label(self, location, text):
     self.language_label.pack(side=LEFT)
 
 
-def color_label(self, location, text):
+def color_label(self, location):
     self.language_label = Label(location,
                                 font=get_config("font_header_2"),
-                                text=text
+                                text=get_config("txt_colortheme")
                                 )
     self.language_label.config(bg=get_config("col_bg"),
                                fg=get_config("col_acc_minor"),

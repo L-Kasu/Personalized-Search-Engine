@@ -124,13 +124,13 @@ def btn_settings(self, location):
 
 
 def settings_function(self):
-    self.window_settings = Toplevel(bg=get_config("col_bg"))
-    self.window_settings.title("Settings")
+    self.window_settings = Toplevel(bg=get_config("col_bg_lgt"))
+    self.window_settings.title(get_config("txt_settingsheader"))
     self.label_settings = Label(self.window_settings,
-                                text="Settings",
+                                text=get_config("txt_settingsheader"),
                                 font=get_config("font_header_1")
                                 )
-    self.label_settings.config(bg=get_config("col_bg"),
+    self.label_settings.config(bg=get_config("col_bg_lgt"),
                                fg=get_config("col_acc_major")
                                )
     self.label_settings.pack(side=TOP, fill=X)
@@ -138,7 +138,8 @@ def settings_function(self):
     stopword(self, self.window_settings)
     self.btn_exit = Button(self.window_settings,
                            text=get_config("txt_okay"),
-                           command=self.window_settings.destroy
+                           command=self.window_settings.destroy,
+                           font=get_config("font_header_2")
                            )
     self.btn_exit.config(bg=get_config("col_btn_idle"),
                          fg=get_config("col_acc_minor"),
@@ -146,4 +147,6 @@ def settings_function(self):
                          activeforeground=get_config("col_acc_minor"),
                          relief=get_config("relief_btn")
                          )
+    if get_config("relief_btn") == "flat":
+        self.btn_exit.config(borderwidth=0)
     self.btn_exit.pack(side=BOTTOM)

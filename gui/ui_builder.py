@@ -52,11 +52,11 @@ class Application(Frame):
         result_frame(self, self.lower_frame)
 
         self.language_label = Label()
-        language_label(self,self.right_up_upper_frame, "Language: ")
+        language_label(self, self.right_up_upper_frame)
         self.menu_languages = None
         menu_languages(self, self.right_up_upper_frame)
         self.color_label = Label()
-        color_label(self,self.right_up_upper_frame, "Theme: ")
+        color_label(self, self.right_up_upper_frame)
         self.menu_styles = None
         menu_styles(self, self.right_up_upper_frame)
 
