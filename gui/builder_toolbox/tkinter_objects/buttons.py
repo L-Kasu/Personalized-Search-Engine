@@ -147,4 +147,3 @@ def settings_function(self):
                          relief=get_config("relief_btn")
                          )
     self.btn_exit.pack(side=BOTTOM)
-
