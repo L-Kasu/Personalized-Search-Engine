@@ -1,6 +1,3 @@
-# version: alpha0.63
-
-
 from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.radiobuttons import *

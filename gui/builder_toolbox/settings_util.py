@@ -1,6 +1,7 @@
 import json
 
 from gui.builder_toolbox.settings_defaultpaths import *
+from restart_application import restart_application
 
 
 def write_config(config, path=default_path, file=masterconfigfile):
@@ -35,7 +36,8 @@ def get_configdict(path=default_path, file=masterconfigfile):
     return config
 
 
-def set_language(lang,
+def set_language(self,
+                 lang,
                  path=default_path,
                  file=languageconfigfile,
                  masterfile=masterconfigfile):
@@ -45,9 +47,11 @@ def set_language(lang,
         if key == lang:
             config = configdict[key]
     edit_config(config, path, masterfile)
+    restart_application(self)
 
 
-def set_colors(template,
+def set_colors(self,
+               template,
                path=default_path,
                file=colorsconfigfile,
                masterfile=masterconfigfile):
@@ -57,6 +61,7 @@ def set_colors(template,
         if key == template:
             config = configdict[key]
     edit_config(config, path, masterfile)
+    restart_application(self)
 
 
 def set_stemmer(stem):

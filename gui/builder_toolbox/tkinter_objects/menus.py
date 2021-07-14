@@ -11,7 +11,7 @@ def menu_languages(self, location):
     self.menu_languages = OptionMenu(location,
                                      clicked,
                                      *options,
-                                     command=set_language)
+                                     command=lambda x: set_language(self, x))
     self.menu_languages.config(relief=get_config("relief_btn"),
                                font=get_config("font_header_2"),
                                bg=get_config("col_btn_idle"),
@@ -32,7 +32,7 @@ def menu_styles(self, location):
     self.menu_styles = OptionMenu(location,
                                   clicked,
                                   *options,
-                                  command=set_colors)
+                                  command=lambda x: set_colors(self, x))
     self.menu_styles.config(relief=get_config("relief_btn"),
                             font=get_config("font_header_2"),
                             bg=get_config("col_btn_idle"),
