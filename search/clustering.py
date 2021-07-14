@@ -16,7 +16,7 @@ class Clustering(tfidf):
     def __init__(self, corpus: list, titles: list):
         super().__init__(corpus, titles)
         self.KMAX = KMAX
-        self.clustering = self.__kmeans(2)
+        self.clustering = self.__kmeans(self.__find_optimal_k(self.KMAX))
 
     def __find_optimal_k(self, kmax):
         points = self.tfidf_mat
