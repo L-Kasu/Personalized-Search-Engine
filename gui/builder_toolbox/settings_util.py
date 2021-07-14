@@ -5,7 +5,7 @@ from restart_application import restart_application
 
 def write_config(config, path=default_path, file=masterconfigfile):
     with open(path+file, 'w') as configfile:
-        json.dump(config, configfile)
+        json.dump(config, configfile, indent=4)
         configfile.close()
 
 
@@ -16,7 +16,7 @@ def edit_config(config_dict, path=default_path, file=masterconfigfile):
             config[key] = config_dict[key]
         configfile.close()
     with open(path+file, 'w') as configfile:
-        json.dump(config, configfile)
+        json.dump(config, configfile, indent=4)
         configfile.close()
 
 

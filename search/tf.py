@@ -1,7 +1,8 @@
 import sys
 from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
-import numpy as np
-import os
+
+from gui.builder_toolbox import settings_util
+
 
 def check_len(corpus, titles):
     
@@ -18,8 +19,18 @@ class tfidf:
     def __init__(self, corpus:list, titles:list):
         
         check_len(corpus,titles)
+
+        stop_word = settings_util.get_config("stop_word")
+        language = settings_util.get_config("ID_lang")
+
+        stop_word_value = None
+
+        if stop_word:
+            if language == "English":
+                stop_word_value = "english"
+
         
-        self.tfidfVectorizer = TfidfVectorizer(analyzer='word',stop_words= 'english')
+        self.tfidfVectorizer = TfidfVectorizer(analyzer='word',stop_words= stop_word_value)
         self.corpus = corpus
         self.titles = titles
         self.tfidf_mat = self.tfidfVectorizer.fit_transform(self.corpus)
