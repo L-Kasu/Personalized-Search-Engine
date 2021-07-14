@@ -1,5 +1,6 @@
 from tkinter import *
-from gui.builder_toolbox.settings_util import *
+
+from gui.builder_toolbox.settings_init import init_config
 from gui.ui_builder import Application
 
 if __name__ == "__main__":
