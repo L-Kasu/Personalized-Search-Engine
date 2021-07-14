@@ -96,6 +96,17 @@ def set_language(lang):
                   "txt_page": "Pagina",
                   "ERR_noDirectorySelected": "ERROR: Ningún directorio seleccionado",
                   "ERR_resultListEmpty": "ERROR: No hay resultados de búsqueda"}
+    elif lang == "Arabic":
+        config = {"txt_mastertitle": "مُحَرّكُ البَحث",
+                  "txt_selectdir": "اِخْتَر/ي مُجَلَّد",
+                  "txt_settingsheader": "الإعدادات",
+                  "txt_entrysearch": "بَحْث",
+                  "txt_entryclear": "حَذْف",
+                  "txt_resultitems": "نَتيجَةُ البَحْث",
+                  "txt_preview": "عَيّنَة",
+                  "txt_page": "الصَّفحَة",
+                  "ERR_noDirectorySelected": "خَطَأ: لَمْ يَتُمَّ اِخْتِيَارُ أَيّ مُجَلَّد",
+                  "ERR_resultListEmpty": "خَطَأ: لَيْسَ هُنَالِكَ نَتَائِجٌ لِلْبَحْث"}
     else:
         config = {}
     edit_config(config)
@@ -174,7 +185,7 @@ def set_colors(template):
                   "relief_btn": "raise"}
     elif template == "monochrome":
         config = {"col_bg": "#282828",
-                  "col_bg_lgt": "#282828",
+                  "col_bg_lgt": "#1f1f1f",
                   "col_btn_idle": "black",
                   "col_btn_active": "#ffcc00",
                   "col_entryfield_idle": "black",

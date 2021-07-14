@@ -9,7 +9,7 @@ dir_languages = "./gui/languagepacks"
 
 def menu_languages(self, location):
     clicked = StringVar()
-    options = ("English", "German", "Spanish")
+    options = ("English", "German", "Spanish", "Arabic")
     clicked.set(options[0])
     self.menu_languages = OptionMenu(location,
                                      clicked,
