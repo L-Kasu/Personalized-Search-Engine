@@ -95,14 +95,16 @@ def preview_function(self):
     self.preview_window = Toplevel(bg=get_config("col_bg_lgt"))
     self.preview_window.title(get_config("txt_preview") + ": " + self.result_text.get(ANCHOR))
     preview_window_label(self, self.preview_window, text)
-    self.btn_exit = Button(self.preview_window, text=get_config("txt_exitpreview"), command=self.preview_window.destroy)
-    self.btn_exit.config(bg=get_config("col_btn_idle"),
+    self.btn_preview_exit = Button(self.preview_window, text=get_config("txt_exitpreview"), command=self.preview_window.destroy)
+    self.btn_preview_exit.config(bg=get_config("col_btn_idle"),
                          fg=get_config("col_acc_minor"),
                          activebackground=get_config("col_btn_active"),
                          activeforeground=get_config("col_acc_minor"),
                          relief=get_config("relief_btn")
                          )
-    self.btn_exit.pack(side=BOTTOM)
+    if get_config("relief_btn") == "flat":
+        self.btn_preview_exit.config(borderwidth=0)
+    self.btn_preview_exit.pack(side=BOTTOM)
 
 
 # Settings button
