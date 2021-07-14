@@ -1,6 +1,5 @@
 from tkinter import filedialog
-from gui.builder_toolbox.search_util import *
-from gui.builder_toolbox.settings_util import get_config
+import gui
 from gui.builder_toolbox.tkinter_objects.radiobuttons import *
 
 
@@ -95,19 +94,24 @@ def preview_function(self):
     self.preview_window = Toplevel(bg=get_config("col_bg_lgt"))
     self.preview_window.title(get_config("txt_preview") + ": " + self.result_text.get(ANCHOR))
     preview_window_label(self, self.preview_window, text)
-    self.btn_preview_exit = Button(self.preview_window, text=get_config("txt_exitpreview"), command=self.preview_window.destroy)
+    btn_preview_exit(self, self.preview_window)
+
+
+def btn_preview_exit(self, location):
+    self.btn_preview_exit = Button(location,
+                                   text=get_config("txt_exitpreview"),
+                                   command=self.preview_window.destroy)
     self.btn_preview_exit.config(bg=get_config("col_btn_idle"),
-                         fg=get_config("col_acc_minor"),
-                         activebackground=get_config("col_btn_active"),
-                         activeforeground=get_config("col_acc_minor"),
-                         relief=get_config("relief_btn")
-                         )
+                                 fg=get_config("col_acc_minor"),
+                                 activebackground=get_config("col_btn_active"),
+                                 activeforeground=get_config("col_acc_minor"),
+                                 relief=get_config("relief_btn")
+                                 )
     if get_config("relief_btn") == "flat":
         self.btn_preview_exit.config(borderwidth=0)
     self.btn_preview_exit.pack(side=BOTTOM)
 
 
-# Settings button
 def btn_settings(self, location):
     self.btn_settings = Button(location,
                                text=get_config("txt_settingsheader"),
@@ -128,27 +132,25 @@ def btn_settings(self, location):
 def settings_function(self):
     self.window_settings = Toplevel(bg=get_config("col_bg_lgt"))
     self.window_settings.title(get_config("txt_settingsheader"))
-    self.label_settings = Label(self.window_settings,
-                                text=get_config("txt_settingsheader"),
-                                font=get_config("font_header_1")
-                                )
-    self.label_settings.config(bg=get_config("col_bg_lgt"),
-                               fg=get_config("col_acc_major")
-                               )
-    self.label_settings.pack(side=TOP, fill=X)
-    choose_stemmer(self, self.window_settings)
-    stopword(self, self.window_settings)
-    self.btn_exit = Button(self.window_settings,
-                           text=get_config("txt_okay"),
-                           command=self.window_settings.destroy,
-                           font=get_config("font_header_2")
-                           )
-    self.btn_exit.config(bg=get_config("col_btn_idle"),
-                         fg=get_config("col_acc_minor"),
-                         activebackground=get_config("col_btn_active"),
-                         activeforeground=get_config("col_acc_minor"),
-                         relief=get_config("relief_btn")
-                         )
+    label_settings(self, self.window_settings)
+    # not sure why this is necessary :|
+    gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings)
+    gui.builder_toolbox.tkinter_objects.frames.frame_stopword(self, self.window_settings)
+    btn_exitsettings(self, self.window_settings)
+
+
+def btn_exitsettings(self, location):
+    self.btn_exitsettings = Button(location,
+                                   text=get_config("txt_okay"),
+                                   command=self.window_settings.destroy,
+                                   font=get_config("font_header_2")
+                                   )
+    self.btn_exitsettings.config(bg=get_config("col_btn_idle"),
+                                 fg=get_config("col_acc_minor"),
+                                 activebackground=get_config("col_btn_active"),
+                                 activeforeground=get_config("col_acc_minor"),
+                                 relief=get_config("relief_btn")
+                                 )
     if get_config("relief_btn") == "flat":
-        self.btn_exit.config(borderwidth=0)
-    self.btn_exit.pack(side=BOTTOM)
+        self.btn_exitsettings.config(borderwidth=0)
+    self.btn_exitsettings.pack(side=BOTTOM)

@@ -1,24 +1,12 @@
+from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.labels import *
 from gui.builder_toolbox.settings_util import *
 
 
-def choose_stemmer(self, location):
-    self.frame_stemmer = Frame(location)
-    self.frame_stemmer.pack()
-    self.label_stemmer = Label(self.frame_stemmer,
-                               text=get_config("txt_selectStemmer"),
-                               font=get_config("font_header_2"))
-    self.label_stemmer.config(bg=get_config("col_bg_lgt"),
-                              fg=get_config("col_acc_minor"),
-                              height=1,
-                              borderwidth=0,
-                              highlightthickness=0
-                              )
-    self.label_stemmer.pack(side=TOP, fill=X, expand=True)
-
+def radiobtns_stemmer(self, location):
     self.var = StringVar()
 
-    self.radiobutton_PorterStemmer = Radiobutton(self.frame_stemmer,
+    self.radiobutton_PorterStemmer = Radiobutton(location,
                                                  text="Porter",
                                                  variable=self.var,
                                                  value="porter",
@@ -31,7 +19,7 @@ def choose_stemmer(self, location):
                                           )
     self.radiobutton_PorterStemmer.pack(side=LEFT)
 
-    self.radiobutton_LancasterStemmer = Radiobutton(self.frame_stemmer,
+    self.radiobutton_LancasterStemmer = Radiobutton(location,
                                                     text="Lancaster",
                                                     variable=self.var,
                                                     value="lancaster",
@@ -44,24 +32,10 @@ def choose_stemmer(self, location):
     self.radiobutton_LancasterStemmer.pack(side=LEFT)
 
 
-def stopword(self, location):
-    self.frame_stopword = Frame(location)
-    self.frame_stopword.pack()
-
-    self.label_stopword = Label(self.frame_stopword,
-                                text=get_config("txt_toggleStopword"),
-                                font=get_config("font_header_2"))
-    self.label_stopword.config(bg=get_config("col_bg_lgt"),
-                               fg=get_config("col_acc_minor"),
-                               height=1,
-                               borderwidth=0,
-                               highlightthickness=0
-                               )
-    self.label_stopword.pack(side=TOP, fill=X, expand=True)
-
+def radiobtns_stopword(self, location):
     self.var = StringVar()
 
-    self.radiobutton_on = Radiobutton(self.frame_stopword,
+    self.radiobutton_on = Radiobutton(location,
                                       text=get_config("txt_on"),
                                       variable=self.var,
                                       value="on",
@@ -71,9 +45,9 @@ def stopword(self, location):
                                fg=get_config("col_acc_major"),
                                activebackground=get_config("col_bg_lgt"),
                                selectcolor=get_config("col_bg_lgt"))
-    self.radiobutton_on.pack(side=LEFT,fill=X)
+    self.radiobutton_on.pack(side=LEFT, fill=X)
 
-    self.radiobutton_off = Radiobutton(self.frame_stopword,
+    self.radiobutton_off = Radiobutton(location,
                                        text=get_config("txt_off"),
                                        variable=self.var,
                                        value="off",

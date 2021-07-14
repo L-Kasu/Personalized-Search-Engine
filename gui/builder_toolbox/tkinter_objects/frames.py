@@ -1,3 +1,5 @@
+from tkinter import Frame
+
 from gui.builder_toolbox.tkinter_objects.entries import *
 from gui.builder_toolbox.tkinter_objects.listboxes import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
@@ -69,3 +71,17 @@ def result_frame(self, location):
     result_label(self, self.result_frame)
     result_text(self, self.result_frame)
     btn_preview(self, self.result_text)
+
+
+def frame_stemmer(self, location):
+    self.frame_stemmer = Frame(location)
+    self.frame_stemmer.pack()
+    label_stemmer(self, self.frame_stemmer)
+    radiobtns_stemmer(self, self.frame_stemmer)
+
+
+def frame_stopword(self, location):
+    self.frame_stopword = Frame(location)
+    self.frame_stopword.pack()
+    label_stopword(self, self.frame_stopword)
+    radiobtns_stopword(self, self.frame_stopword)

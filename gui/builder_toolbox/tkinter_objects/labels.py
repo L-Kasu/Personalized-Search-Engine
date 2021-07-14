@@ -1,5 +1,7 @@
 import textwrap
 from tkinter import *
+from tkinter import Label, TOP, X
+
 from gui.builder_toolbox.settings_util import get_config
 
 
@@ -66,3 +68,38 @@ def preview_window_label(self, location, text):
                                       text=text
                                       )
     self.preview_window_label.pack(padx=10, pady=5)
+
+
+def label_stemmer(self, location):
+    self.label_stemmer = Label(location,
+                               text=get_config("txt_selectStemmer"),
+                               font=get_config("font_header_2"))
+    self.label_stemmer.config(bg=get_config("col_bg_lgt"),
+                              fg=get_config("col_acc_minor"),
+                              borderwidth=0,
+                              highlightthickness=0
+                              )
+    self.label_stemmer.pack(side=TOP, fill=X, expand=True)
+
+
+def label_stopword(self, location):
+    self.label_stopword = Label(location,
+                                text=get_config("txt_toggleStopword"),
+                                font=get_config("font_header_2"))
+    self.label_stopword.config(bg=get_config("col_bg_lgt"),
+                               fg=get_config("col_acc_minor"),
+                               borderwidth=0,
+                               highlightthickness=0
+                               )
+    self.label_stopword.pack(side=TOP, fill=X, expand=True)
+
+
+def label_settings(self, location):
+    self.label_settings = Label(location,
+                                text=get_config("txt_settingsheader"),
+                                font=get_config("font_header_1")
+                                )
+    self.label_settings.config(bg=get_config("col_bg_lgt"),
+                               fg=get_config("col_acc_major")
+                               )
+    self.label_settings.pack(side=TOP, fill=X)

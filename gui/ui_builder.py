@@ -32,6 +32,10 @@ class Application(Frame):
 
         self.dir_label = Label()
         btn_select_directory(self, self.left_up_upper_frame)
+        self.frame_stemmer = Frame()
+        self.frame_stopword = Frame()
+        self.label_stemmer = Label()
+        self.label_stopword = Label()
         btn_settings(self, self.left_up_upper_frame)
         self.master_entry_frame = Frame()
         self.entry_frame = Frame()
