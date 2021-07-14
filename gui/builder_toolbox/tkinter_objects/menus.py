@@ -1,13 +1,19 @@
 from tkinter import *
-from gui.builder_toolbox.settings_util import get_config
+from gui.builder_toolbox.settings_defaultpaths import *
+from gui.builder_toolbox.settings_util import get_config, get_configdict
 from gui.builder_toolbox.settings_util import set_language
 from gui.builder_toolbox.settings_util import set_colors
 
 
-def menu_languages(self, location):
+def menu_languages(self,
+                   location,
+                   path=default_path,
+                   file=languageconfigfile):
     clicked = StringVar()
-    options = ("English", "German", "Spanish", "Arabic")
-    clicked.set(options[0])
+    options = list()
+    for key in get_configdict(path, file):
+        options.append(key)
+    clicked.set(get_config("ID_lang"))
     self.menu_languages = OptionMenu(location,
                                      clicked,
                                      *options,
@@ -25,10 +31,15 @@ def menu_languages(self, location):
     self.menu_languages.pack(side=LEFT, anchor=NE)
 
 
-def menu_styles(self, location):
+def menu_styles(self,
+                location,
+                path=default_path,
+                file=colorsconfigfile):
     clicked = StringVar()
-    options = ("wip", "teatime", "sharky", "redengine", "cb_friendly", "monochrome", "cyberpunk", "dokidokiwip")
-    clicked.set(options[0])
+    options = list()
+    for key in get_configdict(path, file):
+        options.append(key)
+    clicked.set(get_config("ID_colors"))
     self.menu_styles = OptionMenu(location,
                                   clicked,
                                   *options,

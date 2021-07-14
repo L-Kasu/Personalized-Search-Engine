@@ -1,5 +1,4 @@
 import json
-
 from gui.builder_toolbox.settings_defaultpaths import *
 from restart_application import restart_application
 
