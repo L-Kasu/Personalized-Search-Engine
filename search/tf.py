@@ -22,7 +22,7 @@ class tfidf:
         
         check_len(corpus, titles)
 
-        # THIS BREAKS THE AUTOMATIC RELOAD OF THE APPLICATION, NEED TO FIND A WORKAROUND
+        # TODO THIS BREAKS THE AUTOMATIC RELOAD OF THE APPLICATION, NEED TO FIND A WORKAROUND
         # for package in ['punkt']:
         #     nltk.download(package)
 

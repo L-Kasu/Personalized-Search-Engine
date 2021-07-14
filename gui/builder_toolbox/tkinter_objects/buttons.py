@@ -1,6 +1,7 @@
 from tkinter import filedialog
 import gui
 from gui.builder_toolbox.tkinter_objects.radiobuttons import *
+from gui.builder_toolbox.search_util import *
 
 
 def btn_select_directory(self, location):
