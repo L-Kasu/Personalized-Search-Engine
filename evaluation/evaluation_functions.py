@@ -37,13 +37,8 @@ def get_results_for_evaluation_clustering(doc_dicts, query_dicts: list) -> dict:
     tf_obj = clustering.Clustering(corpus_list, titles_list)
     for i in range(0, len(query_dicts)):
         print(i)
-        query_vec = tf_obj.tfidfVectorizer.transform([query_dicts[i]])
-        cluster_index = tf_obj.get_cluster_of_vector(query_vec)
-        corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
-        tf_copy = tf.tfidf(corpus, titles)
-        if tf_copy:
-            result = tf_copy.query_indicies(query_dicts[i])
-            searched[i] = result[:10]
+        query = query_dicts[i]
+        searched[i] = tf_obj.search_in_cluster(query)[:10]
     return searched
 
 

@@ -4,17 +4,19 @@ from kneed import KneeLocator
 from search import tf
 import numpy as np
 from search.tf import tfidf
+import scipy.sparse.csr as csr
 
 # sensitivity of the elbow finder
 sensitivity = 1.0
 # max number of k to be considered for the k-means algorithm
 KMAX = 10
 
+
 class Clustering(tfidf):
     def __init__(self, corpus: list, titles: list):
         super().__init__(corpus, titles)
         self.KMAX = KMAX
-        self.clustering = self.__kmeans(self.__find_optimal_k(self.KMAX))
+        self.clustering = self.__kmeans(2)
 
     def __find_optimal_k(self, kmax):
         points = self.tfidf_mat
@@ -54,24 +56,68 @@ class Clustering(tfidf):
         return clustering
 
     def get_cluster_of_vector(self, vec):
-        return self.clustering.predict(vec)
+        result = self.clustering.predict(vec)
+        if vec.shape[0] == 1:
+            result = int(result)
+        return result
 
     def get_cluster_of_index(self, k):
         titles = []
         corpus = []
         vecs = []
+        index_to_keep = [] # list of indeces to keep
+        index_to_drop = []
+        original_indices = []
         for i in range(0, self.tfidf_mat.shape[0]):
             vec = self.tfidf_mat[i]
             if self.get_cluster_of_vector(vec) == k:
                 titles.append(self.titles[i])
                 corpus.append(self.corpus[i])
-                vecs.append(self.tfidf_mat[i])
-        vecs = np.array(vecs)
-        return (corpus, titles, vecs)
+                original_indices.append(i)
+                index_to_keep.append(i)
+            else:
+                index_to_drop.append(i)
+        vecs = self.tfidf_mat[index_to_keep,:]
+        return (corpus, titles, original_indices, index_to_drop, vecs)
 
+    # predict cluster of query and search in the corresponding cluster, return indices of documents soreted by relevance
+    def search_in_cluster(self, query):
+        query_vec = self.tfidfVectorizer.transform([query])
+        cluster_index = self.get_cluster_of_vector(query_vec)
+        corpus, titles, original_indices, index_to_drop, vecs = self.get_cluster_of_index(cluster_index)
+        query_vec = self.tfidfVectorizer.transform([query])
 
-    def get_all_clusters(self):
-        return self.clustering
+        # matrix multiplicatin to calculate cosine similarity
+        cos_sim = tf.cos_sim_func(query_vec, vecs)
+
+        # result_list will be filled with (index, cos-sim) tuples
+        result_list = []
+
+        for i in range(cos_sim.shape[0]):
+            # map index of vector to index in the original matrix
+            k = original_indices[i]
+            result_list.append((k, cos_sim[i, 0]))
+        for x in index_to_drop:
+            result_list.append((x, -1))
+
+        # sorts from large to small based on cos-sim value
+        result_list.sort(key=lambda x: x[1], reverse=True)
+
+        only_indicies = []
+        for i in range(len(result_list)):
+            only_indicies.append(result_list[i][0])
+
+        return only_indicies
+
+# drop columns of an csr matrix
+def dropcols(M, idx_to_drop):
+    idx_to_drop = np.unique(idx_to_drop)
+    C = M.tocoo()
+    keep = ~np.in1d(C.col, idx_to_drop)
+    C.data, C.row, C.col = C.data[keep], C.row[keep], C.col[keep]
+    C.col -= idx_to_drop.searchsorted(C.col)    # decrement column indices
+    C._shape = (C.shape[0], C.shape[1] - len(idx_to_drop))
+    return C.tocsr()
 
 '''
     def search_with_clustering(self):
