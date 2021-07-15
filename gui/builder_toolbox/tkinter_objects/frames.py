@@ -74,14 +74,14 @@ def result_frame(self, location):
 
 
 def frame_stemmer(self, location):
-    self.frame_stemmer = Frame(location)
+    self.frame_stemmer = Frame(location, bg=get_config("col_bg_lgt"))
     self.frame_stemmer.pack()
     label_stemmer(self, self.frame_stemmer)
     radiobtns_stemmer(self, self.frame_stemmer)
 
 
 def frame_stopword(self, location):
-    self.frame_stopword = Frame(location)
+    self.frame_stopword = Frame(location, bg=get_config("col_bg_lgt"))
     self.frame_stopword.pack()
     label_stopword(self, self.frame_stopword)
     radiobtns_stopword(self, self.frame_stopword)

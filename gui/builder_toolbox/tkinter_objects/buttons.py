@@ -133,6 +133,9 @@ def btn_settings(self, location):
 def settings_function(self):
     self.window_settings = Toplevel(bg=get_config("col_bg_lgt"))
     self.window_settings.title(get_config("txt_settingsheader"))
+    self.window_settings.geometry(str(int(int(get_config("master_width"))/3))
+                                  + "x"
+                                  + str(int(int(get_config("master_height"))/3)))
     label_settings(self, self.window_settings)
     # not sure why this is necessary :|
     gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings)

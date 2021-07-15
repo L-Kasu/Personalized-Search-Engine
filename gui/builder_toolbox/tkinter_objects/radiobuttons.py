@@ -17,7 +17,7 @@ def radiobtns_stemmer(self, location):
                                           selectcolor=get_config("col_bg_lgt"),
                                           state=ACTIVE
                                           )
-    self.radiobutton_PorterStemmer.pack(side=LEFT)
+    self.radiobutton_PorterStemmer.pack(anchor=CENTER, fill=BOTH)
 
     self.radiobutton_LancasterStemmer = Radiobutton(location,
                                                     text="Lancaster",
@@ -32,7 +32,7 @@ def radiobtns_stemmer(self, location):
                                              selectcolor=get_config("col_bg_lgt"),
                                              state=ACTIVE
                                              )
-    self.radiobutton_LancasterStemmer.pack(side=LEFT)
+    self.radiobutton_LancasterStemmer.pack(anchor=CENTER, fill=BOTH)
 
 
 def radiobtns_stopword(self, location):
@@ -49,7 +49,7 @@ def radiobtns_stopword(self, location):
                                selectcolor=get_config("col_bg_lgt"),
                                state=ACTIVE
                                )
-    self.radiobutton_on.pack(side=LEFT, fill=X)
+    self.radiobutton_on.pack(anchor=CENTER, fill=BOTH)
 
     self.radiobutton_off = Radiobutton(location,
                                        text=get_config("txt_off"),
@@ -64,4 +64,4 @@ def radiobtns_stopword(self, location):
                                 selectcolor=get_config("col_bg_lgt"),
                                 state=ACTIVE
                                 )
-    self.radiobutton_off.pack(side=LEFT, fill=X)
+    self.radiobutton_off.pack(anchor=CENTER, fill=BOTH)
