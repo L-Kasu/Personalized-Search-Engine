@@ -1,12 +1,15 @@
 import sys
-from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
-import numpy as np
-import os
+import nltk
+from nltk import PorterStemmer, LancasterStemmer
+from nltk.stem import snowball
+from sklearn.feature_extraction.text import TfidfVectorizer
+from gui.builder_toolbox.settings_util import get_config
+
 
 def check_len(corpus, titles):
     
     tb = sys.exc_info()[2]
-    if(len(corpus) != len(titles)): raise Exception("Lenght of corpus dosn't match the the lenght of titles.\n len(corpus) =", len(corpus),"len(titles) =", len(titles)).with_traceback(tb)
+    if(len(corpus) != len(titles)): raise Exception("Length of corpus doesn't match the length of titles.\n len(corpus) =", len(corpus),"len(titles) =", len(titles)).with_traceback(tb)
 
 
 def cos_sim_func(query_vec, tfidf_mat):
@@ -15,19 +18,40 @@ def cos_sim_func(query_vec, tfidf_mat):
 
 class tfidf:
     # corpus and titles should be lists of str
-    def __init__(self, corpus:list, titles:list):
+    def __init__(self, corpus: list, titles: list):
         
-        check_len(corpus,titles)
-        
-        self.tfidfVectorizer = TfidfVectorizer(analyzer='word',stop_words= 'english')
+        check_len(corpus, titles)
+
+        # TODO THIS BREAKS THE AUTOMATIC RELOAD OF THE APPLICATION, NEED TO FIND A WORKAROUND
+        # for package in ['punkt']:
+        #     nltk.download(package)
+
+        # set stop word removal
+        stop_word = get_config("stop_word")
+        language = get_config("ID_lang")
+        stop_word_value = None
+        if stop_word and language == "english":
+            stop_word_value = language
+
+        # set stemmer
+        def tokenize(text):
+            stemmerdict = {"porter": PorterStemmer(),
+                           "lancaster": LancasterStemmer(),
+                           "snowball": snowball.SnowballStemmer(language)}
+            stemmer = stemmerdict[get_config("stemmer")]
+            tokens = [word for word in nltk.word_tokenize(text) if len(word) > 1]
+            stems = [stemmer.stem(item) for item in tokens]
+            return stems
+
+        self.tfidfVectorizer = TfidfVectorizer(tokenizer=tokenize, analyzer='word', stop_words=stop_word_value)
         self.corpus = corpus
         self.titles = titles
         self.tfidf_mat = self.tfidfVectorizer.fit_transform(self.corpus)
        
     # corpus and titles should be lists of str
-    def add_to_corpus(self, new_corpus:list, new_titles:list):
+    def add_to_corpus(self, new_corpus: list, new_titles: list):
         
-        check_len(new_corpus, new_titels)
+        check_len(new_corpus, new_titles)
         
         self.corpus += new_corpus
         self.titles += new_titles
@@ -51,7 +75,7 @@ class tfidf:
             result_list.append((i,cos_sim[i,0]))
         
         #sorts from large to small based on cos-sim value
-        result_list.sort(key=lambda x:x[1], reverse=True)
+        result_list.sort(key=lambda x: x[1], reverse=True)
         
         only_indicies = []
         for i in range(len(result_list)):

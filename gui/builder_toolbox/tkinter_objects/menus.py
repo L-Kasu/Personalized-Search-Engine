@@ -1,53 +1,58 @@
-import os
 from tkinter import *
-from gui.globalimports import *
+from gui.builder_toolbox.settings_defaultpaths import *
+from gui.builder_toolbox.settings_util import get_config, get_configdict
+from gui.builder_toolbox.settings_util import set_language
+from gui.builder_toolbox.settings_util import set_colors
 
 
-dir_languages = "./gui/languagepacks"
-
-
-def menu_languages(self, location):
+def menu_languages(self,
+                   location,
+                   path=default_path,
+                   file=languageconfigfile):
     clicked = StringVar()
-    options = get_options()
-    clicked.set(options[0])
+    options = list()
+    for key in get_configdict(path, file):
+        options.append(key)
+    clicked.set(get_config("ID_lang"))
     self.menu_languages = OptionMenu(location,
                                      clicked,
-                                     *options)
-    self.menu_languages.config(relief=relief_btn,
-                               font=font_header_2,
-                               bg=col_btn_idle,
-                               fg=col_acc_minor,
-                               activebackground=col_btn_active,
-                               activeforeground=col_acc_minor,
+                                     *options,
+                                     command=lambda x: set_language(self, x))
+    self.menu_languages.config(relief=get_config("relief_btn"),
+                               font=get_config("font_header_2"),
+                               bg=get_config("col_btn_idle"),
+                               fg=get_config("col_acc_minor"),
+                               activebackground=get_config("col_btn_active"),
+                               activeforeground=get_config("col_acc_minor"),
                                highlightthickness=0
                                )
-    if relief_btn == "flat":
+    if get_config("relief_btn") == "flat":
         self.menu_languages.config(borderwidth=0)
     self.menu_languages.pack(side=LEFT, anchor=NE)
 
 
-def get_options():
-    options = []
-    for dirname, _, filenames in os.walk(dir_languages):
-        filenames_split_by_point = list(filter(
-            lambda x:
-            len(x) >= 2,
-            [filename.split(".") for filename in filenames]))
-        filenames_without_ending = list([split[0] for split in filenames_split_by_point])
-        endings = list([split[1] for split in filenames_split_by_point])
-        for i in range(0, len(filenames_without_ending)-1):
-            if endings[i] == "py":
-                options.append(filenames_without_ending[i])
-    return options
+def menu_styles(self,
+                location,
+                path=default_path,
+                file=colorsconfigfile):
+    clicked = StringVar()
+    options = list()
+    for key in get_configdict(path, file):
+        options.append(key)
+    clicked.set(get_config("ID_colors"))
+    self.menu_styles = OptionMenu(location,
+                                  clicked,
+                                  *options,
+                                  command=lambda x: set_colors(self, x))
+    self.menu_styles.config(relief=get_config("relief_btn"),
+                            font=get_config("font_header_2"),
+                            bg=get_config("col_btn_idle"),
+                            fg=get_config("col_acc_minor"),
+                            activebackground=get_config("col_btn_active"),
+                            activeforeground=get_config("col_acc_minor"),
+                            highlightthickness=0
+                            )
+    if get_config("relief_btn") == "flat":
+        self.menu_styles.config(borderwidth=0)
+    self.menu_styles.pack(side=LEFT, anchor=NE)
 
-
-# def change_language(self):
-#     selected_language = self.menu_languages.getvar()
-#     print(selected_language)
-#
-#     if selected_language == "English":
-#         pass
-#     elif selected_language == "Deutsch":
-#         pass
-#     elif selected_language == "Español":
-#         pass

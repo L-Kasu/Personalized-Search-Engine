@@ -1,76 +1,67 @@
+from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.labels import *
+from gui.builder_toolbox.settings_util import *
 
 
-def choose_stemmer(self, location):
-    self.frame_stemmer = Frame(location)
-    self.frame_stemmer.pack()
-    self.label_stemmer = Label(self.frame_stemmer,
-                               text="Select Stemmer:",
-                               font=font_header_2)
-    self.label_stemmer.config(bg=col_bg,
-                              fg=col_acc_minor,
-                              height=1,
-                              borderwidth=0,
-                              highlightthickness=0
-                              )
-    self.label_stemmer.pack(side=TOP, fill=X, expand=True)
-
-    self.var = IntVar()
-
-    self.radiobutton_PorterStemmer = Radiobutton(self.frame_stemmer,
+def radiobtns_stemmer(self, location):
+    self.radiobutton_PorterStemmer = Radiobutton(location,
                                                  text="Porter",
-                                                 variable=self.var,
-                                                 value=1)
-    self.radiobutton_PorterStemmer.config(bg=col_bg,
-                                          fg=col_acc_major,
-                                          activebackground=col_bg,
-                                          selectcolor=col_bg_lgt)
-    self.radiobutton_PorterStemmer.pack(side=LEFT)
+                                                 variable=self.selected_stemmer,
+                                                 value="porter",
+                                                 command=lambda: edit_config({"stemmer": "porter"})
+                                                 )
+    self.radiobutton_PorterStemmer.config(bg=get_config("col_bg_lgt"),
+                                          fg=get_config("col_acc_minor"),
+                                          activebackground=get_config("col_bg_lgt"),
+                                          activeforeground=get_config("col_acc_minor"),
+                                          selectcolor=get_config("col_bg_lgt"),
+                                          state=ACTIVE
+                                          )
+    self.radiobutton_PorterStemmer.pack(side=LEFT, fill=BOTH)
 
-    self.radiobutton_LancasterStemmer = Radiobutton(self.frame_stemmer,
+    self.radiobutton_LancasterStemmer = Radiobutton(location,
                                                     text="Lancaster",
-                                                    variable=self.var,
-                                                    value=2)
-    self.radiobutton_LancasterStemmer.config(bg=col_bg,
-                                             fg=col_acc_major,
-                                             activebackground=col_bg,
-                                             selectcolor=col_bg_lgt)
-    self.radiobutton_LancasterStemmer.pack(side=LEFT)
+                                                    variable=self.selected_stemmer,
+                                                    value="lancaster",
+                                                    command=lambda: edit_config({"stemmer": "lancaster"})
+                                                    )
+    self.radiobutton_LancasterStemmer.config(bg=get_config("col_bg_lgt"),
+                                             fg=get_config("col_acc_minor"),
+                                             activebackground=get_config("col_bg_lgt"),
+                                             activeforeground=get_config("col_acc_minor"),
+                                             selectcolor=get_config("col_bg_lgt"),
+                                             state=ACTIVE
+                                             )
+    self.radiobutton_LancasterStemmer.pack(side=RIGHT, fill=BOTH)
 
 
-def stopword(self, location):
-    self.frame_stopword = Frame(location)
-    self.frame_stopword.pack()
-
-    self.label_stopword = Label(self.frame_stopword,
-                                text="Stop Word:",
-                                font=font_header_2)
-    self.label_stopword.config(bg=col_bg,
-                               fg=col_acc_minor,
-                               height=1,
-                               borderwidth=0,
-                               highlightthickness=0
+def radiobtns_stopword(self, location):
+    self.radiobutton_on = Radiobutton(location,
+                                      text=get_config("txt_on"),
+                                      variable=self.remove_stopwords,
+                                      value=True,
+                                      command=lambda: edit_config({"stop_word": True})
+                                      )
+    self.radiobutton_on.config(bg=get_config("col_bg_lgt"),
+                               fg=get_config("col_acc_minor"),
+                               activebackground=get_config("col_bg_lgt"),
+                               activeforeground=get_config("col_acc_minor"),
+                               selectcolor=get_config("col_bg_lgt"),
+                               state=ACTIVE
                                )
-    self.label_stopword.pack(side=TOP, fill=X, expand=True)
+    self.radiobutton_on.pack(side=LEFT, fill=BOTH)
 
-    self.var = IntVar()
-
-    self.radiobutton_on = Radiobutton(self.frame_stopword,
-                                      text="on",
-                                      variable=self.var,
-                                      value=3)
-    self.radiobutton_on.config(bg=col_bg,
-                               fg=col_acc_major,
-                               activebackground=col_bg,
-                               selectcolor=col_bg_lgt)
-    self.radiobutton_on.pack(side=LEFT)
-
-    self.radiobutton_off = Radiobutton(self.frame_stopword,
-                                       text="off",
-                                       variable=self.var,
-                                       value=4)
-    self.radiobutton_off.config(bg=col_bg,
-                                fg=col_acc_major,
-                                activebackground=col_bg,
-                                selectcolor=col_bg_lgt)
-    self.radiobutton_off.pack(side=LEFT)
+    self.radiobutton_off = Radiobutton(location,
+                                       text=get_config("txt_off"),
+                                       variable=self.remove_stopwords,
+                                       value=False,
+                                       command=lambda: edit_config({"stop_word": False})
+                                       )
+    self.radiobutton_off.config(bg=get_config("col_bg_lgt"),
+                                fg=get_config("col_acc_minor"),
+                                activebackground=get_config("col_bg_lgt"),
+                                activeforeground=get_config("col_acc_minor"),
+                                selectcolor=get_config("col_bg_lgt"),
+                                state=ACTIVE
+                                )
+    self.radiobutton_off.pack(side=RIGHT, fill=BOTH)
