@@ -55,7 +55,7 @@ def master_entry_frame(self, location):
 
 
 def entry_frame(self, location):
-    self.entry_frame = Frame(location, bg=get_config("col_bg_lgt"), relief=get_config("relief_frames"), bd=5)
+    self.entry_frame = Frame(location, bg=get_config("col_bg_lgt"), relief=get_config("relief_frames"), bd=get_config("global_padding"))
     self.entry_frame.pack(fill=X, expand=True)
 
 
@@ -74,14 +74,14 @@ def result_frame(self, location):
 
 
 def frame_stemmer(self, location):
-    self.frame_stemmer = Frame(location, bg=get_config("col_bg_lgt"))
-    self.frame_stemmer.pack()
+    self.frame_stemmer = Frame(location, bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
+    self.frame_stemmer.pack(fill=Y)
     label_stemmer(self, self.frame_stemmer)
     radiobtns_stemmer(self, self.frame_stemmer)
 
 
 def frame_stopword(self, location):
-    self.frame_stopword = Frame(location, bg=get_config("col_bg_lgt"))
-    self.frame_stopword.pack()
+    self.frame_stopword = Frame(location, bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
+    self.frame_stopword.pack(fill=Y)
     label_stopword(self, self.frame_stopword)
     radiobtns_stopword(self, self.frame_stopword)

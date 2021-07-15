@@ -73,7 +73,8 @@ def preview_window_label(self, location, text):
 def label_stemmer(self, location):
     self.label_stemmer = Label(location,
                                text=get_config("txt_selectStemmer"),
-                               font=get_config("font_header_2"))
+                               font=get_config("font_header_2"),
+                               bd=get_config("global_padding"))
     self.label_stemmer.config(bg=get_config("col_bg_lgt"),
                               fg=get_config("col_acc_minor"),
                               borderwidth=0,
@@ -85,7 +86,8 @@ def label_stemmer(self, location):
 def label_stopword(self, location):
     self.label_stopword = Label(location,
                                 text=get_config("txt_toggleStopword"),
-                                font=get_config("font_header_2"))
+                                font=get_config("font_header_2"),
+                                bd=get_config("global_padding"))
     self.label_stopword.config(bg=get_config("col_bg_lgt"),
                                fg=get_config("col_acc_minor"),
                                borderwidth=0,
@@ -97,7 +99,8 @@ def label_stopword(self, location):
 def label_settings(self, location):
     self.label_settings = Label(location,
                                 text=get_config("txt_settingsheader"),
-                                font=get_config("font_header_1")
+                                font=get_config("font_header_1"),
+                                bd=get_config("global_padding")
                                 )
     self.label_settings.config(bg=get_config("col_bg_lgt"),
                                fg=get_config("col_acc_major")
