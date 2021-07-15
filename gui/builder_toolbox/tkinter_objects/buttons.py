@@ -143,7 +143,7 @@ def settings_function(self):
 def btn_exitsettings(self, location):
     self.btn_exitsettings = Button(location,
                                    text=get_config("txt_okay"),
-                                   command=lambda: btn_exitsettings_function(self),
+                                   command=self.window_settings.destroy,
                                    font=get_config("font_header_2")
                                    )
     self.btn_exitsettings.config(bg=get_config("col_btn_idle"),
@@ -155,7 +155,3 @@ def btn_exitsettings(self, location):
     if get_config("relief_btn") == "flat":
         self.btn_exitsettings.config(borderwidth=0)
     self.btn_exitsettings.pack(side=BOTTOM)
-
-
-def btn_exitsettings_function(self):
-    self.window_settings.destroy()

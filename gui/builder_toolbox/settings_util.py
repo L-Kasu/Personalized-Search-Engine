@@ -61,3 +61,23 @@ def set_colors(self,
             config = configdict[key]
     edit_config(config, path, masterfile)
     restart_application(self)
+
+
+def set_stemmer(stem):
+    if stem == "porter":
+        config = {"stemmer": "porter"}
+    elif stem == "lancaster":
+        config = {"stemmer": "lancaster"}
+    else:
+        config = {}
+    edit_config(config)
+
+
+def set_stop_word(stpwrd):
+    if stpwrd:
+        config = {"stop_word": True}
+    elif not stpwrd:
+        config = {"stop_word": False}
+    else:
+        config = {}
+    edit_config(config)
