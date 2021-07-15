@@ -17,7 +17,9 @@ class Application(Frame):
         self.selected_stemmer.set(get_config("stemmer"))
         self.master.geometry(get_config("master_width") + "x" + get_config("master_height"))
         self.master.title(get_config("txt_mastertitle"))
-        self.master.config(relief=get_config("relief_frames"), bd=7, bg=get_config("col_bg"))
+        self.master.config(relief=get_config("relief_frames"),
+                           bd=get_config("global_padding"),
+                           bg=get_config("col_bg"))
 
         self.lower_frame = Frame()
         lower_frame(self, self.master)

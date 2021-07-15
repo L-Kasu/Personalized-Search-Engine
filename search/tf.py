@@ -9,7 +9,7 @@ from gui.builder_toolbox.settings_util import get_config
 def check_len(corpus, titles):
     
     tb = sys.exc_info()[2]
-    if(len(corpus) != len(titles)): raise Exception("Lenght of corpus dosn't match the the lenght of titles.\n len(corpus) =", len(corpus),"len(titles) =", len(titles)).with_traceback(tb)
+    if(len(corpus) != len(titles)): raise Exception("Length of corpus doesn't match the length of titles.\n len(corpus) =", len(corpus),"len(titles) =", len(titles)).with_traceback(tb)
 
 
 def cos_sim_func(query_vec, tfidf_mat):
@@ -18,7 +18,7 @@ def cos_sim_func(query_vec, tfidf_mat):
 
 class tfidf:
     # corpus and titles should be lists of str
-    def __init__(self, corpus:list, titles:list):
+    def __init__(self, corpus: list, titles: list):
         
         check_len(corpus, titles)
 
@@ -34,12 +34,11 @@ class tfidf:
             stop_word_value = language
 
         # set stemmer
-        stemmerdict = {"porter": PorterStemmer(),
-                       "lancaster": LancasterStemmer(),
-                       "snowball": snowball.SnowballStemmer(language)}
-        stemmer = stemmerdict[get_config("stemmer")]
-
         def tokenize(text):
+            stemmerdict = {"porter": PorterStemmer(),
+                           "lancaster": LancasterStemmer(),
+                           "snowball": snowball.SnowballStemmer(language)}
+            stemmer = stemmerdict[get_config("stemmer")]
             tokens = [word for word in nltk.word_tokenize(text) if len(word) > 1]
             stems = [stemmer.stem(item) for item in tokens]
             return stems
