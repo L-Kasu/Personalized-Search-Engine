@@ -28,10 +28,11 @@ def convert_pdf_to_txt(path) -> list:
 
 
 def file_to_list_of_string(path):
-    text = ""
+    text = []
     if path.endswith("txt"):
         with open(path, "r") as container:
             text = container.read()
+            text = [text]
     elif path.endswith("pdf"):
         text = convert_pdf_to_txt(path)
     else:
@@ -56,16 +57,17 @@ def search(self, query):
 def preprocess(self):
     corpus_list = []
     titles = []
-    page_list = []
     for _, _, filenames in os.walk(self.dir_selected):
         dir = os.path.basename(self.dir_selected)
         for filename in filenames:
             path = self.dir_selected + "/" + filename
-            page_list.append(file_to_list_of_string(path))
-            for i in range(0, len(page_list)):
-                page = page_list[i]
+            pages = file_to_list_of_string(path)
+            page_titles = [filename + "#" + str(i + 1) for i in range(0, len(pages))]
+            for i in range(0, len(pages)):
+                page = pages[i]
+                page_title = page_titles[i]
                 if page:
-                    titles.append(filename + ", " + get_config("txt_page") + " " + str(i + 1))
+                    titles.append(page_title)
                     corpus_list.append(page)
         # TODO: implement saving to databases
         if titles and corpus_list:
