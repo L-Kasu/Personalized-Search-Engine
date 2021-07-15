@@ -42,14 +42,13 @@ def file_to_list_of_string(path):
 def search(self, query):
     self.result_text.delete(0, self.result_text.size())
     tf_obj = self.tf_object
-    query_vec = tf_obj.tfidfVectorizer.transform([query])
-    cluster_index = tf_obj.get_cluster_of_vector(query_vec)
-    corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
-    tf_copy = clustering.Clustering(corpus, titles)
-    return_docs_num = 10
-
-    if tf_copy:
-        result = tf_copy.query_k_titles(query, return_docs_num)
+    result = []
+    doc_indices = tf_obj.search_in_cluster(query)
+    docs_to_return = 10
+    for index in doc_indices:
+        result.append(tf_obj.titles[index])
+    if result:
+        result = result[:docs_to_return]
         for x in range(0, len(result)):
             self.result_text.insert(x, result[x])
 
@@ -57,11 +56,12 @@ def search(self, query):
 def preprocess(self):
     corpus_list = []
     titles = []
+    page_list = []
     for _, _, filenames in os.walk(self.dir_selected):
         dir = os.path.basename(self.dir_selected)
         for filename in filenames:
             path = self.dir_selected + "/" + filename
-            page_list = file_to_list_of_string(path)
+            page_list.append(file_to_list_of_string(path))
             for i in range(0, len(page_list)):
                 page = page_list[i]
                 if page:

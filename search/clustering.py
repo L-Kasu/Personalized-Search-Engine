@@ -22,7 +22,7 @@ class Clustering(tfidf):
         points = self.tfidf_mat
         a = np.unique(points)[0].shape[0]
         b = len(self.titles)
-        kmax = min(kmax, len(self.titles), np.unique(points)[0].shape[0])
+        kmax = min(kmax, b, a)
         if kmax == 1:
             return 1
         sse = []
@@ -109,88 +109,4 @@ class Clustering(tfidf):
 
         return only_indicies
 
-# drop columns of an csr matrix
-def dropcols(M, idx_to_drop):
-    idx_to_drop = np.unique(idx_to_drop)
-    C = M.tocoo()
-    keep = ~np.in1d(C.col, idx_to_drop)
-    C.data, C.row, C.col = C.data[keep], C.row[keep], C.col[keep]
-    C.col -= idx_to_drop.searchsorted(C.col)    # decrement column indices
-    C._shape = (C.shape[0], C.shape[1] - len(idx_to_drop))
-    return C.tocsr()
 
-'''
-    def search_with_clustering(self):
-            __preprocess(self)
-            tf_obj = self.tf_object
-            query_vec = tf_obj.tfidfVectorizer.transform([query])
-            cluster_index = tf_obj.get_cluster_of_vector(query_vec)
-            corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
-            tf_copy = clustering.Clustering(corpus, titles)
-            return_docs_num = len(corpus)
-
-            if tf_copy:
-                result = tf_copy.query_k_titles(query, return_docs_num)
-                for x in range(0, len(result)):
-                    self.result_text.insert(x, result[x])
-
-    def __preprocess(self, dir_selected):
-        corpus_list = []
-        titles = []
-        tf_object = None
-        for _, _, filenames in os.walk(dir_selected):
-            titles = filenames
-            dir = os.path.basename(dir_selected)
-            for filename in filenames:
-                path = dir_selected + "/" + filename
-                text = search_util.file_to_list_of_string(path)
-                corpus_list.append(text)
-            # TODO: implement saving to databases
-
-            if titles and corpus_list:
-                tf_object = Clustering(corpus_list, titles)
-            break
-        return tf_object
-
-        :
-
-
-'''
-
-'''
-    def search_with_clustering(self):
-            __preprocess(self)
-            tf_obj = self.tf_object
-            query_vec = tf_obj.tfidfVectorizer.transform([query])
-            cluster_index = tf_obj.get_cluster_of_vector(query_vec)
-            corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
-            tf_copy = clustering.Clustering(corpus, titles)
-            return_docs_num = len(corpus)
-
-            if tf_copy:
-                result = tf_copy.query_k_titles(query, return_docs_num)
-                for x in range(0, len(result)):
-                    self.result_text.insert(x, result[x])
-
-    def __preprocess(self, dir_selected):
-        corpus_list = []
-        titles = []
-        tf_object = None
-        for _, _, filenames in os.walk(dir_selected):
-            titles = filenames
-            dir = os.path.basename(dir_selected)
-            for filename in filenames:
-                path = dir_selected + "/" + filename
-                text = search_util.file_to_list_of_string(path)
-                corpus_list.append(text)
-            # TODO: implement saving to databases
-
-            if titles and corpus_list:
-                tf_object = Clustering(corpus_list, titles)
-            break
-        return tf_object
-
-        :
-
-
-'''
