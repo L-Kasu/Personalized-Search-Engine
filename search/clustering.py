@@ -9,7 +9,7 @@ import scipy.sparse.csr as csr
 # sensitivity of the elbow finder
 sensitivity = 1.0
 # max number of k to be considered for the k-means algorithm
-KMAX = 10
+KMAX = 20
 
 
 class Clustering(tfidf):
@@ -33,10 +33,10 @@ class Clustering(tfidf):
             pred_clusters = kmeans.predict(points)
             curr_sse = 0
 
-            # calculate square of Euclidean distance of each point from its cluster center and add to current WSS
+            # calculate cosine similiraity from its cluster center and add to current WSS
             for i in range(points.shape[0]):
                 curr_center = centroids[pred_clusters[i]]
-                vec = points[i,:]
+                vec = points[i]
                 curr_sse += tf.cos_sim_func(vec, curr_center)[0]
 
             curr_sse = curr_sse/k
@@ -45,6 +45,7 @@ class Clustering(tfidf):
         elbow_graph = KneeLocator(k_list, sse, S=sensitivity, curve="convex", direction="decreasing")
 
         optimal_k = elbow_graph.elbow
+        print("we use: " + str(optimal_k) + "clusters".)
         if not optimal_k:
             optimal_k = 1
 
