@@ -18,7 +18,7 @@ class Application(Frame):
         self.master.geometry(get_config("master_width") + "x" + get_config("master_height"))
         self.master.title(get_config("txt_mastertitle"))
         self.master.config(relief=get_config("relief_frames"),
-                           bd=get_config("global_padding"),
+                           bd=get_config("global_padding")+2,
                            bg=get_config("col_bg"))
 
         self.lower_frame = Frame()
@@ -52,6 +52,12 @@ class Application(Frame):
         self.radiobutton_LancasterStemmer = Radiobutton()
         self.radiobutton_on = Radiobutton()
         self.radiobutton_off = Radiobutton()
+        self.frame_menu_lang = Frame()
+        self.frame_menu_colors = Frame()
+        self.language_label = Label()
+        self.color_label = Label()
+        self.menu_languages = None
+        self.menu_styles = None
         btn_settings(self, self.left_up_upper_frame)
 
         self.master_entry_frame = Frame()
@@ -70,17 +76,5 @@ class Application(Frame):
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         self.preview_window_label = Label()
         result_frame(self, self.lower_frame)
-
-        self.language_label = Label()
-        language_label(self, self.right_up_upper_frame)
-
-        self.menu_languages = None
-        menu_languages(self, self.right_up_upper_frame)
-
-        self.color_label = Label()
-        color_label(self, self.right_up_upper_frame)
-
-        self.menu_styles = None
-        menu_styles(self, self.right_up_upper_frame)
 
         self.pack()

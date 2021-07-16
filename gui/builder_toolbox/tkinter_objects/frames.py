@@ -1,8 +1,8 @@
 from tkinter import Frame
-
 from gui.builder_toolbox.tkinter_objects.entries import *
 from gui.builder_toolbox.tkinter_objects.listboxes import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
+from gui.builder_toolbox.tkinter_objects.menus import *
 
 
 def lower_frame(self, location):
@@ -73,15 +73,31 @@ def result_frame(self, location):
     btn_preview(self, self.result_text)
 
 
-def frame_stemmer(self, location):
-    self.frame_stemmer = Frame(location, bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
+def frame_stemmer(self, location, col_bg, col_txt):
+    self.frame_stemmer = Frame(location, bg=col_bg, bd=get_config("global_padding"))
     self.frame_stemmer.pack(fill=Y)
-    label_stemmer(self, self.frame_stemmer)
-    radiobtns_stemmer(self, self.frame_stemmer)
+    label_stemmer(self, self.frame_stemmer, col_bg, col_txt)
+    radiobtns_stemmer(self, self.frame_stemmer, col_bg, col_txt)
 
 
-def frame_stopword(self, location):
-    self.frame_stopword = Frame(location, bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
+def frame_stopword(self, location, col_bg, col_txt):
+    self.frame_stopword = Frame(location, bg=col_bg, bd=get_config("global_padding"))
     self.frame_stopword.pack(fill=Y)
-    label_stopword(self, self.frame_stopword)
-    radiobtns_stopword(self, self.frame_stopword)
+    label_stopword(self, self.frame_stopword, col_bg, col_txt)
+    radiobtns_stopword(self, self.frame_stopword, col_bg, col_txt)
+
+
+def frame_menu_lang(self, location, col_bg, col_txt):
+    self.frame_menu_lang = Frame(location,
+                                 bg=col_bg)
+    self.frame_menu_lang.pack()
+    language_label(self, self.frame_menu_lang, col_bg, col_txt)
+    menu_languages(self, self.frame_menu_lang)
+
+
+def frame_menu_colors(self, location, col_bg, col_txt):
+    self.frame_menu_colors = Frame(location,
+                                   bg=col_bg)
+    self.frame_menu_colors.pack()
+    color_label(self, self.frame_menu_colors, col_bg, col_txt)
+    menu_styles(self, self.frame_menu_colors)
