@@ -9,7 +9,7 @@ import scipy.sparse.csr as csr
 # sensitivity of the elbow finder
 sensitivity = 1.0
 # max number of k to be considered for the k-means algorithm
-KMAX = 20
+KMAX = 50
 
 
 class Clustering(tfidf):
