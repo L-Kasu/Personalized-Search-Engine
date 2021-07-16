@@ -131,12 +131,16 @@ def btn_settings(self, location):
 
 
 def settings_function(self):
-    self.window_settings = Toplevel(bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
+    col_bg = get_config("col_bg")
+    col_txt = get_config("col_acc_bgcontrast")
+    self.window_settings = Toplevel(bg=col_bg, bd=get_config("global_padding"))
     self.window_settings.title(get_config("txt_settingsheader"))
-    label_settings(self, self.window_settings)
-    # not sure why this is necessary :|
-    gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings)
-    gui.builder_toolbox.tkinter_objects.frames.frame_stopword(self, self.window_settings)
+    label_settings(self, self.window_settings, col_bg, col_txt)
+    # only works this way, no idea why...
+    gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings, col_bg, col_txt)
+    gui.builder_toolbox.tkinter_objects.frames.frame_stopword(self, self.window_settings, col_bg, col_txt)
+    gui.builder_toolbox.tkinter_objects.frames.frame_menu_lang(self, self.window_settings, col_bg, col_txt)
+    gui.builder_toolbox.tkinter_objects.frames.frame_menu_colors(self, self.window_settings, col_bg, col_txt)
     btn_exitsettings(self, self.window_settings)
 
 

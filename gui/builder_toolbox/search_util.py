@@ -62,7 +62,7 @@ def preprocess(self):
         for filename in filenames:
             path = self.dir_selected + "/" + filename
             pages = file_to_list_of_string(path)
-            page_titles = [filename + "#" + str(i + 1) for i in range(0, len(pages))]
+            page_titles = [filename + ", " + get_config("txt_page") + " " + str(i + 1) for i in range(0, len(pages))]
             for i in range(0, len(pages)):
                 page = pages[i]
                 page_title = page_titles[i]
