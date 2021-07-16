@@ -45,6 +45,7 @@ class Clustering(tfidf):
         elbow_graph = KneeLocator(k_list, sse, S=sensitivity, curve="convex", direction="decreasing")
 
         optimal_k = elbow_graph.elbow
+        print(sse)
         print("we use: " + str(optimal_k) + "clusters")
         if not optimal_k:
             optimal_k = 1
