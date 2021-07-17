@@ -42,16 +42,8 @@ def master_entry_frame(self, location):
     entry_frame(self, self.master_entry_frame)
     search_entry(self, self.entry_frame)
     buttons_frame(self, self.entry_frame)
-    btn_entry_search(self,
-                     self.buttons_frame,
-                     get_config("col_btn_idle"),
-                     get_config("col_btn_active"),
-                     get_config("col_acc_minor"))
-    btn_entry_delete(self,
-                     self.buttons_frame,
-                     get_config("col_btn_idle"),
-                     get_config("col_btn_active"),
-                     get_config("col_acc_minor"))
+    btn_entry_search(self, self.buttons_frame)
+    btn_entry_delete(self, self.buttons_frame)
 
 
 def entry_frame(self, location):
@@ -101,3 +93,94 @@ def frame_menu_colors(self, location, col_bg, col_txt):
     self.frame_menu_colors.pack()
     color_label(self, self.frame_menu_colors, col_bg, col_txt)
     menu_styles(self, self.frame_menu_colors)
+
+# def default_frame(location,
+#                   bg=get_config("col_bg"),
+#                   relief=get_config("relief_frames"),
+#                   side=TOP,
+#                   fill=BOTH,
+#                   expand=True,
+#                   bd=get_config("global_padding")):
+#     return Frame(location,
+#                  bg=bg,
+#                  bd=bd,
+#                  relief=relief
+#                  ).pack(side=side,
+#                         fill=fill,
+#                         expand=expand
+#                         )
+#
+#
+# def lower_frame(self, location):
+#     self.lower_frame = default_frame(location, side=BOTTOM)
+#
+#
+# def upper_frame(self, location):
+#     self.upper_frame = default_frame(location)
+#
+#
+# def lo_upper_frame(self, location):
+#     self.lo_upper_frame = default_frame(location, side=BOTTOM)
+#
+#
+# def up_upper_frame(self, location):
+#     self.up_upper_frame = default_frame(location, fill=X, expand=False)
+#
+#
+# def right_up_upper_frame(self, location):
+#     self.right_up_upper_frame = default_frame(location, side=RIGHT, expand=False)
+#
+#
+# def left_up_upper_frame(self, location):
+#     self.left_up_upper_frame = default_frame(location, side=LEFT, expand=False)
+#
+#
+# def master_entry_frame(self, location):
+#     self.master_entry_frame = default_frame(location, side=BOTTOM)
+#
+#     entry_frame(self, self.master_entry_frame)
+#     search_entry(self, self.entry_frame)
+#     buttons_frame(self, self.entry_frame)
+#     btn_entry_search(self, self.buttons_frame)
+#     btn_entry_delete(self, self.buttons_frame)
+#
+#
+# def entry_frame(self, location):
+#     self.entry_frame = default_frame(location, bg=get_config("col_bg_lgt"), fill=X)
+#
+#
+# def buttons_frame(self, location):
+#     self.buttons_frame = default_frame(location, side=BOTTOM, expand=False)
+#
+#
+# def result_frame(self, location):
+#     self.result_frame = default_frame(location, bg=get_config("col_bg_lgt"), side=LEFT)
+#
+#     result_label(self, self.result_frame)
+#     result_text(self, self.result_frame)
+#     btn_preview(self, self.result_text)
+#
+#
+# def frame_stemmer(self, location, col_bg, col_txt):
+#     self.frame_stemmer = default_frame(location, bg=col_bg, fill=Y, expand=False)
+#     label_stemmer(self, self.frame_stemmer, col_bg, col_txt)
+#     radiobtns_stemmer(self, self.frame_stemmer, col_bg, col_txt)
+#
+#
+# def frame_stopword(self, location, col_bg, col_txt):
+#     self.frame_stopword = default_frame(location, bg=col_bg, fill=Y, expand=False)
+#     label_stopword(self, self.frame_stopword, col_bg, col_txt)
+#     radiobtns_stopword(self, self.frame_stopword, col_bg, col_txt)
+#
+#
+# def frame_menu_lang(self, location, col_bg, col_txt):
+#     self.frame_menu_lang = default_frame(location, bg=col_bg, fill=Y, expand=False)
+#     language_label(self, self.frame_menu_lang, col_bg, col_txt)
+#     menu_languages(self, self.frame_menu_lang)
+#
+#
+# def frame_menu_colors(self, location, col_bg, col_txt):
+#     self.frame_menu_colors = default_frame(location, bg=col_bg, fill=Y, expand=False)
+#     color_label(self, self.frame_menu_colors, col_bg, col_txt)
+#     menu_styles(self, self.frame_menu_colors)
+#

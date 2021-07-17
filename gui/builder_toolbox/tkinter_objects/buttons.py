@@ -4,21 +4,22 @@ from gui.builder_toolbox.tkinter_objects.radiobuttons import *
 from gui.builder_toolbox.search_util import *
 
 
+def default_btn(location, text, function, side=LEFT, anchor=CENTER):
+    return Button(location,
+                  text=text,
+                  command=function,
+                  font=get_config("font_header_2"),
+                  bg=get_config("col_btn_idle"),
+                  fg=get_config("col_acc_minor"),
+                  activebackground=get_config("col_btn_active"),
+                  activeforeground=get_config("col_acc_minor"),
+                  relief=get_config("relief_btn"),
+                  borderwidth=[0 if get_config("relief_btn") == "flat" else 2]
+                  ).pack(side=side, anchor=anchor)
+
+
 def btn_select_directory(self, location):
-    self.btn_select_directory = Button(location,
-                                       text=get_config("txt_selectdir"),
-                                       command=lambda: btn_select_directory_function(self),
-                                       font=get_config("font_header_2")
-                                       )
-    self.btn_select_directory.config(bg=get_config("col_btn_idle"),
-                                     fg=get_config("col_acc_minor"),
-                                     activebackground=get_config("col_btn_active"),
-                                     activeforeground=get_config("col_acc_minor"),
-                                     relief=get_config("relief_btn")
-                                     )
-    if get_config("relief_btn") == "flat":
-        self.btn_select_directory.config(borderwidth=0)
-    self.btn_select_directory.pack(side=LEFT, anchor=W)
+    default_btn(location, get_config("txt_selectdir"), lambda: btn_select_directory_function(self))
 
 
 def btn_select_directory_function(self):
@@ -28,38 +29,12 @@ def btn_select_directory_function(self):
     preprocess(self)
 
 
-def btn_entry_search(self, location, color_idle, color_active, color_text):
-    self.btn_entry_search = Button(location,
-                                   text=get_config("txt_entrysearch"),
-                                   command=lambda: search(self, self.search_entry.get())
-                                   )
-    self.btn_entry_search.config(bg=color_idle,
-                                 fg=color_text,
-                                 activebackground=color_active,
-                                 activeforeground=color_text,
-                                 font=get_config("font_header_2"),
-                                 relief=get_config("relief_btn")
-                                 )
-    if get_config("relief_btn") == "flat":
-        self.btn_entry_search.config(borderwidth=0)
-    self.btn_entry_search.pack(side=LEFT)
+def btn_entry_search(self, location):
+    default_btn(location, get_config("txt_entrysearch"), lambda: search(self, self.search_entry.get()))
 
 
-def btn_entry_delete(self, location, color_idle, color_active, color_text):
-    self.btn_entry_delete = Button(location,
-                                   text=get_config("txt_entryclear"),
-                                   command=lambda: btn_entry_delete_function(self)
-                                   )
-    self.btn_entry_delete.config(bg=color_idle,
-                                 fg=color_text,
-                                 activebackground=color_active,
-                                 activeforeground=color_text,
-                                 relief=get_config("relief_btn"),
-                                 font=get_config("font_header_2")
-                                 )
-    if get_config("relief_btn") == "flat":
-        self.btn_entry_delete.config(borderwidth=0)
-    self.btn_entry_delete.pack(side=LEFT)
+def btn_entry_delete(self, location):
+    default_btn(location, get_config("txt_entryclear"), lambda: btn_entry_delete_function(self))
 
 
 def btn_entry_delete_function(self):
@@ -68,20 +43,7 @@ def btn_entry_delete_function(self):
 
 
 def btn_preview(self, location):
-    self.btn_preview = Button(location,
-                              text=get_config("txt_preview"),
-                              command=lambda: preview_function(self),
-                              font=get_config("font_header_2")
-                              )
-    self.btn_preview.config(bg=get_config("col_btn_idle"),
-                            fg=get_config("col_acc_minor"),
-                            activebackground=get_config("col_btn_active"),
-                            activeforeground=get_config("col_acc_minor"),
-                            relief=get_config("relief_btn")
-                            )
-    if get_config("relief_btn") == "flat":
-        self.btn_preview.config(borderwidth=0)
-    self.btn_preview.pack(side=BOTTOM)
+    default_btn(location, get_config("txt_preview"), lambda: preview_function(self), BOTTOM)
 
 
 def preview_function(self):
@@ -99,35 +61,11 @@ def preview_function(self):
 
 
 def btn_preview_exit(self, location):
-    self.btn_preview_exit = Button(location,
-                                   text=get_config("txt_exitpreview"),
-                                   command=self.preview_window.destroy)
-    self.btn_preview_exit.config(bg=get_config("col_btn_idle"),
-                                 fg=get_config("col_acc_minor"),
-                                 activebackground=get_config("col_btn_active"),
-                                 activeforeground=get_config("col_acc_minor"),
-                                 relief=get_config("relief_btn")
-                                 )
-    if get_config("relief_btn") == "flat":
-        self.btn_preview_exit.config(borderwidth=0)
-    self.btn_preview_exit.pack(side=BOTTOM)
+    default_btn(location, get_config("txt_exitpreview"), self.preview_window.destroy, BOTTOM)
 
 
 def btn_settings(self, location):
-    self.btn_settings = Button(location,
-                               text=get_config("txt_settingsheader"),
-                               command=lambda: settings_function(self),
-                               font=get_config("font_header_2")
-                               )
-    self.btn_settings.config(bg=get_config("col_btn_idle"),
-                             fg=get_config("col_acc_minor"),
-                             activebackground=get_config("col_btn_active"),
-                             activeforeground=get_config("col_acc_minor"),
-                             relief=get_config("relief_btn")
-                             )
-    if get_config("relief_btn") == "flat":
-        self.btn_settings.config(borderwidth=0)
-    self.btn_settings.pack(side=LEFT)
+    default_btn(location, get_config("txt_settingsheader"), lambda: settings_function(self))
 
 
 def settings_function(self):
@@ -141,25 +79,12 @@ def settings_function(self):
     gui.builder_toolbox.tkinter_objects.frames.frame_stopword(self, self.window_settings, col_bg, col_txt)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_lang(self, self.window_settings, col_bg, col_txt)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_colors(self, self.window_settings, col_bg, col_txt)
-    btn_exitsettings(self, self.window_settings)
-
-
-def btn_exitsettings(self, location):
-    self.btn_exitsettings = Button(location,
-                                   text=get_config("txt_okay"),
-                                   command=lambda: btn_exitsettings_function(self),
-                                   font=get_config("font_header_2")
-                                   )
-    self.btn_exitsettings.config(bg=get_config("col_btn_idle"),
-                                 fg=get_config("col_acc_minor"),
-                                 activebackground=get_config("col_btn_active"),
-                                 activeforeground=get_config("col_acc_minor"),
-                                 relief=get_config("relief_btn")
-                                 )
-    if get_config("relief_btn") == "flat":
-        self.btn_exitsettings.config(borderwidth=0)
-    self.btn_exitsettings.pack(anchor=S)
-
-
-def btn_exitsettings_function(self):
-    self.window_settings.destroy()
+#     btn_exitsettings(self, self.window_settings)
+#
+#
+# def btn_exitsettings(self, location):
+#     default_btn(location, get_config("txt_okay"), lambda: btn_exitsettings_function(self), BOTTOM, S)
+#
+#
+# def btn_exitsettings_function(self):
+#     self.window_settings.destroy()

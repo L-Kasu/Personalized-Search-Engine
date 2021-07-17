@@ -39,23 +39,12 @@ class Application(Frame):
         self.left_up_upper_frame = Frame()
         left_up_upper_frame(self, self.up_upper_frame)
 
-        self.btn_select_directory = Button()
-        self.dir_label = Label()
         btn_select_directory(self, self.left_up_upper_frame)
 
         self.frame_stemmer = Frame()
         self.frame_stopword = Frame()
-        self.label_stemmer = Label()
-        self.label_stopword = Label()
-        self.btn_settings = Button()
-        self.radiobutton_PorterStemmer = Radiobutton()
-        self.radiobutton_LancasterStemmer = Radiobutton()
-        self.radiobutton_on = Radiobutton()
-        self.radiobutton_off = Radiobutton()
         self.frame_menu_lang = Frame()
         self.frame_menu_colors = Frame()
-        self.language_label = Label()
-        self.color_label = Label()
         self.menu_languages = None
         self.menu_styles = None
         btn_settings(self, self.left_up_upper_frame)
@@ -64,15 +53,10 @@ class Application(Frame):
         self.entry_frame = Frame()
         self.search_entry = Entry()
         self.buttons_frame = Frame()
-        self.btn_entry_search = Button()
-        self.btn_entry_delete = Button()
         master_entry_frame(self, self.upper_frame)
 
         self.result_frame = Frame()
-        self.result_label = Label()
         self.result_text = Listbox()
-        self.btn_preview = Button()
-        self.btn_preview_exit = Button()
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         self.preview_window_label = Label()
         result_frame(self, self.lower_frame)
