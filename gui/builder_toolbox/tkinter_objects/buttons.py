@@ -25,7 +25,7 @@ def btn_select_directory(self, location):
 def btn_select_directory_function(self):
     self.dir_label['text'] = ""
     self.dir_selected = filedialog.askdirectory()
-    dir_label(self, self.result_frame, self.dir_selected + "/")
+    dir_label(self.result_frame, self.dir_selected + "/")
     preprocess(self)
 
 
@@ -56,7 +56,7 @@ def preview_function(self):
         text = get_page_text(self, selected_result_file)
     self.preview_window = Toplevel(bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
     self.preview_window.title(get_config("txt_preview") + ": " + self.result_text.get(ANCHOR))
-    preview_window_label(self, self.preview_window, text)
+    preview_window_label(self.preview_window, text)
     btn_preview_exit(self, self.preview_window)
 
 
@@ -73,18 +73,9 @@ def settings_function(self):
     col_txt = get_config("col_acc_bgcontrast")
     self.window_settings = Toplevel(bg=col_bg, bd=get_config("global_padding"))
     self.window_settings.title(get_config("txt_settingsheader"))
-    label_settings(self, self.window_settings, col_bg, col_txt)
+    label_settings(self.window_settings, col_bg, col_txt)
     # only works this way, no idea why...
     gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings, col_bg, col_txt)
     gui.builder_toolbox.tkinter_objects.frames.frame_stopword(self, self.window_settings, col_bg, col_txt)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_lang(self, self.window_settings, col_bg, col_txt)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_colors(self, self.window_settings, col_bg, col_txt)
-#     btn_exitsettings(self, self.window_settings)
-#
-#
-# def btn_exitsettings(self, location):
-#     default_btn(location, get_config("txt_okay"), lambda: btn_exitsettings_function(self), BOTTOM, S)
-#
-#
-# def btn_exitsettings_function(self):
-#     self.window_settings.destroy()

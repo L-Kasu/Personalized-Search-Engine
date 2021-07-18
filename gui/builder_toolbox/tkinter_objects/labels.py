@@ -26,14 +26,14 @@ def default_label(location,
                  expand=expand)
 
 
-def result_label(self, location):
+def result_label(location):
     default_label(location,
                   get_config("txt_resultitems"),
                   side=TOP,
                   expand=False)
 
 
-def dir_label(self, location, text):
+def dir_label(location, text):
     default_label(location,
                   text,
                   font=get_config("font_header_2"),
@@ -41,7 +41,7 @@ def dir_label(self, location, text):
                   expand=False)
 
 
-def language_label(self, location, col_bg, col_txt):
+def language_label(location, col_bg, col_txt):
     default_label(location,
                   get_config("txt_language"),
                   font=get_config("font_header_2"),
@@ -51,7 +51,7 @@ def language_label(self, location, col_bg, col_txt):
                   expand=False)
 
 
-def color_label(self, location, col_bg, col_txt):
+def color_label(location, col_bg, col_txt):
     default_label(location,
                   get_config("txt_colortheme"),
                   font=get_config("font_header_2"),
@@ -61,7 +61,7 @@ def color_label(self, location, col_bg, col_txt):
                   expand=False)
 
 
-def preview_window_label(self, location, text):
+def preview_window_label(location, text):
     text = textwrap.fill(text, width=get_config("prev_window_size"))
     default_label(location,
                   text,
@@ -71,7 +71,7 @@ def preview_window_label(self, location, text):
                   expand=False)
 
 
-def label_stemmer(self, location, col_bg, col_txt):
+def label_stemmer(location, col_bg, col_txt):
     default_label(location,
                   get_config("txt_selectStemmer"),
                   font=get_config("font_header_2"),
@@ -80,7 +80,7 @@ def label_stemmer(self, location, col_bg, col_txt):
                   side=TOP)
 
 
-def label_stopword(self, location, col_bg, col_txt):
+def label_stopword(location, col_bg, col_txt):
     default_label(location,
                   get_config("txt_toggleStopword"),
                   font=get_config("font_header_2"),
@@ -89,7 +89,7 @@ def label_stopword(self, location, col_bg, col_txt):
                   side=TOP)
 
 
-def label_settings(self, location, col_bg, col_txt):
+def label_settings(location, col_bg, col_txt):
     default_label(location,
                   get_config("txt_settingsheader"),
                   bg=col_bg,
