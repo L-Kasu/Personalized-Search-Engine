@@ -28,24 +28,22 @@ def default_radiobtn(location,
 
 
 def radiobtns_stemmer(self, location, col_bg, col_txt):
-    self.radiobtns_stemmer = [
-        default_radiobtn(location,
-                         stemmer.upper(),
-                         self.selected_stemmer,
-                         stemmer,
-                         lambda: edit_config({"stemmer": self.selected_stemmer.get()}),
-                         col_bg,
-                         col_txt)
-        for stemmer in ["porter", "lancaster", "snowball"]]
+    [default_radiobtn(location,
+                      stemmer.upper(),
+                      self.selected_stemmer,
+                      stemmer,
+                      lambda: edit_config({"stemmer": self.selected_stemmer.get()}),
+                      col_bg,
+                      col_txt)
+     for stemmer in ["porter", "lancaster", "snowball"]]
 
 
 def radiobtns_stopword(self, location, col_bg, col_txt):
-    self.radiobtns_stopword = [
-        default_radiobtn(location,
-                         state,
-                         self.remove_stopwords,
-                         state == "on",
-                         lambda: edit_config({"stop_word": self.remove_stopwords.get()}),
-                         col_bg,
-                         col_txt)
-        for state in ["on", "off"]]
+    [default_radiobtn(location,
+                      state,
+                      self.remove_stopwords,
+                      state == "on",
+                      lambda: edit_config({"stop_word": self.remove_stopwords.get()}),
+                      col_bg,
+                      col_txt)
+     for state in ["on", "off"]]

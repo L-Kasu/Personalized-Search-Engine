@@ -57,7 +57,6 @@ class Application(Frame):
         self.result_frame = Frame()
         self.result_text = Listbox()
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
-        self.preview_window_label = Label()
         result_frame(self, self.lower_frame)
 
         self.pack()
