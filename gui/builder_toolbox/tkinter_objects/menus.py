@@ -25,11 +25,12 @@ def default_optionmenu(location,
     optionsmenu.config(relief=get_config("relief_btn"),
                        font=get_config("font_header_2"),
                        bg=get_config("col_btn_idle"),
-                       fg=get_config("col_acc_minor"),
+                       fg=get_config("col_acc_btncontrast"),
                        activebackground=get_config("col_btn_active"),
-                       activeforeground=get_config("col_acc_minor"),
+                       activeforeground=get_config("col_acc_btncontrast"),
                        highlightthickness=0,
-                       borderwidth=[0 if get_config("relief_btn") == "flat" else 2]
+                       borderwidth=[0 if get_config("relief_btn") == "flat" else 2],
+                       indicatoron=0
                        )
     return optionsmenu.pack(side=side, anchor=anchor)
 

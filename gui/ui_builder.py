@@ -8,6 +8,7 @@ class Application(Frame):
         super().__init__(master)
         self.master = master
         self.dir_selected = ""
+        self.dir_label = Label()
         self.result = list()
         self.tf_object = clustering.Clustering(["dummyDoc"], ["dummyTitle"])
         self.remove_stopwords = BooleanVar()

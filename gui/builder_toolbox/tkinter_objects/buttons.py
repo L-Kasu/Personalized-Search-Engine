@@ -10,9 +10,9 @@ def default_btn(location, text, function, side=LEFT, anchor=CENTER):
                   command=function,
                   font=get_config("font_header_2"),
                   bg=get_config("col_btn_idle"),
-                  fg=get_config("col_acc_minor"),
+                  fg=get_config("col_acc_btncontrast"),
                   activebackground=get_config("col_btn_active"),
-                  activeforeground=get_config("col_acc_minor"),
+                  activeforeground=get_config("col_acc_btncontrast"),
                   relief=get_config("relief_btn"),
                   borderwidth=[0 if get_config("relief_btn") == "flat" else 2]
                   ).pack(side=side, anchor=anchor)
@@ -57,11 +57,6 @@ def preview_function(self):
     self.preview_window = Toplevel(bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
     self.preview_window.title(get_config("txt_preview") + ": " + self.result_text.get(ANCHOR))
     preview_window_label(self.preview_window, text)
-    btn_preview_exit(self, self.preview_window)
-
-
-def btn_preview_exit(self, location):
-    default_btn(location, get_config("txt_exitpreview"), self.preview_window.destroy, BOTTOM)
 
 
 def btn_settings(self, location):
