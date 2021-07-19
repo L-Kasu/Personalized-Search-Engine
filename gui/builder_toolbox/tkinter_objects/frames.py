@@ -1,4 +1,3 @@
-from tkinter import Frame
 from gui.builder_toolbox.tkinter_objects.entries import *
 from gui.builder_toolbox.tkinter_objects.listboxes import *
 from gui.builder_toolbox.tkinter_objects.buttons import *

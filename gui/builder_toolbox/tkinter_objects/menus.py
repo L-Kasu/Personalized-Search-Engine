@@ -10,8 +10,7 @@ def default_optionmenu(location,
                        function,
                        file,
                        path=default_path,
-                       side=LEFT,
-                       anchor=NE):
+                       ):
     clicked = StringVar()
     options = list()
     for key in get_configdict(path, file):
@@ -32,7 +31,7 @@ def default_optionmenu(location,
                        borderwidth=[0 if get_config("relief_btn") == "flat" else 2],
                        indicatoron=0
                        )
-    return optionsmenu.pack(side=side, anchor=anchor)
+    return optionsmenu
 
 
 def menu_languages(self,
@@ -43,7 +42,8 @@ def menu_languages(self,
                                              "ID_lang",
                                              lambda x: set_language(self, x),
                                              file,
-                                             path)
+                                             path
+                                             ).pack(side=LEFT, anchor=NE)
 
 
 def menu_styles(self,
@@ -54,4 +54,5 @@ def menu_styles(self,
                                           "ID_colors",
                                           lambda x: set_colors(self, x),
                                           file,
-                                          path)
+                                          path
+                                          ).pack(side=LEFT, anchor=NE)

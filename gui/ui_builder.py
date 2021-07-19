@@ -7,6 +7,7 @@ class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
+        # WindowCleaner(self.master)
         self.dir_selected = ""
         self.dir_label = Label()
         self.result = list()
