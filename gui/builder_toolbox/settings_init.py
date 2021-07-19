@@ -8,8 +8,8 @@ def init_config(path=default_path,
                 colorsfile=colorsconfigfile):
     init_langfile(langfile, path)
     init_colorsfile(colorsfile, path)
-    config = {"master_height": "500",
-              "master_width": "800",
+    config = {"master_height": 500,
+              "master_width": 800,
               "prev_window_size": 100,
               "preview_size": 500,
               "tooltip_window_size": 50,

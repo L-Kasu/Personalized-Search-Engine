@@ -6,21 +6,28 @@ from gui.builder_toolbox.windowcleaner import WindowCleaner
 
 
 def default_btn(location, text, function):
-    return Button(location,
-                  text=text,
-                  command=function,
-                  font=get_config("font_header_2"),
-                  bg=get_config("col_btn_idle"),
-                  fg=get_config("col_acc_btncontrast"),
-                  activebackground=get_config("col_btn_active"),
-                  activeforeground=get_config("col_acc_btncontrast"),
-                  relief=get_config("relief_btn"),
-                  borderwidth=[0 if get_config("relief_btn") == "flat" else 2]
-                  )
+    button = Button(location,
+                    text=text,
+                    command=function,
+                    font=get_config("font_header_2"),
+                    bg=get_config("col_btn_idle"),
+                    fg=get_config("col_acc_btncontrast"),
+                    bd=get_config("global_padding"),
+                    activebackground=get_config("col_btn_active"),
+                    activeforeground=get_config("col_acc_btncontrast"),
+                    relief=get_config("relief_btn"),
+                    borderwidth=[0 if get_config("relief_btn") == "flat" else 2]
+                    )
+    button.bind("<Enter>", lambda e: button.config(bg=get_config("col_btn_active")))
+    button.bind("<Leave>", lambda e: button.config(bg=get_config("col_btn_idle")))
+    return button
 
 
 def btn_select_directory(self, location):
-    default_btn(location, get_config("txt_selectdir"), lambda: btn_select_directory_function(self)).pack(side=LEFT, anchor=CENTER)
+    default_btn(location,
+                get_config("txt_selectdir"),
+                lambda: btn_select_directory_function(self)
+                ).pack(side=LEFT)
 
 
 def btn_select_directory_function(self):
@@ -31,11 +38,17 @@ def btn_select_directory_function(self):
 
 
 def btn_entry_search(self, location):
-    default_btn(location, get_config("txt_entrysearch"), lambda: search(self, self.search_entry.get())).pack(side=LEFT, anchor=CENTER)
+    default_btn(location,
+                get_config("txt_entrysearch"),
+                lambda: search(self, self.search_entry.get())
+                ).pack(side=LEFT, anchor=CENTER)
 
 
 def btn_entry_delete(self, location):
-    default_btn(location, get_config("txt_entryclear"), lambda: btn_entry_delete_function(self)).pack(side=LEFT, anchor=CENTER)
+    default_btn(location,
+                get_config("txt_entryclear"),
+                lambda: btn_entry_delete_function(self)
+                ).pack(side=RIGHT, anchor=CENTER)
 
 
 def btn_entry_delete_function(self):
@@ -62,7 +75,7 @@ def preview_function(self):
 
 
 def btn_settings(self, location):
-    default_btn(location, get_config("txt_settingsheader"), lambda: settings_function(self)).pack(side=LEFT, anchor=CENTER)
+    default_btn(location, get_config("txt_settingsheader"), lambda: settings_function(self)).pack(side=TOP, anchor=NW)
 
 
 def settings_function(self):
