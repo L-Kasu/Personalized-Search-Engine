@@ -70,7 +70,7 @@ def preview_function(self):
         text = get_page_text(self, selected_result_file)
     self.preview_window = Toplevel(bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
     self.preview_window.title(get_config("txt_preview") + ": " + self.result_text.get(ANCHOR))
-    WindowCleaner(self.preview_window)
+    # WindowCleaner(self.preview_window)
     preview_window_label(self.preview_window, text)
 
 
@@ -83,7 +83,7 @@ def settings_function(self):
     col_txt = get_config("col_acc_bgcontrast")
     self.window_settings = Toplevel(bg=col_bg, bd=get_config("global_padding"), relief=get_config("relief_frames"))
     self.window_settings.title(get_config("txt_settingsheader"))
-    WindowCleaner(self.window_settings)
+    # WindowCleaner(self.window_settings)
     label_settings(self.window_settings, col_bg, col_txt)
     # only works this way, no idea why...
     gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings, col_bg, col_txt)

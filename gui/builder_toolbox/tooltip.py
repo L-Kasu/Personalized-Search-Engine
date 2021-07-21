@@ -21,6 +21,7 @@ class AddTooltip(object):
         self.tooltipwindow.wm_geometry("+%d+%d" % (x, y))
         label = Label(self.tooltipwindow,
                       text=self.text,
+                      justify=LEFT,
                       bg=get_config("col_bg_lgt"),
                       fg=get_config("col_acc_minor"),
                       bd=get_config("global_padding"),
