@@ -7,27 +7,27 @@ from search import tf
 import numpy as np
 from search.tf import tfidf
 import scipy.sparse.csr as csr
+from search.preprocessing_parameter import get_stems, get_stopword_value
 
 # sensitivity of the elbow finder
 default_sensitivity = 1.0
 # max number of k to be considered for the k-means algorithm
 
 
-class Clustering(tfidf):
-    def __init__(self, corpus: list, titles: list):
-        super().__init__(corpus, titles)
+class Clustering():
+    def __init__(self, matrix: csr):
         self.KMAX = max(round(self.tfidf_mat.shape[0]/50), 1)
-        self.clustering = self.__kmeans(self.__find_optimal_k(self.KMAX))
+        self.optimal_k = self.__find_optimal_k(self.KMAX)
+        self.clustering = self.__kmeans(self.optimal_k)
 
     def __find_optimal_k(self, kmax, sensitivity=default_sensitivity):
-        points = self.tfidf_mat
+        points = self.matrix
         a = np.unique(points)[0].shape[0]
-        b = len(self.titles)
-        kmax = min(kmax, b, a)
+        kmax = min(kmax, a)
         if kmax == 1:
             return 1
         sse = []
-        k_list = range(1, min(kmax, len(self.titles)) + 1)
+        k_list = range(1, min(kmax, len(points.shape[0])) + 1)
         for k in k_list:
             kmeans = KMeans(n_clusters=k).fit(points)
             centroids = kmeans.cluster_centers_
@@ -56,41 +56,40 @@ class Clustering(tfidf):
         return optimal_k
 
     def __kmeans(self, k):
-        clustering = KMeans(n_clusters=k).fit(self.tfidf_mat)
+        clustering = KMeans(n_clusters=k).fit(self.matrix)
         return clustering
 
-    def get_cluster_of_vector(self, vec):
+    # returns the index of the cluster
+    def predict_the_cluster_of_vector(self, vec) -> int:
         result = self.clustering.predict(vec)
         if vec.shape[0] == 1:
             result = int(result)
         return result
 
+    # returns a 3_tuple of:
+    # - index_to_keep: indices of vectors in the original matrix that belong to Cluster Nr. k
+    # - index_to_drop: indices of the vectors in the original matrix that belong to a different cluster
+    # - vecs: Matrix containing all the vectors of cluster Nr. k.
+    # Use index_to_keep to map vecs back on to the original matrix.
     def get_cluster_of_index(self, k):
-        titles = []
-        corpus = []
-        vecs = []
         index_to_keep = [] # list of indeces to keep
         index_to_drop = []
-        original_indices = []
         clustering_labels = self.clustering.labels_
         for i in range(0, len(clustering_labels)):
-            original_indices.append(i)
             if clustering_labels[i] == k:
-                index_to_keep.append(i)
-                titles.append(self.titles[i])
-                corpus.append(self.corpus[i])
                 index_to_keep.append(i)
             else:
                 index_to_drop.append(i)
-        vecs = self.tfidf_mat[index_to_keep,:]
-        return (corpus, titles, original_indices, index_to_drop, vecs)
+        vecs = self.matrix[index_to_keep,:]
+        return (index_to_keep, index_to_drop, vecs)
 
+'''
     # predict cluster of query and search in the corresponding cluster, return indices of documents soreted by relevance
     def search(self, query, with_clustering=True):
         query_vec = self.tfidfVectorizer.transform([query])
         vecs = self.tfidf_mat
         if with_clustering:
-            cluster_index = self.get_cluster_of_vector(query_vec)
+            cluster_index = self.predict_the_cluster_of_vector(query_vec)
             start = timeit.default_timer()
             corpus, titles, original_indices, index_to_drop, vecs = self.get_cluster_of_index(cluster_index)
             stop = timeit.default_timer()
@@ -118,7 +117,7 @@ class Clustering(tfidf):
             only_indicies.append(result_list[i][0])
 
         return only_indicies
-
+'''
 
 
 
