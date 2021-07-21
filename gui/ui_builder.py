@@ -1,6 +1,7 @@
 from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.menus import *
+import tkinter
 
 
 class Application(Frame):
@@ -8,6 +9,7 @@ class Application(Frame):
         super().__init__(master)
         self.master = master
         self.dir_selected = ""
+        self.dir_label = Label()
         self.result = list()
         self.tf_object = clustering.Clustering(["dummyDoc"], ["dummyTitle"])
         self.remove_stopwords = BooleanVar()

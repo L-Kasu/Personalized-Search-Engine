@@ -1,3 +1,5 @@
+import timeit
+
 from sklearn.cluster import KMeans
 from kneed import KneeLocator
 
@@ -7,18 +9,17 @@ from search.tf import tfidf
 import scipy.sparse.csr as csr
 
 # sensitivity of the elbow finder
-sensitivity = 1.0
+default_sensitivity = 1.0
 # max number of k to be considered for the k-means algorithm
-KMAX = 30
 
 
 class Clustering(tfidf):
     def __init__(self, corpus: list, titles: list):
         super().__init__(corpus, titles)
-        self.KMAX = KMAX
+        self.KMAX = max(round(self.tfidf_mat.shape[0]/50), 1)
         self.clustering = self.__kmeans(self.__find_optimal_k(self.KMAX))
 
-    def __find_optimal_k(self, kmax):
+    def __find_optimal_k(self, kmax, sensitivity=default_sensitivity):
         points = self.tfidf_mat
         a = np.unique(points)[0].shape[0]
         b = len(self.titles)
@@ -45,12 +46,13 @@ class Clustering(tfidf):
         elbow_graph = KneeLocator(k_list, sse, S=sensitivity, curve="convex", direction="decreasing")
 
         optimal_k = elbow_graph.elbow
-        print(sse)
-        print("we use: " + str(optimal_k) + "clusters")
         if not optimal_k:
-            optimal_k = 1
+            optimal_k = self.__find_optimal_k(self.KMAX, senitivity=sensitivity/2)
+        if optimal_k == 1:
+            optimal_k = self.__find_optimal_k(self.KMAX, sensitivity=sensitivity + 1)
 
         # TODO: make plotting work
+        print("we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))
         return optimal_k
 
     def __kmeans(self, k):
@@ -70,12 +72,13 @@ class Clustering(tfidf):
         index_to_keep = [] # list of indeces to keep
         index_to_drop = []
         original_indices = []
-        for i in range(0, self.tfidf_mat.shape[0]):
-            vec = self.tfidf_mat[i]
-            if self.get_cluster_of_vector(vec) == k:
+        clustering_labels = self.clustering.labels_
+        for i in range(0, len(clustering_labels)):
+            original_indices.append(i)
+            if clustering_labels[i] == k:
+                index_to_keep.append(i)
                 titles.append(self.titles[i])
                 corpus.append(self.corpus[i])
-                original_indices.append(i)
                 index_to_keep.append(i)
             else:
                 index_to_drop.append(i)
@@ -88,8 +91,10 @@ class Clustering(tfidf):
         vecs = self.tfidf_mat
         if with_clustering:
             cluster_index = self.get_cluster_of_vector(query_vec)
+            start = timeit.default_timer()
             corpus, titles, original_indices, index_to_drop, vecs = self.get_cluster_of_index(cluster_index)
-            query_vec = self.tfidfVectorizer.transform([query])
+            stop = timeit.default_timer()
+            print("uff:", stop - start)
 
         # matrix multiplicatin to calculate cosine similarity
         cos_sim = tf.cos_sim_func(query_vec, vecs)
@@ -99,12 +104,16 @@ class Clustering(tfidf):
 
         for i in range(cos_sim.shape[0]):
             # map index of vector to index in the original matrix
-            k = original_indices[i]
+            if with_clustering:
+                k = original_indices[i]
+            else:
+                k = i
             result_list.append((k, cos_sim[i, 0]))
         # sorts from large to small based on cos-sim value
         result_list.sort(key=lambda x: x[1], reverse=True)
 
         only_indicies = []
+
         for i in range(len(result_list)):
             only_indicies.append(result_list[i][0])
 

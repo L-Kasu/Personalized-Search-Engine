@@ -46,7 +46,14 @@ def search(self, query):
     self.result_text.delete(0, self.result_text.size())
     tf_obj = self.tf_object
     result = []
+    start = timeit.default_timer()
     doc_indices = tf_obj.search(query)
+    stop = timeit.default_timer()
+    print("with clustering: ", stop - start)
+    start = timeit.default_timer()
+    doc_indices = tf_obj.search(query, with_clustering=False)
+    stop = timeit.default_timer()
+    print("normal tf search ", stop - start)
     docs_to_return = 10
     for index in doc_indices:
         result.append(tf_obj.titles[index])
@@ -73,7 +80,7 @@ def preprocess(self):
                     titles.append(page_title)
                     corpus_list.append(page)
         stop = timeit.default_timer()
-        print("reading in files took: ", str(stop - start))
+        print("reading in files took: ", str(stop - start), " for ", len(titles), " pages ")
         # TODO: implement saving to databases
         if titles and corpus_list:
             start = timeit.default_timer()
