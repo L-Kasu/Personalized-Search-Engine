@@ -10,27 +10,26 @@ def default_label(location,
                   bg=get_config("col_bg_lgt"),
                   fg=get_config("col_acc_major"),
                   bd=get_config("global_padding"),
-                  side=LEFT,
-                  fill=X,
-                  expand=True):
-    Label(location,
-          text=text,
-          font=font,
-          bg=bg,
-          fg=fg,
-          bd=bd,
-          borderwidth=0,
-          highlightthickness=0
-          ).pack(side=side,
-                 fill=fill,
-                 expand=expand)
+                  justify=None,
+                  ):
+    return Label(location,
+                 text=text,
+                 font=font,
+                 bg=bg,
+                 fg=fg,
+                 bd=bd,
+                 borderwidth=0,
+                 highlightthickness=0,
+                 justify=justify
+                 )
 
 
 def result_label(location):
     default_label(location,
                   get_config("txt_resultitems"),
-                  side=TOP,
-                  expand=False)
+                  ).pack(side=TOP,
+                         fill=X,
+                         expand=False)
 
 
 def dir_label(location, text):
@@ -38,7 +37,9 @@ def dir_label(location, text):
                   text,
                   font=get_config("font_header_2"),
                   fg=get_config("col_acc_minor"),
-                  expand=False)
+                  ).pack(side=LEFT,
+                         fill=X,
+                         expand=False)
 
 
 def language_label(location, col_bg, col_txt):
@@ -47,8 +48,9 @@ def language_label(location, col_bg, col_txt):
                   font=get_config("font_header_2"),
                   bg=col_bg,
                   fg=col_txt,
-                  fill=None,
-                  expand=False)
+                  ).pack(side=LEFT,
+                         fill=None,
+                         expand=False)
 
 
 def color_label(location, col_bg, col_txt):
@@ -57,8 +59,20 @@ def color_label(location, col_bg, col_txt):
                   font=get_config("font_header_2"),
                   bg=col_bg,
                   fg=col_txt,
-                  fill=None,
-                  expand=False)
+                  ).pack(side=LEFT,
+                         fill=None,
+                         expand=False)
+
+
+def label_menu_snowballstemmer_language(location, col_bg, col_txt):
+    default_label(location,
+                  get_config("txt_selectsnowballlang"),
+                  font=get_config("font_header_2"),
+                  bg=col_bg,
+                  fg=col_txt,
+                  ).pack(side=LEFT,
+                         fill=None,
+                         expand=False)
 
 
 def preview_window_label(location, text):
@@ -67,8 +81,10 @@ def preview_window_label(location, text):
                   text,
                   font=get_config("font_returntext"),
                   fg=get_config("col_acc_minor"),
-                  fill=None,
-                  expand=False)
+                  justify=LEFT,
+                  ).pack(side=LEFT,
+                         fill=None,
+                         expand=False)
 
 
 def label_stemmer(location, col_bg, col_txt):
@@ -77,7 +93,9 @@ def label_stemmer(location, col_bg, col_txt):
                   font=get_config("font_header_2"),
                   bg=col_bg,
                   fg=col_txt,
-                  side=TOP)
+                  ).pack(side=TOP,
+                         fill=X,
+                         expand=True)
 
 
 def label_stopword(location, col_bg, col_txt):
@@ -86,7 +104,20 @@ def label_stopword(location, col_bg, col_txt):
                   font=get_config("font_header_2"),
                   bg=col_bg,
                   fg=col_txt,
-                  side=TOP)
+                  ).pack(side=TOP,
+                         fill=X,
+                         expand=True)
+
+
+def label_embedding(location, col_bg, col_txt):
+    default_label(location,
+                  get_config("txt_selectembedding"),
+                  font=get_config("font_header_2"),
+                  bg=col_bg,
+                  fg=col_txt,
+                  ).pack(side=TOP,
+                         fill=X,
+                         expand=True)
 
 
 def label_settings(location, col_bg, col_txt):
@@ -94,4 +125,6 @@ def label_settings(location, col_bg, col_txt):
                   get_config("txt_settingsheader"),
                   bg=col_bg,
                   fg=col_txt,
-                  side=TOP)
+                  ).pack(side=TOP,
+                         fill=X,
+                         expand=True)
