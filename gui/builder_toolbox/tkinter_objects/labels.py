@@ -64,6 +64,17 @@ def color_label(location, col_bg, col_txt):
                          expand=False)
 
 
+def label_menu_snowballstemmer_language(location, col_bg, col_txt):
+    default_label(location,
+                  get_config("txt_selectsnowballlang"),
+                  font=get_config("font_header_2"),
+                  bg=col_bg,
+                  fg=col_txt,
+                  ).pack(side=LEFT,
+                         fill=None,
+                         expand=False)
+
+
 def preview_window_label(location, text):
     text = textwrap.fill(text, width=get_config("prev_window_size"))
     default_label(location,

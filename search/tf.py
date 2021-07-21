@@ -35,9 +35,10 @@ class tfidf:
 
         # set stemmer
         def tokenize(text):
+            snowball_language = get_config("snowballstemmer_language")
             stemmerdict = {"porter": PorterStemmer(),
                            "lancaster": LancasterStemmer(),
-                           "snowball": snowball.SnowballStemmer(language)}
+                           "snowball": snowball.SnowballStemmer(snowball_language)}
             stemmer = stemmerdict[get_config("stemmer")]
             tokens = [word for word in nltk.word_tokenize(text) if len(word) > 1]
             stems = [stemmer.stem(item) for item in tokens]

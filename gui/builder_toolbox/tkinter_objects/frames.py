@@ -48,15 +48,26 @@ def frame_stopword(self, location, col_bg, col_txt):
 
 def frame_menu_lang(self, location, col_bg, col_txt):
     self.frame_menu_lang = Frame(location,
-                                 bg=col_bg)
-    self.frame_menu_lang.pack()
+                                 bg=col_bg,
+                                 bd=get_config("global_padding"))
+    self.frame_menu_lang.pack(anchor=CENTER)
     language_label(self.frame_menu_lang, col_bg, col_txt)
     menu_languages(self, self.frame_menu_lang)
 
 
 def frame_menu_colors(self, location, col_bg, col_txt):
     self.frame_menu_colors = Frame(location,
-                                   bg=col_bg)
-    self.frame_menu_colors.pack()
+                                   bg=col_bg,
+                                   bd=get_config("global_padding"))
+    self.frame_menu_colors.pack(anchor=CENTER)
     color_label(self.frame_menu_colors, col_bg, col_txt)
     menu_styles(self, self.frame_menu_colors)
+
+
+def frame_menu_snowballstemmer_language(self, location, col_bg, col_txt):
+    self.frame_menu_snowballstemmer_language = Frame(location,
+                                                     bg=col_bg,
+                                                     bd=get_config("global_padding"))
+    self.frame_menu_snowballstemmer_language.pack(anchor=CENTER)
+    label_menu_snowballstemmer_language(self.frame_menu_snowballstemmer_language, col_bg, col_txt)
+    menu_snowballstemmer_language(self, self.frame_menu_snowballstemmer_language)

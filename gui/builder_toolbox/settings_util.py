@@ -1,6 +1,6 @@
 import json
 from gui.builder_toolbox.settings_defaultpaths import *
-from restart_application import restart_application
+from gui.restart_application import restart_application
 
 
 def write_config(config, path=default_path, file=masterconfigfile):

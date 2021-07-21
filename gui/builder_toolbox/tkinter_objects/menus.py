@@ -1,6 +1,6 @@
 from tkinter import *
 from gui.builder_toolbox.settings_defaultpaths import *
-from gui.builder_toolbox.settings_util import get_config, get_configdict
+from gui.builder_toolbox.settings_util import get_config, get_configdict, edit_config
 from gui.builder_toolbox.settings_util import set_language
 from gui.builder_toolbox.settings_util import set_colors
 
@@ -43,7 +43,7 @@ def menu_languages(self,
                                              lambda x: set_language(self, x),
                                              file,
                                              path
-                                             ).pack(side=LEFT, anchor=NE)
+                                             ).pack(side=RIGHT)
 
 
 def menu_styles(self,
@@ -55,4 +55,27 @@ def menu_styles(self,
                                           lambda x: set_colors(self, x),
                                           file,
                                           path
-                                          ).pack(side=LEFT, anchor=NE)
+                                          ).pack(side=RIGHT)
+
+
+def menu_snowballstemmer_language(self, location):
+    clicked = StringVar()
+    options = ["arabic", "danish", "dutch", "english", "finnish", "french", "german", "hungarian", "italian", "norwegian", "portuguese", "romanian", "russian", "spanish", "swedish"]
+    clicked.set(get_config("snowballstemmer_language"))
+    self.menu_snowballstemmer_language = OptionMenu(location,
+                                                    clicked,
+                                                    *options,
+                                                    command=lambda x: edit_config({"snowballstemmer_language": x})
+                                                    )
+    self.menu_snowballstemmer_language.config(relief=get_config("relief_btn"),
+                                              font=get_config("font_header_2"),
+                                              bg=get_config("col_btn_idle"),
+                                              fg=get_config("col_acc_btncontrast"),
+                                              activebackground=get_config("col_btn_active"),
+                                              activeforeground=get_config("col_acc_btncontrast"),
+                                              highlightthickness=0,
+                                              borderwidth=[0 if get_config("relief_btn") == "flat" else 2],
+                                              indicatoron=0,
+                                              state=self.snowballstate
+                                              )
+    self.menu_snowballstemmer_language.pack(side=RIGHT)

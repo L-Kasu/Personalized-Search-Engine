@@ -16,6 +16,7 @@ class Application(Frame):
         self.remove_stopwords.set(get_config("stop_word"))
         self.selected_stemmer = StringVar()
         self.selected_stemmer.set(get_config("stemmer"))
+        self.snowballstate = [ACTIVE if get_config("issnowball") else DISABLED]
         self.master.geometry(str(get_config("master_width")) + "x" + str(get_config("master_height")))
         self.master.title(get_config("txt_mastertitle"))
         self.master.config(relief=get_config("relief_frames"),
@@ -26,8 +27,10 @@ class Application(Frame):
         self.frame_stopword = Frame()
         self.frame_menu_lang = Frame()
         self.frame_menu_colors = Frame()
+        self.frame_menu_snowballstemmer_language = Frame()
         self.menu_languages = None
         self.menu_styles = None
+        self.menu_snowballstemmer_language = None
         btn_settings(self, self.master)
 
         self.entry_frame = Frame()
