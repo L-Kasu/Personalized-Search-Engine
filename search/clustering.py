@@ -3,6 +3,8 @@ from kneed import KneeLocator
 
 from search import tf
 import numpy as np
+
+from search.preprocessing_parameter import get_stems, get_stopword_value
 from search.tf import tfidf
 import scipy.sparse.csr as csr
 
@@ -13,8 +15,8 @@ KMAX = 20
 
 
 class Clustering(tfidf):
-    def __init__(self, corpus: list, titles: list):
-        super().__init__(corpus, titles)
+    def __init__(self, corpus: list, titles: list, tokenize=get_stems, swv=get_stopword_value()):
+        super().__init__(corpus, titles, tokenize, swv)
         self.KMAX = KMAX
         self.clustering = self.__kmeans(self.__find_optimal_k(self.KMAX))
 
