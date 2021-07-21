@@ -14,9 +14,10 @@ default_sensitivity = 1.0
 # max number of k to be considered for the k-means algorithm
 
 
-class Clustering():
+class Clustering:
     def __init__(self, matrix: csr):
-        self.KMAX = max(round(self.tfidf_mat.shape[0]/50), 1)
+        self.matrix = matrix
+        self.KMAX = max(round(self.matrix.shape[0]/50), 1)
         self.optimal_k = self.__find_optimal_k(self.KMAX)
         self.clustering = self.__kmeans(self.optimal_k)
 
