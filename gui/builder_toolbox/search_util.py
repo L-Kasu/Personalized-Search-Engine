@@ -7,6 +7,7 @@ from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 from gui.builder_toolbox.settings_util import get_config
 from search import clustering
+from search.preprocessing_parameter import get_stems, get_stopword_value
 
 '''    for page_number, page in enumerate(PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
                                                          password=password,
@@ -71,7 +72,14 @@ def preprocess(self):
                     corpus_list.append(page)
         # TODO: implement saving to databases
         if titles and corpus_list:
-            self.tf_object = clustering.Clustering(corpus_list, titles)
+            self.tf_object = clustering.Clustering(corpus_list,
+                                                   titles,
+                                                   lambda x: get_stems(x,
+                                                                       get_config("snowballstemmer_language"),
+                                                                       get_config("stemmer")),
+                                                   get_stopword_value(get_config("stop_word"),
+                                                                      get_config("ID_lang"))
+                                                   )
         break
 
 
