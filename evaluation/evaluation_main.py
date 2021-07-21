@@ -6,8 +6,11 @@ def run_evaluation(query_dicts: list, doc_dicts: list, rel_dict: dict, tf_search
     name = algo + "_evaluation"
     if algo == "tf_idf":
         search_results = ev.get_results_for_evaluation_tf_idf(query_dicts, tf_search)
-    elif algo == "clustering":
-        search_results = ev.get_results_for_evaluation_clustering(doc_dicts, query_dicts)
+    elif algo == "tf_idf_clustering":
+        search_results = ev.get_results_for_evaluation_tf_idf_clustering(doc_dicts, query_dicts)
+        doc_dicts = doc_dicts[1]
+    elif algo == "word-embedding":
+        search_results = ev.get_results_for_word_embedding(doc_dicts, query_dicts)
         doc_dicts = doc_dicts[1]
     else:
         search_results = []

@@ -19,14 +19,19 @@ def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     print("What algorithm do you want to evaluate?")
     print("1: tf_idf")
-    print("2: clustering")
+    print("2: tf_idf with clustering")
+    print("3: word-embedding")
     i = input()
     if i == "1":
         algo = "tf_idf"
         doc_dict = database.load_object("tnwl_pp_" + "CISI.ALL")
         query_dict = file_reader.load_qry()
     elif i == "2":
-        algo = "clustering"
+        algo = "tf_idf_clustering"
+        doc_dict = file_reader.load_all()
+        query_dict = file_reader.load_qry()
+    elif i == "3":
+        algo = "word-embedding"
         doc_dict = file_reader.load_all()
         query_dict = file_reader.load_qry()
     else:
@@ -35,9 +40,41 @@ def main_evaluate():
     evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, algo)
 
 def main_compare():
-    eval_tf = database.load_object("tf_idf_evaluation")
-    evl_and = database.load_object("clustering_evaluation")
-    evaluation_main.run_compare(eval_tf, evl_and, "tf_idf", "clustering")
+    print("Choose the first algorithm")
+    print("1: tf_idf")
+    print("2: tf_idf with clustering")
+    print("3: word-embedding")
+    i = input()
+    if i == "1":
+        eval_1 = database.load_object("tf_idf_evaluation")
+        name1 = "tf_idf"
+    elif i == "2":
+        eval_1 = database.load_object("clustering_evaluation")
+        name1 = "tf_idf_clustering"
+    elif i == "3":
+        eval_1 = database.load_object("word-embedding_evaluation")
+        name1 = "word-embedding"
+    else:
+        exit()
+
+    print("Choose the second algorithm")
+    print("1: tf_idf")
+    print("2: tf_idf with clustering")
+    print("3: word-embedding")
+    i = input()
+    if i == "1":
+        eval_2 = database.load_object("tf_idf_evaluation")
+        name2 = "tf_idf"
+    elif i == "2":
+        eval_2 = database.load_object("clustering_evaluation")
+        name2 = "tf_idf_clustering"
+    elif i == "3":
+        eval_2 = database.load_object("word-embedding_evaluation")
+        name2 = "word-embedding"
+    else:
+        exit()
+
+    evaluation_main.run_compare(eval_1, eval_2, name1, name2)
 
 
 def main():
@@ -46,7 +83,7 @@ def main():
     print("----------------------\n")
     print("\nDo you want to:")
     print("1: evaluate the search engine")
-    print("2: compare tf_idf and clustering")
+    print("2: compare two systems")
     i = input()
     if i == "1":
         main_evaluate()

@@ -2,6 +2,7 @@ from _ctypes_test import func
 from sklearn import metrics
 import numpy
 from numpy import  ndarray
+from search import word_embedding_search as we
 
 
 # gets the results of querrys for the evalutation
@@ -30,7 +31,7 @@ def get_results_for_evaluation_and_search(query_dicts: list, matrix) -> dict:
     return searched
 
 
-def get_results_for_evaluation_clustering(doc_dicts, query_dicts: list) -> dict:
+def get_results_for_evaluation_tf_idf_clustering(doc_dicts, query_dicts: list) -> dict:
     searched = {}
     corpus_list = doc_dicts[2]
     titles_list = doc_dicts[1]
@@ -39,6 +40,19 @@ def get_results_for_evaluation_clustering(doc_dicts, query_dicts: list) -> dict:
         print(i)
         query = query_dicts[i]
         searched[i] = tf_obj.search(query)[:10]
+    return searched
+
+
+def get_results_for_word_embedding(doc_dicts, query_dicts: list) -> dict:
+    searched = {}
+    corpus = doc_dicts[2]
+    titles = doc_dicts[1]
+    glove_50d = we.load_glove_model("glove.6B.50d.txt")
+    glove_50d_search = we.WordEmbeddingSearch(glove_50d, corpus, titles)
+    for i in range(0, len(query_dicts)):
+        print(i)
+        query = query_dicts[i]
+        searched[i] = glove_50d_search.doc_indicies(query)[:10]
     return searched
 
 
