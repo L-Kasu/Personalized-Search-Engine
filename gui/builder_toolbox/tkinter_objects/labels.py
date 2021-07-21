@@ -109,9 +109,9 @@ def label_stopword(location, col_bg, col_txt):
                          expand=True)
 
 
-def label_encoding(location, col_bg, col_txt):
+def label_embedding(location, col_bg, col_txt):
     default_label(location,
-                  get_config("txt_selectEncoding"),
+                  get_config("txt_selectembedding"),
                   font=get_config("font_header_2"),
                   bg=col_bg,
                   fg=col_txt,

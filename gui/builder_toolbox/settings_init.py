@@ -20,7 +20,7 @@ def init_config(path=default_path,
               "issnowball": False,
               "snowballstemmer_language": "english",
               "stop_word": True,
-              "encoding": "GloVe"}
+              "embedding": "GloVe"}
     write_config(config, path, masterfile)
 
 
@@ -173,7 +173,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                               "txt_colortheme": "Theme: ",
                               "txt_selectStemmer": "Select Stemmer",
                               "txt_toggleStopword": "Stop Word Removal",
-                              "txt_selectEncoding": "Encoding Mode",
+                              "txt_selectembedding": "embedding Mode",
                               "txt_selectsnowballlang": "Language (Snowball Stemmer): ",
                               "txt_on": "on",
                               "txt_off": "off",
@@ -197,7 +197,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                              "txt_colortheme": "Design: ",
                              "txt_selectStemmer": "Stemmerauswahl",
                              "txt_toggleStopword": "Stoppwortentfernung",
-                             "txt_selectEncoding": "TODO encoding label",
+                             "txt_selectembedding": "TODO embedding label",
                              "txt_selectsnowballlang": "TODO txt_selectsnowballlang",
                              "txt_on": "an",
                              "txt_off": "aus",
@@ -221,7 +221,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                               "txt_colortheme": "Theme: (to be translated)",
                               "txt_selectStemmer": "Select Stemmer(to be translated)",
                               "txt_toggleStopword": "Stop Word Removal(to be translated)",
-                              "txt_selectEncoding": "TODO encoding label",
+                              "txt_selectembedding": "TODO embedding label",
                               "txt_selectsnowballlang": "TODO txt_selectsnowballlang",
                               "txt_on": "on(to be translated)",
                               "txt_off": "off(to be translated)",
@@ -245,7 +245,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                              "txt_colortheme": "التّصميم",
                              "txt_selectStemmer": "اخْتِيَار الStemmer",
                              "txt_toggleStopword": "إِزالَة الStop Words",
-                             "txt_selectEncoding": "TODO encoding label",
+                             "txt_selectembedding": "TODO embedding label",
                              "txt_selectsnowballlang": "TODO txt_selectsnowballlang",
                              "txt_on": "نَعَم",
                              "txt_off": "لا",

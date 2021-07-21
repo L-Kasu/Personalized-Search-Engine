@@ -16,8 +16,8 @@ class Application(Frame):
         self.remove_stopwords.set(get_config("stop_word"))
         self.selected_stemmer = StringVar()
         self.selected_stemmer.set(get_config("stemmer"))
-        self.encoding_mode = StringVar()
-        self.encoding_mode.set(get_config("encoding"))
+        self.embedding_mode = StringVar()
+        self.embedding_mode.set(get_config("embedding"))
         self.snowballstate = [ACTIVE if get_config("issnowball") else DISABLED]
         self.master.geometry(str(get_config("master_width")) + "x" + str(get_config("master_height")))
         self.master.title(get_config("txt_mastertitle"))
