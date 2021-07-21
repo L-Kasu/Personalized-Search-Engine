@@ -9,7 +9,7 @@ import scipy.sparse.csr as csr
 # sensitivity of the elbow finder
 sensitivity = 1.0
 # max number of k to be considered for the k-means algorithm
-KMAX = 20
+KMAX = 30
 
 
 class Clustering(tfidf):
@@ -83,11 +83,13 @@ class Clustering(tfidf):
         return (corpus, titles, original_indices, index_to_drop, vecs)
 
     # predict cluster of query and search in the corresponding cluster, return indices of documents soreted by relevance
-    def search_in_cluster(self, query):
+    def search(self, query, with_clustering=True):
         query_vec = self.tfidfVectorizer.transform([query])
-        cluster_index = self.get_cluster_of_vector(query_vec)
-        corpus, titles, original_indices, index_to_drop, vecs = self.get_cluster_of_index(cluster_index)
-        query_vec = self.tfidfVectorizer.transform([query])
+        vecs = self.tfidf_mat
+        if with_clustering:
+            cluster_index = self.get_cluster_of_vector(query_vec)
+            corpus, titles, original_indices, index_to_drop, vecs = self.get_cluster_of_index(cluster_index)
+            query_vec = self.tfidfVectorizer.transform([query])
 
         # matrix multiplicatin to calculate cosine similarity
         cos_sim = tf.cos_sim_func(query_vec, vecs)
@@ -99,9 +101,6 @@ class Clustering(tfidf):
             # map index of vector to index in the original matrix
             k = original_indices[i]
             result_list.append((k, cos_sim[i, 0]))
-        for x in index_to_drop:
-            result_list.append((x, -1))
-
         # sorts from large to small based on cos-sim value
         result_list.sort(key=lambda x: x[1], reverse=True)
 
@@ -110,5 +109,8 @@ class Clustering(tfidf):
             only_indicies.append(result_list[i][0])
 
         return only_indicies
+
+
+
 
 

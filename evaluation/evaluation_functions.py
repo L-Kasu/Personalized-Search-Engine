@@ -38,7 +38,7 @@ def get_results_for_evaluation_clustering(doc_dicts, query_dicts: list) -> dict:
     for i in range(0, len(query_dicts)):
         print(i)
         query = query_dicts[i]
-        searched[i] = tf_obj.search_in_cluster(query)[:10]
+        searched[i] = tf_obj.search(query)[:10]
     return searched
 
 

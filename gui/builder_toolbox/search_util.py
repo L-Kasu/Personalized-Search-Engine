@@ -44,7 +44,7 @@ def search(self, query):
     self.result_text.delete(0, self.result_text.size())
     tf_obj = self.tf_object
     result = []
-    doc_indices = tf_obj.search_in_cluster(query)
+    doc_indices = tf_obj.search(query)
     docs_to_return = 10
     for index in doc_indices:
         result.append(tf_obj.titles[index])
