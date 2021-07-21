@@ -1,79 +1,108 @@
 # utilities file for the ui builder
 
 
-import io
 import os
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.converter import TextConverter
-from pdfminer.layout import LAParams
-from pdfminer.pdfpage import PDFPage
+# need pdfminer.six (diffrent from pdfminer)
+from pdfminer.high_level import extract_pages
+from pdfminer.layout import LTTextContainer
+from gui.builder_toolbox.settings_util import get_config
+from search import clustering
+from search import tf
+import timeit
 
-import clustering
-
-
-def convert_pdf_to_txt(path):
-    rsrcmgr = PDFResourceManager()
-    retstr = io.StringIO()
-    codec = 'utf-8'
-    laparams = LAParams()
-    device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
-    fp = open(path, 'rb')
-    interpreter = PDFPageInterpreter(rsrcmgr, device)
-    password = ""
-    maxpages = 0
-    caching = True
-    pagenos = set()
-    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
-                                  password=password,
-                                  caching=caching,
-                                  check_extractable=True):
-        interpreter.process_page(page)
-    fp.close()
-    device.close()
-    text = retstr.getvalue()
-    retstr.close()
-    return text
+'''    for page_number, page in enumerate(PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
+                                                         password=password,
+                                                         caching=caching,
+                                                         check_extractable=True)):'''
 
 
-def any_file_to_str(path):
-    text = ""
+def convert_pdf_to_txt(path) -> list:
+    path_to_pdf = path
+    pages = []
+    for page_layout in extract_pages(path_to_pdf):
+        page_str = ""
+        for element in page_layout:
+            if isinstance(element, LTTextContainer):
+                # print(element.get_text())
+                page_str += element.get_text()
+        pages.append(page_str.replace("\n", " "))
+    return pages
+
+
+def file_to_list_of_string(path):
+    text = []
     if path.endswith("txt"):
         with open(path, "r") as container:
             text = container.read()
+            text = [text]
     elif path.endswith("pdf"):
         text = convert_pdf_to_txt(path)
     else:
-        print("unsupported file format at:" + path)
+        print("unsupported file format at: " + path)
     return text
 
 
 def search(self, query):
     self.result_text.delete(0, self.result_text.size())
     tf_obj = self.tf_object
-    query_vec = tf_obj.tfidfVectorizer.transform([query])
-    cluster_index = tf_obj.get_cluster_of_vector(query_vec)
-    corpus, titles, vecs = tf_obj.get_cluster_of_index(cluster_index)
-    tf_copy = clustering.Clustering(corpus, titles)
-    return_docs_num = 10
-
-    if tf_copy:
-        result = tf_copy.query_k_titles(query, return_docs_num)
+    result = []
+    start = timeit.default_timer()
+    doc_indices = tf_obj.search(query)
+    stop = timeit.default_timer()
+    print("with clustering: ", stop - start)
+    start = timeit.default_timer()
+    doc_indices = tf_obj.search(query, with_clustering=False)
+    stop = timeit.default_timer()
+    print("normal tf search ", stop - start)
+    docs_to_return = 10
+    for index in doc_indices:
+        result.append(tf_obj.titles[index])
+    if result:
+        result = result[:docs_to_return]
         for x in range(0, len(result)):
             self.result_text.insert(x, result[x])
 
 
 def preprocess(self):
+    start = timeit.default_timer()
     corpus_list = []
     titles = []
     for _, _, filenames in os.walk(self.dir_selected):
-        titles = filenames
         dir = os.path.basename(self.dir_selected)
         for filename in filenames:
             path = self.dir_selected + "/" + filename
-            text = any_file_to_str(path)
-            corpus_list.append(text)
+            pages = file_to_list_of_string(path)
+            page_titles = [filename + ", " + get_config("txt_page") + " " + str(i + 1) for i in range(0, len(pages))]
+            for i in range(0, len(pages)):
+                page = pages[i]
+                page_title = page_titles[i]
+                if page:
+                    titles.append(page_title)
+                    corpus_list.append(page)
+        stop = timeit.default_timer()
+        print("reading in files took: ", str(stop - start), " for ", len(titles), " pages ")
         # TODO: implement saving to databases
-
         if titles and corpus_list:
+            start = timeit.default_timer()
             self.tf_object = clustering.Clustering(corpus_list, titles)
+            stop = timeit.default_timer()
+            print("creating the clustering took: ", str(stop - start))
+            start = timeit.default_timer()
+            tf.tfidf(corpus_list, titles)
+            stop = timeit.default_timer()
+            print("For comparison: creating normal tf_obj only took: ", str(stop - start))
+
         break
+
+
+def get_page_text(self, filename):
+    tf_object = self.tf_object
+    try:
+        index = tf_object.titles.index(filename)
+        return tf_object.corpus[index]
+    except ValueError:
+        return "File not Found"
+    else:
+        return "File not Found"
+
+

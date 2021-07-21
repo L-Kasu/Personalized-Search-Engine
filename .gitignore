@@ -5,6 +5,7 @@
 #custom
 /.idea/
 /venv/
+/config
 /__pycache__/
 /data/__pycache__/
 /eval_output/__pycache__/
