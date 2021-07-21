@@ -60,3 +60,15 @@ def radiobtns_stopword(self, location, col_bg, col_txt):
                       col_bg,
                       col_txt)
         radiobtn.pack(side=LEFT, fill=BOTH)
+
+
+def radiobtns_encoding(self, location, col_bg, col_txt):
+    for mode in ["GloVe", "fasttext"]:
+        radiobtn = default_radiobtn(location,
+                                    mode,
+                                    self.encoding_mode,
+                                    mode,
+                                    lambda: edit_config({"encoding": self.encoding_mode.get()}),
+                                    col_bg,
+                                    col_txt)
+        radiobtn.pack(side=LEFT, fill=BOTH)

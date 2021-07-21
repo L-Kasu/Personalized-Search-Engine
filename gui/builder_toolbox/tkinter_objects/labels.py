@@ -109,6 +109,17 @@ def label_stopword(location, col_bg, col_txt):
                          expand=True)
 
 
+def label_encoding(location, col_bg, col_txt):
+    default_label(location,
+                  get_config("txt_selectEncoding"),
+                  font=get_config("font_header_2"),
+                  bg=col_bg,
+                  fg=col_txt,
+                  ).pack(side=TOP,
+                         fill=X,
+                         expand=True)
+
+
 def label_settings(location, col_bg, col_txt):
     default_label(location,
                   get_config("txt_settingsheader"),

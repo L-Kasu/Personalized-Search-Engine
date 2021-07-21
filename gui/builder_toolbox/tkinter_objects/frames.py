@@ -46,6 +46,13 @@ def frame_stopword(self, location, col_bg, col_txt):
     radiobtns_stopword(self, self.frame_stopword, col_bg, col_txt)
 
 
+def frame_encoding(self, location, col_bg, col_txt):
+    self.frame_stopword = Frame(location, bg=col_bg, bd=get_config("global_padding"))
+    self.frame_stopword.pack(fill=Y)
+    label_encoding(self.frame_stopword, col_bg, col_txt)
+    radiobtns_encoding(self, self.frame_stopword, col_bg, col_txt)
+
+
 def frame_menu_lang(self, location, col_bg, col_txt):
     self.frame_menu_lang = Frame(location,
                                  bg=col_bg,
