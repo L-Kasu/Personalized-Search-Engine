@@ -23,7 +23,7 @@ class Search:
             self.search_method = search_methods.TfidfMethod(corpus)
 
         elif search_name == "glove":
-            name = "glove.6B.200d.p"
+            name = "glove.6B.200d.pickle"
             for root, dirs, files in os.walk(".\\data\\"):
                 if name in files:
                     path = os.path.join(root, name)

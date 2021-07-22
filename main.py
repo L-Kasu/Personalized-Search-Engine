@@ -14,7 +14,7 @@ documents = file_reader.load_all()
 titles = documents[1]
 corpus = documents[2]
 #tf_search = tf.tfidf(corpus, titles)
-search_algo = search_class.Search(corpus, titles)
+#search_algo = search_class.Search(corpus, titles)
 
 
 '''def main_evaluate():
@@ -44,30 +44,8 @@ search_algo = search_class.Search(corpus, titles)
 def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     query_dict = file_reader.load_qry()
-    print("What algorithm do you want to evaluate?")
-    print("1: tf_idf")
-    print("2: word-embedding")
-    i = input()
-    if i == "1":
-        algo = "tf_idf"
-        search_algo.search_method = search_methods.TfidfMethod(corpus)
-
-        print("With clustering? (y/n)")
-        j = input()
-        if j == "y":
-            search_algo.clustering = clustering.Clustering(search_algo.search_method.get_matrix())
-    elif i == "2":
-        algo = "word-embedding"
-        glove_embedding = database.load_object("glove.6B.200d")
-        search_algo.search_method = search_methods.WordEmbeddingMethod(glove_embedding, corpus)
-
-        print("With clustering? (y/n)")
-        j = input()
-        if j == "y":
-            search_algo.clustering = clustering.Clustering(search_algo.search_methodgi.get_matrix())
-    else:
-        exit()
-
+    algo = "word-embedding"
+    search_algo = search_class.Search(corpus, titles)
     evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)
 
 def main_compare():
