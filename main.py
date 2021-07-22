@@ -6,7 +6,7 @@
 
 from data import database
 from evaluation import evaluation_main, file_reader
-from search import search, search_methods, clustering
+from search import search_class, search_methods, clustering
 
 
 # initialise the tf algorithm
@@ -14,7 +14,7 @@ documents = file_reader.load_all()
 titles = documents[1]
 corpus = documents[2]
 #tf_search = tf.tfidf(corpus, titles)
-search_algo = search.Search(corpus, titles)
+search_algo = search_class.Search(corpus, titles)
 
 
 '''def main_evaluate():
@@ -64,7 +64,7 @@ def main_evaluate():
         print("With clustering? (y/n)")
         j = input()
         if j == "y":
-            search_algo.clustering = clustering.Clustering(search_algo.search_method.get_matrix())
+            search_algo.clustering = clustering.Clustering(search_algo.search_methodgi.get_matrix())
     else:
         exit()
 
