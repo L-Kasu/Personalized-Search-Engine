@@ -46,7 +46,7 @@ class Search:
         
         if self.clustering != None:
             index = self.clustering.predict_the_cluster_of_vector(query_vector)
-            relevant_indicies, _, relevant_matrix = self.clustering.get_cluster_of_index(self, index)
+            relevant_indicies, _, relevant_matrix = self.clustering.get_cluster_of_index(index)
         
         # cosine similarity
         cos_sim = relevant_matrix @ query_vector.T
