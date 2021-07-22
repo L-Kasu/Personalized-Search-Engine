@@ -41,7 +41,7 @@ class FasttextMethod(WordEmbeddingMethod):
         
 class GloveMethod(WordEmbeddingMethod):
     def __init__(self,corpus):
-        super().__init__(pickle.load(open("glove.6B.200d.p", "rb")), corpus)
+        super().__init__(pickle.load(open("glove.6B.200d.pickle", "rb")), corpus)
         
 
 class TfidfMethod(SearchMethod):
