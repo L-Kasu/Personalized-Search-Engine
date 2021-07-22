@@ -12,7 +12,6 @@ class Application(Frame):
         self.dir_selected = ""
         self.dir_label = Label()
         self.result = list()
-        self.tf_object = clustering.Clustering(["dummyDoc"], ["dummyTitle"])
         self.remove_stopwords = BooleanVar()
         self.remove_stopwords.set(get_config("stop_word"))
         self.selected_stemmer = StringVar()
