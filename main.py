@@ -6,7 +6,7 @@
 
 from data import database
 from evaluation import evaluation_main, file_reader
-from search import search, search_methods, clustering
+from search import search_class, search_methods, clustering
 
 
 # initialise the tf algorithm
@@ -14,7 +14,7 @@ documents = file_reader.load_all()
 titles = documents[1]
 corpus = documents[2]
 #tf_search = tf.tfidf(corpus, titles)
-search_algo = search.Search(corpus, titles)
+#search_algo = search_class.Search(corpus, titles)
 
 
 '''def main_evaluate():
@@ -41,7 +41,7 @@ search_algo = search.Search(corpus, titles)
         query_dict = {}
     evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, algo)'''
 
-def main_evaluate():
+'''def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     query_dict = file_reader.load_qry()
     print("What algorithm do you want to evaluate?")
@@ -64,10 +64,17 @@ def main_evaluate():
         print("With clustering? (y/n)")
         j = input()
         if j == "y":
-            search_algo.clustering = clustering.Clustering(search_algo.search_method.get_matrix())
+            search_algo.clustering = clustering.Clustering(search_algo.search_methodgi.get_matrix())
     else:
         exit()
 
+    evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)'''
+
+def main_evaluate():
+    rel_dict = database.load_object("tn_pp" + "_CISI.REL")
+    query_dict = file_reader.load_qry()
+    algo = "tf-idf"
+    search_algo = search_class.Search(corpus, titles)
     evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)
 
 def main_compare():
