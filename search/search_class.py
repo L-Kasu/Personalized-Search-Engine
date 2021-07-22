@@ -23,7 +23,11 @@ class Search:
             self.search_method = search_methods.TfidfMethod(corpus)
 
         elif search_name == "glove":
-            glove_embedding = pickle.load(open("C:\\Users\\lkasu\\PycharmProjects\\Teamprojekt\\search\\embedding\\glove.6B.200d.p", "rb"))
+            name = "glove.6B.200d.p"
+            for root, dirs, files in os.walk(".\\data\\"):
+                if name in files:
+                    path = os.path.join(root, name)
+            glove_embedding = pickle.load(open(path, "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(glove_embedding, corpus)
 
         elif search_name == "fasttext":
