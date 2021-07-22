@@ -28,7 +28,7 @@ class WordEmbeddingMethod(SearchMethod):
         return self.doc_embedding_matrix
     
     def txt_to_vec(self, txt):
-        split_str = word_tokenize(txt)
+        split_str = word_tokenize(txt.lower())
         vector = np.mean([self.word_embedding[word] for word in split_str if word in self.word_embedding],axis=0)
         normalized_vector = vector/np.linalg.norm(vector)
         return normalized_vector
