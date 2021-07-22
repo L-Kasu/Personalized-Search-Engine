@@ -61,4 +61,3 @@ class Search:
     def search_titles(self, query):
         indicies = self.search_indicies(query)
         return list(map(lambda index: self.titles[index], indicies))
-        
