@@ -1,21 +1,23 @@
 # simple application to run the search from preprocessing to the returned query
-# author: Lars Kasüschke
 # import sys
-import time
+
+
+# to evaluate the wordembedding there is the file glove.6B.200d.pickle needed in the database
 
 from data import database
 from evaluation import evaluation_main, file_reader
-from search import tf
+from search import search, search_methods, clustering
 
 
 # initialise the tf algorithm
 documents = file_reader.load_all()
 titles = documents[1]
 corpus = documents[2]
-tf_search = tf.tfidf(corpus, titles)
+#tf_search = tf.tfidf(corpus, titles)
+search_algo = search.Search(corpus, titles)
 
 
-def main_evaluate():
+'''def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     print("What algorithm do you want to evaluate?")
     print("1: tf_idf")
@@ -37,13 +39,43 @@ def main_evaluate():
     else:
         algo = ""
         query_dict = {}
-    evaluation_main.run_evaluation(query_dict, tf_search, algo, doc_dict, rel_dict)
+    evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, algo)'''
+
+def main_evaluate():
+    rel_dict = database.load_object("tn_pp" + "_CISI.REL")
+    query_dict = file_reader.load_qry()
+    print("What algorithm do you want to evaluate?")
+    print("1: tf_idf")
+    print("2: word-embedding")
+    i = input()
+    if i == "1":
+        algo = "tf_idf"
+        search_algo.search_method = search_methods.TfidfMethod(corpus)
+
+        print("With clustering? (y/n)")
+        j = input()
+        if j == "y":
+            search_algo.clustering = clustering.Clustering(search_algo.search_method.get_matrix())
+    elif i == "2":
+        algo = "word-embedding"
+        glove_embedding = database.load_object("glove.6B.200d")
+        search_algo.search_method = search_methods.WordEmbeddingMethod(glove_embedding, corpus)
+
+        print("With clustering? (y/n)")
+        j = input()
+        if j == "y":
+            search_algo.clustering = clustering.Clustering(search_algo.search_method.get_matrix())
+    else:
+        exit()
+
+    evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)
 
 def main_compare():
     print("Choose the first algorithm")
     print("1: tf_idf")
     print("2: tf_idf with clustering")
     print("3: word-embedding")
+    print("4: word-embedding with clustering")
     i = input()
     if i == "1":
         eval_1 = database.load_object("tf_idf_evaluation")
@@ -54,6 +86,9 @@ def main_compare():
     elif i == "3":
         eval_1 = database.load_object("word-embedding_evaluation")
         name1 = "word-embedding"
+    elif i == "4":
+        eval_1 = database.load_object("word-embedding_clustering_evaluation")
+        name1 = "word-embedding_clustering"
     else:
         exit()
 
@@ -61,6 +96,7 @@ def main_compare():
     print("1: tf_idf")
     print("2: tf_idf with clustering")
     print("3: word-embedding")
+    print("4: word-embedding with clustering")
     i = input()
     if i == "1":
         eval_2 = database.load_object("tf_idf_evaluation")
@@ -71,6 +107,9 @@ def main_compare():
     elif i == "3":
         eval_2 = database.load_object("word-embedding_evaluation")
         name2 = "word-embedding"
+    elif i == "4":
+        eval_2 = database.load_object("word-embedding_clustering_evaluation")
+        name2 = "word-embedding_clustering"
     else:
         exit()
 
@@ -93,7 +132,6 @@ def main():
         exit()
 
 
-text = "Abstracting is a key segment of the information industry Opportunities are available for both full-time professionals and part-time orvolunteer workers.Many librarians find such activities pleasant and rewarding, for they knowthey are contributing to the more effective use of stored information.One chapter is devoted to career opportunities for abstractors."
 
 
 if __name__ == "__main__":
