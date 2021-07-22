@@ -14,7 +14,7 @@ documents = file_reader.load_all()
 titles = documents[1]
 corpus = documents[2]
 #tf_search = tf.tfidf(corpus, titles)
-#search_algo = search_class.Search(corpus, titles)
+search_algo = search_class.Search(corpus, titles)
 
 
 '''def main_evaluate():
@@ -41,7 +41,7 @@ corpus = documents[2]
         query_dict = {}
     evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, algo)'''
 
-'''def main_evaluate():
+def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     query_dict = file_reader.load_qry()
     print("What algorithm do you want to evaluate?")
@@ -68,13 +68,6 @@ corpus = documents[2]
     else:
         exit()
 
-    evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)'''
-
-def main_evaluate():
-    rel_dict = database.load_object("tn_pp" + "_CISI.REL")
-    query_dict = file_reader.load_qry()
-    algo = "tf-idf"
-    search_algo = search_class.Search(corpus, titles)
     evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)
 
 def main_compare():
