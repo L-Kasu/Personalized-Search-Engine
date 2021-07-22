@@ -37,7 +37,7 @@ def main_evaluate():
     else:
         algo = ""
         query_dict = {}
-    evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, algo)
+    evaluation_main.run_evaluation(query_dict, tf_search, algo, doc_dict, rel_dict)
 
 def main_compare():
     print("Choose the first algorithm")

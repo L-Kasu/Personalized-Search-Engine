@@ -1,6 +1,6 @@
 from search import search_methods, loading_and_saving_embeddings, clustering
 import pickle
-
+import os
 import sys
 def check_len(corpus, titles):
     
@@ -17,13 +17,13 @@ class Search:
         self.titles = titles
         
         self.search_method = None
-        search_name = "tfidf" #get_config("algorithem")
+        search_name = "glove" #get_config("algorithem")
 
         if search_name == "tfidf":
             self.search_method = search_methods.TfidfMethod(corpus)
 
         elif search_name == "glove":
-            glove_embedding = pickle.load(open("glove.6B.200d.p", "rb"))
+            glove_embedding = pickle.load(open("C:\\Users\\lkasu\\PycharmProjects\\Teamprojekt\\search\\embedding\\glove.6B.200d.p", "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(glove_embedding, corpus)
 
         elif search_name == "fasttext":
@@ -31,10 +31,10 @@ class Search:
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
         
         self.clustering = None
-        clustering_flag = False #get_config("clustering")
+        clustering_flag = True #get_config("clustering")
         
         if clustering_flag:
-            self.clustering = clustering.Clustering(search_methods.get_matrix())
+            self.clustering = clustering.Clustering(self.search_method.get_matrix())
             
     
     def search_indicies(self, query):
@@ -45,6 +45,7 @@ class Search:
         relevant_matrix = self.search_method.get_matrix()
         
         if self.clustering != None:
+            query_vector = query_vector.reshape(1, -1)
             index = self.clustering.predict_the_cluster_of_vector(query_vector)
             relevant_indicies, _, relevant_matrix = self.clustering.get_cluster_of_index(index)
         

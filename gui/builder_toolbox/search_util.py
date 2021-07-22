@@ -6,9 +6,10 @@ import os
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 from gui.builder_toolbox.settings_util import get_config
-from search import clustering
-from search import tf
+from search import *
 import timeit
+
+from search import search_class
 
 '''    for page_number, page in enumerate(PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
                                                          password=password,
@@ -47,11 +48,7 @@ def search(self, query):
     tf_obj = self.tf_object
     result = []
     start = timeit.default_timer()
-    doc_indices = tf_obj.search(query)
-    stop = timeit.default_timer()
-    print("with clustering: ", stop - start)
-    start = timeit.default_timer()
-    doc_indices = tf_obj.search(query, with_clustering=False)
+    doc_indices = tf_obj.search_indicies(query)
     stop = timeit.default_timer()
     print("normal tf search ", stop - start)
     docs_to_return = 10
@@ -84,13 +81,15 @@ def preprocess(self):
         # TODO: implement saving to databases
         if titles and corpus_list:
             start = timeit.default_timer()
-            self.tf_object = clustering.Clustering(corpus_list, titles)
+            self.tf_object = search_class.Search(corpus_list, titles)
             stop = timeit.default_timer()
             print("creating the clustering took: ", str(stop - start))
+            '''
             start = timeit.default_timer()
             tf.tfidf(corpus_list, titles)
             stop = timeit.default_timer()
             print("For comparison: creating normal tf_obj only took: ", str(stop - start))
+            '''
 
         break
 
