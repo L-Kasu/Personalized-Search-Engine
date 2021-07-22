@@ -28,7 +28,7 @@ class Clustering:
         if kmax == 1:
             return 1
         sse = []
-        k_list = range(1, min(kmax, len(points.shape[0])) + 1)
+        k_list = range(1, min(kmax, points.shape[0]) + 1)
         for k in k_list:
             kmeans = KMeans(n_clusters=k).fit(points)
             centroids = kmeans.cluster_centers_

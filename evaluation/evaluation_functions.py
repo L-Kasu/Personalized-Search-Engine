@@ -3,56 +3,15 @@ from sklearn import metrics
 import numpy
 from numpy import  ndarray
 from search import word_embedding_search as we
+from search import clustering
 
 
 # gets the results of querrys for the evalutation
-# using the tf_idf algorithm
-# returns a dicitonary of querry index and the results
-from search import tf, clustering
-
-
-def get_results_for_evaluation_tf_idf(query_dict: dict, tf_search) -> dict:
+def get_search_results(query_dict: list, search_class) -> dict:
     searched = {}
     for i in query_dict:
-        docs = tf_search.query_indicies(query_dict[i])
-        searched[i] = docs[:10]
-    return searched
-
-
-# gets the results of querrys for the evalutation
-# using the and_search algorithm
-# returns a dicitonary of querry index and the results
-def get_results_for_evaluation_and_search(query_dicts: list, matrix) -> dict:
-    searched = {}
-    for i in range(0, len(query_dicts)):
-        words = query_dicts[i]["W"]
-        docs = search_algo.and_search(words, matrix)
-        searched[i] = docs
-    return searched
-
-
-def get_results_for_evaluation_tf_idf_clustering(doc_dicts, query_dicts: list) -> dict:
-    searched = {}
-    corpus_list = doc_dicts[2]
-    titles_list = doc_dicts[1]
-    tf_obj = clustering.Clustering(corpus_list, titles_list)
-    for i in range(0, len(query_dicts)):
         print(i)
-        query = query_dicts[i]
-        searched[i] = tf_obj.search(query)[:10]
-    return searched
-
-
-def get_results_for_word_embedding(doc_dicts, query_dicts: list) -> dict:
-    searched = {}
-    corpus = doc_dicts[2]
-    titles = doc_dicts[1]
-    glove_50d = we.load_glove_model("glove.6B.50d.txt")
-    glove_50d_search = we.WordEmbeddingSearch(glove_50d, corpus, titles)
-    for i in range(0, len(query_dicts)):
-        print(i)
-        query = query_dicts[i]
-        searched[i] = glove_50d_search.doc_indicies(query)[:10]
+        searched[i] = search_class.search_indicies(query_dict[i])[:10]
     return searched
 
 
@@ -147,3 +106,39 @@ def get_result_labels_f1(doc_dicts: list, query_results: dict, rel_dict: dict) -
         result.append(pred)
         rel.append(true)
     return [result, rel]
+
+
+################################################################################
+# old functions
+
+def get_results_for_evaluation_tf_idf(query_dict: dict, tf_search) -> dict:
+    searched = {}
+    for i in query_dict:
+        docs = tf_search.query_indicies(query_dict[i])
+        searched[i] = docs[:10]
+    return searched
+
+
+def get_results_for_evaluation_tf_idf_clustering(doc_dicts, query_dicts: list) -> dict:
+    searched = {}
+    corpus_list = doc_dicts[2]
+    titles_list = doc_dicts[1]
+    tf_obj = clustering.Clustering(corpus_list, titles_list)
+    for i in range(0, len(query_dicts)):
+        print(i)
+        query = query_dicts[i]
+        searched[i] = tf_obj.search(query)[:10]
+    return searched
+
+
+def get_results_for_word_embedding(doc_dicts, query_dicts: list) -> dict:
+    searched = {}
+    corpus = doc_dicts[2]
+    titles = doc_dicts[1]
+    glove_50d = we.load_glove_model("glove.6B.50d.txt")
+    glove_50d_search = we.WordEmbeddingSearch(glove_50d, corpus, titles)
+    for i in range(0, len(query_dicts)):
+        print(i)
+        query = query_dicts[i]
+        searched[i] = glove_50d_search.doc_indicies(query)[:10]
+    return searched
