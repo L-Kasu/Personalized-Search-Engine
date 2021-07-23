@@ -65,6 +65,7 @@ def preprocess(self):
     start = timeit.default_timer()
     corpus_list = []
     titles = []
+    # reading in the files
     for _, _, filenames in os.walk(self.dir_selected):
         dir = os.path.basename(self.dir_selected)
         for filename in filenames:
@@ -80,6 +81,7 @@ def preprocess(self):
         stop = timeit.default_timer()
         print("reading in files took: ", str(stop - start), " for ", len(titles), " pages ")
         # TODO: implement saving to databases
+        # create search object
         if titles and corpus_list:
             start = timeit.default_timer()
             self.tf_object = search_class.Search(corpus_list, titles)

@@ -51,12 +51,12 @@ class Clustering:
 
         optimal_k = elbow_graph.elbow
         if not optimal_k:
-            optimal_k = self.__find_optimal_k(self.KMAX, sensitivity=sensitivity/2, counter=counter)
             counter += 1
+            optimal_k = self.__find_optimal_k(self.KMAX, sensitivity=sensitivity/2, counter=counter)
         if optimal_k == 1:
             if counter < 10:
+                counter += 1
                 optimal_k = self.__find_optimal_k(self.KMAX, sensitivity=sensitivity + 1, counter=counter)
-            counter += 1
 
         # TODO: make plotting work
         print("we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))

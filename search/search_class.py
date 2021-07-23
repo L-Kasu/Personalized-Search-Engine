@@ -17,7 +17,7 @@ class Search:
         self.titles = titles
         
         self.search_method = None
-        search_name = "glove" #get_config("algorithem")
+        search_name = "tfidf" #get_config("algorithem")
 
         if search_name == "tfidf":
             self.search_method = search_methods.TfidfMethod(corpus)
