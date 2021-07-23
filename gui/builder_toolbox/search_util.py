@@ -40,6 +40,7 @@ def file_to_list_of_string(path):
         text = convert_pdf_to_txt(path)
     else:
         print("unsupported file format at: " + path)
+
     return text
 
 
@@ -50,7 +51,7 @@ def search(self, query):
     start = timeit.default_timer()
     doc_indices = tf_obj.search_indicies(query)
     stop = timeit.default_timer()
-    print("normal tf search ", stop - start)
+    print("search took:", stop - start)
     docs_to_return = 10
     for index in doc_indices:
         result.append(tf_obj.titles[index])
@@ -83,7 +84,7 @@ def preprocess(self):
             start = timeit.default_timer()
             self.tf_object = search_class.Search(corpus_list, titles)
             stop = timeit.default_timer()
-            print("creating the clustering took: ", str(stop - start))
+            print("creating the search object took:", str(stop - start))
             '''
             start = timeit.default_timer()
             tf.tfidf(corpus_list, titles)
