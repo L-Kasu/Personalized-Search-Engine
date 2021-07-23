@@ -25,7 +25,6 @@ class Search:
 
         elif search_name == "GloVe":
             name = "glove.6B.200d.pickle"
-            path = ""
             for root, dirs, files in os.walk(".\\data\\"):
                 if name in files:
                     path = os.path.join(root, name)
@@ -33,7 +32,11 @@ class Search:
             self.search_method = search_methods.WordEmbeddingMethod(glove_embedding, corpus)
 
         elif search_name == "fasttext":
-            fasttext_embedding = pickle.load(open("wiki-news-300d-1M.p", "rb"))
+            name = "wiki-news-300d-1M.p"
+            for root, dirs, files in os.walk(".\\data\\"):
+                if name in files:
+                    path = os.path.join(root, name)
+            fasttext_embedding = pickle.load(open(path, "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
         
         self.clustering = None
