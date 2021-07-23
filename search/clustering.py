@@ -4,6 +4,7 @@ from sklearn.cluster import KMeans
 from kneed import KneeLocator
 import math
 import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity as cos_sim
 import scipy.sparse.csr as csr
 #from search.preprocessing_parameter import get_stems, get_stopword_value
 
@@ -11,7 +12,7 @@ import scipy.sparse.csr as csr
 default_sensitivity = 1.0
 
 
-def cos_sim_func(query_vec, tfidf_mat):
+def cos_sim(query_vec, tfidf_mat):
     return tfidf_mat @ query_vec.T
 
 
@@ -19,7 +20,7 @@ class Clustering:
     # only works if vectors are normalized
     def __init__(self, matrix: csr):
         self.matrix = matrix # this breaks everything if matrix too big: /np.linalg.norm(matrix, axis = 1, keepdims=True)
-        self.KMAX = max(round(math.log2(self.matrix.shape[0])), 1)
+        self.KMAX = max(round(math.sqrt(self.matrix.shape[0])), 1)
         self.optimal_k = self.__find_optimal_k(self.KMAX)
         self.clustering = self.__kmeans(self.optimal_k)
 
@@ -42,12 +43,12 @@ class Clustering:
             for i in range(points.shape[0]):
                 curr_center = centroids[pred_clusters[i]]
                 vec = points[i]
-                curr_sse += float(cos_sim_func(vec, curr_center))
+                curr_sse += float(cos_sim(vec, curr_center))
 
-            curr_sse = curr_sse/k
+            curr_sse = curr_sse - k
             sse.append(curr_sse)
 
-        elbow_graph = KneeLocator(k_list, sse, S=sensitivity, curve="convex", direction="decreasing")
+        elbow_graph = KneeLocator(k_list, sse, S=sensitivity, curve="concave", direction="increasing")
 
         optimal_k = elbow_graph.elbow
         if not optimal_k:
