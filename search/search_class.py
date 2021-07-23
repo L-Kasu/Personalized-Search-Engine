@@ -30,7 +30,7 @@ class Search:
                 if name in files:
                     path = os.path.join(root, name)
                 else:
-                    raise FileNotFoundError(name)
+                    raise FileNotFoundError(root+"\\"+name)
             glove_embedding = pickle.load(open(path, "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(glove_embedding, corpus)
 
