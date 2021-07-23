@@ -16,20 +16,22 @@ def cos_sim_func(query_vec, tfidf_mat):
 
 
 class Clustering:
+    # only works if vectors are normalized
     def __init__(self, matrix: csr):
-        self.matrix = matrix/np.linalg.norm(matrix, axis = 1, keepdims=True)
+        self.matrix = matrix # this breaks everything if matrix too big: /np.linalg.norm(matrix, axis = 1, keepdims=True)
         self.KMAX = max(round(math.log2(self.matrix.shape[0])), 1)
         self.optimal_k = self.__find_optimal_k(self.KMAX)
         self.clustering = self.__kmeans(self.optimal_k)
 
     def __find_optimal_k(self, kmax, sensitivity=default_sensitivity, counter=0):
         points = self.matrix
-        a = np.unique(np.array(points.T), axis=0).shape[0]
-        kmax = min(kmax, a)
+        # TODO: find better check for unqiue vectors
+        # a = np.unique(points, axis=0).shape[0]
+        #kmax = min(kmax, a)
         if kmax == 1:
             return 1
         sse = []
-        k_list = range(1, min(kmax, points.shape[0]) + 1)
+        k_list = list(range(1, min(kmax, points.shape[0]) + 1))
         for k in k_list:
             kmeans = KMeans(n_clusters=k).fit(points)
             centroids = kmeans.cluster_centers_
@@ -40,7 +42,7 @@ class Clustering:
             for i in range(points.shape[0]):
                 curr_center = centroids[pred_clusters[i]]
                 vec = points[i]
-                curr_sse += cos_sim_func(vec, curr_center)
+                curr_sse += float(cos_sim_func(vec, curr_center))
 
             curr_sse = curr_sse/k
             sse.append(curr_sse)

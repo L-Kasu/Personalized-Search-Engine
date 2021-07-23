@@ -6,7 +6,7 @@
 
 from data import database
 from evaluation import evaluation_main, file_reader
-from search import search_class, search_methods, clustering
+from search import search_class
 
 
 # initialise the tf algorithm
@@ -44,7 +44,7 @@ corpus = documents[2]
 def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     query_dict = file_reader.load_qry()
-    algo = "word-embedding"
+    algo = "tfidf_clustering"
     search_algo = search_class.Search(corpus, titles)
     evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)
 
