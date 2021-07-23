@@ -42,39 +42,6 @@ def dir_label(location, text):
                          expand=False)
 
 
-def language_label(location, col_bg, col_txt):
-    default_label(location,
-                  get_config("txt_language"),
-                  font=get_config("font_header_2"),
-                  bg=col_bg,
-                  fg=col_txt,
-                  ).pack(side=LEFT,
-                         fill=None,
-                         expand=False)
-
-
-def color_label(location, col_bg, col_txt):
-    default_label(location,
-                  get_config("txt_colortheme"),
-                  font=get_config("font_header_2"),
-                  bg=col_bg,
-                  fg=col_txt,
-                  ).pack(side=LEFT,
-                         fill=None,
-                         expand=False)
-
-
-def label_menu_snowballstemmer_language(location, col_bg, col_txt):
-    default_label(location,
-                  get_config("txt_selectsnowballlang"),
-                  font=get_config("font_header_2"),
-                  bg=col_bg,
-                  fg=col_txt,
-                  ).pack(side=LEFT,
-                         fill=None,
-                         expand=False)
-
-
 def preview_window_label(location, text):
     text = textwrap.fill(text, width=get_config("prev_window_size"))
     default_label(location,
@@ -85,39 +52,6 @@ def preview_window_label(location, text):
                   ).pack(side=LEFT,
                          fill=None,
                          expand=False)
-
-
-def label_stemmer(location, col_bg, col_txt):
-    default_label(location,
-                  get_config("txt_selectStemmer"),
-                  font=get_config("font_header_2"),
-                  bg=col_bg,
-                  fg=col_txt,
-                  ).pack(side=TOP,
-                         fill=X,
-                         expand=True)
-
-
-def label_stopword(location, col_bg, col_txt):
-    default_label(location,
-                  get_config("txt_toggleStopword"),
-                  font=get_config("font_header_2"),
-                  bg=col_bg,
-                  fg=col_txt,
-                  ).pack(side=TOP,
-                         fill=X,
-                         expand=True)
-
-
-def label_embedding(location, col_bg, col_txt):
-    default_label(location,
-                  get_config("txt_selectembedding"),
-                  font=get_config("font_header_2"),
-                  bg=col_bg,
-                  fg=col_txt,
-                  ).pack(side=TOP,
-                         fill=X,
-                         expand=True)
 
 
 def label_settings(location, col_bg, col_txt):

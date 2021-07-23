@@ -1,6 +1,11 @@
 import sys
+
+import nltk
+from nltk import PorterStemmer, LancasterStemmer
+from nltk.stem import snowball
 from sklearn.feature_extraction.text import TfidfVectorizer
-from search.preprocessing_parameter import *
+
+from gui.builder_toolbox.settings_util import get_config
 
 
 def check_len(corpus, titles):
@@ -13,9 +18,22 @@ def cos_sim_func(query_vec, tfidf_mat):
     return tfidf_mat @ query_vec.T
 
 
+def get_stems(text,
+              snowball_language=get_config("snowballstemmer_language"),
+              configstemmer=get_config("stemmer")):
+    snowball_language = snowball_language
+    stemmerdict = {"porter": PorterStemmer(),
+                   "lancaster": LancasterStemmer(),
+                   "snowball": snowball.SnowballStemmer(snowball_language)}
+    stemmer = stemmerdict[configstemmer]
+    tokens = [word for word in nltk.word_tokenize(text) if len(word) > 1]
+    stems = [stemmer.stem(item) for item in tokens]
+    return stems
+
+
 class tfidf:
     # corpus and titles should be lists of str
-    def __init__(self, corpus: list, titles: list, tokenize=get_stems, swv=get_stopword_value()):
+    def __init__(self, corpus: list, titles: list):
         
         check_len(corpus, titles)
 
@@ -23,7 +41,7 @@ class tfidf:
         # for package in ['punkt']:
         #     nltk.download(package)
 
-        self.tfidfVectorizer = TfidfVectorizer(tokenizer=tokenize, analyzer='word', stop_words=swv)
+        self.tfidfVectorizer = TfidfVectorizer(tokenizer=get_stems, analyzer='word', stop_words=get_config("stopword_language"))
         self.corpus = corpus
         self.titles = titles
         self.tfidf_mat = self.tfidfVectorizer.fit_transform(self.corpus)

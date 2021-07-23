@@ -14,11 +14,14 @@ class Application(Frame):
         self.result = list()
         self.remove_stopwords = BooleanVar()
         self.remove_stopwords.set(get_config("stop_word"))
+        self.toggle_clustering = BooleanVar()
+        self.toggle_clustering.set(get_config("clustering"))
         self.selected_stemmer = StringVar()
         self.selected_stemmer.set(get_config("stemmer"))
-        self.embedding_mode = StringVar()
-        self.embedding_mode.set(get_config("embedding"))
+        self.search_mode = StringVar()
+        self.search_mode.set(get_config("search_mode"))
         self.snowballstate = [ACTIVE if get_config("issnowball") else DISABLED]
+        self.stopwordstate = [ACTIVE if get_config("stop_word") else DISABLED]
         self.master.geometry(str(get_config("master_width")) + "x" + str(get_config("master_height")))
         self.master.title(get_config("txt_mastertitle"))
         self.master.config(relief=get_config("relief_frames"),
