@@ -73,14 +73,15 @@ class TfidfMethod(SearchMethod):
     def txt_to_vec(self, txt):
         return self.tfidfVectorizer.transform([txt])
 
-    def get_stems(text,
-                  snowball_language=get_config("snowballstemmer_language"),
-                  configstemmer=get_config("stemmer")):
-        snowball_language = snowball_language
-        stemmerdict = {"porter": PorterStemmer(),
-                       "lancaster": LancasterStemmer(),
-                       "snowball": snowball.SnowballStemmer(snowball_language)}
-        stemmer = stemmerdict[configstemmer]
-        tokens = [word for word in nltk.word_tokenize(text) if len(word) > 1]
-        stems = [stemmer.stem(item) for item in tokens]
-        return stems
+
+def get_stems(text,
+              snowball_language=get_config("snowballstemmer_language"),
+              configstemmer=get_config("stemmer")):
+    snowball_language = snowball_language
+    stemmerdict = {"porter": PorterStemmer(),
+                   "lancaster": LancasterStemmer(),
+                   "snowball": snowball.SnowballStemmer(snowball_language)}
+    stemmer = stemmerdict[configstemmer]
+    tokens = [word for word in nltk.word_tokenize(text) if len(word) > 1]
+    stems = [stemmer.stem(item) for item in tokens]
+    return stems
