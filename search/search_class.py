@@ -11,7 +11,7 @@ def check_len(corpus, titles):
 
 class Search:
     def __init__(self, corpus, titles):
-        
+
         check_len(corpus, titles)
         
         self.corpus = corpus
@@ -25,9 +25,12 @@ class Search:
 
         elif search_name == "GloVe":
             name = "glove.6B.200d.pickle"
+            path = ""
             for root, dirs, files in os.walk(".\\data\\"):
                 if name in files:
                     path = os.path.join(root, name)
+                else:
+                    raise FileNotFoundError(name)
             glove_embedding = pickle.load(open(path, "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(glove_embedding, corpus)
 
