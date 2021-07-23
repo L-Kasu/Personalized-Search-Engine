@@ -1,7 +1,6 @@
 from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.menus import *
-import tkinter
 
 
 class Application(Frame):
@@ -28,14 +27,6 @@ class Application(Frame):
                            bd=get_config("global_padding")+2,
                            bg=get_config("col_bg"))
 
-        self.frame_stemmer = Frame()
-        self.frame_stopword = Frame()
-        self.frame_menu_lang = Frame()
-        self.frame_menu_colors = Frame()
-        self.frame_menu_snowballstemmer_language = Frame()
-        self.menu_languages = None
-        self.menu_styles = None
-        self.menu_snowballstemmer_language = None
         btn_settings(self, self.master)
 
         self.entry_frame = Frame()

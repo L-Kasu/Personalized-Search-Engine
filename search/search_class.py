@@ -1,3 +1,4 @@
+from gui.builder_toolbox.settings_util import get_config
 from search import search_methods, loading_and_saving_embeddings, clustering
 import pickle
 import os
@@ -17,12 +18,12 @@ class Search:
         self.titles = titles
         
         self.search_method = None
-        search_name = "tfidf" #get_config("algorithem")
+        search_name = get_config("search_mode")
 
         if search_name == "tfidf":
             self.search_method = search_methods.TfidfMethod(corpus)
 
-        elif search_name == "glove":
+        elif search_name == "GloVe":
             name = "glove.6B.200d.pickle"
             for root, dirs, files in os.walk(".\\data\\"):
                 if name in files:
@@ -35,7 +36,7 @@ class Search:
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
         
         self.clustering = None
-        clustering_flag = True #get_config("clustering")
+        clustering_flag = get_config("clustering")
         
         if clustering_flag:
             self.clustering = clustering.Clustering(self.search_method.get_matrix())
@@ -48,7 +49,7 @@ class Search:
         relevant_indicies = list(range(len(self.titles)))
         relevant_matrix = self.search_method.get_matrix()
         
-        if self.clustering != None:
+        if self.clustering is not None:
             query_vector = query_vector.reshape(1, -1)
             index = self.clustering.predict_the_cluster_of_vector(query_vector)
             relevant_indicies, _, relevant_matrix = self.clustering.get_cluster_of_index(index)
