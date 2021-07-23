@@ -29,8 +29,6 @@ class Search:
             for root, dirs, files in os.walk(".\\data\\"):
                 if name in files:
                     path = os.path.join(root, name)
-                # else:
-                #     raise FileNotFoundError(os.path.join(root, name))
             glove_embedding = pickle.load(open(path, "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(glove_embedding, corpus)
 
