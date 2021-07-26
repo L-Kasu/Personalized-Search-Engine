@@ -24,7 +24,7 @@ class Clustering:
         self.optimal_k = self.__find_optimal_k(self.KMAX)
         self.clustering = self.__kmeans(self.optimal_k)
 
-    def __find_optimal_k(self, kmax, sensitivity=default_sensitivity, counter=0):
+    def __find_optimal_k(self, kmax):
         points = self.matrix
         # TODO: find better check for unqiue vectors
         # a = np.unique(points, axis=0).shape[0]
@@ -47,17 +47,20 @@ class Clustering:
 
             curr_sse = curr_sse - k
             sse.append(curr_sse)
+        return self.find_elbow(k_list, sse)
 
-        elbow_graph = KneeLocator(k_list, sse, S=sensitivity, curve="concave", direction="increasing")
+    def find_elbow(self, x_list, y_list, sensitivity=default_sensitivity, counter=0):
+
+        elbow_graph = KneeLocator(x_list, y_list, S=sensitivity, curve="concave", direction="increasing")
 
         optimal_k = elbow_graph.elbow
         if not optimal_k:
             counter += 1
-            optimal_k = self.__find_optimal_k(self.KMAX, sensitivity=sensitivity/2, counter=counter)
+            optimal_k = self.elbow_graph(self.KMAX, sensitivity=sensitivity/2, counter=counter)
         if optimal_k == 1:
             if counter < 10:
                 counter += 1
-                optimal_k = self.__find_optimal_k(self.KMAX, sensitivity=sensitivity + 1, counter=counter)
+                optimal_k = self.elbow_graph(self.KMAX, sensitivity=sensitivity + 1, counter=counter)
 
         # TODO: make plotting work
         print("we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))

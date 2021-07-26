@@ -34,8 +34,12 @@ def file_to_list_of_string(path):
     text = []
     if path.endswith("txt"):
         with open(path, "r") as container:
-            text = container.read()
-            text = [text]
+            try:
+                text = container.read()
+                text = [text]
+            except:
+                return []
+
     elif path.endswith("pdf"):
         text = convert_pdf_to_txt(path)
     else:
