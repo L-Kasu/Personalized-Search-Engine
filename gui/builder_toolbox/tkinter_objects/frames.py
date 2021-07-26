@@ -4,6 +4,35 @@ from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.menus import *
 
 
+def get_setting_frame(self,
+                      location,
+                      name,
+                      selector,
+                      col_bg,
+                      col_txt):
+    frame = Frame(location,
+                  bg=col_bg,
+                  bd=get_config("global_padding")
+                  )
+    default_label(frame,
+                  name,
+                  bg=col_bg,
+                  fg=col_txt,
+                  font=get_config("font_header_2"),
+                  justify=LEFT
+                  ).pack(side=LEFT,
+                         anchor=W,
+                         expand=True
+                         )
+    selector(self,
+             frame,
+             col_bg,
+             col_txt
+             )
+    return frame
+
+
+
 def entry_frame(self, location):
     self.entry_frame = Frame(location,
                              bg=get_config("col_bg_lgt"),
@@ -33,48 +62,80 @@ def result_frame(self, location):
 
 
 def frame_stemmer(self, location, col_bg, col_txt):
-    self.frame_stemmer = Frame(location, bg=col_bg, bd=get_config("global_padding"))
-    self.frame_stemmer.pack(fill=Y)
-    label_stemmer(self.frame_stemmer, col_bg, col_txt)
-    radiobtns_stemmer(self, self.frame_stemmer, col_bg, col_txt)
+    return get_setting_frame(self,
+                      location,
+                      get_config("txt_selectStemmer"),
+                      (lambda s, f, b, t: radiobtns_stemmer(s, f, b, t)),
+                      col_bg,
+                      col_txt
+                      )
 
 
 def frame_stopword(self, location, col_bg, col_txt):
-    self.frame_stopword = Frame(location, bg=col_bg, bd=get_config("global_padding"))
-    self.frame_stopword.pack(fill=Y)
-    label_stopword(self.frame_stopword, col_bg, col_txt)
-    radiobtns_stopword(self, self.frame_stopword, col_bg, col_txt)
+    return get_setting_frame(self,
+                      location,
+                      get_config("txt_toggleStopword"),
+                      (lambda s, f, b, t: radiobtns_stopword(s, f, b, t)),
+                      col_bg,
+                      col_txt
+                      )
 
 
 def frame_embedding(self, location, col_bg, col_txt):
-    self.frame_stopword = Frame(location, bg=col_bg, bd=get_config("global_padding"))
-    self.frame_stopword.pack(fill=Y)
-    label_embedding(self.frame_stopword, col_bg, col_txt)
-    radiobtns_embedding(self, self.frame_stopword, col_bg, col_txt)
+    return get_setting_frame(self,
+                      location,
+                      get_config("txt_selectsearchmode"),
+                      (lambda s, f, b, t: radiobtns_search_mode(s, f, b, t)),
+                      col_bg,
+                      col_txt
+                      )
+
+
+def frame_clustering(self, location, col_bg, col_txt):
+    return get_setting_frame(self,
+                      location,
+                      get_config("txt_toggleClustering"),
+                      (lambda s, f, b, t: radiobtns_clustering(s, f, b, t)),
+                      col_bg,
+                      col_txt
+                      )
 
 
 def frame_menu_lang(self, location, col_bg, col_txt):
-    self.frame_menu_lang = Frame(location,
-                                 bg=col_bg,
-                                 bd=get_config("global_padding"))
-    self.frame_menu_lang.pack(anchor=CENTER)
-    language_label(self.frame_menu_lang, col_bg, col_txt)
-    menu_languages(self, self.frame_menu_lang)
+    return get_setting_frame(self,
+                             location,
+                             get_config("txt_language"),
+                             (lambda s, f, b, t: menu_languages(s, f)),
+                             col_bg,
+                             col_txt
+                             )
 
 
 def frame_menu_colors(self, location, col_bg, col_txt):
-    self.frame_menu_colors = Frame(location,
-                                   bg=col_bg,
-                                   bd=get_config("global_padding"))
-    self.frame_menu_colors.pack(anchor=CENTER)
-    color_label(self.frame_menu_colors, col_bg, col_txt)
-    menu_styles(self, self.frame_menu_colors)
+    return get_setting_frame(self,
+                             location,
+                             get_config("txt_colortheme"),
+                             (lambda s, f, b, t: menu_styles(s, f)),
+                             col_bg,
+                             col_txt
+                             )
 
 
 def frame_menu_snowballstemmer_language(self, location, col_bg, col_txt):
-    self.frame_menu_snowballstemmer_language = Frame(location,
-                                                     bg=col_bg,
-                                                     bd=get_config("global_padding"))
-    self.frame_menu_snowballstemmer_language.pack(anchor=CENTER)
-    label_menu_snowballstemmer_language(self.frame_menu_snowballstemmer_language, col_bg, col_txt)
-    menu_snowballstemmer_language(self, self.frame_menu_snowballstemmer_language)
+    return get_setting_frame(self,
+                             location,
+                             get_config("txt_selectsnowballlang"),
+                             (lambda s, f, b, t: menu_snowballstemmer_language(s, f)),
+                             col_bg,
+                             col_txt
+                             )
+
+
+def frame_menu_stopword_language(self, location, col_bg, col_txt):
+    return get_setting_frame(self,
+                             location,
+                             get_config("txt_selectstopwordlang"),
+                             (lambda s, f, b, t: menu_stopword_language(s, f)),
+                             col_bg,
+                             col_txt
+                             )

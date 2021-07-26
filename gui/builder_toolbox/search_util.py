@@ -106,5 +106,3 @@ def get_page_text(self, filename):
         return "File not Found"
     else:
         return "File not Found"
-
-
