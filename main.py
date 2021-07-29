@@ -44,7 +44,7 @@ corpus = documents[2]
 def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
     query_dict = file_reader.load_qry()
-    algo = "tfidf_clustering"
+    algo = "we"
     search_algo = search_class.Search(corpus, titles)
     evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)
 
