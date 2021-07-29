@@ -1,5 +1,11 @@
+import os
 def load_all():
-    with open('evaluation/CISI_archive/CISI.ALL') as f:
+    name = "CISI.ALL"
+    path = ""
+    for root, dirs, files in os.walk("\\evaluation\\CISI_archive\\"):
+        if name in files:
+            path = os.path.join(root, name)
+    with open(path) as f:
         lines = ""
         for l in f.readlines():
             lines += "\n" + l.strip() if l.startswith(".") else " " + l.strip()
@@ -23,7 +29,12 @@ def load_all():
 
 
 def load_qry():
-    with open('evaluation/CISI_archive/CISI.QRY') as f:
+    name = "CISI.QRY"
+    path = ""
+    for root, dirs, files in os.walk(".\\CISI_archive\\"):
+        if name in files:
+            path = os.path.join(root, name)
+    with open(path) as f:
         lines = ""
         for l in f.readlines():
             lines += "\n" + l.strip() if l.startswith(".") else " " + l.strip()
