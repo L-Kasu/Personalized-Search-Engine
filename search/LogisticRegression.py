@@ -138,14 +138,14 @@ def main():
     my_model = None
     with open("../data/tn_pp_CISI.REL.pickle", "rb") as f:
         rel_dict = pickle.load(f)
-    if load:
-        with open("./my_model.pickle", "rb") as f:
-            my_model = pickle.load(f)
-    else:
-        with open("./my_model.pickle", "wb") as f:
-            my_model = Model(function_list)
-            my_model.intialise_data(documents, query_dict, rel_dict)
-            pickle.dump(my_model, f, protocol=pickle.HIGHEST_PROTOCOL)
+    # if load:
+    #   with open("./my_model.pickle", "rb") as f:
+    #       my_model = pickle.load(f)
+    # else:
+    #    with open("./my_model.pickle", "wb") as f:
+    my_model = Model(function_list)
+    my_model.intialise_data(documents, query_dict, rel_dict)
+    #        pickle.dump(my_model, f, protocol=pickle.HIGHEST_PROTOCOL)
     my_model.train()
     score = my_model.validate()
     my_model.test()
