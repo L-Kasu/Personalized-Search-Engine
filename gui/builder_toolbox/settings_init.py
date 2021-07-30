@@ -321,6 +321,66 @@ def init_fontfile(fontfile=fontconfigfile, path=default_path):
                        "font_header_1": ["Bahnschrift", 15, "bold"],
                        "font_header_2": ["Bahnschrift", 10, "bold"],
                        "font_returntext": ["Bahnschrift", 10]},
+                  "Book Antiqua":
+                      {"ID_font": "Book Antiqua",
+                       "font_header_1": ["Book Antiqua", 15, "bold"],
+                       "font_header_2": ["Book Antiqua", 10, "bold"],
+                       "font_returntext": ["Book Antiqua", 10]},
+                  "Copperplate Gothic Bold":
+                      {"ID_font": "Copperplate Gothic Bold",
+                       "font_header_1": ["Copperplate Gothic Bold", 15, "bold"],
+                       "font_header_2": ["Copperplate Gothic Bold", 10, "bold"],
+                       "font_returntext": ["Copperplate Gothic Bold", 10]},
+                  "Ink Free":
+                      {"ID_font": "Ink Free",
+                       "font_header_1": ["Ink Free", 15, "bold"],
+                       "font_header_2": ["Ink Free", 10, "bold"],
+                       "font_returntext": ["Ink Free", 10]},
+                  "Monotype Corsiva":
+                      {"ID_font": "Monotype Corsiva",
+                       "font_header_1": ["Monotype Corsiva", 15, "bold"],
+                       "font_header_2": ["Monotype Corsiva", 10, "bold"],
+                       "font_returntext": ["Monotype Corsiva", 10]},
+                  "OCR A Extended":
+                      {"ID_font": "OCR A Extended",
+                       "font_header_1": ["OCR A Extended", 15, "bold"],
+                       "font_header_2": ["OCR A Extended", 10, "bold"],
+                       "font_returntext": ["OCR A Extended", 10]},
+                  "PERPETUA TITLING MT":
+                      {"ID_font": "PERPETUA TITLING MT",
+                       "font_header_1": ["PERPETUA TITLING MT", 15, "bold"],
+                       "font_header_2": ["PERPETUA TITLING MT", 10, "bold"],
+                       "font_returntext": ["PERPETUA TITLING MT", 10]},
+                  "Segoe Script":
+                      {"ID_font": "Segoe Script",
+                       "font_header_1": ["Segoe Script", 15, "bold"],
+                       "font_header_2": ["Segoe Script", 10, "bold"],
+                       "font_returntext": ["Segoe Script", 10]},
+                  "Simplified Arabic":
+                      {"ID_font": "Simplified Arabic",
+                       "font_header_1": ["Simplified Arabic", 16, "bold"],
+                       "font_header_2": ["Simplified Arabic", 10, "bold"],
+                       "font_returntext": ["Simplified Arabic", 10]},
+                  "Small Fonts":
+                      {"ID_font": "Small Fonts",
+                       "font_header_1": ["Smal Fonts", 16, "bold"],
+                       "font_header_2": ["Smal Fonts", 10, "bold"],
+                       "font_returntext": ["Smal Fonts", 10]},
+                  "Source Code Pro Semibold":
+                      {"ID_font": "Source Code Pro Semibold",
+                       "font_header_1": ["Source Code Pro Semibold", 16, "bold"],
+                       "font_header_2": ["Source Code Pro Semibold", 10, "bold"],
+                       "font_returntext": ["Source Code Pro Semibold", 10]},
+                  "System":
+                      {"ID_font": "System",
+                       "font_header_1": ["System", 16, "bold"],
+                       "font_header_2": ["System", 10, "bold"],
+                       "font_returntext": ["System", 10]},
+                  "Tw Cen MT":
+                      {"ID_font": "Tw Cen MT",
+                       "font_header_1": ["Tw Cen MT", 16, "bold"],
+                       "font_header_2": ["Tw Cen MT", 10, "bold"],
+                       "font_returntext": ["Tw Cen MT", 10]},
                   }
     write_config(fontconfig, path, fontfile)
 
