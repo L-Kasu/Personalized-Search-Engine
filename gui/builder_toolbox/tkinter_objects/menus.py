@@ -65,13 +65,14 @@ def menu_styles(self,
 def menu_fonts(self,
                location,
                path=default_path,
-               file=languageconfigfile):
-    self.menu_languages = default_optionmenu(location,
-                                             "ID_font",
-                                             lambda x: set_font(self, x),
-                                             file,
-                                             path
-                                             ).pack(side=RIGHT)
+               file=fontconfigfile):
+    self.menu_fonts = default_optionmenu(location,
+                                         "ID_font",
+                                         lambda x: set_font(self, x),
+                                         file,
+                                         path
+                                         ).pack(side=RIGHT)
+
 
 def menu_snowballstemmer_language(self, location):
     clicked = StringVar()

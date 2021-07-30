@@ -92,6 +92,7 @@ def settings_function(self):
     gui.builder_toolbox.tkinter_objects.frames.frame_clustering(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_lang(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_colors(self, self.window_settings, col_bg, col_txt).pack(fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_menu_fonts(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_snowballstemmer_language(self, self.window_settings, col_bg,
                                                                                    col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_stopword_language(self, self.window_settings, col_bg,

@@ -32,7 +32,6 @@ def get_setting_frame(self,
     return frame
 
 
-
 def entry_frame(self, location):
     self.entry_frame = Frame(location,
                              bg=get_config("col_bg_lgt"),
@@ -116,6 +115,16 @@ def frame_menu_colors(self, location, col_bg, col_txt):
                              location,
                              get_config("txt_colortheme"),
                              (lambda s, f, b, t: menu_styles(s, f)),
+                             col_bg,
+                             col_txt
+                             )
+
+
+def frame_menu_fonts(self, location, col_bg, col_txt):
+    return get_setting_frame(self,
+                             location,
+                             get_config("txt_font"),
+                             (lambda s, f, b, t: menu_fonts(s, f)),
                              col_bg,
                              col_txt
                              )

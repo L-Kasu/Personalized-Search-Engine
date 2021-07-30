@@ -5,9 +5,11 @@ from gui.builder_toolbox.settings_defaultpaths import *
 def init_config(path=default_path,
                 masterfile=masterconfigfile,
                 langfile=languageconfigfile,
-                colorsfile=colorsconfigfile):
+                colorsfile=colorsconfigfile,
+                fontfile=fontconfigfile):
     init_langfile(langfile, path)
     init_colorsfile(colorsfile, path)
+    init_fontfile(fontfile, path)
     config = {"master_height": 500,
               "master_width": 800,
               "prev_window_size": 100,
@@ -16,6 +18,7 @@ def init_config(path=default_path,
               "global_padding": 5,
               **get_configdict(path, languageconfigfile)["english"],
               **get_configdict(path, colorsconfigfile)["wip"],
+              **get_configdict(path, fontconfigfile)["Arial"],
               "stemmer": "porter",
               "issnowball": False,
               "snowballstemmer_language": "english",
@@ -173,6 +176,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                               "txt_exitpreview": "Exit",
                               "txt_language": "Language",
                               "txt_colortheme": "Theme",
+                              "txt_font": "Font",
                               "txt_selectStemmer": "Select Stemmer",
                               "txt_toggleStopword": "Stop Word Removal",
                               "txt_toggleClustering": "Clustering",
@@ -199,6 +203,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                              "txt_exitpreview": "Schließen",
                              "txt_language": "Sprache",
                              "txt_colortheme": "Design",
+                             "txt_font": "Schrift",
                              "txt_selectStemmer": "Stemmerauswahl",
                              "txt_toggleStopword": "Stoppwortentfernung",
                              "txt_toggleClustering": "Clustering",
@@ -225,6 +230,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                               "txt_exitpreview": "Exit(to be translated)",
                               "txt_language": "Language: (to be translated)",
                               "txt_colortheme": "Theme: (to be translated)",
+                              "txt_font": "Font (to be translated)",
                               "txt_selectStemmer": "Select Stemmer(to be translated)",
                               "txt_toggleStopword": "Stop Word Removal(to be translated)",
                               "txt_toggleClustering": "TODO Clustering",
@@ -251,6 +257,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                              "txt_exitpreview": "إِغْلاق",
                              "txt_language": "اللُّغَة",
                              "txt_colortheme": "التّصميم",
+                             "txt_font": "الخَط",
                              "txt_selectStemmer": "اخْتِيَار الStemmer",
                              "txt_toggleStopword": "إِزالَة الStop Words",
                              "txt_toggleClustering": "TODO Clustering",
@@ -270,25 +277,50 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
 
 def init_fontfile(fontfile=fontconfigfile, path=default_path):
     fontconfig = {"Arial":
-                      {"font_header_1": ["Arial", 15, "bold"],
+                      {"ID_font": "Arial",
+                       "font_header_1": ["Arial", 15, "bold"],
                        "font_header_2": ["Arial", 10, "bold"],
                        "font_returntext": ["Arial", 10]},
                   "Old Goudy/English Text MT":
-                      {"font_header_1": ["Old English Text MT", 20, "bold"],
+                      {"ID_font": "Old Goudy/English Text MT",
+                       "font_header_1": ["Old English Text MT", 20, "bold"],
                        "font_header_2": ["Goudy Old Style", 12, "bold"],
                        "font_returntext": ["Goudy Old Style", 12]},
                   "Biome":
-                      {"font_header_1": ["Biome", 16, "bold"],
+                      {"ID_font": "Biome",
+                       "font_header_1": ["Biome", 16, "bold"],
                        "font_header_2": ["Biome", 10, "bold"],
                        "font_returntext": ["Biome", 10]},
                   "Terminal":
-                      {"font_header_1": ["Terminal", 15, "bold"],
+                      {"ID_font": "Terminal",
+                       "font_header_1": ["Terminal", 15, "bold"],
                        "font_header_2": ["Terminal", 10, "bold"],
                        "font_returntext": ["Terminal", 10]},
                   "Comic Sans MS":
-                      {"font_header_1": ["Comic Sans MS", 18, "bold"],
+                      {"ID_font": "Comic Sans MS",
+                       "font_header_1": ["Comic Sans MS", 18, "bold"],
                        "font_header_2": ["Comic Sans MS", 10, "bold"],
-                       "font_returntext": ["Comic Sans MS", 10]}
+                       "font_returntext": ["Comic Sans MS", 10]},
+                  "SimSun":
+                      {"ID_font": "SimSun",
+                       "font_header_1": ["SimSun", 15, "bold"],
+                       "font_header_2": ["SimSun", 10, "bold"],
+                       "font_returntext": ["SimSun", 10]},
+                  "Agency FB":
+                      {"ID_font": "Agency FB",
+                       "font_header_1": ["Agency FB", 15, "bold"],
+                       "font_header_2": ["Agency FB", 10, "bold"],
+                       "font_returntext": ["Agency FB", 10]},
+                  "Andalus":
+                      {"ID_font": "Andalus",
+                       "font_header_1": ["Andalus", 15, "bold"],
+                       "font_header_2": ["Andalus", 10, "bold"],
+                       "font_returntext": ["Andalus", 10]},
+                  "Bahnschrift":
+                      {"ID_font": "Bahnschrift",
+                       "font_header_1": ["Bahnschrift", 15, "bold"],
+                       "font_header_2": ["Bahnschrift", 10, "bold"],
+                       "font_returntext": ["Bahnschrift", 10]},
                   }
     write_config(fontconfig, path, fontfile)
 

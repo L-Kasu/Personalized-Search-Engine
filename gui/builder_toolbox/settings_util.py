@@ -74,4 +74,3 @@ def set_font(self,
             config = configdict[key]
     edit_config(config, path, masterfile)
     restart_application(self)
-
