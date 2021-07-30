@@ -9,21 +9,25 @@ def get_setting_frame(self,
                       name,
                       selector,
                       col_bg,
-                      col_txt):
+                      col_txt,
+                      label_tooltip=None):
     frame = Frame(location,
                   bg=col_bg,
                   bd=get_config("global_padding")
                   )
-    default_label(frame,
-                  name,
-                  bg=col_bg,
-                  fg=col_txt,
-                  font=get_config("font_header_2"),
-                  justify=LEFT
-                  ).pack(side=LEFT,
-                         anchor=W,
-                         expand=True
-                         )
+    label = default_label(frame,
+                          name,
+                          bg=col_bg,
+                          fg=col_txt,
+                          font=get_config("font_header_2"),
+                          justify=LEFT
+                          )
+    if label_tooltip is not None:
+        AddTooltip(label, label_tooltip)
+    label.pack(side=LEFT,
+               anchor=W,
+               expand=True
+               )
     selector(self,
              frame,
              col_bg,
@@ -66,7 +70,8 @@ def frame_stemmer(self, location, col_bg, col_txt):
                       get_config("txt_selectStemmer"),
                       (lambda s, f, b, t: radiobtns_stemmer(s, f, b, t)),
                       col_bg,
-                      col_txt
+                      col_txt,
+                      get_config("txt_tooltip_stemmer")
                       )
 
 
@@ -76,11 +81,12 @@ def frame_stopword(self, location, col_bg, col_txt):
                       get_config("txt_toggleStopword"),
                       (lambda s, f, b, t: radiobtns_stopword(s, f, b, t)),
                       col_bg,
-                      col_txt
+                      col_txt,
+                      get_config("txt_tooltip_stopwords")
                       )
 
 
-def frame_embedding(self, location, col_bg, col_txt):
+def frame_searchmode(self, location, col_bg, col_txt):
     return get_setting_frame(self,
                       location,
                       get_config("txt_selectsearchmode"),
@@ -96,7 +102,8 @@ def frame_clustering(self, location, col_bg, col_txt):
                       get_config("txt_toggleClustering"),
                       (lambda s, f, b, t: radiobtns_clustering(s, f, b, t)),
                       col_bg,
-                      col_txt
+                      col_txt,
+                      get_config("txt_tooltip_clustering")
                       )
 
 
