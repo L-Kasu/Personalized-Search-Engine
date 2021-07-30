@@ -6,6 +6,7 @@ import numpy as np
 from evaluation import file_reader
 from nltk.tokenize import word_tokenize
 from sklearn.metrics.pairwise import cosine_similarity
+from nltk.stem import LancasterStemmer
 
 
 class Model:
@@ -26,22 +27,32 @@ class Model:
         return self.model.score(X, y)
 
     def test(self):
-        negative = []
-        positive = []
+        wrong_unrelated = []
+        right_unrelated = []
+        wrong_related = []
+        right_related = []
+
         test_data = self.test_data
         for i in range(len(test_data[0])):
             item = test_data[0][i]
             predicted = self.score(np.array(item).reshape(1, -1))
             actual = test_data[1][i]
             if actual == 1:
-                positive.append(predicted[1])
+                if predicted[1] > .5:
+                    right_related.append(predicted[1])
+                else:
+                    wrong_unrelated.append(predicted[1])
             else:
-                negative.append(predicted[0])
-            print(" query: ", test_data[3][i],
-                  " doc: ", test_data[2][i],
-                  " predicted: ", predicted,
-                  " actual : ", actual)
-        print("negative:", sum(negative)/len(negative), "positive:", sum(positive)/len(positive))
+                if predicted[1] > .5:
+                    wrong_related.append(predicted[1])
+                else:
+                    right_unrelated.append(predicted[1])
+
+        print("right related: ", len(right_related),
+              "wrong related: ", len(wrong_related),
+              "right unrelated: ", len(right_unrelated),
+              "wrong unrelated: ", len(wrong_unrelated),)
+
 
 
     def score(self, doc_features):
@@ -72,7 +83,7 @@ class Model:
                 else:
                     validate[0].append(sample)
                     validate[1].append(label)
-        print(sum(train[1])/len(train[1]))
+        print("the share of related documents: sum(train[1])/len(train[1])")
         return train, test, validate
 
 
@@ -88,6 +99,12 @@ def tfidf_cos_sim(Vectorizer, doc1, doc2):
     similarity = cosine_similarity(vectorized[0], vectorized[1])
     return similarity[0][0]
 
+def tokenize(doc):
+    stemmer = LancasterStemmer()
+    tokens = [word for word in word_tokenize(doc.lower()) if len(word) > 1]
+    result = [stemmer.stem(item) for item in tokens]
+    return result
+
 def load_embedding():
     name = "glove.6B.300d.p"
     path = ""
@@ -100,6 +117,8 @@ def load_embedding():
 def main():
     Vectorizer = TfidfVectorizer(analyzer='word', stop_words="english")
     embedding = load_embedding()
+    # specify document number to take into consideration(for performance)
+    documents_to_use = 100
     scores = []
     # create list of features we want to take into consideration
     embedding_vectors_distance = lambda doc1: lambda doc2: \
@@ -110,8 +129,8 @@ def main():
     rnd = lambda _: lambda _: random.uniform(0, 1)
     tfidf_cosine = lambda doc1: lambda doc2: tfidf_cos_sim(Vectorizer, doc1, doc2)
     # making sure the validation runs correctly, by using a random funcition for testing and we should get back .5
-    function_list = [tfidf_cosine, embedding_vectors_cosine]
-    documents = file_reader.load_all()[2][:100]
+    function_list = [embedding_vectors_cosine, tfidf_cosine]
+    documents = file_reader.load_all()[2][:documents_to_use]
     query_dict = file_reader.load_qry()
     rel_dict = {}
     with open("../data/tn_pp_CISI.REL.pickle", "rb") as f:
