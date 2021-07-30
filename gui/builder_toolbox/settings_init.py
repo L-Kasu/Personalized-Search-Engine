@@ -266,3 +266,29 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                              "ERR_resultListEmpty": "خَطَأ: لَيْسَ هُنَالِكَ نَتَائِجٌ لِلْبَحْث"},
                   }
     write_config(langconfig, path, langfile)
+
+
+def init_fontfile(fontfile=fontconfigfile, path=default_path):
+    fontconfig = {"Arial":
+                      {"font_header_1": ["Arial", 15, "bold"],
+                       "font_header_2": ["Arial", 10, "bold"],
+                       "font_returntext": ["Arial", 10]},
+                  "Old Goudy/English Text MT":
+                      {"font_header_1": ["Old English Text MT", 20, "bold"],
+                       "font_header_2": ["Goudy Old Style", 12, "bold"],
+                       "font_returntext": ["Goudy Old Style", 12]},
+                  "Biome":
+                      {"font_header_1": ["Biome", 16, "bold"],
+                       "font_header_2": ["Biome", 10, "bold"],
+                       "font_returntext": ["Biome", 10]},
+                  "Terminal":
+                      {"font_header_1": ["Terminal", 15, "bold"],
+                       "font_header_2": ["Terminal", 10, "bold"],
+                       "font_returntext": ["Terminal", 10]},
+                  "Comic Sans MS":
+                      {"font_header_1": ["Comic Sans MS", 18, "bold"],
+                       "font_header_2": ["Comic Sans MS", 10, "bold"],
+                       "font_returntext": ["Comic Sans MS", 10]}
+                  }
+    write_config(fontconfig, path, fontfile)
+

@@ -60,3 +60,18 @@ def set_colors(self,
             config = configdict[key]
     edit_config(config, path, masterfile)
     restart_application(self)
+
+
+def set_font(self,
+             font,
+             path=default_path,
+             file=fontconfigfile,
+             masterfile=masterconfigfile):
+    configdict = get_configdict(path, file)
+    config = {}
+    for key in configdict:
+        if key == font:
+            config = configdict[key]
+    edit_config(config, path, masterfile)
+    restart_application(self)
+
