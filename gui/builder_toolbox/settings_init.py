@@ -287,7 +287,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                              "txt_selectstopwordlang": "كلمات التوقّف (Stop Words)",
                              "txt_on": "نَعَم",
                              "txt_off": "لا",
-                             "txt_tooltip_porter": "This is the Porter stemming algorithm. It follows the algorithm presented in Porter, M. 'An algorithm for suffix stripping.' Program 14.3 (1980): 130-137.",
+                             "txt_tooltip_porter": "هذا هو مجذّر الكلمات Porter, هو يتبّع الخوارزميّة المقدّمة في Porter, M 'An algorithm for suffix stripping.' Program 14.3 (1980): 130-137",
                              "txt_tooltip_lancaster": "A word stemmer based on the Lancaster (Paice/Husk) stemming algorithm. It follows the algorithm presented in Paice, Chris D. “Another Stemmer.” ACM SIGIR Forum 24.3 (1990): 56-61.",
                              "txt_tooltip_snowball": "This is an Implementation of the 'Snowball' stemmers created by Martin Porter. Select this option if you want to stem documents in Arabic, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Norwegian, Portuguese, Romanian, Russian, Spanish or Swedish. The english algorithm was presented in Porter, M. 'An algorithm for suffix stripping.' Program 14.3 (1980): 130-137.",
                              "txt_tooltip_stemmer": "A Stemmer is an algorithm, that reduces given inflected/derived words to their word stem (the part of the word responsible for its lexical meaning). For example the stem of the words 'cats', 'catlike' and 'catty' would be 'cat'",
@@ -299,7 +299,7 @@ def init_langfile(langfile=languageconfigfile, path=default_path):
                              "txt_tooltip_logistic regression": "TODO logreg tooltip",
                              "ERR_noDirectorySelected": "خَطَأ: لَمْ يَتُمَّ اِخْتِيَارُ أَيّ مُجَلَّد",
                              "ERR_resultListEmpty": "خَطَأ: لَيْسَ هُنَالِكَ نَتَائِجٌ لِلْبَحْث"},
-                  }                  }
+                  }                  
     write_config(langconfig, path, langfile)
 
 
