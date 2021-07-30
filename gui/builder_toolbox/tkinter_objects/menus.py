@@ -6,6 +6,7 @@ from gui.builder_toolbox.settings_defaultpaths import *
 from gui.builder_toolbox.settings_util import get_config, get_configdict, edit_config
 from gui.builder_toolbox.settings_util import set_language
 from gui.builder_toolbox.settings_util import set_colors
+from gui.builder_toolbox.settings_util import set_font
 
 
 def default_optionmenu(location,
@@ -59,6 +60,18 @@ def menu_styles(self,
                                           file,
                                           path
                                           ).pack(side=RIGHT)
+
+
+def menu_fonts(self,
+               location,
+               path=default_path,
+               file=fontconfigfile):
+    self.menu_fonts = default_optionmenu(location,
+                                         "ID_font",
+                                         lambda x: set_font(self, x),
+                                         file,
+                                         path
+                                         ).pack(side=RIGHT)
 
 
 def menu_snowballstemmer_language(self, location):

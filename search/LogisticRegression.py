@@ -7,13 +7,14 @@ from evaluation import file_reader
 from nltk.tokenize import word_tokenize
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.stem import LancasterStemmer
+import pickle
 
 
 class Model:
     def __init__(self, feature_creating_functions, class_weight="balanced"):
         self.training_data, self.test_data, self.validation_data = ((), (), ())
         self.feature_generator = feature_creating_functions
-        self.model = LogisticRegression(solver='liblinear', random_state=0, class_weight=class_weight)
+        self.model = LogisticRegression(solver='saga', random_state=0, class_weight=class_weight)
 
     def intialise_data(self, documents, query_dict, rel_dict):
         self.training_data, self.test_data, self.validation_data = self.create_datasets(documents, query_dict, rel_dict)
@@ -118,7 +119,8 @@ def main():
     Vectorizer = TfidfVectorizer(analyzer='word', stop_words="english")
     embedding = load_embedding()
     # specify document number to take into consideration(for performance)
-    documents_to_use = 100
+    documents_to_use = 1
+    load = False
     scores = []
     # create list of features we want to take into consideration
     embedding_vectors_distance = lambda doc1: lambda doc2: \
@@ -129,14 +131,21 @@ def main():
     rnd = lambda _: lambda _: random.uniform(0, 1)
     tfidf_cosine = lambda doc1: lambda doc2: tfidf_cos_sim(Vectorizer, doc1, doc2)
     # making sure the validation runs correctly, by using a random funcition for testing and we should get back .5
-    function_list = [embedding_vectors_cosine, tfidf_cosine]
+    function_list = [embedding_vectors_distance, embedding_vectors_cosine, tfidf_cosine]
     documents = file_reader.load_all()[2][:documents_to_use]
     query_dict = file_reader.load_qry()
     rel_dict = {}
+    my_model = None
     with open("../data/tn_pp_CISI.REL.pickle", "rb") as f:
         rel_dict = pickle.load(f)
-    my_model = Model(function_list)
-    my_model.intialise_data(documents, query_dict, rel_dict)
+    if load:
+        with open("./my_model.pickle", "rb") as f:
+            my_model = pickle.load(f)
+    else:
+        with open("./my_model.pickle", "wb") as f:
+            my_model = Model(function_list)
+            my_model.intialise_data(documents, query_dict, rel_dict)
+            pickle.dump(my_model, f, protocol=pickle.HIGHEST_PROTOCOL)
     my_model.train()
     score = my_model.validate()
     my_model.test()

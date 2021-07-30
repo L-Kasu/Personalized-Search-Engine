@@ -3,7 +3,7 @@
 
 
 # to evaluate the wordembedding there is the file glove.6B.200d.pickle needed in the database
-
+import search.LogisticRegression
 from data import database
 from evaluation import evaluation_main, file_reader
 from search import search_class
@@ -40,6 +40,9 @@ corpus = documents[2]
         algo = ""
         query_dict = {}
     evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, algo)'''
+
+def main_LR():
+    search.LogisticRegression.main()
 
 def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
@@ -93,7 +96,6 @@ def main_compare():
 
     evaluation_main.run_compare(eval_1, eval_2, name1, name2)
 
-
 def main():
     print("----------------------")
     print("Simple IR System Setup")
@@ -101,11 +103,14 @@ def main():
     print("\nDo you want to:")
     print("1: evaluate the search engine")
     print("2: compare two systems")
+    print("3: run linear regression")
     i = input()
     if i == "1":
         main_evaluate()
     elif i == "2":
         main_compare()
+    elif i == "3":
+        main_LR()
     else:
         exit()
 

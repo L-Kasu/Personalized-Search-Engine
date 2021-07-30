@@ -2,7 +2,7 @@ import os
 def load_all():
     name = "CISI.ALL"
     path = ""
-    for root, dirs, files in os.walk("\\evaluation\\CISI_archive\\"):
+    for root, dirs, files in os.walk(".\\CISI_archive\\"):
         if name in files:
             path = os.path.join(root, name)
     with open(path) as f:
@@ -31,7 +31,7 @@ def load_all():
 def load_qry():
     name = "CISI.QRY"
     path = ""
-    for root, dirs, files in os.walk(".\\CISI_archive\\"):
+    for root, dirs, files in os.walk("../search/CISI_archive\\"):
         if name in files:
             path = os.path.join(root, name)
     with open(path) as f:

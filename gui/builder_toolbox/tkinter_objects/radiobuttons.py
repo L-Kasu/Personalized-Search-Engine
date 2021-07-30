@@ -87,4 +87,5 @@ def radiobtns_search_mode(self, location, col_bg, col_txt):
                                     lambda: edit_config({"search_mode": self.search_mode.get()}),
                                     col_bg,
                                     col_txt)
+        AddTooltip(radiobtn, get_config("txt_tooltip_" + mode))
         radiobtn.pack(side=LEFT, fill=BOTH)

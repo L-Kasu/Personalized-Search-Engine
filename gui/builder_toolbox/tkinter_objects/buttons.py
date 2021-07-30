@@ -88,10 +88,11 @@ def settings_function(self):
     # only works this way, no idea why...
     gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_stopword(self, self.window_settings, col_bg, col_txt).pack(fill=X)
-    gui.builder_toolbox.tkinter_objects.frames.frame_embedding(self, self.window_settings, col_bg, col_txt).pack(fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_searchmode(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_clustering(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_lang(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_colors(self, self.window_settings, col_bg, col_txt).pack(fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_menu_fonts(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_snowballstemmer_language(self, self.window_settings, col_bg,
                                                                                    col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_stopword_language(self, self.window_settings, col_bg,
