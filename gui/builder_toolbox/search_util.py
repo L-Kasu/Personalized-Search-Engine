@@ -8,6 +8,7 @@ from pdfminer.layout import LTTextContainer
 from gui.builder_toolbox.settings_util import get_config
 from search import *
 import timeit
+
 from search import search_class
 from.loading_and_saving_sessions import save_session
 

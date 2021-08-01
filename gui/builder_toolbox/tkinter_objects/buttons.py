@@ -31,14 +31,9 @@ def btn_select_directory(self, location):
 
 
 def btn_select_directory_function(self):
-    #self.dir_label['text'] = ""
+    self.dir_label['text'] = self.dir_selected = ""
     self.dir_selected = filedialog.askdirectory()
-    dir_label(self,
-              self.result_frame,
-              self.dir_selected + "/"
-              ).pack(anchor=W,
-                     fill=X,
-                     expand=False)
+    dir_label(self.result_frame, self.dir_selected + "/")
     preprocess(self)
 
 
@@ -62,7 +57,7 @@ def btn_entry_delete_function(self):
 
 
 def btn_preview(self, location):
-    default_btn(location, get_config("txt_preview"), lambda: preview_function(self)).pack(side=BOTTOM,anchor=S)
+    default_btn(location, get_config("txt_preview"), lambda: preview_function(self)).pack(side=BOTTOM, anchor=CENTER)
 
 
 def preview_function(self):
@@ -80,7 +75,10 @@ def preview_function(self):
 
 
 def btn_settings(self, location):
-    default_btn(location, get_config("txt_settingsheader"), lambda: settings_function(self)).pack(side=TOP, anchor=NW)
+    default_btn(location,
+                get_config("txt_settingsheader"),
+                lambda: settings_function(self)
+                ).pack(side=TOP, anchor=NE)
 
 
 def settings_function(self):
@@ -102,3 +100,29 @@ def settings_function(self):
                                                                                    col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_stopword_language(self, self.window_settings, col_bg,
                                                                                    col_txt).pack(fill=X)
+    default_btn(self.window_settings,
+                get_config("txt_confirm"),
+                lambda: settings_confirm_function(self,
+                                                  self.selected_stemmer.get(),
+                                                  self.remove_stopwords.get(),
+                                                  self.search_mode.get(),
+                                                  self.toggle_clustering.get()
+                                                  )
+                ).pack(side=LEFT)
+    default_btn(self.window_settings,
+                get_config("txt_cancel"),
+                lambda: self.window_settings.destroy()
+                ).pack(anchor=W)
+
+
+def settings_confirm_function(self,
+                              stemmer,
+                              stopword,
+                              search_mode,
+                              toggle_clustering
+                              ):
+    edit_config({"stemmer": stemmer})
+    edit_config({"stop_word": stopword})
+    edit_config({"search_mode": search_mode})
+    edit_config({"clustering": toggle_clustering})
+    self.window_settings.destroy()

@@ -47,6 +47,4 @@ class Application(Frame):
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         result_frame(self, self.master)
 
-        #self.dir_label["text"] = self.dir_selected
-
         self.pack()
