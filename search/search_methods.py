@@ -73,6 +73,7 @@ class TfidfMethod(SearchMethod):
         return self.tfidfVectorizer.transform([txt])
 
 
+# '''
 def get_stems(text,
               snowball_language=get_config("snowballstemmer_language"),
               configstemmer=get_config("stemmer")):
@@ -84,3 +85,5 @@ def get_stems(text,
     tokens = [word for word in nltk.word_tokenize(text) if len(word) > 1]
     stems = [stemmer.stem(item) for item in tokens]
     return stems
+
+# '''

@@ -41,7 +41,7 @@ class Search:
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
         
         self.clustering = None
-        clustering_flag = False #get_config("clustering")
+        clustering_flag = get_config("clustering")
         
         if clustering_flag:
             self.clustering = clustering.Clustering(self.search_method.get_matrix())

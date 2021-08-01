@@ -5,6 +5,9 @@ from gui.builder_toolbox.search_util import *
 from gui.builder_toolbox.windowcleaner import WindowCleaner
 
 
+btn_padding = 1
+
+
 def default_btn(location, text, function):
     button = Button(location,
                     text=text,
@@ -27,7 +30,10 @@ def btn_select_directory(self, location):
     default_btn(location,
                 get_config("txt_selectdir"),
                 lambda: btn_select_directory_function(self)
-                ).pack(side=LEFT)
+                ).pack(side=LEFT,
+                       padx=btn_padding,
+                       pady=btn_padding
+                       )
 
 
 def btn_select_directory_function(self):
@@ -41,14 +47,20 @@ def btn_entry_search(self, location):
     default_btn(location,
                 get_config("txt_entrysearch"),
                 lambda: search(self, self.search_entry.get())
-                ).pack(side=LEFT, anchor=CENTER)
+                ).pack(side=LEFT,
+                       anchor=CENTER,
+                       padx=btn_padding,
+                       pady=btn_padding)
 
 
 def btn_entry_delete(self, location):
     default_btn(location,
                 get_config("txt_entryclear"),
                 lambda: btn_entry_delete_function(self)
-                ).pack(side=RIGHT, anchor=CENTER)
+                ).pack(side=RIGHT,
+                       anchor=CENTER,
+                       padx=btn_padding,
+                       pady=btn_padding)
 
 
 def btn_entry_delete_function(self):
@@ -57,7 +69,13 @@ def btn_entry_delete_function(self):
 
 
 def btn_preview(self, location):
-    default_btn(location, get_config("txt_preview"), lambda: preview_function(self)).pack(side=BOTTOM, anchor=CENTER)
+    default_btn(location,
+                get_config("txt_preview"),
+                lambda: preview_function(self)
+                ).pack(side=BOTTOM,
+                       anchor=CENTER,
+                       padx=btn_padding,
+                       pady=btn_padding)
 
 
 def preview_function(self):
@@ -78,7 +96,10 @@ def btn_settings(self, location):
     default_btn(location,
                 get_config("txt_settingsheader"),
                 lambda: settings_function(self)
-                ).pack(side=TOP, anchor=NE)
+                ).pack(side=TOP,
+                       anchor=NE,
+                       padx=btn_padding,
+                       pady=btn_padding)
 
 
 def settings_function(self):
@@ -108,11 +129,15 @@ def settings_function(self):
                                                   self.search_mode.get(),
                                                   self.toggle_clustering.get()
                                                   )
-                ).pack(side=LEFT)
+                ).pack(side=LEFT,
+                       padx=btn_padding,
+                       pady=btn_padding)
     default_btn(self.window_settings,
                 get_config("txt_cancel"),
                 lambda: self.window_settings.destroy()
-                ).pack(anchor=W)
+                ).pack(anchor=W,
+                       padx=btn_padding,
+                       pady=btn_padding)
 
 
 def settings_confirm_function(self,
