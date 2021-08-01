@@ -45,6 +45,8 @@ class Search:
         
         if clustering_flag:
             self.clustering = clustering.Clustering(self.search_method.get_matrix())
+
+        print("Search class initialized with, search mode:", search_name, ", clustering:", clustering_flag)
             
     
     def search_indicies(self, query):

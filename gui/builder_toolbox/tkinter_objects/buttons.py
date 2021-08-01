@@ -123,6 +123,10 @@ def settings_confirm_function(self,
                               ):
     edit_config({"stemmer": stemmer})
     edit_config({"stop_word": stopword})
+    old_search_mode = get_config("search_mode")
     edit_config({"search_mode": search_mode})
     edit_config({"clustering": toggle_clustering})
+    if old_search_mode != search_mode:
+        self.tf_object = search_class.Search(self.tf_object.corpus, self.tf_object.titles)
+        save_session(self.dir_selected, self.tf_object)
     self.window_settings.destroy()

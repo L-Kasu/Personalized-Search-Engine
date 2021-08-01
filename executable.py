@@ -1,6 +1,6 @@
 from tkinter import Tk
 from gui.builder_toolbox.settings_init import init_config
-# init_config()
+#init_config()
 from gui.ui_builder import Application
 
 
