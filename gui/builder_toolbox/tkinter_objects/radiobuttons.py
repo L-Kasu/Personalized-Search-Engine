@@ -1,6 +1,7 @@
 from gui.builder_toolbox.tkinter_objects.labels import *
 from gui.builder_toolbox.settings_util import *
 from gui.builder_toolbox.tooltip import AddTooltip
+from search import search_class
 
 
 def default_radiobtn(location,
@@ -77,8 +78,13 @@ def radiobtns_search_mode(self, location, col_bg, col_txt):
                                     mode,
                                     self.search_mode,
                                     mode,
-                                    None,
+                                    lambda: radiobtns_search_mode_function(self),
                                     col_bg,
-                                    col_txt)
+                                    col_txt
+        )
         AddTooltip(radiobtn, get_config("txt_tooltip_" + mode))
         radiobtn.pack(side=LEFT, fill=BOTH)
+
+
+def radiobtns_search_mode_function(self):
+    self.tf_object = search_class.Search(self.tf_object.corpus, self.tf_object.titles)
