@@ -23,8 +23,8 @@ def init_config(path=default_path,
               "snowballstemmer_language": "english",
               "stop_word": True,
               "stopword_language": "english",
-              "clustering": True,
-              "search_mode": "GloVe"}
+              "clustering": False,
+              "search_mode": "tfidf"}
     write_config(config, path, masterfile)
 
 

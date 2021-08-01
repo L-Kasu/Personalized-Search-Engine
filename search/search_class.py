@@ -2,6 +2,8 @@ from search import search_methods, loading_and_saving_embeddings, clustering
 import pickle
 import os
 import sys
+from gui.builder_toolbox.settings_util import get_config
+
 def check_len(corpus, titles):
     
     tb = sys.exc_info()[2]
@@ -17,7 +19,7 @@ class Search:
         self.titles = titles
         
         self.search_method = None
-        search_name = "GloVe" #get_config("search_mode")
+        search_name = get_config("search_mode")
 
         if search_name == "tfidf":
             self.search_method = search_methods.TfidfMethod(corpus)

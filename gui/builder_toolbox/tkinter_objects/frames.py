@@ -63,8 +63,12 @@ def result_frame(self, location):
     self.result_frame.pack(side=BOTTOM, fill=BOTH, expand=True)
 
     result_label(self.result_frame)
+    dir_label(self, self.result_frame, self.dir_selected).pack(anchor=W,
+                                                               fill=X,
+                                                               expand=False)
     result_text(self, self.result_frame)
     btn_preview(self, self.result_text)
+
 
 
 def frame_stemmer(self, location, col_bg, col_txt):

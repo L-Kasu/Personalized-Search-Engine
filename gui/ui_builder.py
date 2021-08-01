@@ -1,7 +1,7 @@
 from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.menus import *
-
+from gui.builder_toolbox.loading_and_saving_sessions import load_session
 
 class Application(Frame):
     def __init__(self, master=None):
@@ -9,11 +9,15 @@ class Application(Frame):
         self.configure(bg=get_config("col_bg"))
         self.master = master
         # WindowCleaner(self.master)
-        self.dir_selected = ""
-        self.dir_label = Label()
+        # self.dir_selected = ""
         self.result = list()
         self.remove_stopwords = BooleanVar()
         self.remove_stopwords.set(get_config("stop_word"))
+        #
+        path, tf_object = load_session()
+        self.dir_selected = path
+        self.tf_object = tf_object
+
         self.toggle_clustering = BooleanVar()
         self.toggle_clustering.set(get_config("clustering"))
         self.selected_stemmer = StringVar()
@@ -36,9 +40,13 @@ class Application(Frame):
         self.buttons_frame = Frame()
         entry_frame(self, self.master)
 
+        self.dir_label = Label()
+
         self.result_frame = Frame()
         self.result_text = Listbox()
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         result_frame(self, self.master)
+
+        #self.dir_label["text"] = self.dir_selected
 
         self.pack()
