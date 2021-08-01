@@ -4,7 +4,7 @@ from gui.ui_builder import Application
 
 
 if __name__ == "__main__":
-    init_config()
+    # init_config()
     root = Tk()
     app = Application(master=root)
     app.mainloop()

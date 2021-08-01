@@ -75,12 +75,16 @@ def preview_function(self):
 
 
 def btn_settings(self, location):
-    default_btn(location, get_config("txt_settingsheader"), lambda: settings_function(self)).pack(side=TOP, anchor=NW)
+    default_btn(location,
+                get_config("txt_settingsheader"),
+                lambda: settings_function(self)
+                ).pack(side=TOP, anchor=NE)
 
 
 def settings_function(self):
     col_bg = get_config("col_bg")
     col_txt = get_config("col_acc_bgcontrast")
+    global stemmer
     self.window_settings = Toplevel(bg=col_bg, bd=get_config("global_padding"), relief=get_config("relief_frames"))
     self.window_settings.title(get_config("txt_settingsheader"))
     # WindowCleaner(self.window_settings)
@@ -97,3 +101,29 @@ def settings_function(self):
                                                                                    col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_stopword_language(self, self.window_settings, col_bg,
                                                                                    col_txt).pack(fill=X)
+    default_btn(self.window_settings,
+                get_config("txt_confirm"),
+                lambda: settings_confirm_function(self,
+                                                  self.selected_stemmer.get(),
+                                                  self.remove_stopwords.get(),
+                                                  self.search_mode.get(),
+                                                  self.toggle_clustering.get()
+                                                  )
+                ).pack(side=LEFT)
+    default_btn(self.window_settings,
+                get_config("txt_cancel"),
+                lambda: self.window_settings.destroy()
+                ).pack(anchor=W)
+
+
+def settings_confirm_function(self,
+                              stemmer,
+                              stopword,
+                              search_mode,
+                              toggle_clustering
+                              ):
+    edit_config({"stemmer": stemmer})
+    edit_config({"stop_word": stopword})
+    edit_config({"search_mode": search_mode})
+    edit_config({"clustering": toggle_clustering})
+    self.window_settings.destroy()

@@ -6,6 +6,7 @@ from gui.builder_toolbox.tkinter_objects.menus import *
 class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
+        self.configure(bg=get_config("col_bg"))
         self.master = master
         # WindowCleaner(self.master)
         self.dir_selected = ""
@@ -19,13 +20,14 @@ class Application(Frame):
         self.selected_stemmer.set(get_config("stemmer"))
         self.search_mode = StringVar()
         self.search_mode.set(get_config("search_mode"))
-        self.snowballstate = [ACTIVE if get_config("issnowball") else DISABLED]
+        self.snowballstate = [ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED]
         self.stopwordstate = [ACTIVE if get_config("stop_word") else DISABLED]
         self.master.geometry(str(get_config("master_width")) + "x" + str(get_config("master_height")))
         self.master.title(get_config("txt_mastertitle"))
         self.master.config(relief=get_config("relief_frames"),
                            bd=get_config("global_padding")+2,
-                           bg=get_config("col_bg"))
+                           bg=get_config("col_bg")
+                           )
 
         btn_settings(self, self.master)
 

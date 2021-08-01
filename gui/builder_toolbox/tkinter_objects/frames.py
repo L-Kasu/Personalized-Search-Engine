@@ -42,7 +42,10 @@ def entry_frame(self, location):
                              relief=get_config("relief_frames"),
                              bd=get_config("global_padding")
                              )
-    self.entry_frame.pack(fill=X, expand=True)
+    self.entry_frame.pack(fill=X,
+                          expand=False,
+                          pady=get_config("global_padding")+2
+                          )
     search_entry(self, self.entry_frame)
     btn_select_directory(self, self.entry_frame)
     buttons_frame(self, self.entry_frame)
