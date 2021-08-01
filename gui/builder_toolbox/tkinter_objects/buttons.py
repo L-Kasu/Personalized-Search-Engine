@@ -84,7 +84,6 @@ def btn_settings(self, location):
 def settings_function(self):
     col_bg = get_config("col_bg")
     col_txt = get_config("col_acc_bgcontrast")
-    global stemmer
     self.window_settings = Toplevel(bg=col_bg, bd=get_config("global_padding"), relief=get_config("relief_frames"))
     self.window_settings.title(get_config("txt_settingsheader"))
     # WindowCleaner(self.window_settings)
