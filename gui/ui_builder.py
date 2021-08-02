@@ -8,8 +8,6 @@ class Application(Frame):
         super().__init__(master)
         self.configure(bg=get_config("col_bg"))
         self.master = master
-        # WindowCleaner(self.master)
-        # self.dir_selected = ""
         self.result = list()
         self.remove_stopwords = BooleanVar()
         self.remove_stopwords.set(get_config("stop_word"))
