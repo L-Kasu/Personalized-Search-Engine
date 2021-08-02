@@ -1,4 +1,4 @@
-from search import search_methods, loading_and_saving_embeddings, clustering
+from search import search_methods, loading_and_saving_embeddings, clustering, LogisticRegression
 import pickle
 import os
 import sys
@@ -37,6 +37,10 @@ class Search:
                     path = os.path.join(root, name)
             fasttext_embedding = pickle.load(open(path, "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
+
+        elif search_name == "LogisticRegression":
+            # TODO: load from pickle
+            pass
         
         self.clustering = None
         clustering_flag = False #get_config("clustering")
@@ -46,21 +50,28 @@ class Search:
             
     
     def search_indicies(self, query):
-        
-        query_vector = self.search_method.txt_to_vec(query)
-        
+
         relevant_indicies = list(range(len(self.titles)))
-        relevant_matrix = self.search_method.get_matrix()
-        
-        if self.clustering is not None:
-            query_vector = query_vector.reshape(1, -1)
-            index = self.clustering.predict_the_cluster_of_vector(query_vector)
-            relevant_indicies, _, relevant_matrix = self.clustering.get_cluster_of_index(index)
-        
-        # cosine similarity
-        cos_sim = relevant_matrix @ query_vector.T
-        
-        combination = list(zip(relevant_indicies, cos_sim))
+        document_scores = []
+
+        if type(self.search_method) == LogisticRegression.Model:
+            for item in self.corpus:
+                score = self.search_method.score(query, item)
+                document_scores.append(score[1])
+
+        else:
+            query_vector = self.search_method.txt_to_vec(query)
+            relevant_matrix = self.search_method.get_matrix()
+
+            if self.clustering is not None:
+                query_vector = query_vector.reshape(1, -1)
+                index = self.clustering.predict_the_cluster_of_vector(query_vector)
+                relevant_indicies, _, relevant_matrix = self.clustering.get_cluster_of_index(index)
+
+            # cosine similarity
+            document_scores = relevant_matrix @ query_vector.T
+
+        combination = list(zip(relevant_indicies, document_scores))
         
         combination.sort(key=lambda x: x[1], reverse=True)
         
