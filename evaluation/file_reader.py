@@ -14,6 +14,7 @@ def load_all():
     cisi_indecies = []
     titles = []
     corpus = []
+    relation = {}
 
     for l in lines:
         indicator = l[1:2]
@@ -25,7 +26,23 @@ def load_all():
             cisi_indecies.append(content)
         elif indicator == 'T':
             titles.append(content)
-    return [cisi_indecies, titles, corpus]
+        elif indicator == 'X':
+            split = content.split()
+            for i in range(0, len(split)):
+                if i % 3 == 0:
+                    part = split[i:i+3]
+                    part = list(map(lambda x: int(x), part))
+                    for item in part:
+                        if item not in relation:
+                            relation[item] = part
+                        else:
+                            for item_ in part:
+                                if item_ not in relation[item]:
+                                    relation[item].append(item_)
+
+
+    print(relation)
+    return [cisi_indecies, titles, corpus, relation]
 
 
 def load_qry():
