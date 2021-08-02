@@ -12,3 +12,5 @@ def result_text(self, location):
                             )
     self.result_text.insert(0, "")
     self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
+    size = self.result_text.size()
+    self.result_text.yview_scroll(size, 'units')
