@@ -15,7 +15,7 @@ class Model:
     def __init__(self, feature_creating_functions, class_weight="balanced"):
         self.training_data, self.test_data, self.validation_data = ((), (), ())
         self.feature_generator = feature_creating_functions
-        self.model = LogisticRegression( random_state=0, class_weight=class_weight)
+        self.model = LogisticRegression(solver="lbfgs", penalty="l2", class_weight=class_weight)
 
     # prepares datasets to train the model:
     # - docs_1: first list of documents
@@ -33,7 +33,32 @@ class Model:
         return self.model.score(X, y)
 
     def test(self):
-        pass
+        wrong_unrelated = []
+        right_unrelated = []
+        wrong_related = []
+        right_related = []
+
+        test_data = self.test_data
+        for i in range(len(test_data[0])):
+            item = test_data[0][i]
+            predicted = self.model.predict_proba(np.array(item).reshape(1, -1))[0]
+            actual = test_data[1][i]
+            print(predicted, actual)
+            if actual == 1:
+                if predicted[1] > .5:
+                    right_related.append(predicted[1])
+                else:
+                    wrong_unrelated.append(predicted[1])
+            else:
+                if predicted[1] > .5:
+                    wrong_related.append(predicted[1])
+                else:
+                    right_unrelated.append(predicted[1])
+
+        print("right related: ", len(right_related),
+              "wrong related: ", len(wrong_related),
+              "right unrelated: ", len(right_unrelated),
+              "wrong unrelated: ", len(wrong_unrelated),)
 
 
 
@@ -44,14 +69,16 @@ class Model:
         return self.model.predict_proba(feature)[0]
 
     # return the matrix of features, by applying every function by the list for one feature, and the corresponding labels
-    def create_datasets(self, docs_1, docs_2, rel_dict):
+    def create_datasets(self, docs_1, docs_2, rel_dict, docs_equal=True):
+
         train = ([], [])
         test = ([], [], [], [])
         validate = ([], [])
         for i in range(0, len(docs_2)):
-            for j in range(0, len(docs_1)):
+            start = i + 1 if docs_equal else 0
+            for j in range(start, len(docs_1)):
                 if i in rel_dict:
-                    label = 1 if j in rel_dict[i] else 0
+                    label = 1 if j in rel_dict[i]  else 0
                 else:
                     label = 0
                 sample = [func(docs_2[i])(docs_1[j]) for func in self.feature_generator]
@@ -86,7 +113,7 @@ def tfidf_cos_sim(Vectorizer, doc1, doc2):
 
 def tokenize(doc):
     stemmer = LancasterStemmer()
-    tokens = [word for word in word_tokenize(doc.lower()) if len(word) > 1]
+    tokens = [word for word in word_tokenize(doc.lower())]
     result = [stemmer.stem(item) for item in tokens]
     return result
 
@@ -100,7 +127,7 @@ def load_embedding():
     return word_embedding
 
 def main():
-    Vectorizer = TfidfVectorizer(analyzer='word', stop_words="english")
+    Vectorizer = TfidfVectorizer(analyzer='word', stop_words="english", tokenizer=tokenize)
     embedding = load_embedding()
     # specify document number to take into consideration(for performance)
     documents_to_use = 1
@@ -108,7 +135,7 @@ def main():
     scores = []
     # create list of features we want to take into consideration
     embedding_vectors_distance = lambda doc1: lambda doc2: \
-        1/((np.linalg.norm(document_to_embedding_vector(embedding, doc1) - document_to_embedding_vector(embedding, doc2))) + sys.float_info.epsilon)
+        - np.linalg.norm(document_to_embedding_vector(embedding, doc1) - document_to_embedding_vector(embedding, doc2))
     embedding_vectors_cosine = lambda doc1: lambda doc2: \
         cosine_similarity(document_to_embedding_vector(embedding, doc1).reshape(1, -1),
                           document_to_embedding_vector(embedding, doc2).reshape(1, -1))[0][0]
@@ -117,7 +144,7 @@ def main():
     # making sure the validation runs correctly, by using a random funcition for testing and we should get back .5
     function_list = [tfidf_cosine, embedding_vectors_distance, embedding_vectors_cosine]
     library = file_reader.load_all()
-    docs_1 = library[2][:100]
+    docs_1 = library[2][:200]
     docs_2 = docs_1
     rel_dict = library[3]
     my_model = None

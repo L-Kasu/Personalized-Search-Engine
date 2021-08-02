@@ -30,18 +30,15 @@ def load_all():
             split = content.split()
             for i in range(0, len(split)):
                 if i % 3 == 0:
-                    part = split[i:i+3]
-                    part = list(map(lambda x: int(x), part))
-                    for item in part:
-                        if item not in relation:
-                            relation[item] = part
-                        else:
-                            for item_ in part:
-                                if item_ not in relation[item]:
-                                    relation[item].append(item_)
+                    part = (split[0], split[-1])
+                    a = int(part[0]) - 1
+                    b = int(part[-1]) - 1
+                    if a not in relation:
+                        relation[a] = [b]
+                    else:
+                        relation[a].append(b)
 
 
-    print(relation)
     return [cisi_indecies, titles, corpus, relation]
 
 
