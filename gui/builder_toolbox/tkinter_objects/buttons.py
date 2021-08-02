@@ -118,6 +118,8 @@ def settings_function(self):
                                                                                    col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_stopword_language(self, self.window_settings, col_bg,
                                                                                    col_txt).pack(fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_menu_docs_to_return(self, self.window_settings, col_bg,
+                                                                            col_txt).pack(fill=X)
     default_btn(self.window_settings,
                 get_config("txt_confirm"),
                 lambda: settings_confirm_function(self,

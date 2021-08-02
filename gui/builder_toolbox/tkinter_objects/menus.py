@@ -104,3 +104,11 @@ def menu_stopword_language(self, location):
                            state=self.stopwordstate
                            )
     self.menu_stopword_language.pack(side=RIGHT)
+
+
+def menu_docs_to_return(location):
+    default_optionmenu(location,
+                       lambda x: edit_config({"docs_to_return": x}),
+                       options=[5, 10, 25, 50, 100],
+                       defaultclicked=get_config("docs_to_return"),
+                       ).pack(side=RIGHT)

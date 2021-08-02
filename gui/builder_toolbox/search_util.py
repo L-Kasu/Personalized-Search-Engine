@@ -57,7 +57,7 @@ def search(self, query):
     doc_indices = tf_obj.search_indicies(query)
     stop = timeit.default_timer()
     print("search took:", stop - start)
-    docs_to_return = 10
+    docs_to_return = get_config("docs_to_return")
     for index in doc_indices:
         result.append(tf_obj.titles[index])
     if result:

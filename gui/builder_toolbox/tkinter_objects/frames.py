@@ -158,3 +158,13 @@ def frame_menu_stopword_language(self, location, col_bg, col_txt):
                              col_bg,
                              col_txt
                              )
+
+
+def frame_menu_docs_to_return(self, location, col_bg, col_txt):
+    return get_setting_frame(self,
+                             location,
+                             get_config("txt_docs_to_return"),
+                             (lambda s, f, b, t: menu_docs_to_return(f)),
+                             col_bg,
+                             col_txt
+                             )
