@@ -28,16 +28,21 @@ def default_radiobtn(location,
 
 
 def radiobtns_stemmer(self, location, col_bg, col_txt):
+    self.radiobtns_stemmer = []
     for stemmer in ["porter", "lancaster", "snowball"]:
+        state = ACTIVE if get_config("search_mode") is not ("GloVe" or "fasttext") else DISABLED
         radiobtn = default_radiobtn(location,
                                     stemmer.upper(),
                                     self.selected_stemmer,
                                     stemmer,
                                     lambda: stemmer_function(self),
                                     col_bg,
-                                    col_txt)
+                                    col_txt,
+                                    state=state
+                                    )
         AddTooltip(radiobtn, get_config("txt_tooltip_"+stemmer))
         radiobtn.pack(side=LEFT, fill=BOTH)
+        self.radiobtns_stemmer.append(radiobtn)
 
 
 def stemmer_function(self):
@@ -82,9 +87,15 @@ def radiobtns_search_mode(self, location, col_bg, col_txt):
                                     mode,
                                     self.search_mode,
                                     mode,
-                                    None,
+                                    lambda: radiobtns_search_mode_function(self, self.search_mode.get()),
                                     col_bg,
                                     col_txt
         )
         AddTooltip(radiobtn, get_config("txt_tooltip_" + mode))
         radiobtn.pack(side=LEFT, fill=BOTH)
+
+
+def radiobtns_search_mode_function(self, mode):
+    state = ACTIVE if mode == "tfidf" or mode == "logistic regression" else DISABLED
+    for radiobtn in self.radiobtns_stemmer:
+        radiobtn.config(state=state)

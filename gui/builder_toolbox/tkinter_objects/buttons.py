@@ -37,9 +37,9 @@ def btn_select_directory(self, location):
 
 
 def btn_select_directory_function(self):
-    self.dir_label['text'] = self.dir_selected = ""
+    # self.dir_label['text'] = self.dir_selected = "EMPTY"
     self.dir_selected = filedialog.askdirectory()
-    dir_label(self.result_frame, self.dir_selected + "/")
+    dir_label(self.result_frame, self.dir_selected)
     preprocess(self)
 
 
@@ -149,8 +149,8 @@ def settings_confirm_function(self,
     edit_config({"stemmer": stemmer})
     edit_config({"stop_word": stopword})
     if get_config("search_mode") != search_mode:
+        edit_config({"search_mode": search_mode})
         self.tf_object = search_class.Search(self.tf_object.corpus, self.tf_object.titles)
         save_session(self.dir_selected, self.tf_object)
-        edit_config({"search_mode": search_mode})
     edit_config({"clustering": toggle_clustering})
     self.window_settings.destroy()
