@@ -41,7 +41,9 @@ def radiobtns_stemmer(self, location, col_bg, col_txt):
 
 
 def stemmer_function(self):
-    self.snowballstate = [ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED]
+    state = ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED
+    self.snowballstate = state
+    self.menu_snowballstemmer_language.config(state=state)
 
 
 def radiobtns_stopword(self, location, col_bg, col_txt):
@@ -57,7 +59,9 @@ def radiobtns_stopword(self, location, col_bg, col_txt):
 
 
 def stopword_function(self, bool):
-    self.stopwordstate = ACTIVE if bool else DISABLED
+    state = ACTIVE if bool else DISABLED
+    self.stopwordstate = state
+    self.menu_stopword_language.config(state=state)
 
 
 def radiobtns_clustering(self, location, col_bg, col_txt):
