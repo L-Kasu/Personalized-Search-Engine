@@ -36,10 +36,10 @@ def btn_select_directory(self, location):
 
 
 def btn_select_directory_function(self):
-    self.dir_label['text'] = "EMPTY"
-    self.dir_selected = filedialog.askdirectory()
-    dir_label(self.result_frame, self.dir_selected)
+    new_dir = filedialog.askdirectory()
+    self.dir_selected = new_dir
     preprocess(self)
+    self.dir_label.config(text=new_dir)
 
 
 def btn_entry_search(self, location):

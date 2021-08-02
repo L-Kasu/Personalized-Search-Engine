@@ -44,5 +44,6 @@ class Application(Frame):
         self.result_text = Listbox()
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         result_frame(self, self.master)
+        dir_label(self, self.result_frame)
 
         self.pack()

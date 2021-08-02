@@ -32,14 +32,18 @@ def result_label(location):
                          expand=False)
 
 
-def dir_label(location, text):
-    default_label(location,
-                  text,
-                  font=get_config("font_header_2"),
-                  fg=get_config("col_acc_minor"),
-                  ).pack(side=LEFT,
-                         fill=X,
-                         expand=False)
+def dir_label(self, location):
+    text = "no directory selected!" \
+            if self.dir_selected == "" \
+            else self.dir_selected
+    self.dir_label = default_label(location,
+                                   text,
+                                   font=get_config("font_header_2"),
+                                   fg=get_config("col_acc_minor"),
+                                   )
+    self.dir_label.pack(side=LEFT,
+                        fill=X,
+                        expand=False)
 
 
 def preview_window_label(location, text):
