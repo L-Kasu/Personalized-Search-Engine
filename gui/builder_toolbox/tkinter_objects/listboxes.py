@@ -8,7 +8,11 @@ def result_text(self, location):
                             fg=get_config("col_acc_minor"),
                             font=get_config("font_returntext"),
                             borderwidth=0,
-                            highlightthickness=0
+                            highlightthickness=0,
+                            exportselection=0,
+                            activestyle=NONE,
+                            selectbackground=get_config("col_bg"),
+                            selectforeground=get_config("col_acc_bgcontrast")
                             )
     self.result_text.insert(0, "")
     self.result_text.pack(side=BOTTOM, fill=BOTH, expand=True)
@@ -23,10 +27,14 @@ def ui_console(self, location):
                            font=get_config("font_returntext"),
                            height=5,
                            borderwidth=0,
-                           highlightthickness=0
+                           highlightthickness=0,
+                           exportselection=0,
+                           activestyle=NONE,
+                           selectbackground=get_config("col_bg"),
+                           selectforeground=get_config("col_acc_bgcontrast")
                            )
     self.ui_console.insert(0, "")
-    self.ui_console.pack(anchor=N, fill=X)
+    self.ui_console.pack(side=TOP, fill=X)
     size = self.ui_console.size()
     self.ui_console.yview_scroll(size, 'units')
 

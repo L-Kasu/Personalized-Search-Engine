@@ -11,11 +11,22 @@ class Application(Frame):
         super().__init__(master)
         self.configure(bg=get_config("col_bg"))
         self.master = master
+        self.consoleflag = False
+        self.ui_console = Listbox()
         self.master.bind('<Control-r>', lambda e: run_with_init_config(self))
+        self.master.bind('<Control-c>', lambda e: draw_console(self, not self.consoleflag))
 
         def run_with_init_config(self):
             init_config()
             restart_application(self)
+
+        def draw_console(self, newflag):
+            if newflag:
+                ui_console(self, self.master)
+            else:
+                self.ui_console.destroy()
+                self.ui_console = Listbox()
+            self.consoleflag = newflag
 
         self.result = list()
         self.remove_stopwords = BooleanVar()
@@ -40,7 +51,7 @@ class Application(Frame):
                            bg=get_config("col_bg")
                            )
 
-        ui_console(self, self.master)
+        # ui_console(self, self.master)
         btn_settings(self, self.master)
         entry_frame(self, self.master)
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
