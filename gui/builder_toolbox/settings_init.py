@@ -321,7 +321,7 @@ def init_fontfile(fontfile=fontconfigfile, path=default_path):
                        "font_header_1": ["Arial", 15, "bold"],
                        "font_header_2": ["Arial", 10, "bold"],
                        "font_returntext": ["Arial", 10]},
-                  "Old Goudy/English Text MT":
+                  "Old English Text MT":
                       {"ID_font": "Old Goudy/English Text MT",
                        "font_header_1": ["Old English Text MT", 20, "bold"],
                        "font_header_2": ["Goudy Old Style", 12, "bold"],

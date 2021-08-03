@@ -2,12 +2,21 @@ from gui.builder_toolbox.tkinter_objects.frames import *
 from gui.builder_toolbox.tkinter_objects.buttons import *
 from gui.builder_toolbox.tkinter_objects.menus import *
 from gui.builder_toolbox.loading_and_saving_sessions import load_session
+from gui.builder_toolbox.settings_init import init_config
+from gui.restart_application import restart_application
 
 class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.configure(bg=get_config("col_bg"))
         self.master = master
+        self.master.bind('<Control-r>',
+                         lambda e: run_with_init_config(self))
+
+        def run_with_init_config(self):
+            init_config()
+            restart_application(self)
+
         self.result = list()
         self.remove_stopwords = BooleanVar()
         self.remove_stopwords.set(get_config("stop_word"))
