@@ -14,8 +14,10 @@ class Application(Frame):
         self.master = master
         self.consoleflag = False
         self.ui_console = Listbox()
+        self.preview_window = None
         self.master.bind('<Control-r>', lambda e: run_with_init_config(self))
         self.master.bind('<Control-c>', lambda e: draw_console(self, not self.consoleflag))
+        self.master.bind('<Control-p>', lambda e: draw_preview(self))
 
         def run_with_init_config(self):
             init_config()
@@ -29,10 +31,17 @@ class Application(Frame):
                 self.ui_console = Listbox()
             self.consoleflag = newflag
 
+        def draw_preview(self):
+            if self.preview_window is None:
+                preview_function(self)
+            else:
+                self.preview_window.destroy()
+                self.preview_window = None
+
         self.result = list()
         self.remove_stopwords = BooleanVar()
         self.remove_stopwords.set(get_config("stop_word"))
-        #
+
         path, tf_object = load_session()
         self.dir_selected = path
         self.tf_object = tf_object
