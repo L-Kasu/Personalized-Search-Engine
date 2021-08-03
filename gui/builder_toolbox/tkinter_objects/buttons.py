@@ -4,7 +4,7 @@ from gui.builder_toolbox.tkinter_objects.radiobuttons import *
 from gui.builder_toolbox.search_util import *
 
 
-btn_padding = 1
+btn_padding = get_config("btn_padding")
 
 
 def default_btn(location, text, function):
