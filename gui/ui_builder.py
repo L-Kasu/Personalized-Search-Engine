@@ -4,14 +4,14 @@ from gui.builder_toolbox.tkinter_objects.menus import *
 from gui.builder_toolbox.loading_and_saving_sessions import load_session
 from gui.builder_toolbox.settings_init import init_config
 from gui.restart_application import restart_application
+from gui.builder_toolbox.settings_util import get_config, edit_config
 
 class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.configure(bg=get_config("col_bg"))
         self.master = master
-        self.master.bind('<Control-r>',
-                         lambda e: run_with_init_config(self))
+        self.master.bind('<Control-r>', lambda e: run_with_init_config(self))
 
         def run_with_init_config(self):
             init_config()
@@ -40,17 +40,9 @@ class Application(Frame):
                            bg=get_config("col_bg")
                            )
 
+        ui_console(self, self.master)
         btn_settings(self, self.master)
-
-        self.entry_frame = Frame()
-        self.search_entry = Entry()
-        self.buttons_frame = Frame()
         entry_frame(self, self.master)
-
-        self.dir_label = Label()
-
-        self.result_frame = Frame()
-        self.result_text = Listbox()
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         result_frame(self, self.master)
         dir_label(self, self.result_frame)

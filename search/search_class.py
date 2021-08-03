@@ -3,6 +3,7 @@ import pickle
 import os
 import sys
 from gui.builder_toolbox.settings_util import get_config
+from gui.builder_toolbox.tkinter_objects.listboxes import print_to_ui_console
 
 def check_len(corpus, titles):
     
@@ -11,7 +12,7 @@ def check_len(corpus, titles):
 
 
 class Search:
-    def __init__(self, corpus, titles):
+    def __init__(self, corpus, titles, app=None):
 
         check_len(corpus, titles)
         
@@ -46,7 +47,8 @@ class Search:
         if clustering_flag:
             self.clustering = clustering.Clustering(self.search_method.get_matrix())
 
-        print("Search class initialized with, search mode:", search_name, ", clustering:", clustering_flag)
+        print_to_ui_console(app, "Search class initialized with search mode: "+search_name+", clustering: "+str(clustering_flag))
+        print("Search class initialized with search mode: ", search_name, ", clustering: ", clustering_flag)
             
     
     def search_indicies(self, query):

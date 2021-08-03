@@ -6,6 +6,7 @@ import math
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity as cos_sim
 import scipy.sparse.csr as csr
+from gui.builder_toolbox.tkinter_objects.listboxes import print_to_ui_console
 #from search.preprocessing_parameter import get_stems, get_stopword_value
 
 # sensitivity of the elbow finder
@@ -63,6 +64,7 @@ class Clustering:
                 optimal_k = self.elbow_graph(self.KMAX, sensitivity=sensitivity + 1, counter=counter)
 
         # TODO: make plotting work
+        print_to_ui_console(self, "we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))
         print("we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))
         return optimal_k
 
