@@ -1,7 +1,8 @@
 from search import search_methods, loading_and_saving_embeddings, clustering, LogisticRegression
-import pickle
+import pickle, dill
 import os
 import sys
+from gui.builder_toolbox.settings_util import get_config
 def check_len(corpus, titles):
     
     tb = sys.exc_info()[2]
@@ -17,7 +18,7 @@ class Search:
         self.titles = titles
         
         self.search_method = None
-        search_name = "GloVe" #get_config("search_mode")
+        search_name = "LogisticRegression" #get_config("search_mode")
 
         if search_name == "tfidf":
             self.search_method = search_methods.TfidfMethod(corpus)
@@ -39,8 +40,9 @@ class Search:
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
 
         elif search_name == "LogisticRegression":
-            # TODO: load from pickle
-            pass
+            with open("./my_model.pickle", "rb") as f:
+                self.search_method = dill.load(f)
+
         
         self.clustering = None
         clustering_flag = False #get_config("clustering")

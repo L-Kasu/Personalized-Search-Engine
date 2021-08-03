@@ -65,3 +65,21 @@ def load_qry():
             i += 1
     return queries
 
+def load_rel():
+    name = "CISI.REL"
+    path = ""
+    relation = {}
+    for root, dirs, files in os.walk(".\\CISI_archive\\"):
+        if name in files:
+            path = os.path.join(root, name)
+    with open(path) as f:
+        for l in f.readlines():
+            split = l.split()
+            a = int(split[0]) - 1
+            b = int(split[1]) - 1
+            if a not in relation:
+                relation[a] = [b]
+            else:
+                relation[a].append(b)
+    return relation
+
