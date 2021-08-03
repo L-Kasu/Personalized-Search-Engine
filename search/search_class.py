@@ -49,7 +49,9 @@ class Search:
 
         print_to_ui_console(app, "Search class initialized with search mode: "+search_name+", clustering: "+str(clustering_flag))
         print("Search class initialized with search mode: ", search_name, ", clustering: ", clustering_flag)
-            
+
+    def set_clustering(self, clustering):
+        self.clustering = clustering
     
     def search_indicies(self, query):
         
@@ -71,8 +73,7 @@ class Search:
         combination.sort(key=lambda x: x[1], reverse=True)
         
         return [c[0] for c in combination]
-        
-        
+
     def search_titles(self, query):
         indicies = self.search_indicies(query)
         return list(map(lambda index: self.titles[index], indicies))

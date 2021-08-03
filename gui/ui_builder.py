@@ -6,6 +6,7 @@ from gui.builder_toolbox.settings_init import init_config
 from gui.restart_application import restart_application
 from gui.builder_toolbox.settings_util import get_config, edit_config
 
+
 class Application(Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -51,7 +52,6 @@ class Application(Frame):
                            bg=get_config("col_bg")
                            )
 
-        # ui_console(self, self.master)
         btn_settings(self, self.master)
         entry_frame(self, self.master)
         self.preview_window = None  # needs to be none to prevent empty popup window at startup

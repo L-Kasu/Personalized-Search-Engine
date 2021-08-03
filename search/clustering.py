@@ -25,6 +25,7 @@ class Clustering:
         self.KMAX = max(round(math.sqrt(self.matrix.shape[0])), 1)
         self.optimal_k = self.__find_optimal_k(self.KMAX)
         self.clustering = self.__kmeans(self.optimal_k)
+        self.elbow_graph = None
 
     def __find_optimal_k(self, kmax):
         points = self.matrix
