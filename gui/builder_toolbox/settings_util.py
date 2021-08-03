@@ -59,6 +59,7 @@ def set_colors(self,
         if key == template:
             config = configdict[key]
     edit_config(config, path, masterfile)
+    edit_config({"ID_font": get_config("font_header_1")[0]}, path, masterfile)
     restart_application(self)
 
 
