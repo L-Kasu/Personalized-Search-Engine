@@ -45,7 +45,7 @@ class Search:
         clustering_flag = get_config("clustering")
         
         if clustering_flag:
-            self.clustering = clustering.Clustering(self.search_method.get_matrix())
+            self.clustering = clustering.Clustering(self.search_method.get_matrix(), app=app)
 
         print_to_ui_console(app, "Search class initialized with search mode: "+search_name+", clustering: "+str(clustering_flag))
         print("Search class initialized with search mode: ", search_name, ", clustering: ", clustering_flag)

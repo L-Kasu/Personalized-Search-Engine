@@ -19,8 +19,9 @@ def cos_sim(query_vec, tfidf_mat):
 
 class Clustering:
     # only works if vectors are normalized
-    def __init__(self, matrix: csr):
+    def __init__(self, matrix: csr, app=None):
         self.matrix = matrix # this breaks everything if matrix too big: /np.linalg.norm(matrix, axis = 1, keepdims=True)
+        self.app = app
         self.KMAX = max(round(math.sqrt(self.matrix.shape[0])), 1)
         self.optimal_k = self.__find_optimal_k(self.KMAX)
         self.clustering = self.__kmeans(self.optimal_k)
@@ -64,7 +65,7 @@ class Clustering:
                 optimal_k = self.elbow_graph(self.KMAX, sensitivity=sensitivity + 1, counter=counter)
 
         # TODO: make plotting work
-        print_to_ui_console(self, "we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))
+        print_to_ui_console(self.app, "we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))
         print("we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))
         return optimal_k
 

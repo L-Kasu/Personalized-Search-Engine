@@ -58,7 +58,7 @@ def search(self, query):
     start = timeit.default_timer()
     doc_indices = tf_obj.search_indicies(query)
     stop = timeit.default_timer()
-    print_to_ui_console(self, "search took:"+str(stop - start))
+    print_to_ui_console(self, "search took: "+str(stop - start))
     print("search took:", stop - start)
     docs_to_return = get_config("docs_to_return")
     for index in doc_indices:
@@ -96,8 +96,8 @@ def preprocess(self):
             self.tf_object = search_class.Search(corpus_list, titles, self)
             save_session(self.dir_selected, self.tf_object)
             stop = timeit.default_timer()
-            print_to_ui_console(self, "creating the search object took:"+str(stop - start))
-            print("creating the search object took:", str(stop - start))
+            print_to_ui_console(self, "creating the search object took: "+str(stop - start))
+            print("creating the search object took: ", str(stop - start))
             '''
             start = timeit.default_timer()
             tf.tfidf(corpus_list, titles)
