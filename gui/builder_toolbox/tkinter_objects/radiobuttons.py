@@ -1,6 +1,7 @@
 from gui.builder_toolbox.tkinter_objects.labels import *
 from gui.builder_toolbox.settings_util import *
 from gui.builder_toolbox.tooltip import AddTooltip
+from search import search_class
 
 
 def default_radiobtn(location,
@@ -27,48 +28,74 @@ def default_radiobtn(location,
 
 
 def radiobtns_stemmer(self, location, col_bg, col_txt):
+    self.radiobtns_stemmer = []
     for stemmer in ["porter", "lancaster", "snowball"]:
+        state = ACTIVE if get_config("search_mode") is not ("GloVe" or "fasttext") else DISABLED
         radiobtn = default_radiobtn(location,
                                     stemmer.upper(),
                                     self.selected_stemmer,
                                     stemmer,
                                     lambda: stemmer_function(self),
                                     col_bg,
-                                    col_txt)
+                                    col_txt,
+                                    state=state
+                                    )
         AddTooltip(radiobtn, get_config("txt_tooltip_"+stemmer))
         radiobtn.pack(side=LEFT, fill=BOTH)
+        self.radiobtns_stemmer.append(radiobtn)
 
 
 def stemmer_function(self):
-    edit_config({"stemmer": self.selected_stemmer.get()})
-    isstemmer = "is" + self.selected_stemmer.get()
-    try:
-        edit_config({isstemmer: not get_config(isstemmer)})
-        self.snowballstate = ACTIVE
-    except KeyError:
-        edit_config({"issnowball": not get_config("issnowball")})
-        self.snowballstate = DISABLED
+    state = ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED
+    self.snowballstate = state
+    self.menu_snowballstemmer_language.config(state=state)
 
 
 def radiobtns_stopword(self, location, col_bg, col_txt):
     for state in ["on", "off"]:
         radiobtn = default_radiobtn(location,
-                      state,
-                      self.remove_stopwords,
-                      state == "on",
-                      lambda: edit_config({"stop_word": self.remove_stopwords.get()}),
-                      col_bg,
-                      col_txt)
-        radiobtn.pack(side=LEFT, fill=BOTH)
-
-
-def radiobtns_embedding(self, location, col_bg, col_txt):
-    for mode in ["GloVe", "fasttext"]:
-        radiobtn = default_radiobtn(location,
-                                    mode,
-                                    self.embedding_mode,
-                                    mode,
-                                    lambda: edit_config({"embedding": self.embedding_mode.get()}),
+                                    state,
+                                    self.remove_stopwords,
+                                    state == "on",
+                                    lambda: stopword_function(self, self.remove_stopwords.get()),
                                     col_bg,
                                     col_txt)
         radiobtn.pack(side=LEFT, fill=BOTH)
+
+
+def stopword_function(self, bool):
+    state = ACTIVE if bool else DISABLED
+    self.stopwordstate = state
+    self.menu_stopword_language.config(state=state)
+
+
+def radiobtns_clustering(self, location, col_bg, col_txt):
+    for state in ["on", "off"]:
+        radiobtn = default_radiobtn(location,
+                                    state,
+                                    self.toggle_clustering,
+                                    state == "on",
+                                    None,
+                                    col_bg,
+                                    col_txt)
+        radiobtn.pack(side=LEFT, fill=BOTH)
+
+
+def radiobtns_search_mode(self, location, col_bg, col_txt):
+    for mode in ["GloVe", "fasttext", "tfidf", "logistic regression"]:
+        radiobtn = default_radiobtn(location,
+                                    mode,
+                                    self.search_mode,
+                                    mode,
+                                    lambda: radiobtns_search_mode_function(self, self.search_mode.get()),
+                                    col_bg,
+                                    col_txt
+        )
+        AddTooltip(radiobtn, get_config("txt_tooltip_" + mode))
+        radiobtn.pack(side=LEFT, fill=BOTH)
+
+
+def radiobtns_search_mode_function(self, mode):
+    state = ACTIVE if mode == "tfidf" or mode == "logistic regression" else DISABLED
+    for radiobtn in self.radiobtns_stemmer:
+        radiobtn.config(state=state)

@@ -1,0 +1,3 @@
+						word-embedding			word-embedding_clustering
+average precission:	0.17333027109653384		0.16249290539628544
+average f1-score:	0.05385366114199225		0.04840439360779846

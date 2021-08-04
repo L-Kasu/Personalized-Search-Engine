@@ -5,9 +5,11 @@
 #custom
 /.idea/
 /venv/
-/config
+/config/
 /__pycache__/
 /data/__pycache__/
+/data/embeddings/
+/data/previous_session.pickle
 /eval_output/__pycache__/
 /evaluation/__pycache__/
 /matrix/__pycache__/
