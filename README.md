@@ -24,7 +24,7 @@ For the evaluation the [CISI dataset from kaggle](https://www.kaggle.com/dmaso01
 ### Credits
 
 #### UI Programming/Design
-Niklas Munkes
+pending
 
 
 ## License
