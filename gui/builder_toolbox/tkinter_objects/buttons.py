@@ -90,21 +90,38 @@ def preview_function(self):
     preview_window_label(self.preview_window, text)
 
 
+
 def btn_settings(self, location):
-    default_btn(location,
-                get_config("txt_settingsheader"),
-                lambda: settings_function(self)
-                ).pack(side=TOP,
-                       anchor=NE,
-                       padx=btn_padding,
-                       pady=btn_padding)
+    self.btn_settings = default_btn(location,
+                                    get_config("txt_settingsheader"),
+                                    lambda: settings_function(self)
+                                    )
+    self.btn_settings.pack(side=TOP,
+                           anchor=NE,
+                           padx=btn_padding,
+                           pady=btn_padding)
 
 
 def settings_function(self):
     col_bg = get_config("col_bg")
     col_txt = get_config("col_acc_bgcontrast")
-    self.window_settings = Toplevel(bg=col_bg, bd=get_config("global_padding"), relief=get_config("relief_frames"))
+    self.window_settings.destroy() if self.window_settings is not None else print()
+    self.window_settings = Toplevel(bg=col_bg,
+                                    bd=get_config("global_padding"),
+                                    relief=get_config("relief_frames")
+                                    )
     self.window_settings.title(get_config("txt_settingsheader"))
+    self.window_settings.geometry(str(get_config("settings_width")) + "x" + str(get_config("settings_height")))
+    x = y = 0
+    x, y, cx, cy = self.master.bbox("insert")
+    x += self.btn_settings.winfo_rootx() \
+         - get_config("settings_width") \
+         - get_config("global_padding") \
+         - get_config("btn_padding") \
+         - 2
+    y += self.btn_settings.winfo_rooty() \
+         - get_config("btn_padding")
+    self.window_settings.wm_geometry("+%d+%d" % (x, y))
     label_settings(self.window_settings, col_bg, col_txt)
     # only works this way, no idea why...
     gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings, col_bg, col_txt).pack(fill=X)

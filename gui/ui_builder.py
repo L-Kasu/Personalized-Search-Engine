@@ -61,6 +61,7 @@ class Application(Frame):
                            bg=get_config("col_bg")
                            )
 
+        self.window_settings = None
         btn_settings(self, self.master)
         entry_frame(self, self.master)
         self.preview_window = None  # needs to be none to prevent empty popup window at startup

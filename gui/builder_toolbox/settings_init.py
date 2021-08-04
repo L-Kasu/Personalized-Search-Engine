@@ -12,6 +12,8 @@ def init_config(path=default_path,
     init_fontfile(fontfile, path)
     config = {"master_height": 500,
               "master_width": 800,
+              "settings_height": 420,
+              "settings_width": 400,
               "prev_window_size": 100,
               "preview_size": 500,
               "tooltip_window_size": 50,
