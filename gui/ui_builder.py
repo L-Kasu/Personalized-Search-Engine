@@ -18,6 +18,7 @@ class Application(Frame):
         self.master.bind('<Control-r>', lambda e: run_with_init_config(self))
         self.master.bind('<Control-c>', lambda e: draw_console(self, not self.consoleflag))
         self.master.bind('<Control-p>', lambda e: draw_preview(self))
+        self.master.bind("<Return>", lambda e: search(self, self.search_entry.get()) if self.search_entry.get() else print_to_ui_console(self, "search entry field is empty!"))
 
         def run_with_init_config(self):
             init_config()

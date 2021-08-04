@@ -45,7 +45,7 @@ def btn_select_directory_function(self):
 def btn_entry_search(self, location):
     default_btn(location,
                 get_config("txt_entrysearch"),
-                lambda: search(self, self.search_entry.get())
+                lambda: search(self, self.search_entry.get()) if self.search_entry.get() else print_to_ui_console(self, "search entry field is empty!")
                 ).pack(side=LEFT,
                        anchor=CENTER,
                        padx=btn_padding,
@@ -67,16 +67,6 @@ def btn_entry_delete_function(self):
     self.result_text.delete(0, END)
 
 
-def btn_preview(self, location):
-    default_btn(location,
-                get_config("txt_preview"),
-                lambda: preview_function(self)
-                ).pack(side=BOTTOM,
-                       anchor=CENTER,
-                       padx=btn_padding,
-                       pady=btn_padding)
-
-
 def preview_function(self):
     selected_result_file = self.result_text.get(ANCHOR)
     if self.dir_selected == "":
@@ -85,10 +75,15 @@ def preview_function(self):
         text = get_config("ERR_resultListEmpty")
     else:
         text = get_page_text(self, selected_result_file)
-    self.preview_window = Toplevel(bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
+    self.preview_window.destroy() if self.preview_window is not None else print()
+    self.preview_window = Toplevel(bg=get_config("col_bg"), bd=get_config("global_padding"))
     self.preview_window.title(get_config("txt_preview") + ": " + self.result_text.get(ANCHOR))
     preview_window_label(self.preview_window, text)
-
+    x = y = 0
+    x, y, cx, cy = self.master.bbox("insert")
+    x += self.result_text.winfo_rootx()
+    y += self.result_text.winfo_rooty()
+    self.preview_window.wm_geometry("+%d+%d" % (x, y))
 
 
 def btn_settings(self, location):

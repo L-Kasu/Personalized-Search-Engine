@@ -64,7 +64,6 @@ def result_frame(self, location):
 
     result_label(self.result_frame)
     result_text(self, self.result_frame)
-    btn_preview(self, self.result_text)
 
 
 def frame_stemmer(self, location, col_bg, col_txt):
