@@ -50,9 +50,8 @@ class Search:
             with open(path_to_model, "rb") as f:
                 my_model = dill.load(f)
             with open(path_to_feature_generator, "rb") as f:
-                feature_generator_serialized = dill.load(f)
-                feature_generator = LogisticRegression.deserialize_feature_generator(feature_generator_serialized)
-                search_object = LogisticRegression.Model(feature_creating_functions=feature_generator)
+                function_name_list = dill.load(f)
+                search_object = LogisticRegression.Model(function_name_list=function_name_list)
                 search_object.set_model(my_model)
                 self.search_method = search_object
 
@@ -90,8 +89,8 @@ class Search:
         combination = list(zip(relevant_indicies, document_scores))
         
         combination.sort(key=lambda x: x[1], reverse=True)
-        
-        return [c[0] for c in combination]
+        result = [c[0] for c in combination]
+        return result
         
         
     def search_titles(self, query):
