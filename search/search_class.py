@@ -40,8 +40,20 @@ class Search:
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
 
         elif search_name == "LogisticRegression":
-            with open("./my_model.pickle", "rb") as f:
-                self.search_method = dill.load(f)
+            model = "my_model.pickle"
+            feat_gen = "feature_generator.pickle"
+            for root, _, files in os.walk("./search/"):
+                if model in files:
+                    path_to_model = os.path.join(root, model)
+                if feat_gen in files:
+                    path_to_feature_generator =os.path.join(root, feat_gen)
+            with open(path_to_model, "rb") as f:
+                my_model = dill.load(f)
+            with open(path_to_feature_generator, "rb") as f:
+                feature_generator = dill.load(f)
+                search_object = LogisticRegression.Model(feature_creating_functions=feature_generator)
+                search_object.set_model(my_model)
+                self.search_method = search_object
 
         
         self.clustering = None
@@ -57,8 +69,9 @@ class Search:
         document_scores = []
 
         if type(self.search_method) == LogisticRegression.Model:
+            my_model = self.search_method
             for item in self.corpus:
-                score = self.search_method.score(query, item)
+                score = my_model.score(query, item)
                 document_scores.append(score[1])
 
         else:

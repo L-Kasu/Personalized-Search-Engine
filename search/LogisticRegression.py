@@ -9,13 +9,17 @@ from nltk.tokenize import word_tokenize
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.stem import LancasterStemmer
 import pickle
+import timeit
 
 
 class Model:
-    def __init__(self, feature_creating_functions, class_weight="balanced"):
+    def __init__(self, feature_creating_functions=[], class_weight="balanced"):
         self.training_data, self.validation_data = ((), ())
         self.feature_generator = feature_creating_functions
         self.model = LogisticRegression(solver="lbfgs", penalty="l2", class_weight=class_weight)
+
+    def set_model(self, model):
+        self.model = model
 
     # prepares datasets to train the model:
     # - docs_1: first list of documents
@@ -71,12 +75,15 @@ class Model:
 
     def score(self, query, doc):
         feature = [func(query)(doc) for func in self.feature_generator]
+        feature = np.array(feature)
+        feature.reshape(1, -1)
         return self.model.predict_proba(feature)[0]
 
     # return the matrix of features, by applying every function by the list for one feature, and the corresponding labels
     def create_datasets(self, docs_1, query_dict, rel_dict):
         X = []
         y = []
+        time = timeit.default_timer()
         for i in range(0, len(query_dict)):
             for j in range(0, len(docs_1)):
                 if i in rel_dict:
@@ -90,6 +97,8 @@ class Model:
                     sample = [func(query_dict[i])(docs_1[j]) for func in self.feature_generator]
                     X.append(sample)
                     y.append(label)
+            time_now = timeit.default_timer() - time
+            print(i, " time: ", time_now)
         print("the share of related documents:", sum(y)/max(1,len(y)))
         X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2)
         return ((X_train, y_train), (X_test, y_test))
@@ -126,7 +135,8 @@ def load_embedding():
 
 def save(filename, model):
     with open(filename, "wb") as f:
-        dill.dump(model, f, protocol=dill.HIGHEST_PROTOCOL)
+        dill.settings['recurse'] = True
+        dill.dumps(model, f, protocol=dill.HIGHEST_PROTOCOL)
 
 
 def load(filename):
@@ -138,7 +148,7 @@ def main():
     Vectorizer = TfidfVectorizer(analyzer='word', stop_words="english", tokenizer=tokenize)
     embedding = load_embedding()
     # specify document number to take into consideration(for performance)
-    is_saved = False
+    is_saved = True
     scores = []
     # create list of features we want to take into consideration
     embedding_vectors_distance = lambda doc1: lambda doc2: \
@@ -157,7 +167,7 @@ def main():
         if i in query_dict:
             del query_dict[i]
     rel_dict = file_reader.load_rel()
-    my_model = Model(function_list)
+    my_model = Model(feature_creating_functions=function_list)
     if is_saved:
         training_data, validation_data = load("./training_data.pickle")
         my_model.set_train_data(training_data)
@@ -168,6 +178,8 @@ def main():
         save("./training_data.pickle", (my_model.training_data, my_model.validation_data))
     my_model.train()
     score = my_model.validate()
+    save("./my_model.pickle", my_model.model)
+    save("./feature_generator.pickle", my_model.feature_generator)
     print(score)
     scores.append(score)
 
