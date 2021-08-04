@@ -1,7 +1,7 @@
 import pickle
 import os.path
 
-previous_session_path = "data/previous_session.pickle"
+previous_session_path = "config/session/previous_session.pickle"
 
 
 def load_session(path=previous_session_path):
