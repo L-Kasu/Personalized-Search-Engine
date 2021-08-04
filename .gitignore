@@ -24,3 +24,7 @@
 /gui/resources/__pycache__/
 /gui/builder_toolbox/__pycache__/
 /gui/builder_toolbox/tkinter_objects/__pycache__/
+/dist/dist-windows/config/
+/dist/dist-windows/config/session/
+/dist/build-windows/
+/dist/dist-windows/PersonalizedSearchEngine.exe
