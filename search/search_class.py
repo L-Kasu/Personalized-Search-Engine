@@ -18,7 +18,7 @@ class Search:
         self.titles = titles
         
         self.search_method = None
-        search_name = "LogisticRegression" #get_config("search_mode")
+        search_name = get_config("search_mode")
 
         if search_name == "tfidf":
             self.search_method = search_methods.TfidfMethod(corpus)
