@@ -39,7 +39,7 @@ class Search:
             fasttext_embedding = pickle.load(open(path, "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
 
-        elif search_name == "LogisticRegression":
+        elif search_name == "logistic regression":
             model = "my_model.pickle"
             feat_gen = "feature_generator.pickle"
             for root, _, files in os.walk("./search/"):

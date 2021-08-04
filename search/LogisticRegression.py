@@ -157,10 +157,16 @@ def tokenize(doc):
 def load_embedding():
     name = "glove.6B.300d.p"
     path = ""
-    for root, dirs, files in os.walk(".\\data\\"):
-        if name in files:
-            path = os.path.join(root, name)
-    word_embedding = pickle.load(open(path, "rb"))
+    try:
+        for root, dirs, files in os.walk(".\\data\\"):
+            if name in files:
+                path = os.path.join(root, name)
+        word_embedding = pickle.load(open(path, "rb"))
+    except FileNotFoundError:
+        for root, dirs, files in os.walk("..\\data\\"):
+            if name in files:
+                path = os.path.join(root, name)
+        word_embedding = pickle.load(open(path, "rb"))
     return word_embedding
 
 
@@ -178,18 +184,9 @@ def load(filename):
 
 def main():
     # specify document number to take into consideration(for performance)
-    is_saved = True
-    scores = []
-    # create list of features we want to take into consideration
-    embedding_vectors_distance = lambda doc1, doc2: \
-        - np.linalg.norm(document_to_embedding_vector(embedding, doc1) - document_to_embedding_vector(embedding, doc2))
-    embedding_vectors_cosine = lambda doc1, doc2: \
-        cosine_similarity(document_to_embedding_vector(embedding, doc1).reshape(1, -1),
-                          document_to_embedding_vector(embedding, doc2).reshape(1, -1))[0][0]
-    rnd = lambda _, x: random.uniform(0, 1)
-    tfidf_cosine = lambda doc1, doc2: tfidf_cos_sim(Vectorizer, doc1, doc2)
+    is_saved = False
     # making sure the validation runs correctly, by using a random funcition for testing and we should get back .5
-    function_list = ["tfidf_cosine", "embedding_vectors_cosine", "embedding_vectors_distance"]
+    function_list = ["tfidf_cosine", "embedding_vectors_cosine"]
     docs_1 = file_reader.load_all()[2]
     query_dict = file_reader.load_qry()
     # remove query 1-30
@@ -205,14 +202,13 @@ def main():
 
     else:
         my_model.intialise_data(docs_1, query_dict, rel_dict)
-        save("./training_data.pickle", (my_model.training_data, my_model.validation_data))
+        save("./training_data_2.pickle", (my_model.training_data, my_model.validation_data))
     my_model.train()
     score = my_model.validate()
-    save("./my_model.pickle", my_model.model)
+    save("./my_model_2.pickle", my_model.model)
     print("x")
-    save("./feature_generator.pickle", my_model.function_name_list)
+    save("./feature_generator_2.pickle", my_model.function_name_list)
     print(score)
-    scores.append(score)
 
 
 if __name__ == "__main__":
