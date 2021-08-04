@@ -1,6 +1,7 @@
 from gui.builder_toolbox.tkinter_objects.labels import *
 from gui.builder_toolbox.settings_util import *
 from gui.builder_toolbox.tooltip import AddTooltip
+from search import search_class
 
 
 def default_radiobtn(location,
@@ -27,26 +28,27 @@ def default_radiobtn(location,
 
 
 def radiobtns_stemmer(self, location, col_bg, col_txt):
+    self.radiobtns_stemmer = []
     for stemmer in ["porter", "lancaster", "snowball"]:
+        state = ACTIVE if get_config("search_mode") is not ("GloVe" or "fasttext") else DISABLED
         radiobtn = default_radiobtn(location,
                                     stemmer.upper(),
                                     self.selected_stemmer,
                                     stemmer,
                                     lambda: stemmer_function(self),
                                     col_bg,
-                                    col_txt)
+                                    col_txt,
+                                    state=state
+                                    )
         AddTooltip(radiobtn, get_config("txt_tooltip_"+stemmer))
         radiobtn.pack(side=LEFT, fill=BOTH)
+        self.radiobtns_stemmer.append(radiobtn)
 
 
 def stemmer_function(self):
-    edit_config({"stemmer": self.selected_stemmer.get()})
-    if self.selected_stemmer.get() == "snowball":
-        edit_config({"issnowball": True})
-        self.snowballstate = ACTIVE
-    else:
-        edit_config({"issnowball": False})
-        self.snowballstate = DISABLED
+    state = ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED
+    self.snowballstate = state
+    self.menu_snowballstemmer_language.config(state=state)
 
 
 def radiobtns_stopword(self, location, col_bg, col_txt):
@@ -62,8 +64,9 @@ def radiobtns_stopword(self, location, col_bg, col_txt):
 
 
 def stopword_function(self, bool):
-    edit_config({"stop_word": bool})
-    self.stopwordstate = ACTIVE if bool else DISABLED
+    state = ACTIVE if bool else DISABLED
+    self.stopwordstate = state
+    self.menu_stopword_language.config(state=state)
 
 
 def radiobtns_clustering(self, location, col_bg, col_txt):
@@ -72,7 +75,7 @@ def radiobtns_clustering(self, location, col_bg, col_txt):
                                     state,
                                     self.toggle_clustering,
                                     state == "on",
-                                    lambda: edit_config({"clustering": self.toggle_clustering.get()}),
+                                    None,
                                     col_bg,
                                     col_txt)
         radiobtn.pack(side=LEFT, fill=BOTH)
@@ -84,8 +87,15 @@ def radiobtns_search_mode(self, location, col_bg, col_txt):
                                     mode,
                                     self.search_mode,
                                     mode,
-                                    lambda: edit_config({"search_mode": self.search_mode.get()}),
+                                    lambda: radiobtns_search_mode_function(self, self.search_mode.get()),
                                     col_bg,
-                                    col_txt)
+                                    col_txt
+        )
         AddTooltip(radiobtn, get_config("txt_tooltip_" + mode))
         radiobtn.pack(side=LEFT, fill=BOTH)
+
+
+def radiobtns_search_mode_function(self, mode):
+    state = ACTIVE if mode == "tfidf" or mode == "logistic regression" else DISABLED
+    for radiobtn in self.radiobtns_stemmer:
+        radiobtn.config(state=state)

@@ -9,6 +9,7 @@
 /__pycache__/
 /data/__pycache__/
 /data/embeddings/
+/data/previous_session.pickle
 /eval_output/__pycache__/
 /evaluation/__pycache__/
 /matrix/__pycache__/
@@ -23,3 +24,7 @@
 /gui/resources/__pycache__/
 /gui/builder_toolbox/__pycache__/
 /gui/builder_toolbox/tkinter_objects/__pycache__/
+/dist/windows-dist/config/
+/dist/windows-dist/config/session/
+/dist/windows-build/
+/dist/dist-windows/PersonalizedSearchEngine.exe

@@ -6,10 +6,12 @@ import os
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 from gui.builder_toolbox.settings_util import get_config
+from gui.builder_toolbox.tkinter_objects.listboxes import print_to_ui_console
 from search import *
 import timeit
 
 from search import search_class
+from.loading_and_saving_sessions import save_session
 
 '''    for page_number, page in enumerate(PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
                                                          password=password,
@@ -30,7 +32,7 @@ def convert_pdf_to_txt(path) -> list:
     return pages
 
 
-def file_to_list_of_string(path):
+def file_to_list_of_string(self, path):
     text = []
     if path.endswith("txt"):
         with open(path, "r") as container:
@@ -43,6 +45,7 @@ def file_to_list_of_string(path):
     elif path.endswith("pdf"):
         text = convert_pdf_to_txt(path)
     else:
+        print_to_ui_console(self, "unsupported file format at: " + path)
         print("unsupported file format at: " + path)
 
     return text
@@ -55,8 +58,9 @@ def search(self, query):
     start = timeit.default_timer()
     doc_indices = tf_obj.search_indicies(query)
     stop = timeit.default_timer()
+    print_to_ui_console(self, "search took: "+str(stop - start))
     print("search took:", stop - start)
-    docs_to_return = 10
+    docs_to_return = get_config("docs_to_return")
     for index in doc_indices:
         result.append(tf_obj.titles[index])
     if result:
@@ -74,7 +78,7 @@ def preprocess(self):
         dir = os.path.basename(self.dir_selected)
         for filename in filenames:
             path = self.dir_selected + "/" + filename
-            pages = file_to_list_of_string(path)
+            pages = file_to_list_of_string(self, path)
             page_titles = [filename + ", " + get_config("txt_page") + " " + str(i + 1) for i in range(0, len(pages))]
             for i in range(0, len(pages)):
                 page = pages[i]
@@ -83,14 +87,17 @@ def preprocess(self):
                     titles.append(page_title)
                     corpus_list.append(page)
         stop = timeit.default_timer()
+        print_to_ui_console(self, "reading in files took: "+str(stop - start)+" for "+str(len(titles))+" pages ")
         print("reading in files took: ", str(stop - start), " for ", len(titles), " pages ")
         # TODO: implement saving to databases
         # create search object
         if titles and corpus_list:
             start = timeit.default_timer()
-            self.tf_object = search_class.Search(corpus_list, titles)
+            self.tf_object = search_class.Search(corpus_list, titles, self)
+            save_session(self.dir_selected, self.tf_object)
             stop = timeit.default_timer()
-            print("creating the search object took:", str(stop - start))
+            print_to_ui_console(self, "creating the search object took: "+str(stop - start))
+            print("creating the search object took: ", str(stop - start))
             '''
             start = timeit.default_timer()
             tf.tfidf(corpus_list, titles)

@@ -6,6 +6,7 @@ import math
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity as cos_sim
 import scipy.sparse.csr as csr
+from gui.builder_toolbox.tkinter_objects.listboxes import print_to_ui_console
 #from search.preprocessing_parameter import get_stems, get_stopword_value
 
 # sensitivity of the elbow finder
@@ -18,11 +19,13 @@ def cos_sim(query_vec, tfidf_mat):
 
 class Clustering:
     # only works if vectors are normalized
-    def __init__(self, matrix: csr):
+    def __init__(self, matrix: csr, app=None):
         self.matrix = matrix # this breaks everything if matrix too big: /np.linalg.norm(matrix, axis = 1, keepdims=True)
+        self.app = app
         self.KMAX = max(round(math.sqrt(self.matrix.shape[0])), 1)
         self.optimal_k = self.__find_optimal_k(self.KMAX)
         self.clustering = self.__kmeans(self.optimal_k)
+        self.elbow_graph = None
 
     def __find_optimal_k(self, kmax):
         points = self.matrix
@@ -63,6 +66,7 @@ class Clustering:
                 optimal_k = self.elbow_graph(self.KMAX, sensitivity=sensitivity + 1, counter=counter)
 
         # TODO: make plotting work
+        print_to_ui_console(self.app, "we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))
         print("we use: " + str(optimal_k) + "clusters and KMAX is: " + str(self.KMAX))
         return optimal_k
 

@@ -42,7 +42,10 @@ def entry_frame(self, location):
                              relief=get_config("relief_frames"),
                              bd=get_config("global_padding")
                              )
-    self.entry_frame.pack(fill=X, expand=True)
+    self.entry_frame.pack(fill=X,
+                          expand=False,
+                          pady=get_config("global_padding")+2
+                          )
     search_entry(self, self.entry_frame)
     btn_select_directory(self, self.entry_frame)
     buttons_frame(self, self.entry_frame)
@@ -61,7 +64,6 @@ def result_frame(self, location):
 
     result_label(self.result_frame)
     result_text(self, self.result_frame)
-    btn_preview(self, self.result_text)
 
 
 def frame_stemmer(self, location, col_bg, col_txt):
@@ -152,6 +154,16 @@ def frame_menu_stopword_language(self, location, col_bg, col_txt):
                              location,
                              get_config("txt_selectstopwordlang"),
                              (lambda s, f, b, t: menu_stopword_language(s, f)),
+                             col_bg,
+                             col_txt
+                             )
+
+
+def frame_menu_docs_to_return(self, location, col_bg, col_txt):
+    return get_setting_frame(self,
+                             location,
+                             get_config("txt_docs_to_return"),
+                             (lambda s, f, b, t: menu_docs_to_return(f)),
                              col_bg,
                              col_txt
                              )
