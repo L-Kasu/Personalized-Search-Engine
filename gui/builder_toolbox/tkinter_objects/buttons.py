@@ -1,5 +1,6 @@
 from tkinter import filedialog
 import gui
+from search import clustering
 from gui.builder_toolbox.tkinter_objects.radiobuttons import *
 from gui.builder_toolbox.search_util import *
 

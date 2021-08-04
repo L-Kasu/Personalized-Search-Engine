@@ -42,7 +42,6 @@ class Application(Frame):
         self.result = list()
         self.remove_stopwords = BooleanVar()
         self.remove_stopwords.set(get_config("stop_word"))
-
         path, tf_object = load_session()
         self.dir_selected = path
         self.tf_object = tf_object
