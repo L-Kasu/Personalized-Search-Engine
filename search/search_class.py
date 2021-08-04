@@ -50,7 +50,8 @@ class Search:
             with open(path_to_model, "rb") as f:
                 my_model = dill.load(f)
             with open(path_to_feature_generator, "rb") as f:
-                feature_generator = dill.load(f)
+                feature_generator_serialized = dill.load(f)
+                feature_generator = LogisticRegression.deserialize_feature_generator(feature_generator_serialized)
                 search_object = LogisticRegression.Model(feature_creating_functions=feature_generator)
                 search_object.set_model(my_model)
                 self.search_method = search_object

@@ -10,6 +10,27 @@ from sklearn.metrics.pairwise import cosine_similarity
 from nltk.stem import LancasterStemmer
 import pickle
 import timeit
+import marshal, types
+
+# global dictionary for saving the functions
+
+# for saving the feature generator
+def serialize_feature_generator(func_list):
+    result = []
+    dill.settings['recurse'] = True
+    for item in func_list:
+        serialized = dill.dumps(item)
+        result.append(serialized)
+    return result
+
+
+# for loading feature generator
+def deserialize_feature_generator(func_list):
+    result = []
+    for code in func_list:
+        func = dill.loads(code)
+        result.append(func)
+    return result
 
 
 class Model:
@@ -94,7 +115,7 @@ class Model:
                 else:
                     label = 0
                 if i in query_dict:
-                    sample = [func(query_dict[i])(docs_1[j]) for func in self.feature_generator]
+                    sample = [func(query_dict[i], docs_1[j]) for func in self.feature_generator]
                     X.append(sample)
                     y.append(label)
             time_now = timeit.default_timer() - time
@@ -136,7 +157,7 @@ def load_embedding():
 def save(filename, model):
     with open(filename, "wb") as f:
         dill.settings['recurse'] = True
-        dill.dumps(model, f, protocol=dill.HIGHEST_PROTOCOL)
+        dill.dump(model, f, protocol=dill.HIGHEST_PROTOCOL)
 
 
 def load(filename):
@@ -151,13 +172,13 @@ def main():
     is_saved = True
     scores = []
     # create list of features we want to take into consideration
-    embedding_vectors_distance = lambda doc1: lambda doc2: \
+    embedding_vectors_distance = lambda doc1, doc2: \
         - np.linalg.norm(document_to_embedding_vector(embedding, doc1) - document_to_embedding_vector(embedding, doc2))
-    embedding_vectors_cosine = lambda doc1: lambda doc2: \
+    embedding_vectors_cosine = lambda doc1, doc2: \
         cosine_similarity(document_to_embedding_vector(embedding, doc1).reshape(1, -1),
                           document_to_embedding_vector(embedding, doc2).reshape(1, -1))[0][0]
-    rnd = lambda _: lambda _: random.uniform(0, 1)
-    tfidf_cosine = lambda doc1: lambda doc2: tfidf_cos_sim(Vectorizer, doc1, doc2)
+    rnd = lambda _, x: random.uniform(0, 1)
+    tfidf_cosine = lambda doc1, doc2: tfidf_cos_sim(Vectorizer, doc1, doc2)
     # making sure the validation runs correctly, by using a random funcition for testing and we should get back .5
     function_list = [tfidf_cosine, embedding_vectors_cosine, embedding_vectors_distance]
     docs_1 = file_reader.load_all()[2]
@@ -179,7 +200,8 @@ def main():
     my_model.train()
     score = my_model.validate()
     save("./my_model.pickle", my_model.model)
-    save("./feature_generator.pickle", my_model.feature_generator)
+    print("x")
+    save("./feature_generator.pickle", serialize_feature_generator(my_model.feature_generator))
     print(score)
     scores.append(score)
 
