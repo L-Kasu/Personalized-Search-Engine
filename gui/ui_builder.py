@@ -18,6 +18,7 @@ class Application(Frame):
         self.master.bind('<Control-r>', lambda e: run_with_init_config(self))
         self.master.bind('<Control-c>', lambda e: draw_console(self, not self.consoleflag))
         self.master.bind('<Control-p>', lambda e: draw_preview(self))
+        self.master.bind("<Return>", lambda e: search(self, self.search_entry.get()) if self.search_entry.get() else print_to_ui_console(self, "search entry field is empty!"))
 
         def run_with_init_config(self):
             init_config()
@@ -41,7 +42,6 @@ class Application(Frame):
         self.result = list()
         self.remove_stopwords = BooleanVar()
         self.remove_stopwords.set(get_config("stop_word"))
-
         path, tf_object = load_session()
         self.dir_selected = path
         self.tf_object = tf_object
@@ -61,6 +61,7 @@ class Application(Frame):
                            bg=get_config("col_bg")
                            )
 
+        self.window_settings = None
         btn_settings(self, self.master)
         entry_frame(self, self.master)
         self.preview_window = None  # needs to be none to prevent empty popup window at startup

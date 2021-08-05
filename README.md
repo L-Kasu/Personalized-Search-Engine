@@ -20,6 +20,13 @@ You can evaluate the searching-algorithms and compare two algorithms.
 In the evaluation the mean-average-precission and the f1-score is computed. 
 For the evaluation the [CISI dataset from kaggle](https://www.kaggle.com/dmaso01dsta/cisi-a-dataset-for-information-retrieval) is used.  
 
+
+### Credits
+
+#### UI Programming/Design
+pending
+
+
 ## License
 pending
 (GNU LGPL under consideration, but not applied yet)

@@ -14,6 +14,7 @@ def load_all():
     cisi_indecies = []
     titles = []
     corpus = []
+    relation = {}
 
     for l in lines:
         indicator = l[1:2]
@@ -25,7 +26,20 @@ def load_all():
             cisi_indecies.append(content)
         elif indicator == 'T':
             titles.append(content)
-    return [cisi_indecies, titles, corpus]
+        elif indicator == 'X':
+            split = content.split()
+            for i in range(0, len(split)):
+                if i % 3 == 0:
+                    part = (split[0], split[-1])
+                    a = int(part[0]) - 1
+                    b = int(part[-1]) - 1
+                    if a not in relation:
+                        relation[a] = [b]
+                    else:
+                        relation[a].append(b)
+
+
+    return [cisi_indecies, titles, corpus, relation]
 
 
 def load_qry():
@@ -50,4 +64,22 @@ def load_qry():
             queries[i] = content
             i += 1
     return queries
+
+def load_rel():
+    name = "CISI.REL"
+    path = ""
+    relation = {}
+    for root, dirs, files in os.walk(".\\CISI_archive\\"):
+        if name in files:
+            path = os.path.join(root, name)
+    with open(path) as f:
+        for l in f.readlines():
+            split = l.split()
+            a = int(split[0]) - 1
+            b = int(split[1]) - 1
+            if a not in relation:
+                relation[a] = [b]
+            else:
+                relation[a].append(b)
+    return relation
 

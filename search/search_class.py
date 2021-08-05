@@ -1,10 +1,8 @@
-from search import search_methods, loading_and_saving_embeddings, clustering
-import pickle
+from search import search_methods, loading_and_saving_embeddings, clustering, LogisticRegression
+import pickle, dill
 import os
 import sys
 from gui.builder_toolbox.settings_util import get_config
-from gui.builder_toolbox.tkinter_objects.listboxes import print_to_ui_console
-
 def check_len(corpus, titles):
     
     tb = sys.exc_info()[2]
@@ -12,7 +10,7 @@ def check_len(corpus, titles):
 
 
 class Search:
-    def __init__(self, corpus, titles, app=None):
+    def __init__(self, corpus, titles):
 
         check_len(corpus, titles)
         
@@ -40,40 +38,61 @@ class Search:
                     path = os.path.join(root, name)
             fasttext_embedding = pickle.load(open(path, "rb"))
             self.search_method = search_methods.WordEmbeddingMethod(fasttext_embedding, corpus)
+
+        elif search_name == "logistic regression":
+            model = "my_model.pickle"
+            feat_gen = "feature_generator.pickle"
+            for root, _, files in os.walk("./search/"):
+                if model in files:
+                    path_to_model = os.path.join(root, model)
+                if feat_gen in files:
+                    path_to_feature_generator =os.path.join(root, feat_gen)
+            with open(path_to_model, "rb") as f:
+                my_model = dill.load(f)
+            with open(path_to_feature_generator, "rb") as f:
+                function_name_list = dill.load(f)
+                search_object = LogisticRegression.Model(function_name_list=function_name_list)
+                search_object.set_model(my_model)
+                self.search_method = search_object
+
         
         self.clustering = None
-        clustering_flag = get_config("clustering")
+        clustering_flag = False #get_config("clustering")
         
         if clustering_flag:
-            self.clustering = clustering.Clustering(self.search_method.get_matrix(), app=app)
-
-        print_to_ui_console(app, "Search class initialized with search mode: "+search_name+", clustering: "+str(clustering_flag))
-        print("Search class initialized with search mode: ", search_name, ", clustering: ", clustering_flag)
-
-    def set_clustering(self, clustering):
-        self.clustering = clustering
+            self.clustering = clustering.Clustering(self.search_method.get_matrix())
+            
     
     def search_indicies(self, query):
-        
-        query_vector = self.search_method.txt_to_vec(query)
-        
+
         relevant_indicies = list(range(len(self.titles)))
-        relevant_matrix = self.search_method.get_matrix()
-        
-        if self.clustering is not None:
-            query_vector = query_vector.reshape(1, -1)
-            index = self.clustering.predict_the_cluster_of_vector(query_vector)
-            relevant_indicies, _, relevant_matrix = self.clustering.get_cluster_of_index(index)
-        
-        # cosine similarity
-        cos_sim = relevant_matrix @ query_vector.T
-        
-        combination = list(zip(relevant_indicies, cos_sim))
+        document_scores = []
+
+        if type(self.search_method) == LogisticRegression.Model:
+            my_model = self.search_method
+            for item in self.corpus:
+                score = my_model.score(query, item)
+                document_scores.append(score[1])
+
+        else:
+            query_vector = self.search_method.txt_to_vec(query)
+            relevant_matrix = self.search_method.get_matrix()
+
+            if self.clustering is not None:
+                query_vector = query_vector.reshape(1, -1)
+                index = self.clustering.predict_the_cluster_of_vector(query_vector)
+                relevant_indicies, _, relevant_matrix = self.clustering.get_cluster_of_index(index)
+
+            # cosine similarity
+            document_scores = relevant_matrix @ query_vector.T
+
+        combination = list(zip(relevant_indicies, document_scores))
         
         combination.sort(key=lambda x: x[1], reverse=True)
+        result = [c[0] for c in combination]
+        return result
         
-        return [c[0] for c in combination]
-
+        
     def search_titles(self, query):
         indicies = self.search_indicies(query)
         return list(map(lambda index: self.titles[index], indicies))

@@ -7,10 +7,9 @@ from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 from gui.builder_toolbox.settings_util import get_config
 from gui.builder_toolbox.tkinter_objects.listboxes import print_to_ui_console
-from search import *
 import timeit
 
-from search import search_class
+from search import search_class, LogisticRegression
 from.loading_and_saving_sessions import save_session
 
 '''    for page_number, page in enumerate(PDFPage.get_pages(fp, pagenos, maxpages=maxpages,
@@ -93,8 +92,12 @@ def preprocess(self):
         # create search object
         if titles and corpus_list:
             start = timeit.default_timer()
-            self.tf_object = search_class.Search(corpus_list, titles, self)
-            save_session(self.dir_selected, self.tf_object)
+            self.tf_object = search_class.Search(corpus_list, titles)
+            if type(self.tf_object.search_method) == LogisticRegression.Model:
+                object_to_save = None
+            else:
+                object_to_save = self.tf_object
+            save_session(self.dir_selected, object_to_save)
             stop = timeit.default_timer()
             print_to_ui_console(self, "creating the search object took: "+str(stop - start))
             print("creating the search object took: ", str(stop - start))
