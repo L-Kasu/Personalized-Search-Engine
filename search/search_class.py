@@ -25,7 +25,7 @@ class Search:
 
         elif search_name == "GloVe":
             name = "glove.6B.300d.p"
-            for root, dirs, files in os.walk(".\\data\\"):
+            for root, dirs, files in os.walk(os.sep.join([".", "data"])):
                 if name in files:
                     path = os.path.join(root, name)
             glove_embedding = pickle.load(open(path, "rb"))
