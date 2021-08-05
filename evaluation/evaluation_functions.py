@@ -64,13 +64,22 @@ def save_evaluation(evaluation: dict, name: str):
 
 
 # compares to evaluations
-def comp_evaluations(evaluation1: dict, evaluation2: dict, name1: str, name2: str):
-    name = "comp_" + name1 + "_and_" + name2
+def comp_evaluations(e1, e1c, e2, e2c, e3, n1, n2, n3, all):
+    if all:
+        name = "compare"
+    else:
+        name = "compare_30"
     file = open('eval_output/' + name + '.txt', "w")
 
-    file.write("\t\t\t\t\t\t" + name1 + "\t\t\t" + name2 + "\n")
-    file.write("average precission:\t" + str(evaluation1[-1]) + "\t\t" + str(evaluation2[-1]) + "\n")
-    file.write("average f1-score:\t" +  str(evaluation1[-2]) + "\t\t" + str(evaluation2[-2]) + "\n")
+    file.write("without clustering: \n")
+    file.write("\t\t\t\t\t\t" + n1 + "\t\t\t\t" + n2 + "\t\t\t" + n3 + "\n")
+    file.write("average precission:\t" + str(e1[-1]) + "\t\t" + str(e2[-1]) + "\t\t" + str(e3[-1]) + "\n")
+    file.write("average f1-score:\t" +  str(e1[-2]) + "\t\t" + str(e2[-2]) + "\t\t" + str(e3[-2]) + "\n\n\n")
+
+    file.write("with clustering: \n")
+    file.write("\t\t\t\t\t\t" + n1 + "\t\t\t\t" + n2 + "\n")
+    file.write("average precission:\t" + str(e1c[-1]) + "\t\t" + str(e2c[-1]) + "\n")
+    file.write("average f1-score:\t" + str(e1c[-2]) + "\t\t" + str(e2c[-2]) + "\n")
 
     file.close()
 

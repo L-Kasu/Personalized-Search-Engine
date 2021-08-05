@@ -7,6 +7,7 @@ import search.LogisticRegression
 from data import database
 from evaluation import evaluation_main, file_reader
 from search import search_class
+from gui.builder_toolbox import settings_util
 
 
 # initialise the tf algorithm
@@ -17,84 +18,91 @@ corpus = documents[2]
 #search_algo = search_class.Search(corpus, titles)
 
 
-'''def main_evaluate():
+def main_evaluate():
     rel_dict = database.load_object("tn_pp" + "_CISI.REL")
+    query_dict = file_reader.load_qry()
+    config = settings_util.get_configdict()
     print("What algorithm do you want to evaluate?")
     print("1: tf_idf")
     print("2: tf_idf with clustering")
     print("3: word-embedding")
+    print("4: word-embedding with clustering")
+    print("5: logistic regression")
     i = input()
     if i == "1":
         algo = "tf_idf"
-        doc_dict = database.load_object("tnwl_pp_" + "CISI.ALL")
-        query_dict = file_reader.load_qry()
+        config["search_mode"] = "tfidf"
+        config["clustering"] = False
     elif i == "2":
         algo = "tf_idf_clustering"
-        doc_dict = file_reader.load_all()
-        query_dict = file_reader.load_qry()
+        config["search_mode"] = "tfidf"
+        config["clustering"] = True
     elif i == "3":
         algo = "word-embedding"
-        doc_dict = file_reader.load_all()
-        query_dict = file_reader.load_qry()
+        config["search_mode"] = "GloVe"
+        config["clustering"] = False
+    elif i == "4":
+        algo = "word-embedding_clustering"
+        config["search_mode"] = "GloVe"
+        config["clustering"] = True
+    elif i == "5":
+        algo = "logistic-regression"
+        config["search_mode"] = "GloVe"
+        config["clustering"] = False
     else:
         algo = ""
         query_dict = {}
-    evaluation_main.run_evaluation(query_dict, doc_dict, rel_dict, tf_search, algo)'''
+    settings_util.edit_config(config)
+    search_algo = search_class.Search(corpus, titles)
+    print("1: evaluate the first 30 queries")
+    print("2: evaluate all queries")
+    j = input()
+    query_dict_ = {}
+    if j == "1":
+        for i in range(0, 30):
+            query_dict_[i] = query_dict[i]
+        algo = algo + "_30"
+    else:
+        query_dict_ = query_dict
+    evaluation_main.run_evaluation(query_dict_, search_algo, algo, rel_dict, corpus)
 
 def main_LR():
     search.LogisticRegression.main()
 
-def main_evaluate():
-    rel_dict = database.load_object("tn_pp" + "_CISI.REL")
-    query_dict = file_reader.load_qry()
-    algo = "we"
-    search_algo = search_class.Search(corpus, titles)
-    evaluation_main.run_evaluation(query_dict, search_algo, algo, rel_dict, corpus)
+
 
 def main_compare():
-    print("Choose the first algorithm")
-    print("1: tf_idf")
-    print("2: tf_idf with clustering")
-    print("3: word-embedding")
-    print("4: word-embedding with clustering")
+    print("1: all queries")
+    print("2: the first 30 queries")
     i = input()
     if i == "1":
-        eval_1 = database.load_object("tf_idf_evaluation")
-        name1 = "tf_idf"
-    elif i == "2":
-        eval_1 = database.load_object("clustering_evaluation")
-        name1 = "tf_idf_clustering"
-    elif i == "3":
-        eval_1 = database.load_object("word-embedding_evaluation")
-        name1 = "word-embedding"
-    elif i == "4":
-        eval_1 = database.load_object("word-embedding_clustering_evaluation")
-        name1 = "word-embedding_clustering"
+        n1 = "tf_idf"
+        n2 = "word-embedding"
+        n3 = "logistic-regression"
+        e1 = database.load_object("tf_idf_evaluation")
+        e1c = database.load_object("tf_idf_clustering_evaluation")
+        e2 = database.load_object("word-embedding_evaluation")
+        e2c = database.load_object("word-embedding_clustering_evaluation")
+        e3 = database.load_object("logistic-regression_evaluation")
+        all = True
     else:
-        exit()
+        n1 = "tf_idf"
+        n2 = "word-embedding"
+        n3 = "logistic-regression"
+        e1 = database.load_object("tf_idf_30_evaluation")
+        e1c = database.load_object("tf_idf_clustering_30_evaluation")
+        e2 = database.load_object("word-embedding_30_evaluation")
+        e2c = database.load_object("word-embedding_clustering_30_evaluation")
+        e3 = database.load_object("logistic-regression_30_evaluation")
+        all = False
 
-    print("Choose the second algorithm")
-    print("1: tf_idf")
-    print("2: tf_idf with clustering")
-    print("3: word-embedding")
-    print("4: word-embedding with clustering")
-    i = input()
-    if i == "1":
-        eval_2 = database.load_object("tf_idf_evaluation")
-        name2 = "tf_idf"
-    elif i == "2":
-        eval_2 = database.load_object("clustering_evaluation")
-        name2 = "tf_idf_clustering"
-    elif i == "3":
-        eval_2 = database.load_object("word-embedding_evaluation")
-        name2 = "word-embedding"
-    elif i == "4":
-        eval_2 = database.load_object("word-embedding_clustering_evaluation")
-        name2 = "word-embedding_clustering"
-    else:
-        exit()
+    evaluation_main.run_compare(e1, e1c, e2, e2c, e3, n1, n2, n3, all)
 
-    evaluation_main.run_compare(eval_1, eval_2, name1, name2)
+def special():
+    eval_1 = database.load_object("word-embedding-30_evaluation")
+    eval_2 = database.load_object("word-embedding_evaluation")
+    evaluation_main.run_compare(eval_1, eval_2, "we30", "we")
+
 
 def main():
     print("----------------------")
@@ -109,6 +117,7 @@ def main():
         main_evaluate()
     elif i == "2":
         main_compare()
+        #special()
     elif i == "3":
         main_LR()
     else:
