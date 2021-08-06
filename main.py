@@ -110,7 +110,7 @@ def main():
     print("----------------------\n")
     print("\nDo you want to:")
     print("1: evaluate the search engine")
-    print("2: compare two systems")
+    print("2: compare the algorithms")
     print("3: run linear regression")
     i = input()
     if i == "1":
