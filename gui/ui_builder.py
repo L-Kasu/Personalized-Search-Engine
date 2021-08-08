@@ -22,6 +22,7 @@ class Application(Frame):
 
         def run_with_init_config(self):
             init_config()
+            save_session("", None)
             restart_application(self)
 
         def draw_console(self, newflag):

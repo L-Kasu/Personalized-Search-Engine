@@ -10,12 +10,13 @@ def check_len(corpus, titles):
 
 
 class Search:
-    def __init__(self, corpus, titles):
+    def __init__(self, corpus, titles, app):
 
         check_len(corpus, titles)
         
         self.corpus = corpus
         self.titles = titles
+        self.app = app
         
         self.search_method = None
         search_name = get_config("search_mode")
@@ -57,12 +58,14 @@ class Search:
 
         
         self.clustering = None
-        clustering_flag = False #get_config("clustering")
+        clustering_flag = get_config("clustering")
         
         if clustering_flag:
             self.clustering = clustering.Clustering(self.search_method.get_matrix())
-            
-    
+
+    def set_clustering(self, clustering):
+        self.clustering = clustering
+
     def search_indicies(self, query):
 
         relevant_indicies = list(range(len(self.titles)))
@@ -91,7 +94,6 @@ class Search:
         combination.sort(key=lambda x: x[1], reverse=True)
         result = [c[0] for c in combination]
         return result
-        
         
     def search_titles(self, query):
         indicies = self.search_indicies(query)

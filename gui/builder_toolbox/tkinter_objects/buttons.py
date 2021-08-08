@@ -31,7 +31,6 @@ def btn_select_directory(self, location):
                 get_config("txt_selectdir"),
                 lambda: btn_select_directory_function(self)
                 ).pack(side=LEFT,
-                       padx=btn_padding,
                        pady=btn_padding
                        )
 
@@ -59,7 +58,6 @@ def btn_entry_delete(self, location):
                 lambda: btn_entry_delete_function(self)
                 ).pack(side=RIGHT,
                        anchor=CENTER,
-                       padx=btn_padding,
                        pady=btn_padding)
 
 
@@ -82,7 +80,7 @@ def preview_function(self):
     preview_window_label(self.preview_window, text)
     x = y = 0
     x, y, cx, cy = self.master.bbox("insert")
-    x += self.result_text.winfo_rootx()
+    x += self.result_text.winfo_rootx() + (get_config("master_width")/4)
     y += self.result_text.winfo_rooty()
     self.preview_window.wm_geometry("+%d+%d" % (x, y))
 
@@ -93,9 +91,7 @@ def btn_settings(self, location):
                                     lambda: settings_function(self)
                                     )
     self.btn_settings.pack(side=TOP,
-                           anchor=NE,
-                           padx=btn_padding,
-                           pady=btn_padding)
+                           anchor=NE)
 
 
 def settings_function(self):
@@ -113,10 +109,8 @@ def settings_function(self):
     x += self.btn_settings.winfo_rootx() \
          - get_config("settings_width") \
          - get_config("global_padding") \
-         - get_config("btn_padding") \
          - 2
-    y += self.btn_settings.winfo_rooty() \
-         - get_config("btn_padding")
+    y += self.btn_settings.winfo_rooty() - 1
     self.window_settings.wm_geometry("+%d+%d" % (x, y))
     label_settings(self.window_settings, col_bg, col_txt)
     # only works this way, no idea why...
@@ -142,7 +136,6 @@ def settings_function(self):
                                                   self.toggle_clustering.get()
                                                   )
                 ).pack(side=LEFT,
-                       padx=btn_padding,
                        pady=btn_padding)
     default_btn(self.window_settings,
                 get_config("txt_cancel"),

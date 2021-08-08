@@ -92,7 +92,7 @@ def preprocess(self):
         # create search object
         if titles and corpus_list:
             start = timeit.default_timer()
-            self.tf_object = search_class.Search(corpus_list, titles)
+            self.tf_object = search_class.Search(corpus_list, titles, self)
             if type(self.tf_object.search_method) == LogisticRegression.Model:
                 object_to_save = None
             else:
