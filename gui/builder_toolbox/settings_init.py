@@ -11,7 +11,7 @@ def init_config(path=default_path,
     init_colorsfile(colorsfile, path)
     init_fontfile(fontfile, path)
     config = {"master_height": 600,
-              "master_width": 850,
+              "master_width": 800,
               "settings_height": 420,
               "settings_width": 400,
               "prev_window_size": 100,

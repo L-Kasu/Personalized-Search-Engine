@@ -70,6 +70,7 @@ def stopword_function(self, bool):
 
 
 def radiobtns_clustering(self, location, col_bg, col_txt):
+    self.radiobtns_clustering = []
     for state in ["on", "off"]:
         radiobtn = default_radiobtn(location,
                                     state,
@@ -79,6 +80,7 @@ def radiobtns_clustering(self, location, col_bg, col_txt):
                                     col_bg,
                                     col_txt)
         radiobtn.pack(side=LEFT, fill=BOTH)
+        self.radiobtns_clustering.append(radiobtn)
 
 
 def radiobtns_search_mode(self, location, col_bg, col_txt):
@@ -99,3 +101,10 @@ def radiobtns_search_mode_function(self, mode):
     state = ACTIVE if mode == "tfidf" or mode == "logistic regression" else DISABLED
     for radiobtn in self.radiobtns_stemmer:
         radiobtn.config(state=state)
+
+    if mode == "logistic regression":
+        self.toggle_clustering.set(False)
+
+    cstate = ACTIVE if mode != "logistic regression" else DISABLED
+    for radiobtn in self.radiobtns_clustering:
+        radiobtn.config(state=cstate)
