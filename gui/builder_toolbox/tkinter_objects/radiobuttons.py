@@ -72,13 +72,15 @@ def stopword_function(self, bool):
 def radiobtns_clustering(self, location, col_bg, col_txt):
     self.radiobtns_clustering = []
     for state in ["on", "off"]:
+        activestate = self.clusteringstate
         radiobtn = default_radiobtn(location,
                                     state,
                                     self.toggle_clustering,
                                     state == "on",
                                     None,
                                     col_bg,
-                                    col_txt)
+                                    col_txt,
+                                    state=activestate)
         radiobtn.pack(side=LEFT, fill=BOTH)
         self.radiobtns_clustering.append(radiobtn)
 
@@ -104,6 +106,7 @@ def radiobtns_search_mode_function(self, mode):
 
     if mode == "logistic regression":
         self.toggle_clustering.set(False)
+        self.clusteringstate = DISABLED
 
     cstate = ACTIVE if mode != "logistic regression" else DISABLED
     for radiobtn in self.radiobtns_clustering:

@@ -55,6 +55,7 @@ class Application(Frame):
         self.search_mode.set(get_config("search_mode"))
         self.snowballstate = [ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED]
         self.stopwordstate = [ACTIVE if get_config("stop_word") else DISABLED]
+        self.clusteringstate = [ACTIVE if get_config("search_mode") != "logistic regression" else DISABLED]
         self.master.geometry(str(get_config("master_width")) + "x" + str(get_config("master_height")))
         self.master.title(get_config("txt_mastertitle"))
         self.master.config(relief=get_config("relief_frames"),
