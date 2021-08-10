@@ -67,8 +67,3 @@ def label_settings(location, col_bg, col_txt):
                   ).pack(side=TOP,
                          fill=X,
                          expand=True)
-
-
-def label_splash(location):
-    splash_label = default_label(location, "Splash Screen!")
-    splash_label.pack(expand=True, fill=BOTH)
