@@ -1,9 +1,17 @@
-from tkinter import Tk
+from tkinter import *
 from gui.builder_toolbox.settings_init import init_config
 from gui.ui_builder import Application
+from gui.builder_toolbox.tkinter_objects.splash import *
+
+splash_function()
 
 
-if __name__ == "__main__":
-    root = Tk()
-    app = Application(master=root)
-    app.mainloop()
+def main():
+    if __name__ == "__main__":
+        splash_root.destroy()
+        root = Tk()
+        Application(master=root)
+
+
+splash_root.after(800, main)
+mainloop()
