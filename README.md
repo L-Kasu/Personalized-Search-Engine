@@ -31,6 +31,7 @@ The average over all queries of all algorithms will be printed in one document, 
 
 #### UI Programming/Design
 Niklas Munkes
+Haitham Samaan
 
 
 ## License
