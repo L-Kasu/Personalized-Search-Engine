@@ -13,5 +13,5 @@ def main():
         Application(master=root)
 
 
-splash_root.after(800, main)
+splash_root.after(1000, main)
 mainloop()
