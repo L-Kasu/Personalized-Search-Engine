@@ -30,10 +30,8 @@ The average over all queries of all algorithms will be printed in one document, 
 ### Credits
 
 #### UI Programming/Design
-Niklas Munkes
+Niklas Munkes  
 Haitham Samaan
 
-
-## License
-pending
-(GNU LGPL under consideration, but not applied yet)
+#### Evaluation
+Hannah Kessel  
