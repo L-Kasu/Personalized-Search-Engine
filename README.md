@@ -39,12 +39,12 @@ The metrics used are mean-average-precission and F1-score. The metrics are compu
 To compare the algorithms a evaluation for all of them has to be in the pickle-database.  
 The average over all queries of all algorithms will be printed in one document, to show a overview of how good the results in comparson are.  
 
-### License
+## License
 
 This release of the Personalized Search Engine as a whole will be licensed under the GPL-3.0 license. A copy of this license can be found [here](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/LICENSE.md).
 
 
-### Credits
+## Credits
 
 #### Production
 Niklas Munkes
