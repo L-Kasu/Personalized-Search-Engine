@@ -19,10 +19,10 @@ The UI terminal displays informative messages about the search process.
 - Enter: has the same effect as pressing the 'Search' button
 
 #### Settings
-- **Stemmer**: pending
-- **Stop Word Removal**: pending
-- **Search Mode**: pending
-- **Clustering**: pending
+- **Stemmer**: Changes the Stemmer that is used by the engine (description below)
+- **Stop Word Removal**: Toggles Stop Word Removal (description below)
+- **Search Mode**: Changes the search method that is used by the engine (descriptions of the different methods below)
+- **Clustering**: Toggles Clustering (description below)
 - **Language**: Changes the language of the engine.
 - **Theme**: Changes the theme (colors and font) of the UI.
 - **Font**: Changes the font used within the UI.
