@@ -15,8 +15,7 @@ The UI terminal displays informative messages about the search process.
 - Enter: has the same effect as pressing the 'Search' button
 
 #### Settings
-##### Stemmer
-pending
+- *Stemmer*: pending
 
 ##### Stop Word Removal
 pending
