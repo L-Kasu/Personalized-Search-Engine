@@ -59,7 +59,7 @@ TODO
 
 #### Clustering
 
-Via the k-means clustering algorithm (Implementation https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
+Via the [k-means clustering algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
 (Constructor: clustering.Clustering (doc_vector-matrix: 2d-Array/csr-matrix)).
 The Clustering object gets created as follows:
 Clustering the documents into Clusters by their cosine-similarity, to greatly speed up the searching process. The optimal number of Clusters for a given directory gets evaluated via the elbow-method and applied (method: find_optimal_k (max: int)). Gets applied in the Constructor automatically. Then the cluster gets predicted
@@ -67,7 +67,7 @@ Clustering the documents into Clusters by their cosine-similarity, to greatly sp
 It is very important to normalize the vectors before Clustering them. Only that way useful results will apper.
 
 #### Machine-Learning (Logistic-Regression)
-Machine learning model to predict the similarity of two documents. Here the Logistic-Regression Algorithm is used (see: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression). Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
+Machine learning model to predict the similarity of two documents. Here the [Logistic-Regression Algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression) is used. Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
 TODO: finish
 
 
