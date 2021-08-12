@@ -1,6 +1,10 @@
 # Personalized-Search-Engine
 ## Overview
 ### The UI
+Start the engine by running the PersonalizedSearchEngine.exe in the program folder.
+
+Located directly below the 'Settings' button is an entry field where you can enter a query. If you started the engine for the first time, you also need to select a directory (indicated also by the 'no directory selected!' message in the 'Search result' box). By pressing the 'Select Directory' button directly below the enry field a new window will open where you can select the directory in which you wish to search for documents (the engine is capable of searching in .txt and .pdf documents in the selectecd folder only, not it's subfolders!). If you selected a directory and did not close the window without doing so, the message 'preprocessing in progress...' will appear in the engine terminal (the space between the 'Select Directory', 'Search' and 'Clear' buttons and the 'Search result' box), after a short period of apparent inactivity followed by 'preprocessing successful' and something like 'reading in files took: 29.3087803444456879 for 456 pages'. The 
+
 To start the search engine run the [executable file](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/executable.py).  
 In the UI you can choose a file you want to search in. 
 You can choose between several color schemes and languages.  
