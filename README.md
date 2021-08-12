@@ -71,6 +71,10 @@ Machine learning model to predict the similarity of two documents. Here the [Log
 TODO: finish
 
 
+## Distribution
+[Search Engine](https://karylreyne.itch.io/personalized-search-engine)
+[Source code](https://github.com/L-Kasu/Personalized-Search-Engine)
+
 
 ## License
 
