@@ -12,11 +12,9 @@ class Application(Frame):
         super().__init__(master)
         self.configure(bg=get_config("col_bg"))
         self.master = master
-        self.consoleflag = False
         self.ui_console = Listbox()
         self.preview_window = None
         self.master.bind('<Control-r>', lambda e: run_with_init_config(self))
-        self.master.bind('<Control-c>', lambda e: draw_console(self, not self.consoleflag))
         self.master.bind('<Control-p>', lambda e: draw_preview(self))
         self.master.bind("<Return>", lambda e: search(self, self.search_entry.get()) if self.search_entry.get() else print_to_ui_console(self, "search entry field is empty!"))
 
@@ -24,14 +22,6 @@ class Application(Frame):
             init_config()
             save_session("", None)
             restart_application(self)
-
-        def draw_console(self, newflag):
-            if newflag:
-                ui_console(self, self.master)
-            else:
-                self.ui_console.destroy()
-                self.ui_console = Listbox()
-            self.consoleflag = newflag
 
         def draw_preview(self):
             if self.preview_window is None:
@@ -66,6 +56,7 @@ class Application(Frame):
         self.window_settings = None  # needs to be none to prevent empty popup window at startup
         btn_settings(self, self.master)
         entry_frame(self, self.master)
+        ui_console(self, self.master)
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         result_frame(self, self.master)
         dir_label(self, self.result_frame)
