@@ -1,5 +1,8 @@
 # Personalized-Search-Engine
+
 ## Overview
+
+
 ### The UI
 Start the engine by running the PersonalizedSearchEngine.exe in the program folder.
 
@@ -19,8 +22,8 @@ The UI terminal displays informative messages about the search process.
 - Enter: has the same effect as pressing the 'Search' button
 
 #### Settings
-- **Stemmer**: Changes the Stemmer that is used by the engine (description below)
-- **Stop Word Removal**: Toggles Stop Word Removal (description below)
+- **Stemmer**: Changes the Stemmer that is used by the engine
+- **Stop Word Removal**: Toggles Stop Word Removal
 - **Search Mode**: Changes the search method that is used by the engine (descriptions of the different methods below)
 - **Clustering**: Toggles Clustering (description below)
 - **Language**: Changes the language of the engine.
@@ -30,10 +33,12 @@ The UI terminal displays informative messages about the search process.
 - **Language (Stop Words)**: Sets the language for the Stop Word Removal. Use this if you want to match you query to documents that are not written in english.
 - **Number of documents**: Changes the number of documents that are displayed in the 'Search result' box.
 
-#### The evaluation
+
+### The evaluation
 For the Evaluation the [CISI dataset from kaggle](https://www.kaggle.com/dmaso01dsta/cisi-a-dataset-for-information-retrieval) is used. 
 
 The evaluation is executed in the [main file](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/main.py). You will be gudided through the Evaluation in the Terminal. You can evaluate the algorithms and compare all algorithms. 
+
 #### Evaluate the algorithms
 You can evaluate the algorithms using tf-idf, word-embedding or logistic regression. The algorithms using tf-idf and word-embedding can be evaluated with or without clustering. The algorithm using logistic regression only works without clustering.  
 There is also the option to evaluate the algorithms using all the queries or just the first 30 ones, because the logistic regression is also trained in the dataset. So the first 30 queries are used to evaluate the algorithm and the rest is used for train and validation.  
@@ -41,17 +46,18 @@ The results of the evaluation can be found in the directiory [eval_output](https
 The metrics used are mean-average-precission and F1-score. The metrics are computed for every query and the average over all queries.  
 #### Compare the algorithms
 To compare the algorithms a evaluation for all of them has to be in the pickle-database.  
-The average over all queries of all algorithms will be printed in one document, to show a overview of how good the results in comparson are.  
+The average over all queries of all algorithms will be printed in one document, to show a overview of how good the results in comparson are.
 
-#### Searching-procedures
 
-## Term-frequency-inverse-document-frequency-weighting
+### Search Algorithms
+
+#### Term-frequency-inverse-document-frequency-weighting
 TODO
 
-## word-embdedding
+#### Word-embedding
 TODO
 
-## Clustering
+#### Clustering
 
 Via the k-means clustering algorithm (Implementation https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
 (Constructor: clustering.Clustering (doc_vector-matrix: 2d-Array/csr-matrix)).
@@ -60,17 +66,23 @@ Clustering the documents into Clusters by their cosine-similarity, to greatly sp
 (method: predict_the_cluster_of_vector(vec: 1D-Array). After given the index of a predicted cluster, the actual Cluster gets returned. Then the usual search-procedure is now used but only on the predicted Cluster, which should give a speedup by the factor k.
 It is very important to normalize the vectors before Clustering them. Only that way useful results will apper.
 
-## Machine-Learning
+#### Machine-Learning (Logistic-Regression)
 Machine learning model to predict the similarity of two documents. Here the Logistic-Regression Algorithm is used (see: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression). Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
 TODO: finish
+
+
 
 ## License
 
 This release of the Personalized Search Engine as a whole will be licensed under the GPL-3.0 license. A copy of this license can be found [here](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/LICENSE.md).
 
+
+
 ## Support
 
 This release comes without any support, warranty or guarantee that your PC won't be set on fire. However, if you have any questions open an issue here on GitHub.
+
+
 
 ## Credits
 
