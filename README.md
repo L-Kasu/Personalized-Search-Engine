@@ -67,7 +67,7 @@ Clustering the documents into Clusters by their cosine-similarity, to greatly sp
 It is very important to normalize the vectors before Clustering them. Only that way useful results will apper.
 
 #### Machine-Learning (Logistic-Regression)
-Machine learning model to predict the similarity of two documents. Here the [Logistic-Regression Algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression) is used. Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
+Machine learning model to predict the similarity of two documents. Here the [Logistic-Regression Algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) is used. Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
 TODO: finish
 
 
