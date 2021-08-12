@@ -50,9 +50,12 @@ The average over all queries of all algorithms will be printed in one document, 
 
 
 ### Search Algorithms
+When searching each page of a document is viewed as an own document. This enables the search to pinpoint a pache for a search. In the following description document referes to the pages.
 
-#### Term-frequency-inverse-document-frequency-weighting
-TODO
+#### Term-frequency-inverse-document-frequency-weighting (tf-idf)
+(https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+When using this search method, first the count of each word in document is determined. For each word in each document this count is then divided by the logarithem of the count of the word in all documents. The implementation uses the scikit library (https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html)
+In our implementation the cosine similarity between all documents and the query is computed, then the documents are sorted by most similar to least similar.
 
 #### Word-embedding
 TODO
@@ -70,10 +73,6 @@ It is very important to normalize the vectors before Clustering them. Only that 
 Machine learning model to predict the similarity of two documents. Here the [Logistic-Regression Algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) is used. Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
 TODO: finish
 
-
-## Distribution
-[Search Engine](https://karylreyne.itch.io/personalized-search-engine)  
-[Source code](https://github.com/L-Kasu/Personalized-Search-Engine)
 
 
 ## License
@@ -106,6 +105,3 @@ Julian Döhl
 
 #### Icon
 Julian Döhl
-
-#### Special Thanks
-Hassan Shahmohammadi
