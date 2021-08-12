@@ -36,12 +36,15 @@ def btn_select_directory(self, location):
 
 
 def btn_select_directory_function(self):
-    print_to_ui_console(self, "preprocessing...")
+    print_to_ui_console(self, "preprocessing in progress...")
     new_dir = filedialog.askdirectory()
-    self.dir_selected = new_dir if new_dir != "" else self.dir_selected
-    self.dir_label.config(text=self.dir_selected)
-    preprocess(self)
-    self.dir_label.config(text=new_dir)
+    if new_dir != "":
+        self.dir_selected = new_dir
+        preprocess(self)
+        self.dir_label.config(text=self.dir_selected)
+        print_to_ui_console(self, "preprocessing successful")
+    else:
+        print_to_ui_console(self, "preprocessing aborted")
 
 
 def btn_entry_search(self, location):
