@@ -97,5 +97,8 @@ Haitham Samaan
 Hannah Kessel  
 
 #### Search-algorithms
-Lars Kasüschke
+Lars Kasüschke  
+Julian Döhl
+
+#### Icon
 Julian Döhl
