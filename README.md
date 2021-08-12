@@ -30,7 +30,7 @@ The UI terminal displays informative messages about the search process.
 - **Language (Stop Words)**: Sets the language for the Stop Word Removal. Use this if you want to match you query to documents that are not written in english.
 - **Number of documents**: Changes the number of documents that are displayed in the 'Search result' box.
 
-### The evaluation
+#### The evaluation
 For the Evaluation the [CISI dataset from kaggle](https://www.kaggle.com/dmaso01dsta/cisi-a-dataset-for-information-retrieval) is used. 
 
 The evaluation is executed in the [main file](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/main.py). You will be gudided through the Evaluation in the Terminal. You can evaluate the algorithms and compare all algorithms. 
@@ -42,6 +42,27 @@ The metrics used are mean-average-precission and F1-score. The metrics are compu
 #### Compare the algorithms
 To compare the algorithms a evaluation for all of them has to be in the pickle-database.  
 The average over all queries of all algorithms will be printed in one document, to show a overview of how good the results in comparson are.  
+
+#### Searching-procedures
+
+## Term-frequency-inverse-document-frequency-weighting
+TODO
+
+## word-embdedding
+TODO
+
+## CLustering
+
+Via the k-means clustering algorithm (Implementation https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
+(Constructor: clustering.Clustering (doc_vector-matrix: 2d-Array/csr-matrix)).
+The Clustering object gets created as follows:
+Clustering the documents into Clusters by their cosine-similarity, to greatly speed up the searching process. The optimal number of Clusters for a given directory gets evaluatet via the elbow method and applied (method: find_optimal_k (max: int)). Gets applied in the Constructor automatically Then the cluster gets predicted
+(method: predict_the_cluster_of_vector(vec: 1D-Array). After given the index of a predicted cluster, the actual Cluster gets returned. Then the usual search-procedure is now used, but only on the predicted Cluster, which Should give a speedup by the factor k.
+It is very important too normalize the vectors before Clustering them. Only that way useful results will apper.
+
+## Machine-Learning
+Machine learning model to predict the similarity of two documents. Here the Logistic-Regression Algorithm is used (see: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression). Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
+TODO: finish
 
 ## License
 
