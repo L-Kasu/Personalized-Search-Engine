@@ -41,7 +41,7 @@ The average over all queries of all algorithms will be printed in one document, 
 
 ### License
 
-This release of the Personalized Search Engine as a whole will be licensed under the GPL-3.0 license. A copy of this license can be found (here)[https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/LICENSE.md].
+This release of the Personalized Search Engine as a whole will be licensed under the GPL-3.0 license. A copy of this license can be found [here](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/LICENSE.md).
 
 
 ### Credits
