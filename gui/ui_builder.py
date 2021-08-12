@@ -66,6 +66,7 @@ class Application(Frame):
         btn_settings(self, self.master)
         entry_frame(self, self.master)
         ui_console(self, self.master)
+        shortcut_label(self.ui_console)
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         result_frame(self, self.master)
         dir_label(self, self.result_frame)

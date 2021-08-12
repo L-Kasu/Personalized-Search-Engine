@@ -59,8 +59,8 @@ def buttons_frame(self, location):
 
 
 def result_frame(self, location):
-    self.result_frame = Frame(location, bg=get_config("col_bg_lgt"))
-    self.result_frame.pack(side=BOTTOM, fill=BOTH, expand=True)
+    self.result_frame = Frame(location, bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
+    self.result_frame.pack(side=BOTTOM, fill=BOTH, expand=True, ipady=get_config("global_padding"))
 
     result_label(self.result_frame)
     result_text(self, self.result_frame)

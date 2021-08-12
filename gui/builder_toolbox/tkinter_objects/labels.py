@@ -67,3 +67,20 @@ def label_settings(location, col_bg, col_txt):
                   ).pack(side=TOP,
                          fill=X,
                          expand=True)
+
+
+def shortcut_label(location):
+    text = "Reset: ctrl-r\nPreview: ctrl-p\nTooltips: ctrl-t"
+    label = default_label(location,
+                          text,
+                          font=get_config("font_returntext"),
+                          bg=get_config("col_bg"),
+                          fg=get_config("col_acc_bgcontrast"),
+                          justify=LEFT
+                          )
+    label.config(height=6)
+    label.pack(side=RIGHT,
+               fill=Y,
+               expand=False,
+               ipadx=get_config("global_padding")
+               )

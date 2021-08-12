@@ -44,8 +44,10 @@ def file_to_list_of_string(self, path):
     elif path.endswith("pdf"):
         text = convert_pdf_to_txt(path)
     else:
-        print_to_ui_console(self, "unsupported file format at: " + path)
-        print("unsupported file format at: " + path)
+        cut = path.split("/")
+        file = "/" + cut[len(cut)-1]
+        print_to_ui_console(self, "unsupported file format at: " + file)
+        print("unsupported file format at: " + file)
 
     return text
 
