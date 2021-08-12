@@ -15,34 +15,18 @@ The UI terminal displays informative messages about the search process.
 - Enter: has the same effect as pressing the 'Search' button
 
 #### Settings
-- *Stemmer*: pending
+- **Stemmer**: pending
+- **Stop Word Removal**: pending
+- **Search Mode**: pending
+- **Clustering**: pending
+- **Language**: Changes the language of the engine.
+- **Theme**: Changes the theme (colors and font) of the UI.
+- **Font**: Changes the font used within the UI.
+- **Language (Snowball Stemmer)**: Sets the language for the Snowball Stemmer. Use this if you want to match you query to documents that are not written in english.
+- **Language (Stop Words)**: Sets the language for the Stop Word Removal. Use this if you want to match you query to documents that are not written in english.
+- **Number of documents**: Changes the number of documents that are displayed in the 'Search result' box.
+- **Stemmer**: pending
 
-##### Stop Word Removal
-pending
-
-##### Search Mode
-pending
-
-##### Clustering
-pending
-
-##### Language
-Changes the language of the engine.
-
-##### Theme
-Changes the theme (colors and font) of the UI.
-
-##### Font
-Changes the font used within the UI.
-
-##### Language (Snowball Stemmer)
-Sets the language for the Snowball Stemmer. Use this if you want to match you query to documents that are not written in english (the supported languages are Arabic, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Norwegian, Portuguese, Romanian, Russian, Spanish and Swedish)
-
-##### Language (Stop Words)
-Sets the language for the Stop Word Removal. Use this if you want to match you query to documents that are not written in english.
-
-##### Number of documents
-Changes the number of documents that are displayed in the 'Search result' box.
 
 ### The search engine  
 You have the choice between different searching alorithms:
