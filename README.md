@@ -25,7 +25,6 @@ The UI terminal displays informative messages about the search process.
 - **Language (Snowball Stemmer)**: Sets the language for the Snowball Stemmer. Use this if you want to match you query to documents that are not written in english.
 - **Language (Stop Words)**: Sets the language for the Stop Word Removal. Use this if you want to match you query to documents that are not written in english.
 - **Number of documents**: Changes the number of documents that are displayed in the 'Search result' box.
-- **Stemmer**: pending
 
 
 ### The search engine  
