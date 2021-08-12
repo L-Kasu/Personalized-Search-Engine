@@ -37,7 +37,8 @@ def btn_select_directory(self, location):
 
 def btn_select_directory_function(self):
     new_dir = filedialog.askdirectory()
-    self.dir_selected = new_dir
+    self.dir_selected = new_dir if new_dir is not "" else self.dir_selected
+    self.dir_label.config(text=self.dir_selected)
     preprocess(self)
     self.dir_label.config(text=new_dir)
 

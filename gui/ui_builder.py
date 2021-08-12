@@ -53,9 +53,9 @@ class Application(Frame):
         self.selected_stemmer.set(get_config("stemmer"))
         self.search_mode = StringVar()
         self.search_mode.set(get_config("search_mode"))
-        self.snowballstate = [ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED]
-        self.stopwordstate = [ACTIVE if get_config("stop_word") else DISABLED]
-        self.clusteringstate = [ACTIVE if get_config("search_mode") != "logistic regression" else DISABLED]
+        self.snowballstate = ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED
+        self.stopwordstate = ACTIVE if get_config("stop_word") else DISABLED
+        self.clusteringstate = ACTIVE if get_config("search_mode") != "logistic regression" else DISABLED
         self.master.geometry(str(get_config("master_width")) + "x" + str(get_config("master_height")))
         self.master.title(get_config("txt_mastertitle"))
         self.master.config(relief=get_config("relief_frames"),
@@ -63,7 +63,7 @@ class Application(Frame):
                            bg=get_config("col_bg")
                            )
 
-        self.window_settings = None
+        self.window_settings = None  # needs to be none to prevent empty popup window at startup
         btn_settings(self, self.master)
         entry_frame(self, self.master)
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
