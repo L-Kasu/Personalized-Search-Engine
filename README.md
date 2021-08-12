@@ -72,7 +72,7 @@ TODO: finish
 
 
 ## Distribution
-[Search Engine](https://karylreyne.itch.io/personalized-search-engine)
+[Search Engine](https://karylreyne.itch.io/personalized-search-engine)  
 [Source code](https://github.com/L-Kasu/Personalized-Search-Engine)
 
 
