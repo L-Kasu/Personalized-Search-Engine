@@ -98,3 +98,4 @@ Hannah Kessel
 
 #### Search-algorithms
 Lars Kasüschke
+Julian Döhl
