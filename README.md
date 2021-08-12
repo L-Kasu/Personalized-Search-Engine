@@ -51,14 +51,14 @@ TODO
 ## word-embdedding
 TODO
 
-## CLustering
+## Clustering
 
 Via the k-means clustering algorithm (Implementation https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
 (Constructor: clustering.Clustering (doc_vector-matrix: 2d-Array/csr-matrix)).
 The Clustering object gets created as follows:
-Clustering the documents into Clusters by their cosine-similarity, to greatly speed up the searching process. The optimal number of Clusters for a given directory gets evaluatet via the elbow method and applied (method: find_optimal_k (max: int)). Gets applied in the Constructor automatically Then the cluster gets predicted
-(method: predict_the_cluster_of_vector(vec: 1D-Array). After given the index of a predicted cluster, the actual Cluster gets returned. Then the usual search-procedure is now used, but only on the predicted Cluster, which Should give a speedup by the factor k.
-It is very important too normalize the vectors before Clustering them. Only that way useful results will apper.
+Clustering the documents into Clusters by their cosine-similarity, to greatly speed up the searching process. The optimal number of Clusters for a given directory gets evaluated via the elbow-method and applied (method: find_optimal_k (max: int)). Gets applied in the Constructor automatically. Then the cluster gets predicted
+(method: predict_the_cluster_of_vector(vec: 1D-Array). After given the index of a predicted cluster, the actual Cluster gets returned. Then the usual search-procedure is now used but only on the predicted Cluster, which should give a speedup by the factor k.
+It is very important to normalize the vectors before Clustering them. Only that way useful results will apper.
 
 ## Machine-Learning
 Machine learning model to predict the similarity of two documents. Here the Logistic-Regression Algorithm is used (see: https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression). Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
