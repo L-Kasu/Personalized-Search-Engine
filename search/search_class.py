@@ -10,13 +10,12 @@ def check_len(corpus, titles):
 
 
 class Search:
-    def __init__(self, corpus, titles, app):
+    def __init__(self, corpus, titles):
 
         check_len(corpus, titles)
         
         self.corpus = corpus
         self.titles = titles
-        self.app = app
         
         self.search_method = None
         search_name = get_config("search_mode")

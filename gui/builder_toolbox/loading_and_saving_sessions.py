@@ -8,11 +8,12 @@ def load_session(path=previous_session_path):
     directory_path = ""
     search_class_instance = None
 
-    with open(path, "rb") as file:
-        try:
-            directory_path, search_class_instance = pickle.load(file)
-        except EOFError:
-            pass
+    if os.path.isfile(path):
+        with open(path, "rb") as file:
+            try:
+                directory_path, search_class_instance = pickle.load(file)
+            except EOFError:
+                pass
     return directory_path, search_class_instance
 
 

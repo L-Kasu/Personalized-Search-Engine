@@ -177,4 +177,5 @@ def settings_confirm_function(self,
         save_session(self.dir_selected, self.tf_object)
     if get_config("clustering") != old_clustering:
         self.tf_object.set_clustering(clustering.Clustering(self.tf_object.search_method.get_matrix(), app=self))
+        save_session(self.dir_selected, self.tf_object)
     self.window_settings.destroy()
