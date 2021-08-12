@@ -14,9 +14,11 @@ class Application(Frame):
         self.master = master
         self.ui_console = Listbox()
         self.preview_window = None
+        self.tooltipflag = True
         self.master.bind('<Control-r>', lambda e: run_with_init_config(self))
         self.master.bind('<Control-p>', lambda e: draw_preview(self))
-        self.master.bind("<Return>", lambda e: search(self, self.search_entry.get()) if self.search_entry.get() else print_to_ui_console(self, "search entry field is empty!"))
+        self.master.bind('<Control-t>', lambda e: set_tooltip_flag(self, not self.tooltipflag))
+        self.master.bind("<Return>", lambda e: btn_entry_search_function(self))
 
         def run_with_init_config(self):
             init_config()
@@ -29,6 +31,13 @@ class Application(Frame):
             else:
                 self.preview_window.destroy()
                 self.preview_window = None
+
+        def set_tooltip_flag(self, flag):
+            if flag:
+                print_to_ui_console(self, "tooltips enabled")
+            else:
+                print_to_ui_console(self, "tooltips disabled")
+            self.tooltipflag = flag
 
         self.result = list()
         self.remove_stopwords = BooleanVar()

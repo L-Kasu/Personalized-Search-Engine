@@ -40,7 +40,7 @@ def radiobtns_stemmer(self, location, col_bg, col_txt):
                                     col_txt,
                                     state=state
                                     )
-        AddTooltip(radiobtn, get_config("txt_tooltip_"+stemmer))
+        AddTooltip(radiobtn, self, get_config("txt_tooltip_"+stemmer))
         radiobtn.pack(side=LEFT, fill=BOTH)
         self.radiobtns_stemmer.append(radiobtn)
 
@@ -95,7 +95,7 @@ def radiobtns_search_mode(self, location, col_bg, col_txt):
                                     col_bg,
                                     col_txt
         )
-        AddTooltip(radiobtn, get_config("txt_tooltip_" + mode))
+        AddTooltip(radiobtn, self, get_config("txt_tooltip_" + mode))
         radiobtn.pack(side=LEFT, fill=BOTH)
 
 

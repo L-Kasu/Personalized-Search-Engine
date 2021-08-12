@@ -23,7 +23,7 @@ def get_setting_frame(self,
                           justify=LEFT
                           )
     if label_tooltip is not None:
-        AddTooltip(label, label_tooltip)
+        AddTooltip(label, self, label_tooltip)
     label.pack(side=LEFT,
                anchor=W,
                expand=True
