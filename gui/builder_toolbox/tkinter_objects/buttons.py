@@ -4,7 +4,6 @@ from search import clustering
 from gui.builder_toolbox.tkinter_objects.radiobuttons import *
 from gui.builder_toolbox.search_util import *
 
-
 btn_padding = get_config("btn_padding")
 
 
@@ -50,11 +49,19 @@ def btn_select_directory_function(self):
 def btn_entry_search(self, location):
     default_btn(location,
                 get_config("txt_entrysearch"),
-                lambda: search(self, self.search_entry.get()) if self.search_entry.get() else print_to_ui_console(self, "search entry field is empty!")
+                lambda: btn_entry_search_function(self)
                 ).pack(side=LEFT,
                        anchor=CENTER,
                        padx=btn_padding,
                        pady=btn_padding)
+
+
+def btn_entry_search_function(self):
+    if self.tf_object is None:
+        print_to_ui_console(self, "you need to select a directory before you can search for documents!")
+    else:
+        search(self, self.search_entry.get() if self.search_entry.get() else print_to_ui_console(self,
+                                                                                                 "search entry field is empty!"))
 
 
 def btn_entry_delete(self, location):
@@ -85,7 +92,7 @@ def preview_function(self):
     preview_window_label(self.preview_window, text)
     x = y = 0
     x, y, cx, cy = self.master.bbox("insert")
-    x += self.result_text.winfo_rootx() + (get_config("master_width")/4)
+    x += self.result_text.winfo_rootx() + (get_config("master_width") / 4)
     y += self.result_text.winfo_rooty()
     self.preview_window.wm_geometry("+%d+%d" % (x, y))
 
@@ -121,17 +128,21 @@ def settings_function(self):
     # only works this way, no idea why...
     gui.builder_toolbox.tkinter_objects.frames.frame_stemmer(self, self.window_settings, col_bg, col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_stopword(self, self.window_settings, col_bg, col_txt).pack(fill=X)
-    gui.builder_toolbox.tkinter_objects.frames.frame_searchmode(self, self.window_settings, col_bg, col_txt).pack(fill=X)
-    gui.builder_toolbox.tkinter_objects.frames.frame_clustering(self, self.window_settings, col_bg, col_txt).pack(fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_searchmode(self, self.window_settings, col_bg, col_txt).pack(
+        fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_clustering(self, self.window_settings, col_bg, col_txt).pack(
+        fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_lang(self, self.window_settings, col_bg, col_txt).pack(fill=X)
-    gui.builder_toolbox.tkinter_objects.frames.frame_menu_colors(self, self.window_settings, col_bg, col_txt).pack(fill=X)
-    gui.builder_toolbox.tkinter_objects.frames.frame_menu_fonts(self, self.window_settings, col_bg, col_txt).pack(fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_menu_colors(self, self.window_settings, col_bg, col_txt).pack(
+        fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_menu_fonts(self, self.window_settings, col_bg, col_txt).pack(
+        fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_snowballstemmer_language(self, self.window_settings, col_bg,
                                                                                    col_txt).pack(fill=X)
     gui.builder_toolbox.tkinter_objects.frames.frame_menu_stopword_language(self, self.window_settings, col_bg,
-                                                                                   col_txt).pack(fill=X)
-    gui.builder_toolbox.tkinter_objects.frames.frame_menu_docs_to_return(self, self.window_settings, col_bg,
                                                                             col_txt).pack(fill=X)
+    gui.builder_toolbox.tkinter_objects.frames.frame_menu_docs_to_return(self, self.window_settings, col_bg,
+                                                                         col_txt).pack(fill=X)
     default_btn(self.window_settings,
                 get_config("txt_confirm"),
                 lambda: settings_confirm_function(self,
