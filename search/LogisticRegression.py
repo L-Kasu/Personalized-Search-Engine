@@ -33,15 +33,6 @@ def lookup_functions(func_list):
     return result
 
 
-# for loading feature generator
-def deserialize_feature_generator(func_list):
-    result = []
-    for code in func_list:
-        func = dill.loads(code)
-        result.append(func)
-    return result
-
-
 class Model:
     def __init__(self, function_name_list=[], class_weight="balanced"):
         self.training_data, self.validation_data = ((), ())
@@ -102,6 +93,7 @@ class Model:
     def set_validation_data(self, data):
         self.validation_data = data
 
+    # scores the probability of two documents or a query and document being related
     def score(self, query, doc):
         feature = [func(query,doc) for func in self.feature_generator]
         feature = np.array(feature)
