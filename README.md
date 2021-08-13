@@ -85,7 +85,7 @@ The Model object gets created by the constructor LogisticRegression.Model(functi
 
 ## License
 
-This release of the Personalized Search Engine as a whole will be licensed under the GPL-3.0 license. A copy of this license can be found [here](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/LICENSE.md).
+This release of the Personalized Search Engine as a whole will be licensed under the GPL-3.0 license. A copy of this license can be found [here](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/LICENSE.md). The python packages the engine makes use of and is distributed with are licensed under a variety of licenses. Refer to the `/LICENSES/` directory for the individual licenses.
 
 
 
