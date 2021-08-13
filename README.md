@@ -53,16 +53,16 @@ The average over all queries of all algorithms will be printed in one document, 
 When searching each page of a document is viewed as an own document. This enables the search to pinpoint a pache for a search. In the following description document referes to the pages.
 
 #### Term-frequency-inverse-document-frequency-weighting (tf-idf)
-(https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
-When using this search method, first the count of each word in document is determined. For each word in each document this count is then divided by the logarithem of the count of the word in all documents. The implementation uses the scikit library (https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html).
+[Wikipedia](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)  
+When using this search method, first the count of each word in document is determined. For each word in each document this count is then divided by the logarithem of the count of the word in all documents. The implementation uses [the scikit library](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html).
 In our implementation the cosine similarity between all documents and the query is computed, then the documents are sorted by most similar to least similar.
 
 #### Word-embedding
-A very simple algorithem using word embeddings (https://en.wikipedia.org/wiki/Word_embedding) is implemmented. It takes the mean vector over all word vectors for each document, therby generating one vector representing the document. By the same process a vector representing the query is generated. The cosine similarity between the query vector and the document voctors is then computed, then the documents are sorted by most similar to least similar.
+A very simple algorithem using [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) is implemmented. It takes the mean vector over all word vectors for each document, therby generating one vector representing the document. By the same process a vector representing the query is generated. The cosine similarity between the query vector and the document voctors is then computed, then the documents are sorted by most similar to least similar.
 
-One embedding we use is GloVe (https://nlp.stanford.edu/projects/glove/).
+One embedding we use is [GloVe](https://nlp.stanford.edu/projects/glove/).
 
-The other one is fastText (https://fasttext.cc/docs/en/english-vectors.html).
+The other one is [fastText](https://fasttext.cc/docs/en/english-vectors.html).
 
 #### Clustering
 
