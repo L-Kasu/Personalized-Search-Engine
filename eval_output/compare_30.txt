@@ -1,0 +1,10 @@
+without clustering: 
+						tf_idf				word-embedding			logistic-regression
+average precission:	0.3277976242966323		0.31236101662887367		0.31236101662887367
+average f1-score:	0.09861065245036295		0.10186896358268988		0.10186896358268988
+
+
+with clustering: 
+						tf_idf				word-embedding
+average precission:	0.270597216973209		0.26972999601075
+average f1-score:	0.06809882173970205		0.07279480211727621

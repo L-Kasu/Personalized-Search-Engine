@@ -40,7 +40,7 @@ def radiobtns_stemmer(self, location, col_bg, col_txt):
                                     col_txt,
                                     state=state
                                     )
-        AddTooltip(radiobtn, get_config("txt_tooltip_"+stemmer))
+        AddTooltip(radiobtn, self, get_config("txt_tooltip_"+stemmer))
         radiobtn.pack(side=LEFT, fill=BOTH)
         self.radiobtns_stemmer.append(radiobtn)
 
@@ -70,15 +70,19 @@ def stopword_function(self, bool):
 
 
 def radiobtns_clustering(self, location, col_bg, col_txt):
+    self.radiobtns_clustering = []
     for state in ["on", "off"]:
+        activestate = self.clusteringstate
         radiobtn = default_radiobtn(location,
                                     state,
                                     self.toggle_clustering,
                                     state == "on",
                                     None,
                                     col_bg,
-                                    col_txt)
+                                    col_txt,
+                                    state=activestate)
         radiobtn.pack(side=LEFT, fill=BOTH)
+        self.radiobtns_clustering.append(radiobtn)
 
 
 def radiobtns_search_mode(self, location, col_bg, col_txt):
@@ -91,7 +95,7 @@ def radiobtns_search_mode(self, location, col_bg, col_txt):
                                     col_bg,
                                     col_txt
         )
-        AddTooltip(radiobtn, get_config("txt_tooltip_" + mode))
+        AddTooltip(radiobtn, self, get_config("txt_tooltip_" + mode))
         radiobtn.pack(side=LEFT, fill=BOTH)
 
 
@@ -99,3 +103,11 @@ def radiobtns_search_mode_function(self, mode):
     state = ACTIVE if mode == "tfidf" or mode == "logistic regression" else DISABLED
     for radiobtn in self.radiobtns_stemmer:
         radiobtn.config(state=state)
+
+    if mode == "logistic regression":
+        self.toggle_clustering.set(False)
+        self.clusteringstate = DISABLED
+
+    cstate = ACTIVE if mode != "logistic regression" else DISABLED
+    for radiobtn in self.radiobtns_clustering:
+        radiobtn.config(state=cstate)

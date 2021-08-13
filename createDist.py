@@ -7,5 +7,6 @@ PyInstaller.__main__.run([
     '--distpath=./dist/windows-dist',
     '--workpath=./dist/windows-build',
     '--splash=splash.png',
-    '--name=PersonalizedSearchEngine'
+    '--name=PersonalizedSearchEngine',
+    '--icon=icon.ico'
 ])

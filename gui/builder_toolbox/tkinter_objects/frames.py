@@ -23,7 +23,7 @@ def get_setting_frame(self,
                           justify=LEFT
                           )
     if label_tooltip is not None:
-        AddTooltip(label, label_tooltip)
+        AddTooltip(label, self, label_tooltip)
     label.pack(side=LEFT,
                anchor=W,
                expand=True
@@ -59,8 +59,8 @@ def buttons_frame(self, location):
 
 
 def result_frame(self, location):
-    self.result_frame = Frame(location, bg=get_config("col_bg_lgt"))
-    self.result_frame.pack(side=BOTTOM, fill=BOTH, expand=True)
+    self.result_frame = Frame(location, bg=get_config("col_bg_lgt"), bd=get_config("global_padding"))
+    self.result_frame.pack(side=BOTTOM, fill=BOTH, expand=True, ipady=get_config("global_padding"))
 
     result_label(self.result_frame)
     result_text(self, self.result_frame)

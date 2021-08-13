@@ -12,25 +12,18 @@ class Application(Frame):
         super().__init__(master)
         self.configure(bg=get_config("col_bg"))
         self.master = master
-        self.consoleflag = False
         self.ui_console = Listbox()
         self.preview_window = None
+        self.tooltipflag = True
         self.master.bind('<Control-r>', lambda e: run_with_init_config(self))
-        self.master.bind('<Control-c>', lambda e: draw_console(self, not self.consoleflag))
         self.master.bind('<Control-p>', lambda e: draw_preview(self))
-        self.master.bind("<Return>", lambda e: search(self, self.search_entry.get()) if self.search_entry.get() else print_to_ui_console(self, "search entry field is empty!"))
+        self.master.bind('<Control-t>', lambda e: set_tooltip_flag(self, not self.tooltipflag))
+        self.master.bind("<Return>", lambda e: btn_entry_search_function(self))
 
         def run_with_init_config(self):
             init_config()
+            save_session("", None)
             restart_application(self)
-
-        def draw_console(self, newflag):
-            if newflag:
-                ui_console(self, self.master)
-            else:
-                self.ui_console.destroy()
-                self.ui_console = Listbox()
-            self.consoleflag = newflag
 
         def draw_preview(self):
             if self.preview_window is None:
@@ -38,6 +31,13 @@ class Application(Frame):
             else:
                 self.preview_window.destroy()
                 self.preview_window = None
+
+        def set_tooltip_flag(self, flag):
+            if flag:
+                print_to_ui_console(self, "tooltips enabled")
+            else:
+                print_to_ui_console(self, "tooltips disabled")
+            self.tooltipflag = flag
 
         self.result = list()
         self.remove_stopwords = BooleanVar()
@@ -52,8 +52,9 @@ class Application(Frame):
         self.selected_stemmer.set(get_config("stemmer"))
         self.search_mode = StringVar()
         self.search_mode.set(get_config("search_mode"))
-        self.snowballstate = [ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED]
-        self.stopwordstate = [ACTIVE if get_config("stop_word") else DISABLED]
+        self.snowballstate = ACTIVE if self.selected_stemmer.get() == "snowball" else DISABLED
+        self.stopwordstate = ACTIVE if get_config("stop_word") else DISABLED
+        self.clusteringstate = ACTIVE if get_config("search_mode") != "logistic regression" else DISABLED
         self.master.geometry(str(get_config("master_width")) + "x" + str(get_config("master_height")))
         self.master.title(get_config("txt_mastertitle"))
         self.master.config(relief=get_config("relief_frames"),
@@ -61,9 +62,11 @@ class Application(Frame):
                            bg=get_config("col_bg")
                            )
 
-        self.window_settings = None
+        self.window_settings = None  # needs to be none to prevent empty popup window at startup
         btn_settings(self, self.master)
         entry_frame(self, self.master)
+        ui_console(self, self.master)
+        shortcut_label(self.ui_console)
         self.preview_window = None  # needs to be none to prevent empty popup window at startup
         result_frame(self, self.master)
         dir_label(self, self.result_frame)

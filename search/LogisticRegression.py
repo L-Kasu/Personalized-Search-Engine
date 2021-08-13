@@ -140,7 +140,11 @@ def tfidf_cos_sim(Vectorizer, doc1, doc2):
 
 
 def tokenize(doc):
-    stemmer = LancasterStemmer()
+    # stemmer = LancasterStemmer()
+    stemmerdict = {"porter": PorterStemmer(),
+                   "lancaster": LancasterStemmer(),
+                   "snowball": snowball.SnowballStemmer(get_config("snowballstemmer_language"))}
+    stemmer = stemmerdict[get_config("stemmer")]
     tokens = [word for word in word_tokenize(doc.lower())]
     result = [stemmer.stem(item) for item in tokens]
     return result

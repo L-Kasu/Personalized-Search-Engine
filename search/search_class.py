@@ -25,7 +25,7 @@ class Search:
 
         elif search_name == "GloVe":
             name = "glove.6B.300d.p"
-            for root, dirs, files in os.walk(".\\data\\"):
+            for root, dirs, files in os.walk(os.sep.join([".", "data"])):
                 if name in files:
                     path = os.path.join(root, name)
             glove_embedding = pickle.load(open(path, "rb"))
@@ -57,12 +57,14 @@ class Search:
 
         
         self.clustering = None
-        clustering_flag = False #get_config("clustering")
+        clustering_flag = get_config("clustering")
         
         if clustering_flag:
             self.clustering = clustering.Clustering(self.search_method.get_matrix())
-            
-    
+
+    def set_clustering(self, clustering):
+        self.clustering = clustering
+
     def search_indicies(self, query):
 
         relevant_indicies = list(range(len(self.titles)))
@@ -91,7 +93,6 @@ class Search:
         combination.sort(key=lambda x: x[1], reverse=True)
         result = [c[0] for c in combination]
         return result
-        
         
     def search_titles(self, query):
         indicies = self.search_indicies(query)

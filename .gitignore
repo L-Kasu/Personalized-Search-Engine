@@ -24,6 +24,8 @@
 /gui/resources/__pycache__/
 /gui/builder_toolbox/__pycache__/
 /gui/builder_toolbox/tkinter_objects/__pycache__/
+/dist/windows-dist/
+/dist/windows-dist.zip
 /dist/windows-dist/config/
 /dist/windows-dist/config/session/
 /dist/windows-build/
