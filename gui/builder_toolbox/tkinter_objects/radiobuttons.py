@@ -86,7 +86,7 @@ def radiobtns_clustering(self, location, col_bg, col_txt):
 
 
 def radiobtns_search_mode(self, location, col_bg, col_txt):
-    for mode in ["GloVe", "fasttext", "tfidf", "logistic regression"]:
+    for mode in ["GloVe", "tfidf", "logistic regression"]:
         radiobtn = default_radiobtn(location,
                                     mode,
                                     self.search_mode,

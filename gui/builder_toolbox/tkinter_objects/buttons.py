@@ -173,9 +173,9 @@ def settings_confirm_function(self,
     edit_config({"clustering": toggle_clustering})
     if get_config("search_mode") != search_mode:
         edit_config({"search_mode": search_mode})
-        self.tf_object = search_class.Search(self.tf_object.corpus, self.tf_object.titles, self)
+        self.tf_object = search_class.Search(self.tf_object.corpus, self.tf_object.titles)
         save_session(self.dir_selected, self.tf_object)
     if get_config("clustering") != old_clustering:
-        self.tf_object.set_clustering(clustering.Clustering(self.tf_object.search_method.get_matrix(), app=self))
+        self.tf_object.set_clustering(clustering.Clustering(self.tf_object.search_method.get_matrix()))
         save_session(self.dir_selected, self.tf_object)
     self.window_settings.destroy()

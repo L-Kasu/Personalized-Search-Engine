@@ -24,7 +24,7 @@ class Search:
             self.search_method = search_methods.TfidfMethod(corpus)
 
         elif search_name == "GloVe":
-            name = "glove.6B.300d.p"
+            name = "glove.6B.200d.p"
             for root, dirs, files in os.walk(os.sep.join([".", "data"])):
                 if name in files:
                     path = os.path.join(root, name)
