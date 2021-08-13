@@ -60,9 +60,8 @@ In our implementation the cosine similarity between all documents and the query 
 #### Word-embedding
 A very simple algorithem using [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) is implemmented. It takes the mean vector over all word vectors for each document, therby generating one vector representing the document. By the same process a vector representing the query is generated. The cosine similarity between the query vector and the document vectors is then computed, then the documents are sorted by most similar to least similar.
 
-One embedding we use is [GloVe](https://nlp.stanford.edu/projects/glove/).
+The embedding we use is [GloVe](https://nlp.stanford.edu/projects/glove/).
 
-The other one is [fastText](https://fasttext.cc/docs/en/english-vectors.html).
 
 #### Clustering
 
