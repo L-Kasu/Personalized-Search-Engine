@@ -74,8 +74,8 @@ Clustering the documents into Clusters by their cosine-similarity, to greatly sp
 It is very important to normalize the vectors before Clustering them. Only that way useful results will apper.
 
 #### Machine-Learning (Logistic-Regression)
-Machine learning model to predict the similarity of two documents. Here the [Logistic-Regression Algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) is used. Firstgets train by a test dataset of documents, (which can be either realted or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}.
-TODO: finish
+Machine learning model to predict the similarity of two documents. Here the [Logistic-Regression Algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) is used.
+The Model object gets created by the constructor LogisticRegression.Model(function_list), which receives a list of function of possible metrics to compare two documents. These must always use two strings and return a singular float. This will be then be one feature that gets considered by the algorithm. First, it gets trained with a dataset of documents, which can be either related or unrelated (given by a dictionary = {doc_id: list-of-related-document ids}). Then, by the method initialise_data(), the data gets split into training and validation sets (testing is done on the evaluation). Running the main, the model gets created for a CISI examplary dataset, and gets saved as a pickle for further usage in the search-class. More useful methods are: train(), which trains the model on the training data; validate(), which gives a score of the probability of predicting correctly, if two documents are related; finally score(query, doc), which predicts the probability of a query matching a document. For more detailed information about possible changes to the model creation, visiting the modules website is recommended.
 
 
 ## Distribution
