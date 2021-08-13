@@ -1,10 +1,10 @@
-# Personalized-Search-Engine
+# Magni
 
 ## Overview
 
 
 ### The UI
-Start the engine by running the PersonalizedSearchEngine.exe in the program folder.
+Start the engine by running the Magni.exe in the program folder.
 
 Located directly below the 'Settings' button is an entry field where you can enter a query. If you started the engine for the first time, you also need to select a directory (indicated also by the 'no directory selected!' message in the 'Search result' box). By pressing the 'Select Directory' button directly below the entry field a new window will open where you can select the directory in which you wish to search for documents (the engine is capable of searching in .txt and .pdf documents in the selectecd folder only, not it's subfolders!). 
 
@@ -85,7 +85,7 @@ The Model object gets created by the constructor LogisticRegression.Model(functi
 
 ## License
 
-This release of the Personalized Search Engine as a whole will be licensed under the GPL-3.0 license. A copy of this license can be found [here](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/LICENSE.md). The python packages the engine makes use of and is distributed with are licensed under a variety of licenses. Refer to the `/LICENSES/` directory for the individual licenses.
+This release of Magni as a whole will be licensed under the GPL-3.0 license. A copy of this license can be found [here](https://github.com/L-Kasu/Personalized-Search-Engine/blob/main/LICENSE.md). The python packages the engine makes use of and is distributed with are licensed under a variety of licenses. Refer to the `/LICENSES/` directory for the individual licenses.
 
 
 
